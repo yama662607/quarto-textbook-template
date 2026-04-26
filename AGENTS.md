@@ -46,21 +46,27 @@ uv run python tools/extract_pdf.py <pdf_path> --mode simple --start <s> --end <e
 
 ブラウザだけで動く Python シミュレーションは [Quarto Live](https://r-wasm.github.io/quarto-live/) を使う。サーバー Python は不要。動作するサンプルは `quarto/textbook/_03_interactive_demo.qmd` を参照。
 
+サンプル: `quarto/textbook/_03_interactive_demo.qmd` (matplotlib + FuncAnimation),
+`quarto/textbook/_04_plotly_demo.qmd` (Plotly 静的 + アニメーション)。
+
 **新規ページの作り方:**
 1. qmd の YAML に `filters: [r-wasm/live]` を含める (親 `textbook.qmd` に書けば配下のパーシャルにも効く)
-2. `{ojs}` ブロックでスライダー (`Inputs.range(...)`) を定義、`tex` でラベルに LaTeX 数式
-3. `{pyodide}` ブロックに `#| autorun: true` と `#| input: ["a", "b", ...]` を付け、スライダー値を Python 変数として受け取る
-4. **日本語フォント**: 描画セルの先頭に `_03_interactive_demo.qmd` の font-load ブロックをコピー — `pyfetch` で `assets/fonts/NotoSansJP-Regular.ttf` を取得して `font_manager.fontManager.addfont` で登録。**font setup を別セルにすると順序が保証されない** ので、**描画セルに inline する** こと
-5. `pyfetch` の URL は **`../../../assets/fonts/...` で固定** (qmd の階層に合わせて変えない — pyfetch は worker スクリプト基準で解決するため)
+2. **追加 Python パッケージ** (Pyodide にプリインストール済以外、例: plotly, nbformat) は親 qmd の YAML `pyodide.packages` に列挙する。**セル内 `await micropip.install(...)` は禁止** (autorun 並列実行時に Pyodide の固定名 env を上書きし合って display 出力先が混線する)
+3. `{ojs}` ブロックでスライダー (`Inputs.range(...)`) を定義、`tex` でラベルに LaTeX 数式
+4. `{pyodide}` ブロックに `#| autorun: true` と `#| input: ["a", "b", ...]` を付け、スライダー値を Python 変数として受け取る
+5. **日本語フォント (matplotlib)**: 描画セルの先頭に `_03_interactive_demo.qmd` の font-load ブロックをコピー — `pyfetch` で `assets/fonts/NotoSansJP-Regular.ttf` を取得して `font_manager.fontManager.addfont` で登録。**font setup を別セルにすると順序が保証されない** ので、**描画セルに inline する** こと。Plotly は OS フォントを使うため不要
+6. `pyfetch` の URL は **`../../../assets/fonts/...` で固定** (qmd の階層に合わせて変えない — pyfetch は worker スクリプト基準で解決するため)
 
 詳しい手順・dead-end・トラブルシュートは [docs/quarto-live.md](docs/quarto-live.md) を参照。
 
 **警告抑制**: `warnings.simplefilter("ignore")` を font ロードと同じセルで呼ぶ。font 登録前後の `Glyph missing from current font` 警告を抑える。
 
 **禁止事項:**
+- ❌ `{pyodide}` セル内で `await micropip.install(...)` を呼ぶ (上記 race の原因)
 - ❌ `{pyodide}` セルで `import shiny` / `import streamlit` (Pyodide では動かない、Quarto Live は素の numpy/matplotlib 中心)
 - ❌ font setup を別セルに分ける (実行順序が保証されず描画セルが先に走るとエラー)
 - ❌ `pyodide.resources` (qmd YAML) — Quarto Live の filter モードでは効かないので使わない
+- ❌ Plotly figure に `fig.show()` を呼ぶ (Pyodide で renderer 検出に失敗。`fig` 最終式 1 行で OK)
 
 ## Code style
 

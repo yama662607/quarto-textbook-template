@@ -1,9 +1,49 @@
-# Quarto Live (Pyodide) + 日本語フォント レシピ
+# Quarto Live (Pyodide) レシピ
 
-ブラウザ内で動く Python シミュレーション ([Quarto Live](https://r-wasm.github.io/quarto-live/)) を
-matplotlib + 日本語フォントと組合せて使うときの **動作確認済の手順** と、ハマりやすい落とし穴。
+ブラウザ内で動く Python ([Quarto Live](https://r-wasm.github.io/quarto-live/)) を
+matplotlib / Plotly / 日本語フォントと組合せて使うときの **動作確認済の手順** と、
+ハマりやすい落とし穴。
 
-動作するサンプル: `quarto/textbook/_03_interactive_demo.qmd`
+動作するサンプル:
+- `quarto/textbook/_03_interactive_demo.qmd` (matplotlib + FuncAnimation)
+- `quarto/textbook/_04_plotly_demo.qmd` (Plotly 静的 + アニメーション)
+
+## 追加 Python パッケージは YAML の `pyodide.packages` で宣言する
+
+Pyodide にプリインストール済 (numpy, matplotlib, pandas, sympy 等) **以外** の
+パッケージを使うときは、**親 qmd の YAML** で列挙する。
+
+```yaml
+---
+title: "本編"
+filters:
+  - r-wasm/live
+pyodide:
+  packages:
+    - plotly
+    - nbformat
+    - jsonschema
+---
+```
+
+セル内で `await micropip.install(...)` を呼ぶのは **避けること** (理由は次節)。
+この YAML 経路なら Quarto Live が Pyodide 起動時にシリアルインストールを完了
+させるので、各 `{pyodide}` セルは `import xxx` を直接書ける ⇒ Jupyter / VSCode に
+コピペしても `pip install` 済前提で同じコードが動く。
+
+### なぜセル内 `await micropip.install(...)` がダメか
+
+Quarto Live は各 `{pyodide}` セルを独立した OJS observable にし、OJS は **並列に**
+評価する。Pyodide ワーカは固定名 `"result"` の Python 環境を使い回す
+(`live-runtime.js` の `PyodideEvaluator.process` / `envManager.create("result", "prep")`)。
+セル1 が `await micropip.install` で yield した間に、OJS がセル2 の `process()` を
+発火 → セル2 の `envManager.create("result", "prep")` がセル1 の env を上書き →
+セル1 の `display()` 出力がセル2 の枠に出る、または消える。
+
+これは **r-wasm/quarto-live の未報告バグ** (固定名 env が原因)。手動で個別に
+Run Code を押せば順次実行されて再現しないが、`autorun: true` のページロード時に
+発症する。`pyodide.packages` 経路を使えばセル本体に `await` が一切残らないので
+race の発生源そのものが消え、回避できる。
 
 ## 動作する組合せ
 
@@ -56,17 +96,42 @@ import matplotlib.pyplot as plt
 | Variable font (`NotoSansJP[wght].ttf`、9.6 MB) を使う | Pyodide の matplotlib FreeType が parse できず `In TTFont: unknown file format` |
 | `{pyodide}` セル内で `import shiny` / `import streamlit` | Pyodide では動かない。Quarto Live は素の numpy / matplotlib 中心 |
 | OJS の `while + Promises.delay` ループでスライダーを高速更新して `{pyodide}` を毎フレーム再実行 | matplotlib 再描画 (>100ms / frame) が間隔に追いつかず描画が固まる。さらに Quarto Live 専用なので Jupyter / VSCode にコピーすると動かない |
+| `{pyodide}` セル内で `await micropip.install(...)` を呼ぶ (autorun 複数セル時) | OJS が並列実行し、Pyodide の固定名 env `"result"` が上書きされる。display 出力が別セル枠に出るか消える。**`pyodide.packages` YAML を使うこと** |
+| Plotly figure に対し `fig.show()` を呼ぶ | Pyodide で renderer 検出に失敗する。最終式に `fig` を置けば IPython の `_repr_mimebundle_` 経由で描画される |
+| Plotly 図を `HTML(fig.to_html(include_plotlyjs="cdn", full_html=False))` で埋め込む | innerHTML 経由で挿入される `<script>` タグはブラウザが実行しないので空 div になる。`fig` 最終式 + `pyodide.packages: [plotly, nbformat, jsonschema]` のほうが確実 |
 
 ## アニメーション
 
-`matplotlib.animation.FuncAnimation` + `IPython.display.HTML(ani.to_jshtml())` を使う。
-フレームを Python 側で全部計算 → JS プレイヤーとして埋め込まれるので:
+選択肢は 2 つ。標準的な Python のやり方なのでどちらも Jupyter / VSCode にコピーで動く。
+
+### matplotlib + FuncAnimation
+`matplotlib.animation.FuncAnimation` + `IPython.display.HTML(ani.to_jshtml())`。
+フレームを Python 側で全部計算 → JS プレイヤーとして埋め込まれる:
 
 - 再生 / 一時停止 / コマ送り / フレームスライダーが標準で付く
 - 毎フレームの Pyodide 再実行が不要
-- Jupyter / VSCode にコードをコピーしても同じように動く (Pyodide 固有なのは日本語フォントのロードだけ)
+- 出力は単一 PNG ベクター列なので印刷向き
 
-サンプル: `quarto/textbook/_03_interactive_demo.qmd` の FuncAnimation セクションを参照。
+サンプル: `_03_interactive_demo.qmd`。
+
+### Plotly + animation_frame / frames
+`px.line(df, animation_frame="frame", ...)` だけで再生 UI が自動生成される。
+3D サーフェスや hover ツールチップは Plotly の方が得意。`pyodide.packages` で
+`plotly nbformat jsonschema` の宣言が必要。
+
+サンプル: `_04_plotly_demo.qmd`。
+
+### 使い分け
+
+| | matplotlib | Plotly |
+| --- | --- | --- |
+| コード量 | やや多い | 少ない |
+| 日本語 | `font_manager.addfont` 必須 | OS フォント (追加設定不要) |
+| インタラクション | コマ送り / 再生 / 停止 | + hover / pan / zoom |
+| 印刷用ベクター | 強い | 弱い |
+| 3D / 地理 / dashboard | 弱い | 強い |
+
+紙に載せる図は matplotlib、ウェブで触らせる図は Plotly。
 
 ## 失敗時の典型症状と切り分け
 
