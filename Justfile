@@ -22,12 +22,20 @@ default: check
 check-env:
     @{{python}} tools/check_env.py
 
-# 環境構築: 依存関係のインストール
+# 環境構築: 依存関係のインストール (base のみ — extras は明示的に追加)
+# 例: just setup-extras ocr math    で OCR と数式抽出も追加でインストール
 setup: check-env
     @echo "Setting up environment..."
-    {{pm}} sync --all-extras
+    {{pm}} sync
     npm install
     @echo "Environment setup complete."
+
+# 全 extras を追加: 重い (easyocr / pix2text / qiskit / shinylive 等を含む)
+setup-all:
+    @echo "Setting up environment with ALL extras..."
+    {{pm}} sync --all-extras
+    npm install
+    @echo "Environment setup (all extras) complete."
 
 # 全体品質検証 (CI ゲート)
 check: fmt-check lint typecheck validate-docs render-check test

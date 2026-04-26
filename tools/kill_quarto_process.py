@@ -28,8 +28,20 @@ def _iter_pids_listening_on(port: int) -> Iterable[int]:
         psutil = None  # noqa: N806
 
     if psutil is not None:
-        # System-wide net_connections() requires root on macOS, so iterate
-        # processes and check each one's connections instead.
+        # Two-tier strategy:
+        # 1. Try the cheap system-wide query first (works on Linux/Win
+        #    without root, fast even with many processes).
+        # 2. If the OS denies that (macOS without root), fall back to
+        #    per-process iteration which only needs access to processes
+        #    you own.
+        try:
+            for conn in psutil.net_connections(kind="inet"):
+                if conn.laddr and conn.laddr.port == port and conn.pid:
+                    yield conn.pid
+            return
+        except (psutil.AccessDenied, PermissionError):
+            pass
+
         for proc in psutil.process_iter(["pid"]):
             try:
                 for conn in proc.net_connections(kind="inet"):

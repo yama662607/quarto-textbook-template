@@ -48,29 +48,30 @@ def diagnose(pdf_path: str) -> int:
         print(f"Error: file not found: {pdf_path}", file=sys.stderr)
         return 1
 
-    doc = fitz.open(pdf_path)
-    total = len(doc)
-    print(f"=== {pdf_path} ===")
-    print(f"Pages: {total}")
-    md = doc.metadata or {}
-    for key in ("title", "author", "producer", "creator"):
-        if md.get(key):
-            print(f"  {key}: {md[key]}")
+    with fitz.open(pdf_path) as doc:
+        total = len(doc)
+        print(f"=== {pdf_path} ===")
+        print(f"Pages: {total}")
+        md = doc.metadata or {}
+        for key in ("title", "author", "producer", "creator"):
+            if md.get(key):
+                print(f"  {key}: {md[key]}")
 
-    sample_indices = sorted({0, total // 4, total // 2, (3 * total) // 4, total - 1} - {-1})
-    text_pages = 0
-    for idx in sample_indices:
-        if idx < 0 or idx >= total:
-            continue
-        page = doc.load_page(idx)
-        text = (page.get_text() or "").strip()
-        n_images = len(page.get_images(full=True))
-        has_text = len(text) > 30
-        text_pages += int(has_text)
-        preview = text[:80].replace("\n", " ")
-        flag = "TEXT" if has_text else "no-text"
-        print(f"  p.{idx + 1:>4}: {flag:<7} chars={len(text):>5}  images={n_images}  '{preview}'")
-    doc.close()
+        sample_indices = sorted({0, total // 4, total // 2, (3 * total) // 4, total - 1} - {-1})
+        text_pages = 0
+        for idx in sample_indices:
+            if idx < 0 or idx >= total:
+                continue
+            page = doc.load_page(idx)
+            text = (page.get_text() or "").strip()
+            n_images = len(page.get_images(full=True))
+            has_text = len(text) > 30
+            text_pages += int(has_text)
+            preview = text[:80].replace("\n", " ")
+            flag = "TEXT" if has_text else "no-text"
+            print(
+                f"  p.{idx + 1:>4}: {flag:<7} chars={len(text):>5}  images={n_images}  '{preview}'"
+            )
 
     if text_pages >= len(sample_indices) // 2:
         print("\nRecommendation: --mode simple (text layer present)")
@@ -86,6 +87,12 @@ def diagnose(pdf_path: str) -> int:
 
 def _page_range(doc: fitz.Document, start: int | None, end: int | None) -> range:
     total = len(doc)
+    if start is not None and start < 1:
+        raise ValueError(f"--start must be >= 1 (got {start})")
+    if end is not None and end < 1:
+        raise ValueError(f"--end must be >= 1 (got {end})")
+    if start is not None and end is not None and start > end:
+        raise ValueError(f"--start ({start}) cannot exceed --end ({end})")
     s = max(0, (start or 1) - 1)
     e = min(total, end or total)
     if s >= total:
@@ -103,14 +110,13 @@ def _page_has_text(page: fitz.Page, threshold: int = 30) -> bool:
 
 
 def mode_simple(pdf_path: str, start: int | None, end: int | None) -> int:
-    doc = fitz.open(pdf_path)
-    for i in _page_range(doc, start, end):
-        page = doc.load_page(i)
-        text = page.get_text() or ""
-        print(f"--- Page {i + 1} ---")
-        print(text or "[No text layer — try --mode ocr]")
-        print()
-    doc.close()
+    with fitz.open(pdf_path) as doc:
+        for i in _page_range(doc, start, end):
+            page = doc.load_page(i)
+            text = page.get_text() or ""
+            print(f"--- Page {i + 1} ---")
+            print(text or "[No text layer — try --mode ocr]")
+            print()
     return 0
 
 
@@ -132,34 +138,32 @@ def _ocr_page(reader, page: fitz.Page, dpi: int = 200) -> str:
 
 def mode_ocr(pdf_path: str, start: int | None, end: int | None, langs: list[str]) -> int:
     reader = _ocr_reader(langs)
-    doc = fitz.open(pdf_path)
-    for i in _page_range(doc, start, end):
-        page = doc.load_page(i)
-        text = _ocr_page(reader, page)
-        print(f"--- Page {i + 1} (OCR) ---")
-        print(text)
-        print()
-    doc.close()
+    with fitz.open(pdf_path) as doc:
+        for i in _page_range(doc, start, end):
+            page = doc.load_page(i)
+            text = _ocr_page(reader, page)
+            print(f"--- Page {i + 1} (OCR) ---")
+            print(text)
+            print()
     return 0
 
 
 def mode_auto(pdf_path: str, start: int | None, end: int | None, langs: list[str]) -> int:
     """Per-page: simple if text layer present, else OCR fallback."""
-    doc = fitz.open(pdf_path)
-    pages = list(_page_range(doc, start, end))
-    needs_ocr = [i for i in pages if not _page_has_text(doc.load_page(i))]
-    reader = _ocr_reader(langs) if needs_ocr else None
+    with fitz.open(pdf_path) as doc:
+        pages = list(_page_range(doc, start, end))
+        needs_ocr = [i for i in pages if not _page_has_text(doc.load_page(i))]
+        reader = _ocr_reader(langs) if needs_ocr else None
 
-    for i in pages:
-        page = doc.load_page(i)
-        if _page_has_text(page):
-            print(f"--- Page {i + 1} (text) ---")
-            print(page.get_text())
-        else:
-            print(f"--- Page {i + 1} (OCR fallback) ---")
-            print(_ocr_page(reader, page))  # type: ignore[arg-type]
-        print()
-    doc.close()
+        for i in pages:
+            page = doc.load_page(i)
+            if _page_has_text(page):
+                print(f"--- Page {i + 1} (text) ---")
+                print(page.get_text())
+            else:
+                print(f"--- Page {i + 1} (OCR fallback) ---")
+                print(_ocr_page(reader, page))  # type: ignore[arg-type]
+            print()
     return 0
 
 
@@ -174,18 +178,17 @@ def mode_latex(pdf_path: str, start: int | None, end: int | None, image_dir: str
 
     from latex_extraction import extract_latex_from_images  # noqa: E402
 
-    doc = fitz.open(pdf_path)
     image_paths = []
-    for i in _page_range(doc, start, end):
-        candidate = Path(image_dir) / f"page_{i + 1}.png"
-        if candidate.exists():
-            image_paths.append(str(candidate))
-        else:
-            print(
-                f"Warning: missing {candidate} (run render-pdf first)",
-                file=sys.stderr,
-            )
-    doc.close()
+    with fitz.open(pdf_path) as doc:
+        for i in _page_range(doc, start, end):
+            candidate = Path(image_dir) / f"page_{i + 1}.png"
+            if candidate.exists():
+                image_paths.append(str(candidate))
+            else:
+                print(
+                    f"Warning: missing {candidate} (run render-pdf first)",
+                    file=sys.stderr,
+                )
 
     results = extract_latex_from_images(image_paths, quiet=False)
     return 0 if results else 1
@@ -196,7 +199,20 @@ def mode_latex(pdf_path: str, start: int | None, end: int | None, image_dir: str
 # ---------------------------------------------------------------------------
 
 
+def _ensure_utf8_stdout() -> None:
+    """Avoid UnicodeEncodeError on Windows (default cp932) when printing
+    extracted text containing Japanese / math symbols / non-ASCII glyphs."""
+    for stream in (sys.stdout, sys.stderr):
+        reconfigure = getattr(stream, "reconfigure", None)
+        if callable(reconfigure):
+            try:
+                reconfigure(encoding="utf-8", errors="replace")
+            except (ValueError, AttributeError):
+                pass
+
+
 def main() -> int:
+    _ensure_utf8_stdout()
     p = argparse.ArgumentParser(
         description="Extract text / OCR / LaTeX from a PDF.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -236,13 +252,17 @@ def main() -> int:
     if args.diagnose:
         return diagnose(args.pdf_path)
 
-    if args.mode == "simple":
-        return mode_simple(args.pdf_path, args.start, args.end)
-    if args.mode == "ocr":
-        return mode_ocr(args.pdf_path, args.start, args.end, args.lang)
-    if args.mode == "latex":
-        return mode_latex(args.pdf_path, args.start, args.end, args.image_dir)
-    return mode_auto(args.pdf_path, args.start, args.end, args.lang)
+    try:
+        if args.mode == "simple":
+            return mode_simple(args.pdf_path, args.start, args.end)
+        if args.mode == "ocr":
+            return mode_ocr(args.pdf_path, args.start, args.end, args.lang)
+        if args.mode == "latex":
+            return mode_latex(args.pdf_path, args.start, args.end, args.image_dir)
+        return mode_auto(args.pdf_path, args.start, args.end, args.lang)
+    except ValueError as e:
+        print(f"Error: {e}", file=sys.stderr)
+        return 2
 
 
 if __name__ == "__main__":

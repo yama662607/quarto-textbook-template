@@ -24,7 +24,14 @@
 
 ### 1. テンプレートからリポジトリ作成
 
-GitHub の "Use this template" → "Create a new repository" でクローン。または:
+**GitHub Web UI から (推奨)**: リポジトリページ右上の "**Use this template**" → "**Create a new repository**" → 自分の Organization / アカウントを選び、リポジトリ名を入力 → "Create repository"。完了後、ローカルに clone:
+
+```bash
+git clone https://github.com/<you>/<your-repo>.git
+cd <your-repo>
+```
+
+**`gh` CLI を使う場合** (要 `gh auth login`):
 
 ```bash
 gh repo create my-textbook --template yama662607/quarto-textbook-template --public --clone
@@ -85,10 +92,15 @@ clone 後、以下のプレースホルダを置換してください:
 | --- | --- |
 | `pyproject.toml` | `name`, `description`, `authors` |
 | `package.json` | `name`, `description` |
-| `quarto/_quarto.yml` | `book.title`, `book.author`, `book.repo-url`, `page-footer` |
-| `quarto/index.qmd` | タイトルと本文 |
+| `quarto/_quarto.yml` | `book.title`, `book.author`, `book.repo-url`, `book.repo-branch`, `page-footer` |
+| `quarto/index.qmd` | タイトル・サブタイトル・著者・本文 |
+| `quarto/textbook/textbook.qmd` 等 | サンプル本文を自分の章構成に置換 |
 | `LICENSE` | copyright 年と保有者 |
 | `README.md` | このファイル全体 (バッジ URL の `yama662607/quarto-textbook-template` も) |
+| `.github/CODEOWNERS` | `* @yama662607` をあなたの GitHub アカウント / チームに |
+| `.devcontainer/devcontainer.json` | `name` ("Quarto Textbook Template" → 派生プロジェクト名) |
+| `SECURITY.md` | リポジトリ URL (`yama662607/quarto-textbook-template`) |
+| `CHANGELOG.md` | 0.1.0 エントリのコピーライト年や、自分のリリース履歴 |
 
 ### 4. GitHub Pages の有効化
 

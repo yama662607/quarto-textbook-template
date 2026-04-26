@@ -1,4 +1,5 @@
 import shutil
+import sys
 from pathlib import Path
 
 
@@ -44,10 +45,11 @@ def clean():
                 else:
                     p.unlink()
                 print(f"  removed: {p.relative_to(project_root)}")
-            except Exception:
-                pass
+            except OSError as e:
+                # Permission denied / file in use — surface but keep going.
+                print(f"  skip {p.relative_to(project_root)}: {e}", file=sys.stderr)
 
-    print(" Cleanup complete!")
+    print("Cleanup complete.")
 
 
 if __name__ == "__main__":

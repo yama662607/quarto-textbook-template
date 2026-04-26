@@ -33,15 +33,19 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install uv and Python dependencies
-        # NOTE: by default we install only the base deps. If your textbook
-        # uses optional features (e.g. Qiskit blocks, Shinylive, Jupyter
-        # compute cells, OCR/LaTeX pipelines), append the relevant extras:
-        #   $HOME/.local/bin/uv sync --extra notebook --extra quantum
-        # or simply: $HOME/.local/bin/uv sync --all-extras
+      - name: Install uv
+        # Pin via the official action — no curl-pipe-bash, no $HOME/.local/bin
+        # PATH munging required. astral-sh/setup-uv handles caching too.
+        uses: astral-sh/setup-uv@v3
+
+      - name: Install Python dependencies
+        # By default we install only base deps. If your textbook uses
+        # optional features (e.g. Qiskit blocks, Shinylive, Jupyter compute
+        # cells, OCR/LaTeX pipelines), append the relevant extras:
+        #   uv sync --extra notebook --extra quantum
+        # or:  uv sync --all-extras
         run: |
-          curl -LsSf https://astral.sh/uv/install.sh | sh
-          $HOME/.local/bin/uv sync
+          uv sync
           echo "$GITHUB_WORKSPACE/.venv/bin" >> $GITHUB_PATH
 
       - name: Render and publish

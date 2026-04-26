@@ -2,6 +2,35 @@
 
 Cross-platform Python helpers invoked from the Justfile.
 
+## PDF 取り込みの意思決定 — どの mode を使うか
+
+```
+                    ┌──────────────────────────┐
+                    │ just diagnose-pdf <pdf>  │
+                    └────────────┬─────────────┘
+                                 ▼
+       ┌─────────────────────────┴──────────────────────────┐
+       │                                                    │
+   テキスト層あり                                    テキスト層なし
+       │                                                    │
+       ▼                                                    ▼
+┌──────────────┐                              ┌──────────────────────┐
+│ --mode auto  │ ← 数式が無ければ最速           │ uv sync --extra ocr  │
+│  または       │                              │ --mode ocr           │
+│ --mode simple│                              └──────────────────────┘
+└──────────────┘
+       │
+       │ 数式 (LaTeX) も欲しい
+       ▼
+┌──────────────────────────┐
+│ uv sync --extra math      │
+│ --mode latex              │ ← 事前に render-pdf で画像化が必要
+│ + --image-dir <dir>       │
+└──────────────────────────┘
+```
+
+**両 tool 必須併用**: `render-pdf` で画像も用意し、文字情報と画像を照合してから qmd 化 (詳細は AGENTS.md)。
+
 ## Core (always available)
 
 | ファイル | 用途 |

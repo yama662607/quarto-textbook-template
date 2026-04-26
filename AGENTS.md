@@ -78,21 +78,38 @@ just test        # pytest のみ
 
 `main` ブランチへの push で `.github/workflows/publish.yml` が走り、`gh-pages` ブランチに自動デプロイ → GitHub Pages で公開。
 
-教科書本文で optional 機能 (Qiskit / Shinylive / Jupyter compute / OCR / LaTeX) を使う場合は `publish.yml` の `uv sync` 行に `--extra <name>` を追記すること (デフォルトは base のみで軽量化)。
+教科書本文で optional 機能を使う場合は `publish.yml` の `uv sync` 行に `--extra <name>` を追記する (デフォルトは base のみで軽量化):
+
+| 用途 | 追加すべき extra |
+| --- | --- |
+| Qiskit blocks | `--extra quantum` |
+| Shinylive 対話 | `--extra shiny` |
+| Jupyter compute / numpy / matplotlib | `--extra notebook` |
+| 画像 PDF の OCR | `--extra ocr` |
+| 数式 (LaTeX) 抽出 | `--extra math` |
 
 ## Tooling reference (Justfile)
 
 | コマンド | 用途 |
 | --- | --- |
-| `just check-env` | ツール存在確認 |
-| `just setup` | 依存インストール |
-| `just check` | 品質ゲート (CI と同等) |
-| `just fix` | 自動修正 |
-| `just docs` | プレビューサーバー起動 |
+| `just check-env` | ツール (uv / just / quarto / npm) 存在確認 |
+| `just setup` | base 依存インストール (`uv sync` + `npm install`) |
+| `just setup-all` | base + 全 extras (重い、~数 GB) |
+| `just check` | 品質ゲート (fmt-check + lint + typecheck + validate-docs + render-check + test) |
+| `just check-full` | `check` + 実 HTML レンダリング |
+| `just fix` | 自動修正 (fmt + lint-fix + validate-docs --fix) |
+| `just test [args]` | pytest |
+| `just clean` | ビルド成果物削除 (cross-platform) |
+| `just docs` | プレビューサーバー起動 (port 4312) |
 | `just fix-docs` | プレビュー復旧 (Win/Mac/Linux 対応) |
-| `just validate-docs` | ドキュメント検証 |
 | `just render-site` | HTML 実レンダリング |
 | `just render-book-pdf` | PDF 実レンダリング |
-| `just diagnose-pdf <pdf>` | PDF 構造診断 |
+| `just render-check` | 構文チェック (compute 実行なし) |
+| `just validate-docs` | ドキュメント整合性検証 (Quarto/Mermaid/LaTeX) |
+| `just validate-docs-fix` | 自動修正 |
+| `just validate-docs-no-cache` | キャッシュを使わず再検証 |
+| `just clear-validation-cache` | バリデーションキャッシュ削除 |
+| `just diagnose-pdf <pdf>` | PDF 構造診断 (どの mode を選ぶか判断) |
 | `just render-pdf <pdf> <s> <e>` | PDF ページ画像化 |
-| `just extract-pdf <pdf> [opts]` | 文字・数式抽出 (mode=auto/simple/ocr/latex) |
+| `just extract-pdf <pdf> [opts]` | 文字・OCR・LaTeX 抽出 (`--mode auto/simple/ocr/latex`) |
+| `just app <path>` | Streamlit アプリ起動 (任意) |

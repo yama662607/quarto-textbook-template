@@ -1,4 +1,11 @@
 {
+  // NOTE for template users:
+  //   - Rename "name" to your project's title.
+  //   - Initial container build pulls Python / Node / Quarto / just / uv via
+  //     prebuilt features; expect 5–10 minutes the first time.
+  //   - The `uv` feature uses a community provider (va-h). If you prefer to
+  //     install uv inside postCreateCommand instead, drop that feature line
+  //     and add: `curl -LsSf https://astral.sh/uv/install.sh | sh && ...`
   "name": "Quarto Textbook Template",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
 

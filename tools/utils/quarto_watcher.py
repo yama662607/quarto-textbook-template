@@ -59,31 +59,18 @@ class QuartoWatcherHandler(FileSystemEventHandler):
             return None
 
     def touch_target(self, target_file):
-        # 複数回リトライしてファイルロックに対処する（特にWindows）
+        # mtime のみ更新 — 「空白追加→削除」より安全 (同時編集中のレースで
+        # ファイルが破損しない、Win cp932 化けも回避できる)。
         max_retries = 3
         for i in range(max_retries):
             try:
-                # 1文字追加して即座に削除することで、内容を変えずにmtimeを更新する
-                with open(target_file, "a") as f:
-                    f.write(" ")
-
-                # Quartoが検知する時間を与える
-                time.sleep(0.5)
-
-                with open(target_file, "r+") as f:
-                    content = f.read()
-                    if content.endswith(" "):
-                        f.seek(0)
-                        f.truncate()
-                        f.write(content[:-1])
-
+                target_file.touch()
                 print(f"Successfully touched {target_file.name}.")
                 return
-            except Exception as e:
-                print(f"Attempt {i + 1} failed to touch target file: {e}")
+            except Exception as e:  # noqa: BLE001 — log everything, retry
+                print(f"Attempt {i + 1} failed to touch {target_file.name}: {e}")
                 time.sleep(0.5)
-
-        print("Failed to touch target file after all retries.")
+        print(f"Failed to touch {target_file.name} after {max_retries} retries.")
 
 
 def main():
