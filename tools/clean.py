@@ -5,47 +5,47 @@ from pathlib import Path
 def clean():
     project_root = Path(__file__).parent.parent.resolve()
 
-    # 削除対象のディレクトリとファイル
-    targets = [
+    # 削除対象 (固定パス)
+    # 注: quarto/_freeze は commit する設計なので削除しない
+    fixed_targets = [
         ".pytest_cache",
         ".ruff_cache",
-        "__pycache__",
         ".mypy_cache",
-        "quarto/_freeze",
-        "quarto/_output",
-        "quarto/textbook-preskill/textbook_files",
-        "quarto/textbook-watrous/textbook_files",
+        "quarto/_book",
+        "quarto/.quarto",
     ]
 
-    print(" Cleaning artifacts...")
+    # 削除対象 (グロブ)
+    glob_targets = [
+        "quarto/**/*_files",  # any *_files dir produced by Quarto rendering
+        "**/__pycache__",
+        "**/*.pyc",
+    ]
 
-    for target_rel in targets:
+    print("Cleaning build artifacts...")
+
+    for target_rel in fixed_targets:
         target_path = project_root / target_rel
         if target_path.exists():
             try:
                 if target_path.is_dir():
                     shutil.rmtree(target_path)
-                    print(f"Removed directory: {target_rel}")
                 else:
                     target_path.unlink()
-                    print(f"Removed file: {target_rel}")
+                print(f"  removed: {target_rel}")
             except Exception as e:
-                print(f"Failed to remove {target_rel}: {e}")
+                print(f"  failed to remove {target_rel}: {e}")
 
-    # 再帰的な __pycache__ と *.pyc の削除
-    for p in project_root.rglob("__pycache__"):
-        try:
-            shutil.rmtree(p)
-            print(f"Removed: {p.relative_to(project_root)}")
-        except Exception:
-            pass
-
-    for p in project_root.rglob("*.pyc"):
-        try:
-            p.unlink()
-            print(f"Removed: {p.relative_to(project_root)}")
-        except Exception:
-            pass
+    for pattern in glob_targets:
+        for p in project_root.glob(pattern):
+            try:
+                if p.is_dir():
+                    shutil.rmtree(p)
+                else:
+                    p.unlink()
+                print(f"  removed: {p.relative_to(project_root)}")
+            except Exception:
+                pass
 
     print(" Cleanup complete!")
 

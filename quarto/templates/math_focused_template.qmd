@@ -135,4 +135,4 @@ graph LR
 ---
 
 ## 参考文献・参照
-- Watrous, TQI, pp. XX [@watrous2018]
+- 参考文献例 [@shannon1948]

@@ -1,10 +1,11 @@
-## X.Y セクションタイトル [chap1.pdf p.XX](/assets/pdf/preskill/chap1.pdf#page=YY) {#sec-X-Y}
+## X.Y セクションタイトル [textbook.pdf p.XX](../assets/pdf/textbook.pdf#page=YY) {#sec-X-Y}
 
 <!--
   使い方:
-  1. この断片ファイルを quarto/textbook-preskill/chapterX/_X.Y-title.qmd として保存
-  2. YAMLヘッダーは削除済み（親ファイルが持つため不要）
-  3. Phase 1 完了後、Phase 2 のブロックを追記していく
+  1. この断片ファイルを quarto/textbook/_NN_section-title.qmd として保存
+  2. YAML ヘッダーは付けない (親 textbook.qmd が持つため不要)
+  3. textbook.qmd 側に {{< include _NN_section-title.qmd >}} を追加
+  4. Phase 1 (忠実翻訳) → Phase 2 (解説拡充) の順で書く
 -->
 
 ---

@@ -6,35 +6,29 @@ from watchdog.observers import Observer
 
 
 class QuartoWatcherHandler(FileSystemEventHandler):
+    """When a partial `_*.qmd` is edited, touch the parent `textbook.qmd`
+    in the same directory so Quarto preview re-renders the included content.
+    Works with any directory layout — no hardcoded chapter names.
+    """
+
     def __init__(self, project_root):
         self.project_root = Path(project_root).resolve()
         self.last_triggered = 0.0
         self.debounce_seconds = 1.0
-
-        # マッピング定義: 変更検知ディレクトリ -> タッチすべきファイル
-        self.chapter_map = {
-            "chapter1": self.project_root / "quarto" / "textbook-preskill" / "textbook.qmd",
-            "chapter2": self.project_root / "quarto" / "textbook-preskill" / "textbook.qmd",
-            "chapter3": self.project_root / "quarto" / "textbook-preskill" / "textbook.qmd",
-        }
         self.default_target = self.project_root / "quarto" / "index.qmd"
 
     def on_modified(self, event):
         if event.is_directory:
             return
 
-        # 監視対象の拡張子を確認
         if not event.src_path.endswith(".qmd"):
             return
 
         src_path = Path(event.src_path).resolve()
-
-        # ターゲットファイルの決定
         target_file = self._determine_target(src_path)
 
-        # 自分自身への書き込みによる無限ループを避ける
         if target_file and src_path == target_file:
-            return
+            return  # avoid feedback loop on the touched file itself
 
         current_time = time.time()
         if current_time - self.last_triggered > self.debounce_seconds:
@@ -42,22 +36,22 @@ class QuartoWatcherHandler(FileSystemEventHandler):
                 print(f"Detected change in {src_path.name}. Touching {target_file.name}...")
                 self.touch_target(target_file)
             else:
-                print(f"Detected change in {src_path.name}, but no specific target found.")
-
+                print(f"Detected change in {src_path.name}, but no parent qmd found.")
             self.last_triggered = current_time
 
     def _determine_target(self, src_path):
-        """変更されたファイルのパスから、タッチすべきファイルを決定する"""
-        try:
-            # パスの中に "chapterX" が含まれているか探す
-            parts = src_path.parts
-            for part in parts:
-                if part in self.chapter_map:
-                    target = self.chapter_map[part]
-                    if target.exists():
-                        return target
+        """Find the nearest non-partial qmd to touch.
 
-            # デフォルト
+        Strategy:
+        1. If the changed file is a partial (`_*.qmd`), look for any sibling
+           non-partial `*.qmd` in the same directory and touch the first one.
+        2. Otherwise fall back to `quarto/index.qmd`.
+        """
+        try:
+            if src_path.name.startswith("_"):
+                for sibling in src_path.parent.glob("*.qmd"):
+                    if not sibling.name.startswith("_"):
+                        return sibling.resolve()
             if self.default_target.exists():
                 return self.default_target
             return None

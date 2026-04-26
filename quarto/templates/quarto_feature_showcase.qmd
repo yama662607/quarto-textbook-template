@@ -206,7 +206,7 @@ The trace of a density operator must always be 1 for probability conservation.
 
 # References & Citation
 
-You can cite papers like this [@watrous2018].
+You can cite papers like this [@shannon1948].
 
 # Appendix {.appendix}
 

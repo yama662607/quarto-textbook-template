@@ -1,6 +1,7 @@
 project:
   type: book
-  output-dir: _output
+  # Quarto 公式推奨は _book (https://quarto.org/docs/books/)
+  output-dir: _book
   resources:
     - "assets/pdf/**/*.pdf"
     - "assets/images/**/*.png"
@@ -12,13 +13,28 @@ book:
   title: "Your Textbook Title"
   author: "Your Name"
   date: last-modified
+
+  # GitHub 連携 (utilizes book.repo-url + repo-actions for "Edit" / "Issue" links)
+  # テンプレ利用時は your-org/your-repo を書き換えてください。
+  repo-url: https://github.com/your-org/your-repo
+  repo-branch: main
+  repo-actions: [edit, issue]
+
+  # PDF ダウンロードボタン (uv sync --extra notebook 等で計算ブロックを使う場合)
+  # downloads: [pdf]
+
+  # 引用情報 (Cite this book → BibTeX 出力)
+  # citation: true
+
+  # 検索を有効化
+  search: true
+
   navbar:
     left:
       - text: "ホーム"
         href: index.qmd
   sidebar:
     style: "docked"
-    search: true
     collapse-level: 4
   chapters:
     - index.qmd
@@ -31,6 +47,9 @@ book:
     right:
       - text: "ホーム"
         href: index.qmd
+
+# 文献ファイル (任意 — quarto/templates/references.bib をデフォルトで参照)
+# bibliography: templates/references.bib
 
 number-sections: false
 crossref:

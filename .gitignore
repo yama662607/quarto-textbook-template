@@ -20,13 +20,17 @@ node_modules/
 # =============================================================================
 # Quarto
 # =============================================================================
-_output/
-quarto/_freeze/
+# Build output (output-dir = _book per Quarto official recommendation)
+quarto/_book/
 quarto/.quarto/
 .quarto/
 quarto/**/*.html
 quarto/**/*_files/
 !quarto/templates/**/*.html
+
+# NOTE: quarto/_freeze/ is intentionally NOT ignored.
+# Commit it so CI does not re-execute Python/R compute blocks on every push.
+# (Quarto official guidance: https://quarto.org/docs/projects/code-execution.html#freeze)
 
 # =============================================================================
 # LaTeX build artifacts

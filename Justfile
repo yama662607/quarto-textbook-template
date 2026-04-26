@@ -30,8 +30,13 @@ setup: check-env
     @echo "Environment setup complete."
 
 # 全体品質検証 (CI ゲート)
-check: fmt-check lint typecheck validate-docs test
+check: fmt-check lint typecheck validate-docs render-check test
     @echo "All quality checks passed."
+
+# 構文チェックのみの軽量レンダリング (compute blocks は実行しない)
+render-check:
+    @echo "Quarto syntax check (no execute)..."
+    quarto render quarto --execute-debug --no-execute --quiet
 
 # フル品質検証: HTML 実レンダリングまで含めて確認
 check-full: check render-site
@@ -111,30 +116,25 @@ clear-validation-cache:
     {{python}} tools/validate_docs.py --clear-cache
 
 # =============================================================================
-# PDF Ingestion (choose the variant that matches your source)
+# PDF Ingestion (USE BOTH render-pdf AND extract-pdf BEFORE WRITING qmd)
 # =============================================================================
+# AGENTS.md mandates running both tools and cross-checking the rendered images
+# against extracted text, so OCR / formula misreads are caught.
 
-# テキスト埋込済 PDF からテキスト+画像抽出 (簡易・依存少)
-extract-pdf pdf_path *args="":
-    {{python}} tools/extract_pdf_simple.py {{pdf_path}} {{args}}
-
-# 画像 PDF (テキスト未埋込・スキャン PDF) を OCR で読み取る (easyocr)
-extract-pdf-ocr pdf_path *args="":
-    {{python}} tools/extract_pdf_ocr.py {{pdf_path}} {{args}}
-
-# PDF からテキスト+数式(LaTeX) 抽出 (pix2text、要 GPU 推奨)
-# 使い方: just extract-content <pdf_path> <start_page> <end_page>
-extract-content pdf_path start end *args="":
-    {{python}} tools/extract_pdf_content.py {{pdf_path}} --start {{start}} --end {{end}} {{args}}
-
-# 教科書 PDF の画像化 (PNG 出力)
+# 教科書 PDF を PNG 画像に変換 (ページごとに画像確認するため)
 # 使い方: just render-pdf <pdf_path> <start_page> <end_page>
 render-pdf pdf_path start end *args="":
     {{python}} tools/render_pdf.py {{pdf_path}} --start {{start}} --end {{end}} {{args}}
 
-# PDF 構造診断 (テキスト埋込有無、ページ数等)
+# PDF から文字情報 (text / OCR / LaTeX) を抽出
+# 使い方: just extract-pdf <pdf_path> [--start N --end N --mode auto|simple|ocr|latex]
+# mode auto がデフォルト (テキスト層あれば simple、無ければ OCR にフォールバック)
+extract-pdf pdf_path *args="":
+    {{python}} tools/extract_pdf.py {{pdf_path}} {{args}}
+
+# PDF 構造の診断 (どの --mode を選ぶべきか分からない時)
 diagnose-pdf pdf_path:
-    {{python}} tools/diagnose_pdf.py {{pdf_path}}
+    {{python}} tools/extract_pdf.py {{pdf_path}} --diagnose
 
 # =============================================================================
 # Optional: Streamlit / Shiny app launcher

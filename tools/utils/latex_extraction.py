@@ -2,8 +2,6 @@ import argparse
 import os
 import sys
 
-from pix2text import Pix2Text
-
 
 def extract_latex_from_images(image_paths, quiet=False):
     """
@@ -12,9 +10,15 @@ def extract_latex_from_images(image_paths, quiet=False):
     """
     results = []
     try:
-        # Initialize Pix2Text
-        # MFD: Mathematical Formula Detection
-        # MFR: Mathematical Formula Recognition
+        try:
+            from pix2text import Pix2Text
+        except ImportError:
+            print(
+                "pix2text is not installed. Run: uv sync --group math",
+                file=sys.stderr,
+            )
+            return []
+
         p2t = Pix2Text(device="cpu")
 
         for img_path in image_paths:

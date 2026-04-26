@@ -1,60 +1,43 @@
 # tools/
 
-各プロジェクト由来のスクリプトを **全て** 集めたディレクトリ。テンプレ利用時は不要なものを削除してください。
+Cross-platform Python helpers invoked from the Justfile.
 
-## 共通スクリプト (4プロジェクト統一)
-
-| ファイル | 用途 | 出自 |
-| --- | --- | --- |
-| `check_env.py` | uv / just / quarto / npm の環境整合性チェック | Quantum-information |
-| `clean.py` | ビルド成果物削除 (cross-platform, shutil ベース) | Quantum-information |
-| `dev_server.py` | Quarto preview + watcher 起動 (port 4312) | Quantum-information |
-| `validate_docs.py` | Quarto / Mermaid / LaTeX 整合性検証 + キャッシュ | Quantum-information |
-| `kill_quarto_process.py` | Quarto preview プロセス停止 (Win/Mac/Linux 対応) | テンプレ独自 |
-
-## PDF 抽出系 (用途で選定)
-
-| ファイル | 用途 | 出自 | 依存 |
-| --- | --- | --- | --- |
-| `extract_pdf_simple.py` | テキスト埋込済 PDF からテキスト & 画像抽出 | mechanics-class-simulation | `pymupdf` |
-| `extract_pdf_ocr.py` | **画像 PDF (テキスト未埋込) からも OCR で読取** | peskin | `pymupdf`, `easyocr` |
-| `extract_pdf_content.py` | PDF からテキスト + 数式 (LaTeX) 抽出 | Quantum-information | `pymupdf`, `pix2text` |
-| `render_pdf.py` | PDF ページを画像化 (シンプル) | Quantum-information | `pymupdf` |
-| `render_pdf_peskin.py` | PDF ページを画像化 (peskin 版・diagnose 連携) | peskin | `pymupdf` |
-| `diagnose_pdf.py` | PDF の構造診断 (テキスト埋込有無、ページ数等) | peskin | `pymupdf` |
-
-## utils/
-
-| ファイル | 用途 | 出自 |
-| --- | --- | --- |
-| `find_quarto.py` | quarto バイナリ探索 | Quantum-information |
-| `quarto_watcher.py` | ファイル変更監視 | Quantum-information |
-| `pdf_processing.py` | PDF 処理共通関数 | Quantum-information |
-| `latex_extraction.py` | LaTeX 数式抽出ヘルパ | Quantum-information |
-| `mermaid_parser.js` | Mermaid 図式パーサ (validate_docs.py から呼出) | Quantum-information / peskin |
-
-## setup/ (Quantum-information プロジェクト固有)
-
-Preskill 教科書 PDF の前処理スクリプト群。**汎用テンプレでは不要**、参考用に保持。
+## Core (always available)
 
 | ファイル | 用途 |
 | --- | --- |
-| `extract_pdf_image.py` | PDF → 画像変換 |
-| `merge_preskill_pdf.py` | 複数 PDF のマージ |
-| `check_preskill_first_pages.py` | ページ番号オフセット確認 |
-| `investigate_preskill_pages.py` | ページ構造調査 |
+| `check_env.py` | uv / just / quarto / npm の存在 & バージョン確認 |
+| `clean.py` | ビルド成果物削除 (cross-platform, shutil/glob ベース) |
+| `dev_server.py` | Quarto preview + watcher 起動 (port 4312) |
+| `validate_docs.py` | Quarto / Mermaid / LaTeX 整合性検証 + キャッシュ |
+| `kill_quarto_process.py` | Quarto preview プロセスを停止 (Win/Mac/Linux 対応) |
 
-## ルート直下の補助
+## PDF ingestion (use BOTH together)
 
-| ファイル | 用途 | 出自 |
+> AGENTS.md の必須ワークフロー: qmd 作成前に **render-pdf と extract-pdf の両方を実行** し、画像と文字情報を照合する。
+
+| ファイル | 用途 | 必要な追加依存 |
 | --- | --- | --- |
-| `mermaid_parser.js` | utils/ と同じ (peskin はルート配置) | peskin |
+| `render_pdf.py` | PDF ページを PNG 化 (画像確認用) | (デフォルト) |
+| `extract_pdf.py` | 文字 / OCR / LaTeX 数式抽出を 1 つに統合 | mode 別 (下記) |
 
----
+### `extract_pdf.py` の mode
 
-## tool 選定の指針
+| `--mode` | 説明 | 追加依存 |
+| --- | --- | --- |
+| `auto` (デフォルト) | テキスト層あれば simple、無ければ OCR にフォールバック | OCR 時のみ `--extra ocr` |
+| `simple` | pymupdf のみ — 高速・テキスト埋込済 PDF 用 | (デフォルト) |
+| `ocr` | easyocr — スキャン PDF / 画像 PDF 用 | `uv sync --extra ocr` |
+| `latex` | pix2text — テキスト + LaTeX 数式抽出 | `uv sync --extra math` (要 render-pdf 先行) |
 
-- **教科書 PDF をそのまま読み取りたい**: `extract_pdf_simple.py` (テキスト埋込済) → ダメなら `extract_pdf_ocr.py`
-- **数式まで LaTeX で取り出したい**: `extract_pdf_content.py` (要 pix2text、重い)
-- **PDF が画像のみ (スキャン PDF, 古い教科書)**: `extract_pdf_ocr.py` 必須
-- **PDF を診断したい**: `diagnose_pdf.py` で構造確認 → 適切な extract を選ぶ
+`--diagnose` フラグで構造のみ表示 (どの mode を使うべきか判断材料)。
+
+## utils/
+
+| ファイル | 用途 |
+| --- | --- |
+| `find_quarto.py` | quarto バイナリ探索 |
+| `quarto_watcher.py` | パーシャル `_*.qmd` 変更検知 → 親 qmd を touch |
+| `pdf_processing.py` | pymupdf による text/image 抽出共通関数 |
+| `latex_extraction.py` | pix2text 呼び出し (lazy import) |
+| `mermaid_parser.js` | Mermaid 図式パーサ (validate_docs から呼出) |

@@ -6,9 +6,8 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
-  pages: write
-  id-token: write
+  contents: write   # required to push the gh-pages branch
+  pages: write      # required by quarto-actions/publish
 
 concurrency:
   group: "pages"
@@ -35,6 +34,11 @@ jobs:
           python-version: '3.12'
 
       - name: Install uv and Python dependencies
+        # NOTE: by default we install only the base deps. If your textbook
+        # uses optional features (e.g. Qiskit blocks, Shinylive, Jupyter
+        # compute cells, OCR/LaTeX pipelines), append the relevant extras:
+        #   $HOME/.local/bin/uv sync --extra notebook --extra quantum
+        # or simply: $HOME/.local/bin/uv sync --all-extras
         run: |
           curl -LsSf https://astral.sh/uv/install.sh | sh
           $HOME/.local/bin/uv sync
