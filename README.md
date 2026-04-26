@@ -31,24 +31,53 @@ gh repo create my-textbook --template yama662607/quarto-textbook-template --publ
 cd my-textbook
 ```
 
-### 2. 必要ツールのインストール
+### 2. セットアップ — 4 つの選び方
+
+#### A. 何も入っていない端末を使う・お任せで動かしたい (推奨)
+
+OS に応じて 1 行:
+
+```bash
+# macOS / Linux
+./scripts/bootstrap.sh
+
+# Windows (PowerShell)
+.\scripts\bootstrap.ps1
+```
+
+ツール (just / uv / quarto / node) を OS のパッケージマネージャ (brew / apt / dnf / winget / scoop / 公式 curl installer) で入れた後、`uv sync` と `npm install` まで自動実行します。Python 3 だけ事前に必要 (大半の OS に同梱)。`--dry-run` で実際には実行せず内容を確認できます。
+
+#### B. mise / asdf を使っている
+
+`mise.toml` と `.tool-versions` を同梱しているので 1 発:
+
+```bash
+mise install              # または: asdf install
+uv sync && npm install
+```
+
+#### C. ブラウザだけで試したい (GitHub Codespaces / VS Code Dev Containers)
+
+`.devcontainer/devcontainer.json` 同梱。リポジトリページの **`<> Code` → `Codespaces` → `Create codespace on main`** を押すだけで、5 分後にブラウザで `just docs` が動かせる状態になります。VS Code 派なら "Dev Containers: Reopen in Container" でも可。Docker が必要。
+
+#### D. 自分でツールを選んで入れたい
 
 | ツール | macOS | Linux | Windows |
 | --- | --- | --- | --- |
 | **Python 3.12+** | `brew install python@3.12` | apt/dnf | [python.org](https://www.python.org/) |
 | **uv** | `brew install uv` | `curl -LsSf https://astral.sh/uv/install.sh \| sh` | `powershell -c "irm https://astral.sh/uv/install.ps1 \| iex"` |
-| **just** | `brew install just` | `cargo install just` または [snap/apt](https://github.com/casey/just#packages) | `winget install Casey.Just` または `scoop install just` |
+| **just** | `brew install just` | [just.systems](https://just.systems/man/en/packages.html) | `winget install Casey.Just` または `scoop install just` |
 | **Quarto** | `brew install --cask quarto` | [.deb / .rpm](https://quarto.org/docs/get-started/) | [installer](https://quarto.org/docs/get-started/) |
 | **Node.js 20+** | `brew install node` | nvm/apt | [nodejs.org](https://nodejs.org/) |
 
-### 3. セットアップ & プレビュー
+その後:
 
 ```bash
 just setup    # uv sync + npm install
-just docs     # http://localhost:4312 でライブプレビュー
+just docs     # http://localhost:4312
 ```
 
-### 4. プレースホルダ書き換え
+### 3. プレースホルダ書き換え
 
 clone 後、以下のプレースホルダを置換してください:
 
@@ -61,7 +90,7 @@ clone 後、以下のプレースホルダを置換してください:
 | `LICENSE` | copyright 年と保有者 |
 | `README.md` | このファイル全体 (バッジ URL の `yama662607/quarto-textbook-template` も) |
 
-### 5. GitHub Pages の有効化
+### 4. GitHub Pages の有効化
 
 1. GitHub リポジトリの Settings → Pages → Source を **`gh-pages` branch** に設定
 2. `git push origin main` すると `.github/workflows/publish.yml` が走り、自動で公開

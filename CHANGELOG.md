@@ -6,6 +6,21 @@ Versioning follows [SemVer](https://semver.org/).
 
 ## [Unreleased]
 
+### Added — onboarding for fresh machines
+
+- `scripts/bootstrap.{sh,ps1,py}` — one-shot installer that detects the OS,
+  installs `just` / `uv` / `quarto` / `node` via the native package manager
+  (brew / apt / dnf / pacman / winget / scoop / curl fallback), then runs
+  `uv sync` and `npm install`. Supports `--dry-run` and `--skip-deps`.
+- `mise.toml` and `.tool-versions` — version pins for `mise` / `asdf`
+  users (`mise install` is enough).
+- `.devcontainer/devcontainer.json` — VS Code Dev Containers + GitHub
+  Codespaces support; reopens the project with all tools preinstalled and
+  forwards port 4312 for `just docs`.
+- README "How to use this template" rewritten as a 4-way menu
+  (bootstrap script / mise / Codespaces / manual) so users with
+  different preferences can pick the path that fits.
+
 ## [0.1.0] - 2026-04-26
 
 ### Added
