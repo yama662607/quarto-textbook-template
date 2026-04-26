@@ -76,6 +76,7 @@ uv run python tools/extract_pdf.py <pdf_path> --mode simple --start <s> --end <e
   - `:::` (fenced div) の **閉じる前に空行必須** (`just fix` で自動修正可)
   - 数式: インライン `$...$`、ディスプレイ `$$...$$ {#eq-label}`、参照は `@eq-label`
   - 図表: Mermaid (`{mermaid}` ブロック)、PNG/JPG は `quarto/assets/images/`
+  - **qmd の追記は小さく刻む**: 一度に大量の節 / 数式 / 図表を流し込まない。1 節ずつ (または 1 つの論理単位ずつ) 書いて `just check` または `just docs` のプレビューで確認 → 問題なければ次へ進む。理由: (1) OCR / 推論由来の誤りは少量ずつでないと見落とす、(2) Mermaid / LaTeX / fenced div の構文ミスは早期に発見すれば局所的に直せるが、巨大 diff の中では原因切り分けが困難、(3) `{{< include >}}` の追加 / 図表パス / 式番号は 1 つずつ視認確認するのが一番確実。「ファイル全体を一気に書き起こす」モードは使わない
 - **Python** (`tools/` 配下): ruff format / lint, mypy, line-length 100
 - **PDF リンク** (見出し横): `## タイトル [p.12](../assets/pdf/textbook.pdf#page=12) {#sec-anchor}`
   - ページ番号と物理ページのオフセットは PDF ごとに `just diagnose-pdf` で確認
