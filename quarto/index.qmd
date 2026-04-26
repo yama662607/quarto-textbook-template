@@ -1,0 +1,28 @@
+---
+title: "Your Textbook Title"
+subtitle: "サブタイトルやコース名"
+author: "Your Name"
+date: last-modified
+---
+
+# はじめに
+
+この教科書サイトは [quarto-textbook-template](https://github.com/yama662607/quarto-textbook-template) を雛形に作成されています。
+
+## このサイトの構成
+
+- **本編**: 章ごとに分割された教科書本体
+- **演習・サポート** (任意): 補助資料
+- **資料 PDF** (任意): 元教科書や講義スライドへのリンク
+
+## 利用方法
+
+ローカルで編集・プレビューする場合は以下を実行:
+
+```bash
+just setup     # 初回のみ
+just docs      # http://localhost:4312 でプレビュー
+just check     # 公開前の品質チェック
+```
+
+詳しくはリポジトリ root の `README.md` を参照してください。

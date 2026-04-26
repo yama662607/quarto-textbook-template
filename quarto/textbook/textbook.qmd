@@ -1,0 +1,13 @@
+---
+title: "本編"
+---
+
+このファイルが教科書本体の **唯一の信頼できる情報源 (single source of truth)** です。
+章ごとのコンテンツは `_*.qmd` ファイル (アンダースコア接頭辞 = Quarto がレンダリング対象から除外) に分割し、
+ここから `{{< include >}}` でまとめます。
+
+---
+
+{{< include _01_introduction.qmd >}}
+
+{{< include _02_chapter.qmd >}}

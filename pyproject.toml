@@ -1,0 +1,86 @@
+[project]
+name = "quarto-textbook-template"
+version = "0.1.0"
+description = "A Quarto-based template for building textbook / lecture-note sites with PDF ingestion, OCR, Mermaid diagrams, and GitHub Pages deployment."
+authors = [{ name = "Your Name" }]
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+
+# Minimum dependencies — required by the core toolchain (check_env, dev_server,
+# validate_docs, clean, kill_quarto_process). Keep this list small so the
+# template installs quickly. Heavier features live under [project.optional-dependencies].
+dependencies = [
+    "psutil>=6.0.0",       # cross-platform process / port management
+    "pymupdf>=1.27.0",     # base PDF reading (used by extract_pdf_simple)
+    "watchdog>=6.0.0",     # file watcher for dev_server
+]
+
+[project.optional-dependencies]
+# OCR for image-only PDFs. Pulls torch — large download.
+ocr = [
+    "easyocr>=1.7.2",
+]
+
+# Math-formula extraction (LaTeX from PDF images). Pulls heavy ML deps.
+math = [
+    "pix2text>=1.1.6",
+    "pillow>=12.0.0",
+]
+
+# Notebook / scientific stack for embedded computations.
+notebook = [
+    "ipykernel>=7.1.0",
+    "jupyter>=1.1.1",
+    "matplotlib>=3.10.0",
+    "numpy>=2.3.0",
+    "scipy>=1.16.0",
+]
+
+# Quantum computing examples (Qiskit). Optional.
+quantum = [
+    "qiskit>=2.2.3",
+    "qiskit-aer>=0.17.2",
+]
+
+# Interactive Shiny / Shinylive simulations.
+shiny = [
+    "htmltools>=0.6.0",
+    "shiny>=1.6.0",
+    "shinylive>=0.8.6",
+]
+
+# Visualization extras.
+viz = [
+    "plotly>=6.5.0",
+    "pyvis>=0.3.2",
+]
+
+# Debugging convenience.
+debug = [
+    "icecream>=2.1.8",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.19.0",
+    "pylatexenc>=2.10",
+    "pytest>=9.0.2",
+    "ruff>=0.14.10",
+]
+
+[tool.mypy]
+python_version = "3.12"
+ignore_missing_imports = true
+check_untyped_defs = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E501"]  # line length handled by formatter
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
