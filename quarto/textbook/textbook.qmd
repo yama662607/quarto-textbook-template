@@ -19,3 +19,5 @@ filters:
 {{< include _02_chapter.qmd >}}
 
 {{< include _03_interactive_demo.qmd >}}
+
+{{< include _04_plotly_demo.qmd >}}

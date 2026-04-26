@@ -68,6 +68,7 @@ format:
   html:
     theme: cosmo
     css: templates/styles.css
+    include-in-header: templates/plotly-loader.html
     include-after-body: templates/sidebar-toggle.html
     toc: true
     toc-depth: 3
