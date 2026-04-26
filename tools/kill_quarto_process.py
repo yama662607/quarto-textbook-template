@@ -90,7 +90,7 @@ def _kill(pid: int) -> bool:
         )
         return result.returncode == 0
     try:
-        os.kill(pid, signal.SIGKILL)
+        os.kill(pid, signal.SIGKILL)  # type: ignore[attr-defined]
         return True
     except ProcessLookupError:
         return True

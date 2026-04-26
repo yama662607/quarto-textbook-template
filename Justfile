@@ -44,7 +44,7 @@ check: fmt-check lint typecheck validate-docs render-check test
 # 構文チェックのみの軽量レンダリング (compute blocks は実行しない)
 render-check:
     @echo "Quarto syntax check (no execute)..."
-    quarto render quarto --execute-debug --no-execute --quiet
+    quarto render quarto --to html --execute-debug --no-execute
 
 # フル品質検証: HTML 実レンダリングまで含めて確認
 check-full: check render-site
