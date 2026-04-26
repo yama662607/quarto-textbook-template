@@ -25,6 +25,14 @@ Versioning follows [SemVer](https://semver.org/).
 - AGENTS.md gained a "対話シミュレーション" section documenting the
   pattern, the forbidden alternatives (separate font cell, `pyodide.resources`
   in qmd YAML — neither works under filter mode), and the per-page recipe
+- `docs/quarto-live.md` documents the full recipe, all verified dead-ends
+  (variable font / OJS dependency / `pyodide.resources` / split font cell /
+  qmd-depth-relative pyfetch path), and a troubleshooting checklist
+- **pyfetch path rule**: `../../../assets/fonts/...` is fixed regardless
+  of qmd depth. `pyfetch` resolves URLs against the worker script base
+  (`/site_libs/quarto-contrib/...`), not the page URL — adjusting the
+  number of `..` to the qmd's directory depth (the obvious-looking choice)
+  produces a 404 that the Pyodide loader then reads as "unknown font format"
 
 ### Hardening pass (review feedback from 4 sub-agents)
 

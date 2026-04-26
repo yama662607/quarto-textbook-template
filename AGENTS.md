@@ -45,7 +45,9 @@ just extract-pdf <pdf_path> --start <start> --end <end>     # mode=auto がデ�
 2. `{ojs}` ブロックでスライダー (`Inputs.range(...)`) を定義、`tex` でラベルに LaTeX 数式
 3. `{pyodide}` ブロックに `#| autorun: true` と `#| input: ["a", "b", ...]` を付け、スライダー値を Python 変数として受け取る
 4. **日本語フォント**: 描画セルの先頭に `_03_interactive_demo.qmd` の font-load ブロックをコピー — `pyfetch` で `assets/fonts/NotoSansJP-Regular.ttf` を取得して `font_manager.fontManager.addfont` で登録。**font setup を別セルにすると順序が保証されない** ので、**描画セルに inline する** こと
-5. パスは qmd の階層に応じて `../assets/fonts/...` を調整
+5. `pyfetch` の URL は **`../../../assets/fonts/...` で固定** (qmd の階層に合わせて変えない — pyfetch は worker スクリプト基準で解決するため)
+
+詳しい手順・dead-end・トラブルシュートは [docs/quarto-live.md](docs/quarto-live.md) を参照。
 
 **警告抑制**: `warnings.simplefilter("ignore")` を font ロードと同じセルで呼ぶ。font 登録前後の `Glyph missing from current font` 警告を抑える。
 
