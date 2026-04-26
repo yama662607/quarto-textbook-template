@@ -55,6 +55,18 @@ import matplotlib.pyplot as plt
 | `ojs_define(font_ready=True)` で OJS dependency を作って描画セルが待つ | 最初のロード時 OJS が未定義エラー (`font_ready is not defined`) を出して止まる |
 | Variable font (`NotoSansJP[wght].ttf`、9.6 MB) を使う | Pyodide の matplotlib FreeType が parse できず `In TTFont: unknown file format` |
 | `{pyodide}` セル内で `import shiny` / `import streamlit` | Pyodide では動かない。Quarto Live は素の numpy / matplotlib 中心 |
+| OJS の `while + Promises.delay` ループでスライダーを高速更新して `{pyodide}` を毎フレーム再実行 | matplotlib 再描画 (>100ms / frame) が間隔に追いつかず描画が固まる。さらに Quarto Live 専用なので Jupyter / VSCode にコピーすると動かない |
+
+## アニメーション
+
+`matplotlib.animation.FuncAnimation` + `IPython.display.HTML(ani.to_jshtml())` を使う。
+フレームを Python 側で全部計算 → JS プレイヤーとして埋め込まれるので:
+
+- 再生 / 一時停止 / コマ送り / フレームスライダーが標準で付く
+- 毎フレームの Pyodide 再実行が不要
+- Jupyter / VSCode にコードをコピーしても同じように動く (Pyodide 固有なのは日本語フォントのロードだけ)
+
+サンプル: `quarto/textbook/_03_interactive_demo.qmd` の FuncAnimation セクションを参照。
 
 ## 失敗時の典型症状と切り分け
 
