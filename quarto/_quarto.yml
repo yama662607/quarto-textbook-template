@@ -6,6 +6,9 @@ project:
     - "assets/pdf/**/*.pdf"
     - "assets/images/**/*.png"
     - "assets/images/**/*.jpg"
+    # Quarto Live (Pyodide) 用 — Noto Sans JP フォントを matplotlib に
+    # 届けるために配布対象に含める。詳細は AGENTS.md の「対話シミュレーション」節。
+    - "assets/fonts/**/*"
   preview:
     watch-inputs: true
 

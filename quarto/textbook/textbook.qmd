@@ -1,13 +1,21 @@
 ---
 title: "本編"
+engine: markdown
+filters:
+  - r-wasm/live
 ---
 
 このファイルが教科書本体の **唯一の信頼できる情報源 (single source of truth)** です。
 章ごとのコンテンツは `_*.qmd` ファイル (アンダースコア接頭辞 = Quarto がレンダリング対象から除外) に分割し、
 ここから `{{< include >}}` でまとめます。
 
+`filters: [r-wasm/live]` をこのファイルに付けることで、配下のすべてのパーシャルで
+`{ojs}` / `{pyodide}` ブロックが有効になります (Quarto Live 拡張)。
+
 ---
 
 {{< include _01_introduction.qmd >}}
 
 {{< include _02_chapter.qmd >}}
+
+{{< include _03_interactive_demo.qmd >}}

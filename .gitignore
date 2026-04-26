@@ -69,6 +69,7 @@ Thumbs.db
 .vscode/
 .idea/
 .data/
+.playwright-mcp/
 
 # =============================================================================
 # AI agent local config

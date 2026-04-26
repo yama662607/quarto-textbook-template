@@ -6,6 +6,26 @@ Versioning follows [SemVer](https://semver.org/).
 
 ## [Unreleased]
 
+### Quarto Live (Pyodide) integration
+
+- Bundled `r-wasm/quarto-live` extension under `quarto/_extensions/r-wasm/live/`
+- Bundled `Noto Sans JP` (SIL OFL 1.1) under `quarto/assets/fonts/` so
+  matplotlib in Pyodide can render Japanese titles / labels without "tofu"
+- Added a working sample chapter `_03_interactive_demo.qmd` that demonstrates:
+  - `{ojs}` slider with LaTeX labels (`tex` template literal)
+  - `{pyodide}` cell with `#| autorun: true` + `#| input:` for reactive
+    re-execution on slider change
+  - Inline font-load idiom (`pyfetch` + `font_manager.fontManager.addfont`)
+    placed at the top of the drawing cell so font registration happens
+    before the first draw — splitting it into a separate setup cell does
+    NOT preserve order under Quarto Live and produces a flood of
+    `Glyph missing from current font` warnings
+- `_quarto.yml` `project.resources` now includes `assets/fonts/**/*` so
+  the font is published with the site
+- AGENTS.md gained a "対話シミュレーション" section documenting the
+  pattern, the forbidden alternatives (separate font cell, `pyodide.resources`
+  in qmd YAML — neither works under filter mode), and the per-page recipe
+
 ### Hardening pass (review feedback from 4 sub-agents)
 
 - `scripts/bootstrap.py`: failures are now collected and reported in a

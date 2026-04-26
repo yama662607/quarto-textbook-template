@@ -51,7 +51,9 @@ quantum = [
     "qiskit-aer>=0.17.2",
 ]
 
-# Interactive Shiny / Shinylive simulations.
+# Interactive ShinyLive (legacy — Quarto Live + Pyodide is the new default;
+# see quarto/textbook/_03_interactive_demo.qmd). Keep this group for users
+# who want server-rendered Shiny prototypes during authoring.
 shiny = [
     "htmltools>=0.6.0",
     "shiny>=1.6.0",

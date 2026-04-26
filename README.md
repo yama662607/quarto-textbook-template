@@ -13,6 +13,7 @@
 ## 主な特徴
 
 - **Quarto Book** ベース (HTML / PDF 両対応)
+- **対話シミュレーション**: [Quarto Live](https://r-wasm.github.io/quarto-live/) + Pyodide で **ブラウザ完結** の Python (numpy/matplotlib) を実行。サーバー不要、生徒が Notebook にコピペしてそのまま動かせる素のコード。日本語フォントの組み込み済 (`assets/fonts/NotoSansJP-Regular.ttf`)
 - **PDF 取り込み (画像化 + 文字抽出)** — `render_pdf.py` (画像) と `extract_pdf.py` (text / OCR / LaTeX 数式) の併用が前提
 - **Mermaid / KaTeX** によるダイアグラム & 数式
 - **Justfile** による統一コマンドインターフェース (Win/Mac/Linux)
@@ -227,6 +228,11 @@ uv sync --all-extras       # 全部入り
 - [yukicomadaqq/peskin](https://github.com/yukicomadaqq/peskin) — easyocr による画像 PDF 対応、PDF 診断
 - mechanics-class-simulation — Shinylive 統合、シンプル PDF 抽出
 - Field-Theory — 標準ディレクトリ構成
+
+## サードパーティ素材のクレジット
+
+- [Quarto Live](https://github.com/r-wasm/quarto-live) — ブラウザ内 Python 実行 (Apache 2.0 / `quarto/_extensions/r-wasm/live/`)
+- [Noto Sans JP](https://github.com/notofonts/noto-cjk) — Pyodide matplotlib 用日本語フォント (SIL OFL 1.1 / `quarto/assets/fonts/NotoSansJP-Regular.ttf`)
 
 ## ライセンス
 

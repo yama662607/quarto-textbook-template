@@ -36,6 +36,24 @@ just extract-pdf <pdf_path> --start <start> --end <end>     # mode=auto がデ�
 
 抽出結果は **必ず元画像と突き合わせて誤読をチェック** してから qmd に書き起こすこと。
 
+## 対話シミュレーション (Quarto Live + Pyodide)
+
+ブラウザだけで動く Python シミュレーションは [Quarto Live](https://r-wasm.github.io/quarto-live/) を使う。サーバー Python は不要。動作するサンプルは `quarto/textbook/_03_interactive_demo.qmd` を参照。
+
+**新規ページの作り方:**
+1. qmd の YAML に `filters: [r-wasm/live]` を含める (親 `textbook.qmd` に書けば配下のパーシャルにも効く)
+2. `{ojs}` ブロックでスライダー (`Inputs.range(...)`) を定義、`tex` でラベルに LaTeX 数式
+3. `{pyodide}` ブロックに `#| autorun: true` と `#| input: ["a", "b", ...]` を付け、スライダー値を Python 変数として受け取る
+4. **日本語フォント**: 描画セルの先頭に `_03_interactive_demo.qmd` の font-load ブロックをコピー — `pyfetch` で `assets/fonts/NotoSansJP-Regular.ttf` を取得して `font_manager.fontManager.addfont` で登録。**font setup を別セルにすると順序が保証されない** ので、**描画セルに inline する** こと
+5. パスは qmd の階層に応じて `../assets/fonts/...` を調整
+
+**警告抑制**: `warnings.simplefilter("ignore")` を font ロードと同じセルで呼ぶ。font 登録前後の `Glyph missing from current font` 警告を抑える。
+
+**禁止事項:**
+- ❌ `{pyodide}` セルで `import shiny` / `import streamlit` (Pyodide では動かない、Quarto Live は素の numpy/matplotlib 中心)
+- ❌ font setup を別セルに分ける (実行順序が保証されず描画セルが先に走るとエラー)
+- ❌ `pyodide.resources` (qmd YAML) — Quarto Live の filter モードでは効かないので使わない
+
 ## Code style
 
 - **Quarto/qmd**:
