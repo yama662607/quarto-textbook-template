@@ -7,23 +7,17 @@
 - 日本語が **追加フォント設定なし** で表示できる (ブラウザの OS フォントを使う)
 - アニメーションが `animation_frame` 1 行で書ける
 
-Pyodide では Plotly を `micropip` で動的にインストールします。Jupyter / VSCode では
-`pip install plotly` 済の前提で同じコードがそのまま動きます。
+Pyodide で必要なパッケージ (`plotly`, `nbformat`, `jsonschema`) は親 `textbook.qmd`
+の YAML `pyodide.packages` で宣言してあり、Quarto Live が Pyodide 起動時に
+直列インストールします。これにより各 `{pyodide}` セルは `await` を持たずに済み、
+Jupyter / VSCode にコピーした際もそのまま動きます。
 
 ## 静的グラフ: 3D サーフェス
 
 ```{pyodide}
 #| autorun: true
-# Pyodide のとき: plotly + nbformat (mime type display に必要) を micropip で取得
-try:
-    import plotly.graph_objects as go
-    import nbformat  # noqa: F401
-except ImportError:
-    import micropip
-    await micropip.install(["plotly", "nbformat"])
-    import plotly.graph_objects as go
-
 import numpy as np
+import plotly.graph_objects as go
 
 x = np.linspace(-5, 5, 80)
 y = np.linspace(-5, 5, 80)
@@ -38,8 +32,6 @@ fig.update_layout(
     height=500,
     margin=dict(l=0, r=0, t=40, b=0),
 )
-# 最終式として fig を返すと IPython の MIME type 機構経由で Plotly が描画される
-# (Jupyter / VSCode でも同じ — fig.show() は Pyodide で renderer 検出に失敗するので避ける)
 fig
 ```
 
@@ -52,16 +44,9 @@ matplotlib の `FuncAnimation` よりさらに記述量が少なく、ホバー�
 
 ```{pyodide}
 #| autorun: true
-try:
-    import plotly.express as px
-    import nbformat  # noqa: F401
-except ImportError:
-    import micropip
-    await micropip.install(["plotly", "nbformat"])
-    import plotly.express as px
-
 import numpy as np
 import pandas as pd
+import plotly.express as px
 
 # 減衰振動: y(t) = exp(-γ t) cos(ω t)
 n_frames = 60

@@ -3,6 +3,17 @@ title: "本編"
 engine: markdown
 filters:
   - r-wasm/live
+# Quarto Live が Pyodide 起動時に直列インストールするパッケージ。
+# `{pyodide}` セルの中で `await micropip.install(...)` を使うと、
+# 別セルが await 中に並列で動き出し、Pyodide ワーカ内の固定名環境 "result" を
+# 上書きして display 出力先が混線する (未報告の上流バグ)。
+# packages: にまとめて宣言すれば、どのセルも走る前に install が完了するので
+# セル内コードに await が一切残らず、race の余地がなくなる。
+pyodide:
+  packages:
+    - plotly
+    - nbformat
+    - jsonschema
 ---
 
 このファイルが教科書本体の **唯一の信頼できる情報源 (single source of truth)** です。
