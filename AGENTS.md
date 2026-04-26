@@ -17,24 +17,30 @@ just docs        # http://localhost:4312 でプレビュー
 
 ## ⚠️ PDF 取り込みの必須ワークフロー
 
-qmd を書き起こす前に、**`render-pdf` と `extract-pdf` の両方を必ず実行** し、画像と文字情報を**照合**してください。
+qmd を書き起こす前に、**`extract-pdf` を実行 → 出力された画像を必ず Read で確認** してください。
 
 ```bash
-# 1. ページ画像化 (視覚情報)
-just render-pdf <pdf_path> <start_page> <end_page>
-# → /tmp/page_NN.png
+# 1 コマンドで画像化 + text/OCR/LaTeX 抽出が走る
+just extract-pdf <pdf_path> <start_page> <end_page>
+# 内部で render-pdf が先に呼ばれて quarto/assets/raw/<stem>_pages/page_NN.png を生成、
+# その上で text(or OCR) + pix2text(LaTeX) がページごとに併走する (auto モード)。
 
-# 2. 文字情報抽出 (text / OCR / LaTeX 数式) — どのモードを使うか分からなければ先に診断
+# モード未確定なら先に診断
 just diagnose-pdf <pdf_path>
-just extract-pdf <pdf_path> --start <start> --end <end>     # mode=auto がデフォルト
-# 必要に応じて --mode {simple, ocr, latex} を明示
+
+# 例外的にテキストのみで足りるとき (画像不要 = qmd 化しないとき) のみ:
+uv run python tools/extract_pdf.py <pdf_path> --mode simple --start <s> --end <e>
 ```
 
-**どちらか一方では不十分:**
-- 抽出のみ → OCR 誤読、数式記号の取りこぼし、図表構造の見落としが発生
-- 画像のみ → 数式の LaTeX 化や引用テキスト書き起こしが手作業で時間浪費
+**抽出 → qmd の必須手順:**
+1. `just extract-pdf <pdf> <s> <e>` を実行
+2. 標準エラーに出る画像ディレクトリ (`quarto/assets/raw/<stem>_pages/`) の **PNG を Read tool で 1 ページずつ開いて視認**
+3. 抽出された text + LaTeX を画像と突き合わせ、OCR 誤読・式番号・図表配置を補正
+4. その上で qmd を書き起こす
 
-抽出結果は **必ず元画像と突き合わせて誤読をチェック** してから qmd に書き起こすこと。
+**画像レビューを飛ばすことは禁止** (テキストと LaTeX だけでは図表配置・式番号・OCR 誤読を必ず取りこぼす)。
+ファイル分離 (render_pdf.py / extract_pdf.py) と auto モードでの `--image-dir` 必須化はこのレビューを強制するためにある。
+`extract-pdf` の出力冒頭にも視認リマインダが出る — 無視せず必ず PNG を開くこと。
 
 ## 対話シミュレーション (Quarto Live + Pyodide)
 
@@ -130,6 +136,6 @@ just test        # pytest のみ
 | `just validate-docs-no-cache` | キャッシュを使わず再検証 |
 | `just clear-validation-cache` | バリデーションキャッシュ削除 |
 | `just diagnose-pdf <pdf>` | PDF 構造診断 (どの mode を選ぶか判断) |
-| `just render-pdf <pdf> <s> <e>` | PDF ページ画像化 |
-| `just extract-pdf <pdf> [opts]` | 文字・OCR・LaTeX 抽出 (`--mode auto/simple/ocr/latex`) |
+| `just render-pdf <pdf> <s> <e>` | PDF ページ画像化 (画像のみ欲しい時に単独使用可) |
+| `just extract-pdf <pdf> <s> <e>` | render-pdf を先に実行 → text/OCR + LaTeX を併走 (auto モード必須) |
 | `just app <path>` | Streamlit アプリ起動 (任意) |

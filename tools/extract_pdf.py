@@ -1,29 +1,19 @@
-"""Unified PDF text/formula extractor.
-
-Replaces the trio of `extract_pdf_simple.py`, `extract_pdf_ocr.py`, and
-`extract_pdf_content.py` from the source projects with one entry point that
-chooses the right backend based on `--mode`. Heavy dependencies (`easyocr`,
-`pix2text`) are imported lazily so the base install stays slim.
-
-Usage::
-
-    uv run python tools/extract_pdf.py <pdf> [--start N] [--end N]
-                                              [--mode {auto,simple,ocr,latex}]
-                                              [--diagnose]
-                                              [--image-dir DIR]
-                                              [--lang LANG ...]
+"""Unified PDF text / formula extractor.
 
 Modes:
-  auto      : try `simple`; if a page has no text layer, fall back to `ocr`
-              (requires the `ocr` extra). Default.
+  auto      : per page, simple if text layer exists else OCR, AND latex via
+              pix2text on the matching pre-rendered PNG. Requires --image-dir.
+              Default.
   simple    : pymupdf only — fastest, requires PDF with embedded text.
   ocr       : easyocr — for scanned / image-only PDFs.  `uv sync --extra ocr`.
-  latex     : pix2text — extract text + LaTeX math from page images.
-              Requires `--image-dir` (run `render_pdf.py` first).
-              `uv sync --extra math`.
+  latex     : pix2text only — extract LaTeX math from page images.
+              Requires --image-dir.  `uv sync --extra math`.
 
-Pair with `tools/render_pdf.py` to produce page images for visual review.
-AGENTS.md mandates running BOTH tools before writing qmd.
+The two-file split (render_pdf.py + extract_pdf.py) is intentional: it forces
+agents to render and visually review page images before writing qmd. Earlier
+versions bundled rendering inside extraction and agents repeatedly wrote qmd
+from text/latex alone, missing figures, equation numbers, and OCR errors that
+only the image makes obvious. Do not bypass --image-dir.
 """
 
 from __future__ import annotations
@@ -148,8 +138,61 @@ def mode_ocr(pdf_path: str, start: int | None, end: int | None, langs: list[str]
     return 0
 
 
-def mode_auto(pdf_path: str, start: int | None, end: int | None, langs: list[str]) -> int:
-    """Per-page: simple if text layer present, else OCR fallback."""
+def _try_pix2text():
+    """Return a Pix2Text instance, or None if pix2text is not installed.
+
+    LaTeX extraction is best-effort in auto mode: missing extra → skip + warn,
+    rather than fail the whole extraction.
+    """
+    try:
+        from pix2text import Pix2Text  # type: ignore
+    except ImportError:
+        print(
+            "note: pix2text not installed — skipping LaTeX extraction.\n"
+            "      install with: uv sync --extra math",
+            file=sys.stderr,
+        )
+        return None
+    return Pix2Text(device="cpu")
+
+
+def _pix2text_one(p2t, image_path: Path) -> str:
+    if not image_path.exists():
+        return f"[image missing: {image_path}]"
+    res = p2t.recognize(str(image_path))
+    if isinstance(res, str):
+        return res
+    return "\n".join(item.get("text", "") for item in res)
+
+
+def mode_auto(
+    pdf_path: str,
+    start: int | None,
+    end: int | None,
+    langs: list[str],
+    image_dir: str | None,
+) -> int:
+    """Per-page: simple-or-OCR for text + pix2text for LaTeX (default-on)."""
+    if image_dir is None:
+        print(
+            "Error: --image-dir is required for auto mode.\n"
+            "  1. Render images:  just render-pdf <pdf> <start> <end>\n"
+            "  2. Then extract:   just extract-pdf <pdf> <start> <end>\n"
+            "  (`just extract-pdf` runs render-pdf first and passes --image-dir.)\n"
+            "\n"
+            "  This 2-step is intentional. AI agents MUST visually review the\n"
+            "  rendered PNGs before writing qmd — text + LaTeX alone miss figure\n"
+            "  layouts, equation numbers, and OCR errors. Do not bypass.\n"
+            "\n"
+            "  If you genuinely only need text (no images, no LaTeX), use\n"
+            "  --mode simple or --mode ocr.",
+            file=sys.stderr,
+        )
+        return 2
+
+    image_root = Path(image_dir)
+    p2t = _try_pix2text()
+
     with fitz.open(pdf_path) as doc:
         pages = list(_page_range(doc, start, end))
         needs_ocr = [i for i in pages if not _page_has_text(doc.load_page(i))]
@@ -157,14 +200,36 @@ def mode_auto(pdf_path: str, start: int | None, end: int | None, langs: list[str
 
         for i in pages:
             page = doc.load_page(i)
+            png_path = image_root / f"page_{i + 1}.png"
+
             if _page_has_text(page):
-                print(f"--- Page {i + 1} (text) ---")
-                print(page.get_text())
+                source = "text"
+                body = page.get_text() or ""
             else:
-                print(f"--- Page {i + 1} (OCR fallback) ---")
-                print(_ocr_page(reader, page))  # type: ignore[arg-type]
+                source = "OCR"
+                body = _ocr_page(reader, page)  # type: ignore[arg-type]
+
+            if p2t is not None:
+                latex = _pix2text_one(p2t, png_path)
+                print(f"--- Page {i + 1} ({source} + LaTeX) ---")
+                print(body.rstrip())
+                print(f"\n[LaTeX from {png_path.name}]")
+                print(latex.rstrip())
+            else:
+                print(f"--- Page {i + 1} ({source}) ---")
+                print(body.rstrip())
             print()
     return 0
+
+
+_REVIEW_BANNER = """\
+================================================================================
+  REMINDER — text + LaTeX is INCOMPLETE without visually reviewing the PNGs.
+  Open every page image in {image_dir} (Read tool / file viewer) before
+  writing qmd. Figure layouts, equation numbers, and silent OCR errors are
+  only catchable in the rendered image. AGENTS.md treats this as mandatory.
+================================================================================
+"""
 
 
 def mode_latex(pdf_path: str, start: int | None, end: int | None, image_dir: str | None) -> int:
@@ -252,6 +317,9 @@ def main() -> int:
     if args.diagnose:
         return diagnose(args.pdf_path)
 
+    if args.mode in ("auto", "latex") and args.image_dir:
+        print(_REVIEW_BANNER.format(image_dir=args.image_dir))
+
     try:
         if args.mode == "simple":
             return mode_simple(args.pdf_path, args.start, args.end)
@@ -259,7 +327,7 @@ def main() -> int:
             return mode_ocr(args.pdf_path, args.start, args.end, args.lang)
         if args.mode == "latex":
             return mode_latex(args.pdf_path, args.start, args.end, args.image_dir)
-        return mode_auto(args.pdf_path, args.start, args.end, args.lang)
+        return mode_auto(args.pdf_path, args.start, args.end, args.lang, args.image_dir)
     except ValueError as e:
         print(f"Error: {e}", file=sys.stderr)
         return 2

@@ -129,16 +129,21 @@ clear-validation-cache:
 # AGENTS.md mandates running both tools and cross-checking the rendered images
 # against extracted text, so OCR / formula misreads are caught.
 
+# 画像出力先の規約: PDF basename ごとに quarto/assets/raw/<stem>_pages/
+_pdf_image_dir := "quarto/assets/raw"
+
 # 教科書 PDF を PNG 画像に変換 (ページごとに画像確認するため)
 # 使い方: just render-pdf <pdf_path> <start_page> <end_page>
 render-pdf pdf_path start end *args="":
-    {{python}} tools/render_pdf.py {{pdf_path}} --start {{start}} --end {{end}} {{args}}
+    {{python}} tools/render_pdf.py {{pdf_path}} --start {{start}} --end {{end}} --out-dir "{{_pdf_image_dir}}/{{ file_stem(pdf_path) }}_pages" {{args}}
 
-# PDF から文字情報 (text / OCR / LaTeX) を抽出
-# 使い方: just extract-pdf <pdf_path> [--start N --end N --mode auto|simple|ocr|latex]
-# mode auto がデフォルト (テキスト層あれば simple、無ければ OCR にフォールバック)
-extract-pdf pdf_path *args="":
-    {{python}} tools/extract_pdf.py {{pdf_path}} {{args}}
+# PDF から文字情報 (text + OCR + LaTeX 数式) を抽出
+# 使い方: just extract-pdf <pdf_path> <start_page> <end_page> [--mode simple|ocr|latex]
+# 内部で render-pdf を先に走らせて画像化 → text/OCR + pix2text を全ページに併走 (auto モード)
+# AI agent は出力後、必ず quarto/assets/raw/<pdf>_pages/ の PNG を Read で確認すること
+extract-pdf pdf_path start end *args="":
+    @just render-pdf {{pdf_path}} {{start}} {{end}}
+    {{python}} tools/extract_pdf.py {{pdf_path}} --start {{start}} --end {{end}} --image-dir "{{_pdf_image_dir}}/{{ file_stem(pdf_path) }}_pages" {{args}}
 
 # PDF 構造の診断 (どの --mode を選ぶべきか分からない時)
 diagnose-pdf pdf_path:

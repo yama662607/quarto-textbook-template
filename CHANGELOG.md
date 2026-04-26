@@ -6,6 +6,25 @@ Versioning follows [SemVer](https://semver.org/).
 
 ## [Unreleased]
 
+### PDF extraction: LaTeX default-on + image review enforcement
+
+- `extract_pdf.py` auto mode now runs **text/OCR + pix2text in parallel**
+  on every page (LaTeX extraction default-on, best-effort if `--extra math`
+  is not installed: skip + warn instead of fail).
+- `--image-dir` is **required** for auto mode. The 2-step (render images
+  to disk → extract reading those images) is preserved deliberately:
+  earlier monolithic versions let agents write qmd from text + LaTeX alone,
+  silently missing figure layouts, equation numbers, and OCR errors.
+- `Justfile`: `just extract-pdf <pdf> <start> <end>` now invokes `render-pdf`
+  first and auto-passes `--image-dir` (convention: `quarto/assets/raw/<stem>_pages/`).
+  Human/agent UX is single-command, but the rendered PNGs remain on disk
+  for mandatory visual review.
+- Output prepended with a REMINDER banner pointing at the image directory
+  so reviewers (esp. AI agents) cannot read the extraction without seeing
+  the instruction to open the images.
+- AGENTS.md: PDF ingestion section rewritten to make image review the
+  explicit step 2 of the qmd workflow.
+
 ### Quarto Live (Pyodide) integration
 
 - Bundled `r-wasm/quarto-live` extension under `quarto/_extensions/r-wasm/live/`
