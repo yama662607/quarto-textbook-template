@@ -1,0 +1,179 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Your Textbook Title",
+    "section": "",
+    "text": "はじめに\nこの教科書サイトは quarto-textbook-template を雛形に作成されています。",
+    "crumbs": [
+      "ホーム",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Your Textbook Title</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#このサイトの構成",
+    "href": "index.html#このサイトの構成",
+    "title": "Your Textbook Title",
+    "section": "このサイトの構成",
+    "text": "このサイトの構成\n\n本編: 章ごとに分割された教科書本体\n演習・サポート (任意): 補助資料\n資料 PDF (任意): 元教科書や講義スライドへのリンク",
+    "crumbs": [
+      "ホーム",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Your Textbook Title</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#利用方法",
+    "href": "index.html#利用方法",
+    "title": "Your Textbook Title",
+    "section": "利用方法",
+    "text": "利用方法\nローカルで編集・プレビューする場合は以下を実行:\njust setup     # 初回のみ\njust docs      # http://localhost:4312 でプレビュー\njust check     # 公開前の品質チェック\n詳しくはリポジトリ root の README.md を参照してください。",
+    "crumbs": [
+      "ホーム",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Your Textbook Title</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html",
+    "href": "textbook/textbook.html",
+    "title": "本編",
+    "section": "",
+    "text": "第1章 序論\nこのファイルが教科書本体の 唯一の信頼できる情報源 (single source of truth) です。 章ごとのコンテンツは _*.qmd ファイル (アンダースコア接頭辞 = Quarto がレンダリング対象から除外) に分割し、 ここから {{&lt; include &gt;}} でまとめます。\nfilters: [r-wasm/live] をこのファイルに付けることで、配下のすべてのパーシャルで {ojs} / {pyodide} ブロックが有効になります (Quarto Live 拡張)。",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#この章で学ぶこと",
+    "href": "textbook/textbook.html#この章で学ぶこと",
+    "title": "本編",
+    "section": "この章で学ぶこと",
+    "text": "この章で学ぶこと\n\nパーシャルファイル (_*.qmd) は YAML フロントマター禁止。親 (textbook.qmd) に集約します。\n数式は LaTeX で記述。インラインは $E = mc^2$、ディスプレイは:\n\n\n\\nabla \\times \\mathbf{B} - \\frac{1}{c}\\frac{\\partial \\mathbf{E}}{\\partial t} = \\frac{4\\pi}{c}\\mathbf{J}\n\\tag{3.1}\n式 3.1 は Maxwell-Ampère の法則です。",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#図表の例",
+    "href": "textbook/textbook.html#図表の例",
+    "title": "本編",
+    "section": "図表の例",
+    "text": "図表の例\n\n\n\n\n\nflowchart LR\n    A[原稿] --&gt; B[validate-docs]\n    B --&gt; C{エラー?}\n    C --&gt;|Yes| D[fix]\n    C --&gt;|No| E[render-site]\n    D --&gt; B\n    E --&gt; F[GitHub Pages]",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#元-pdf-へのリンク-任意",
+    "href": "textbook/textbook.html#元-pdf-へのリンク-任意",
+    "title": "本編",
+    "section": "元 PDF へのリンク (任意)",
+    "text": "元 PDF へのリンク (任意)\n教科書 PDF を quarto/assets/pdf/ に置いた場合の参照例:\n元教科書 §1.2 を見る",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#節の例",
+    "href": "textbook/textbook.html#節の例",
+    "title": "本編",
+    "section": "節の例",
+    "text": "節の例\nここに本文を書きます。第1章 序論 で述べたように…\n\n小節\n\n\n\n\n\n\nノート\n\n\n\nQuarto の callout は HTML / PDF 両方で綺麗にレンダリングされます。\n\n\n\n\n\n\n\n\n警告\n\n\n\nパーシャルファイル内では fenced div (:::) の 閉じる前に空行が必要 です (validate-docs が検出します)。",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#このサンプルの仕組み",
+    "href": "textbook/textbook.html#このサンプルの仕組み",
+    "title": "本編",
+    "section": "このサンプルの仕組み",
+    "text": "このサンプルの仕組み\n\n\n\n\n\n\n\n要素\n役割\n\n\n\n\nfilters: [r-wasm/live] (YAML)\nこの qmd で {ojs} / {pyodide} を有効化\n\n\n{ojs} ブロック\nInputs.range(...) でスライダー UI を生成\n\n\n{pyodide} ブロック\nブラウザ内 Python で計算と描画\n\n\n#| autorun: true\nページ表示時に自動実行\n\n\n#| input: [\"amplitude\", ...]\nスライダー値を Python 変数として受け取り、変更時に再実行\n\n\n日本語フォントブロック\nPyodide のときだけ pyfetch で TTF をロード、それ以外は OS フォントに任せる\n\n\nFuncAnimation + to_jshtml()\n標準 Python の方法でアニメーションを構築 → JS プレイヤーとして埋め込み",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#なぜスライダーでアニメーションさせないのか",
+    "href": "textbook/textbook.html#なぜスライダーでアニメーションさせないのか",
+    "title": "本編",
+    "section": "なぜスライダーでアニメーションさせないのか",
+    "text": "なぜスライダーでアニメーションさせないのか\nOJS のループでスライダーを高速更新して {pyodide} を毎フレーム再実行する方法は 避けています:\n\nPyodide の matplotlib 再描画 (&gt;100ms / frame) が間隔に追いつかず描画が固まる\nQuarto Live 専用の仕掛け (viewof.dispatchEvent など) になり、Jupyter / VSCode に コードをコピーしたときに動かない\n\nFuncAnimation + to_jshtml() はフレームを Python 側で全部計算してから 1 つの インタラクティブ HTML プレイヤーとして書き出すので、上記の問題が両方解決します。 コードは Jupyter / VSCode でもそのまま動きます (Notebook なら最終行 HTML(ani.to_jshtml()) がそのまま表示される)。",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#新しい章を作るときのコピペ手順",
+    "href": "textbook/textbook.html#新しい章を作るときのコピペ手順",
+    "title": "本編",
+    "section": "新しい章を作るときのコピペ手順",
+    "text": "新しい章を作るときのコピペ手順\n\nこのファイル (_03_interactive_demo.qmd) と同じパターンの新しい qmd を作る\nYAML に filters: [r-wasm/live] を含める (パーシャル _*.qmd ならスキップ可。親の textbook.qmd 側で指定)\n日本語フォントブロック (try: pyfetch ...) は描画セルの先頭に置く — 順序が保証される\npyfetch の URL は ../../../assets/fonts/... で固定 (qmd の階層に合わせて変えない)\nアニメーションは FuncAnimation で組み、最終行で HTML(ani.to_jshtml()) を返す",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#静的グラフ-3d-サーフェス",
+    "href": "textbook/textbook.html#静的グラフ-3d-サーフェス",
+    "title": "本編",
+    "section": "静的グラフ: 3D サーフェス",
+    "text": "静的グラフ: 3D サーフェス\n\n\n\n\n\n\nドラッグで回転、スクロールでズーム、右上のツールバーで PNG 保存ができます。",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#アニメーション-減衰振動の時間発展",
+    "href": "textbook/textbook.html#アニメーション-減衰振動の時間発展",
+    "title": "本編",
+    "section": "アニメーション: 減衰振動の時間発展",
+    "text": "アニメーション: 減衰振動の時間発展\nanimation_frame を渡すと、Plotly が 再生・一時停止・スライダー UI を自動生成 します。 matplotlib の FuncAnimation よりさらに記述量が少なく、ホバーで値を読めるのが利点。\n\n\n\n\n\n\n下の ▶ 再生ボタン を押すと、波形が時間とともに伸びていきます。スライダーを直接 ドラッグして任意のフレームに飛ぶこともできます。",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#このサンプルの仕組み-1",
+    "href": "textbook/textbook.html#このサンプルの仕組み-1",
+    "title": "本編",
+    "section": "このサンプルの仕組み",
+    "text": "このサンプルの仕組み\n\n\n\n\n\n\n\n要素\n役割\n\n\n\n\nawait micropip.install(\"plotly\")\nPyodide で plotly を動的取得 (Jupyter では try 節で skip)\n\n\nHTML(fig.to_html(include_plotlyjs=\"cdn\"))\nPyodide / Jupyter / VSCode のどこでも図を HTML として埋め込み (fig.show() は Pyodide で renderer 検出に失敗するため避ける)\n\n\nanimation_frame=\"frame\"\nフレームごとの DataFrame 行を Plotly が拾って自動でスライダー UI を生成",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#matplotlib-と-plotly-の使い分け",
+    "href": "textbook/textbook.html#matplotlib-と-plotly-の使い分け",
+    "title": "本編",
+    "section": "matplotlib と Plotly の使い分け",
+    "text": "matplotlib と Plotly の使い分け\n\n\n\n\n\n\n\n\n\nmatplotlib (FuncAnimation)\nPlotly\n\n\n\n\nコード量\nやや多い (figure / line / update 関数)\n少ない (animation_frame 1 引数)\n\n\nフォント設定\n日本語は addfont 必須\nOS フォント (追加設定不要)\n\n\nインタラクション\nコマ送り / 再生 / 停止\nコマ送り / 再生 / 停止 / hover / pan / zoom\n\n\n出力形式\nPNG (静止画) または JS プレイヤー\nSVG / WebGL ベースの interactive plot\n\n\n論文用\nベクター PDF が綺麗、印刷向き\n印刷用 export はやや弱い\n\n\nデータ次元\n2D が中心\n2D / 3D / 地理 / dashboard も得意\n\n\n\n紙に載せる図は matplotlib、ウェブで読者が触る図は Plotly、と使い分けるのが標準です。",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  }
+]
