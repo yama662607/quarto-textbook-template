@@ -21,9 +21,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up Quarto
+        # tinytex は外す: Pages に載せるのは HTML のみで PDF は不要。
+        # tinytex 経由の LaTeX render は ~20 分超で workflow が完走しなかった。
+        # PDF が要るときはローカルで `just render-book-pdf`。
         uses: quarto-dev/quarto-actions/setup@v2
-        with:
-          tinytex: true
 
       - name: Install Node dependencies
         run: npm ci
@@ -34,25 +35,24 @@ jobs:
           python-version: '3.12'
 
       - name: Install uv
-        # Pin via the official action — no curl-pipe-bash, no $HOME/.local/bin
-        # PATH munging required. astral-sh/setup-uv handles caching too.
         uses: astral-sh/setup-uv@v3
 
       - name: Install Python dependencies
-        # By default we install only base deps. If your textbook uses
-        # optional features (e.g. Qiskit blocks, Shinylive, Jupyter compute
-        # cells, OCR/LaTeX pipelines), append the relevant extras:
-        #   uv sync --extra notebook --extra quantum
-        # or:  uv sync --all-extras
         run: |
           uv sync
           echo "$GITHUB_WORKSPACE/.venv/bin" >> $GITHUB_PATH
 
-      - name: Render and publish
+      - name: Render (HTML only)
+        run: quarto render quarto --to html
+        env:
+          QUARTO_PYTHON: ${{ github.workspace }}/.venv/bin/python
+
+      - name: Publish to gh-pages
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
           path: quarto
+          render: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           QUARTO_PYTHON: ${{ github.workspace }}/.venv/bin/python
