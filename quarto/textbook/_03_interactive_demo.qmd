@@ -29,7 +29,7 @@ from pyodide.http import pyfetch
 warnings.simplefilter("ignore")  # font 登録前後の Glyph missing 警告を抑制
 
 if not os.path.exists("/tmp/NotoSansJP.ttf"):
-    resp = await pyfetch("../assets/fonts/NotoSansJP-Regular.ttf")
+    resp = await pyfetch("../../../assets/fonts/NotoSansJP-Regular.ttf")
     with open("/tmp/NotoSansJP.ttf", "wb") as f:
         f.write(await resp.bytes())
 # addfont と rcParams は (キャッシュ済でも) 毎回呼ぶ — Pyodide の matplotlib は
