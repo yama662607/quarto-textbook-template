@@ -93,13 +93,15 @@ clean:
 # Quarto Tasks
 # =============================================================================
 
-# Quarto プレビュー起動 (port 4312)
-docs:
+# Quarto プレビュー起動 (port 4312)。
+# 前回のプレビューを止め忘れて別ターミナルで再実行しても動くよう、
+# 起動前に必ず port 4312 に居座っているプロセスを掃除する。
+docs: fix-docs
     @{{python}} tools/dev_server.py
 
-# プレビューが落ちない / ポートが使用中の場合の復旧 (Win/Mac/Linux 対応)
+# プレビューが落ちない / ポートが使用中の場合の復旧 (Win/Mac/Linux 対応)。
+# `docs` から自動で呼ばれる。手動での復旧用にも単独実行可。
 fix-docs:
-    @echo "Killing lingering Quarto processes on port 4312..."
     @{{python}} tools/kill_quarto_process.py --port 4312
 
 # Quarto HTML 実レンダリング

@@ -74,8 +74,8 @@ class QuartoWatcherHandler(FileSystemEventHandler):
 
 
 def main():
-    # プロジェクトのルートディレクトリを基準にする
-    project_root = Path(__file__).parent.parent.resolve()
+    # tools/utils/quarto_watcher.py から見て 3 段上 (utils → tools → project_root)
+    project_root = Path(__file__).resolve().parent.parent.parent
     watch_path = project_root / "quarto"
 
     print("Starting Quarto Watcher...")
