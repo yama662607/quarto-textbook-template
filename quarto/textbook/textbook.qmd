@@ -32,3 +32,5 @@ pyodide:
 {{< include _03_interactive_demo.qmd >}}
 
 {{< include _04_plotly_demo.qmd >}}
+
+{{< include _05_diagrams_and_math.qmd >}}

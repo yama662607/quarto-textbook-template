@@ -1,0 +1,183 @@
+# 図解と数学環境 {#sec-diagrams-and-math}
+
+このセクションは Quarto の **図解** (Mermaid / Graphviz) と **数学環境** (定義・定理・証明) のショーケースです。コピペで自分の章に持ち込めます。
+
+## Mermaid フローチャート {#sec-mermaid-flow}
+
+```{mermaid}
+%%| label: fig-flow
+%%| fig-cap: "アルゴリズムのフロー"
+flowchart LR
+    A[入力] --> B{条件分岐}
+    B -- yes --> C[処理 X]
+    B -- no  --> D[処理 Y]
+    C --> E[出力]
+    D --> E
+```
+
+@fig-flow が示すように、Mermaid の `flowchart` で分岐構造を簡潔に描けます。
+
+## Mermaid シーケンス図 {#sec-mermaid-sequence}
+
+```{mermaid}
+%%| label: fig-sequence
+%%| fig-cap: "クライアント・サーバ間の通信"
+sequenceDiagram
+    participant U as User
+    participant S as Server
+    U->>S: Request
+    S-->>U: Response
+    Note over U,S: ハンドシェイク完了
+```
+
+## Mermaid 状態遷移 {#sec-mermaid-state}
+
+```{mermaid}
+%%| label: fig-state
+%%| fig-cap: "信号機の状態遷移"
+stateDiagram-v2
+    [*] --> 赤
+    赤 --> 青: 30s
+    青 --> 黄: 25s
+    黄 --> 赤: 5s
+```
+
+## Graphviz (DOT) {#sec-graphviz}
+
+`{mermaid}` の代替として **Graphviz** も使えます。複雑なノード配置は DOT の方が制御しやすい場面があります。
+
+```{dot}
+//| label: fig-dot
+//| fig-cap: "Graphviz による有向グラフ"
+digraph G {
+    rankdir=LR;
+    node [shape=circle];
+    A -> B [label="f"];
+    B -> C [label="g"];
+    A -> C [label="g∘f", style=dashed];
+}
+```
+
+## 数式と cross-reference {#sec-equations}
+
+ディスプレイ数式に `{#eq-...}` ラベルを付けると、本文から `@eq-...` で参照できます。
+
+$$
+\nabla \times \vec{B} = \mu_0 \vec{J} + \mu_0 \varepsilon_0 \frac{\partial \vec{E}}{\partial t}
+$$ {#eq-maxwell-ampere}
+
+[@eq-maxwell-ampere] はマクスウェル方程式の Ampère-Maxwell 則です。電流密度に加えて変位電流 $\partial_t \vec{E}$ が現れる点が古典 Ampère 則からの拡張になっています。
+
+### 可換図式 (LaTeX `array` 環境) {#sec-commutative-array}
+
+数式環境内で `\xrightarrow` と縦矢印を組み合わせて可換図式を描けます。
+
+$$
+\begin{array}{ccc}
+A & \xrightarrow{f} & B \\
+\downarrow{\pi} & & \downarrow{\pi'} \\
+A/{\sim} & \xrightarrow{\bar{f}} & B/{\sim}
+\end{array}
+$$ {#eq-commutative}
+
+### 可換図式 (Mermaid) {#sec-commutative-mermaid}
+
+同じ可換図式を Mermaid のグラフでも書けます。HTML 出力では Mermaid の方が見栄えが良いことも。
+
+```{mermaid}
+%%| label: fig-commutative
+%%| fig-cap: "可換図式 (Mermaid 版)"
+graph LR
+    A((A)) -- f --> B((B))
+    A -- π --> AS((A/~))
+    B -- π' --> BS((B/~))
+    AS -- f̄ --> BS
+```
+
+## 定義・定理・証明 {#sec-theorems}
+
+Quarto は **`#thm-` `#def-` `#lem-` `#cor-` `#prp-` `#cnj-` `#exm-` `#exr-` `#sol-` `#rem-` `#alg-`** の theorem-like 環境を提供します。番号付け・cross-ref が自動。
+
+### 定義 {#sec-definition-example}
+
+::: {#def-group}
+## 群 (group)
+
+集合 $G$ と二項演算 $\cdot : G \times G \to G$ の組 $(G, \cdot)$ が **群** であるとは、以下を満たすこと。
+
+1. **結合律**: $(a \cdot b) \cdot c = a \cdot (b \cdot c)$
+2. **単位元の存在**: $\exists e \in G,\ \forall a \in G,\ e \cdot a = a \cdot e = a$
+3. **逆元の存在**: $\forall a \in G,\ \exists a^{-1} \in G,\ a \cdot a^{-1} = a^{-1} \cdot a = e$
+
+:::
+
+[@def-group] は代数学の出発点です。
+
+### 補題と定理 {#sec-lemma-theorem}
+
+::: {#lem-cancellation}
+## 消去律
+
+群 $G$ において、$a \cdot b = a \cdot c \Rightarrow b = c$。
+
+:::
+
+::: {.proof}
+両辺に左から $a^{-1}$ をかける。$a^{-1} a b = a^{-1} a c$ より $b = c$。$\square$
+
+:::
+
+::: {#thm-unique-identity}
+## 単位元の一意性
+
+群の単位元は一意に定まる。
+
+:::
+
+::: {.proof}
+$e, e'$ をともに単位元とする。単位元の定義から $e = e \cdot e' = e'$。よって $e = e'$。$\square$
+
+:::
+
+[@thm-unique-identity] は [@lem-cancellation] と独立に証明できる基本事実です。
+
+### 系・命題 {#sec-corollary-proposition}
+
+::: {#cor-inverse-unique}
+## 逆元の一意性
+
+群の各元の逆元は一意に定まる。
+
+:::
+
+::: {#prp-power-rule}
+## 冪則
+
+$\forall a \in G,\ \forall m, n \in \mathbb{Z}: a^m \cdot a^n = a^{m+n}$。
+
+:::
+
+### 例題と演習・解答 {#sec-exm-exr-sol}
+
+::: {#exm-cyclic}
+## 例: 巡回群
+
+整数の加法群 $(\mathbb{Z}, +)$ は単位元 $0$ をもち、$1$ で生成される無限巡回群である。
+
+:::
+
+::: {#exr-symmetric}
+## 演習
+
+3 次対称群 $S_3$ の位数を求め、可換群でないことを示せ。
+
+:::
+
+::: {#sol-symmetric}
+## 解答
+
+$|S_3| = 3! = 6$。互換 $(1\ 2)$ と $(2\ 3)$ は可換でない: $(1\ 2)(2\ 3) = (1\ 2\ 3)$ だが $(2\ 3)(1\ 2) = (1\ 3\ 2)$。
+
+:::
+
+[@exr-symmetric] の解答は [@sol-symmetric]。
