@@ -1,0 +1,142 @@
+# レイアウトと callout {#sec-layout-and-callouts}
+
+ここでは Quarto の **タブセット**、**グリッドレイアウト**、**callout** (note/tip/warning/caution/important + custom) を実例で見せます。
+
+## タブセット (panel-tabset) {#sec-tabset}
+
+複数の言語実装や説明スタイルを 1 ヶ所に並べたい時に便利。タブの切り替え状態は `group="..."` 属性でページ間で同期できます。
+
+::: {.panel-tabset group="lang"}
+
+### Python
+
+```python
+import numpy as np
+def euclidean(x, y):
+    return np.linalg.norm(np.asarray(x) - np.asarray(y))
+```
+
+### R
+
+```r
+euclidean <- function(x, y) sqrt(sum((x - y)^2))
+```
+
+### Julia
+
+```julia
+euclidean(x, y) = sqrt(sum((x .- y) .^ 2))
+```
+
+:::
+
+タブの上にもう一度同じ `group="lang"` を付けると、片方のタブで Python を選ぶともう片方も追従します。
+
+## グリッドレイアウト {#sec-grid}
+
+Bootstrap 12 列グリッド。`.g-col-N` で N/12 の幅を取ります。
+
+::: {.grid}
+
+::: {.g-col-6}
+### 左カラム
+- 比較したい概念 A
+- 数式: $\sigma = \sqrt{\dfrac{1}{n}\sum (x_i - \bar{x})^2}$
+- 適用条件: 正規分布近似可
+
+:::
+
+::: {.g-col-6}
+### 右カラム
+- 比較したい概念 B
+- 数式: $\mathrm{MAD} = \dfrac{1}{n}\sum |x_i - \bar{x}|$
+- 適用条件: ロバスト推定
+
+:::
+
+:::
+
+`g-col-4` + `g-col-8`、3 等分なら `g-col-4` を 3 つなど自由に組み合わせられます。
+
+## 5 種の標準 callout {#sec-callouts-default}
+
+::: {.callout-note}
+**note**: 補足情報の通常表示。`{.callout-note}` で囲むだけ。
+
+:::
+
+::: {.callout-tip}
+**tip**: 効率化や別解の提案。
+
+:::
+
+::: {.callout-warning}
+**warning**: 落とし穴や注意点。
+
+:::
+
+::: {.callout-caution}
+**caution**: 高リスクな操作 / 既知のバグ / 破壊的変更。
+
+:::
+
+::: {.callout-important}
+**important**: 必須要件。読み飛ばすと後の議論が成立しない情報。
+
+:::
+
+## appearance バリエーション {#sec-callout-appearance}
+
+`appearance="simple"` で枠とアイコンだけのコンパクト表示、`appearance="minimal"` で枠線のみ。
+
+::: {.callout-tip appearance="simple"}
+## simple appearance
+
+線とアイコンだけのコンパクト表示。長い文章を 1 つのまとまりとして見せたい時に。
+
+:::
+
+::: {.callout-warning appearance="minimal"}
+## minimal appearance
+
+枠線さえ薄い。本文と続けて読ませたい場合に。
+
+:::
+
+## 折りたたみ callout {#sec-callout-collapse}
+
+`collapse="true"` で初期状態 collapsed。長い証明・チェックリスト・解答を「読みたい人だけ展開」させる用途に。
+
+::: {.callout-note collapse="true"}
+## クリックで展開: 章末チェックリスト
+
+- [ ] 5 種の callout を使い分けられる
+- [ ] `appearance` の 3 段階の違いを説明できる
+- [ ] `collapse="true"` がいつ便利か言える
+- [ ] custom callout の追加方法を [@sec-callout-custom] で確認した
+
+:::
+
+## カスタム callout (`.field-notes` / `.important-point`) {#sec-callout-custom}
+
+テンプレ同梱の `templates/styles.css` で 2 つのカスタム callout を定義しています。クラス名を変えるだけで独自分野色のメモが追加できます。
+
+::: {.field-notes}
+**Field Notes クラスの使い方**: `.field-notes` で囲んだ div は青系の独自スタイル + 見出し "Field Notes" 付きで表示されます。実装は `quarto/templates/styles.css` の数行です。教科の色 (緑 = 物理 / 紫 = 数学 / 茶 = 歴史) ごとにコピペしてクラス名を増やすだけで独自分野メモを足せます。
+
+:::
+
+::: {.important-point}
+**Important Point クラスの使い方**: 重要事項を赤系で強調。`.callout-important` よりタイポグラフィ寄りの軽いトーンで、定理の核心や試験必出ポイントを際立たせるのに使います。
+
+:::
+
+::: {.callout-tip appearance="simple"}
+## カスタム callout を新規追加する手順
+
+1. `quarto/templates/styles.css` 末尾に新しい CSS クラスをコピーで追加 (`.field-notes` を雛形に)
+2. `::before` の `content:` 属性で見出しラベルを変更
+3. `background-color` と `border-left` の色を変更
+4. qmd で `::: {.your-class} ... :::` のように囲む
+
+:::

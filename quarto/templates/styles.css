@@ -23,7 +23,31 @@
   border-left-width: 5px;
 }
 
-/* 物理学的記法/注釈用のカスタムスタイル */
+/* 分野固有メモ用の汎用カスタム callout (`.field-notes`)。
+   テンプレ利用者はこれをコピーして自分の分野色 (color / accent / 見出し
+   ラベル) に書き換えるだけで独自の callout を持てる。 */
+.field-notes {
+  background-color: rgba(30, 64, 175, 0.05);
+  border-left: 5px solid #1e40af;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.field-notes::before {
+  content: " Field Notes";
+  display: block;
+  font-weight: bold;
+  font-family: 'Outfit', sans-serif;
+  color: #1e40af;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+/* 物理学的記法/注釈用のカスタムスタイル (`.field-notes` の物理向け
+   別名。既存利用者の互換性のため残す)。 */
 .physics-notes {
   background-color: rgba(6, 78, 59, 0.05);
   /* 深緑の極めて薄い背景 */
