@@ -1,0 +1,108 @@
+# テキスト要素と引用 {#sec-text-and-citations}
+
+ここでは Quarto の **コード注釈 (annotation)**、**脚注**、**定義リスト**、**引用ブロック**、**video shortcode**、**conditional content**、**BibTeX 引用** + **参考文献** を実例で見せます。
+
+## コード注釈 (hover style) {#sec-code-annotation}
+
+`<1>` `<2>` ... のマーカーをコード行に付け、後ろに番号付きリストで説明を書くと、HTML 出力ではマーカーホバーで対応する解説がポップアップ表示されます (`code-annotations: hover` 必要)。
+
+```python
+def trapezoid(f, a, b, n=100):                         # <1>
+    h = (b - a) / n                                    # <2>
+    s = 0.5 * (f(a) + f(b))                            # <3>
+    for i in range(1, n):
+        s += f(a + i * h)                              # <4>
+    return s * h                                       # <5>
+```
+
+1. 数値積分関数 `trapezoid` を定義。`f` は被積分関数、`[a, b]` は積分区間、`n` は分割数。
+2. 等間隔 `h` の刻み幅。
+3. 端点を 1/2 で重み付け (台形公式の境界項)。
+4. 内部点をフルウェイトで足し込む。
+5. 全体に `h` を掛けて積分の近似値を返す。
+
+注釈モードは `code-annotations: hover | below | none` で切替。`below` はコード下に展開表示、`hover` はマーカーホバー、`none` で無効化。
+
+## 脚注 (footnote) {#sec-footnote}
+
+本文中で軽く触れたいだけの補足は脚注で[^trapezoid-error]。番号は自動振りされ、ページ末にまとめて表示されます[^second-note]。
+
+[^trapezoid-error]: 台形公式の誤差は $\mathcal{O}(h^2)$ で、Simpson 公式の $\mathcal{O}(h^4)$ より遅い収束です。
+[^second-note]: 脚注は Pandoc 拡張で、`[^label]: 内容` を本文と離れた場所に書けば自動的にページ末にまとめてくれます。
+
+## 定義リスト {#sec-deflist}
+
+用語と説明をペアで並べる時は **定義リスト** (`term : definition`)。索引や用語集に向きます。
+
+固有値 (eigenvalue)
+: 線形写像 $A: V \to V$ に対し、$Av = \lambda v$ を満たす非ゼロベクトル $v$ が存在するスカラー $\lambda \in \mathbb{C}$。
+
+固有ベクトル (eigenvector)
+: 上の関係を満たす非ゼロベクトル $v$。スカラー倍を除いて一意。
+
+スペクトル (spectrum)
+: 行列の固有値の集合 $\sigma(A) = \{\lambda_1, \dots, \lambda_n\}$。
+
+## 引用ブロック (blockquote) {#sec-blockquote}
+
+> 数学とは答えを得る術ではなく、より良い問いを立てる術である。
+>
+> --- ジョルジュ・カントール (出典不詳)
+
+引用に出典をつける慣習は `--- 著者` を末尾に。
+
+## video 埋め込み {#sec-video}
+
+YouTube / Vimeo / mp4 を直接埋め込めます。Quarto には `{{< video URL >}}` shortcode がありますが、Quarto 1.8.x には shortcode 内部で `nil 'fail'` を呼ぶ既知バグがあるため、現状は **raw HTML `<iframe>`** が安定です。
+
+```markdown
+<!-- Quarto shortcode (将来的にバグ修正されたら推奨) -->
+{{< video https://www.youtube.com/watch?v=wo9vZccmqwc >}}
+```
+
+下は iframe による埋め込み:
+
+::: {#fig-video}
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wo9vZccmqwc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+CERN: The Journey of Discovery
+
+:::
+
+[@fig-video] のように div で囲んで `#fig-...` を付けると figure として cross-ref できます。
+
+## conditional content (出力形式で出し分け) {#sec-conditional}
+
+`.content-visible` / `.content-hidden` クラスで HTML / PDF / docx 別に表示を切り替えられます。
+
+::: {.content-visible when-format="html"}
+**この段落は HTML 出力でのみ見えます**。インタラクティブな要素 (Quarto Live / 動画 / lightbox) を入れる時に。
+
+:::
+
+::: {.content-visible when-format="pdf"}
+**この段落は PDF 出力でのみ見えます**。印刷用の凡例や著作権表示などを入れたい時に。
+
+:::
+
+逆に `.content-hidden when-format="..."` で「指定形式では非表示」も書けます。
+
+## BibTeX 引用 {#sec-citation}
+
+`templates/references.bib` の各エントリを `@キー` で参照すると、自動で文献番号と本文末の参考文献リストが生成されます。
+
+- 力学の古典的教科書としては @landau1976 が標準。
+- 量子情報の包括的な教科書 @nielsen2010 はほぼすべての研究者が手に取る一冊。
+- 特殊相対性理論の原論文 @einstein1905 は Annalen der Physik に掲載された。
+- 情報理論の創始 [@shannon1948] と組版システムの古典 [@knuth1984] は計算機科学側からも引かれる。
+- Quarto 自体の公式ドキュメント [@quarto2024] も参照。
+
+カッコ付き参照は `[@key]`、文中参照は `@key`。複数参照は `[@a; @b; @c]`。
+
+## 参考文献 {#sec-references-list .unnumbered}
+
+::: {#refs}
+:::
+
+上の `#refs` div に Quarto が自動で参考文献リストを挿入します。`csl: ...` で APA / MLA / IEEE などの引用スタイルを切り替え可能。

@@ -38,3 +38,5 @@ pyodide:
 {{< include _06_layout_and_callouts.qmd >}}
 
 {{< include _07_figures_and_tables.qmd >}}
+
+{{< include _08_text_and_citations.qmd >}}

@@ -51,8 +51,8 @@ book:
       - text: "ホーム"
         href: index.qmd
 
-# 文献ファイル (任意 — quarto/templates/references.bib をデフォルトで参照)
-# bibliography: templates/references.bib
+# 文献ファイル — quarto/templates/references.bib を参照
+bibliography: templates/references.bib
 
 number-sections: false
 crossref:
