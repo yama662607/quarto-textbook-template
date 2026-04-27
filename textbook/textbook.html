@@ -58,7 +58,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -81,6 +100,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/bootstrap/bootstrap-c0f88a11ff41682bc4a68e0c9d566e7e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
 <link href="../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
+<script src="../site_libs/quarto-contrib/videojs/video.min.js"></script>
+<link href="../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -168,7 +192,7 @@ window.Quarto = {
 <link rel="stylesheet" href="../templates/styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed quarto-light">
+<body class="nav-sidebar docked nav-fixed slimcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -270,11 +294,60 @@ window.Quarto = {
   <li><a href="#このサンプルの仕組み-1" id="toc-このサンプルの仕組み-1" class="nav-link" data-scroll-target="#このサンプルの仕組み-1">このサンプルの仕組み</a></li>
   <li><a href="#matplotlib-と-plotly-の使い分け" id="toc-matplotlib-と-plotly-の使い分け" class="nav-link" data-scroll-target="#matplotlib-と-plotly-の使い分け">matplotlib と Plotly の使い分け</a></li>
   </ul></li>
+  <li><a href="#sec-diagrams-and-math" id="toc-sec-diagrams-and-math" class="nav-link" data-scroll-target="#sec-diagrams-and-math">図解と数学環境</a>
+  <ul class="collapse">
+  <li><a href="#sec-mermaid-flow" id="toc-sec-mermaid-flow" class="nav-link" data-scroll-target="#sec-mermaid-flow">Mermaid フローチャート</a></li>
+  <li><a href="#sec-mermaid-sequence" id="toc-sec-mermaid-sequence" class="nav-link" data-scroll-target="#sec-mermaid-sequence">Mermaid シーケンス図</a></li>
+  <li><a href="#sec-mermaid-state" id="toc-sec-mermaid-state" class="nav-link" data-scroll-target="#sec-mermaid-state">Mermaid 状態遷移</a></li>
+  <li><a href="#sec-graphviz" id="toc-sec-graphviz" class="nav-link" data-scroll-target="#sec-graphviz">Graphviz (DOT)</a></li>
+  <li><a href="#sec-equations" id="toc-sec-equations" class="nav-link" data-scroll-target="#sec-equations">数式と cross-reference</a>
+  <ul class="collapse">
+  <li><a href="#sec-commutative-array" id="toc-sec-commutative-array" class="nav-link" data-scroll-target="#sec-commutative-array">可換図式 (LaTeX <code>array</code> 環境)</a></li>
+  <li><a href="#sec-commutative-mermaid" id="toc-sec-commutative-mermaid" class="nav-link" data-scroll-target="#sec-commutative-mermaid">可換図式 (Mermaid)</a></li>
+  </ul></li>
+  <li><a href="#sec-theorems" id="toc-sec-theorems" class="nav-link" data-scroll-target="#sec-theorems">定義・定理・証明</a>
+  <ul class="collapse">
+  <li><a href="#sec-definition-example" id="toc-sec-definition-example" class="nav-link" data-scroll-target="#sec-definition-example">定義</a></li>
+  <li><a href="#sec-lemma-theorem" id="toc-sec-lemma-theorem" class="nav-link" data-scroll-target="#sec-lemma-theorem">補題と定理</a></li>
+  <li><a href="#sec-corollary-proposition" id="toc-sec-corollary-proposition" class="nav-link" data-scroll-target="#sec-corollary-proposition">系・命題</a></li>
+  <li><a href="#sec-exm-exr-sol" id="toc-sec-exm-exr-sol" class="nav-link" data-scroll-target="#sec-exm-exr-sol">例題と演習・解答</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#sec-layout-and-callouts" id="toc-sec-layout-and-callouts" class="nav-link" data-scroll-target="#sec-layout-and-callouts">レイアウトと callout</a>
+  <ul class="collapse">
+  <li><a href="#sec-tabset" id="toc-sec-tabset" class="nav-link" data-scroll-target="#sec-tabset">タブセット (panel-tabset)</a></li>
+  <li><a href="#sec-grid" id="toc-sec-grid" class="nav-link" data-scroll-target="#sec-grid">グリッドレイアウト</a></li>
+  <li><a href="#sec-callouts-default" id="toc-sec-callouts-default" class="nav-link" data-scroll-target="#sec-callouts-default">5 種の標準 callout</a></li>
+  <li><a href="#sec-callout-appearance" id="toc-sec-callout-appearance" class="nav-link" data-scroll-target="#sec-callout-appearance">appearance バリエーション</a></li>
+  <li><a href="#sec-callout-collapse" id="toc-sec-callout-collapse" class="nav-link" data-scroll-target="#sec-callout-collapse">折りたたみ callout</a></li>
+  <li><a href="#sec-callout-custom" id="toc-sec-callout-custom" class="nav-link" data-scroll-target="#sec-callout-custom">カスタム callout (<code>.field-notes</code> / <code>.important-point</code>)</a></li>
+  </ul></li>
+  <li><a href="#sec-figures-and-tables" id="toc-sec-figures-and-tables" class="nav-link" data-scroll-target="#sec-figures-and-tables">図表のレイアウト</a>
+  <ul class="collapse">
+  <li><a href="#sec-subfig" id="toc-sec-subfig" class="nav-link" data-scroll-target="#sec-subfig">subfigure (layout-ncol)</a></li>
+  <li><a href="#sec-column-page" id="toc-sec-column-page" class="nav-link" data-scroll-target="#sec-column-page">column: page で本文幅を超えて広げる</a></li>
+  <li><a href="#sec-margin" id="toc-sec-margin" class="nav-link" data-scroll-target="#sec-margin">margin / aside (傍注)</a></li>
+  <li><a href="#sec-lightbox" id="toc-sec-lightbox" class="nav-link" data-scroll-target="#sec-lightbox">lightbox gallery</a></li>
+  <li><a href="#sec-pipe-table" id="toc-sec-pipe-table" class="nav-link" data-scroll-target="#sec-pipe-table">pipe table</a></li>
+  <li><a href="#sec-grid-table" id="toc-sec-grid-table" class="nav-link" data-scroll-target="#sec-grid-table">grid table</a></li>
+  <li><a href="#sec-figures-summary" id="toc-sec-figures-summary" class="nav-link" data-scroll-target="#sec-figures-summary">まとめ</a></li>
+  </ul></li>
+  <li><a href="#sec-text-and-citations" id="toc-sec-text-and-citations" class="nav-link" data-scroll-target="#sec-text-and-citations">テキスト要素と引用</a>
+  <ul class="collapse">
+  <li><a href="#sec-code-annotation" id="toc-sec-code-annotation" class="nav-link" data-scroll-target="#sec-code-annotation">コード注釈 (hover style)</a></li>
+  <li><a href="#sec-footnote" id="toc-sec-footnote" class="nav-link" data-scroll-target="#sec-footnote">脚注 (footnote)</a></li>
+  <li><a href="#sec-deflist" id="toc-sec-deflist" class="nav-link" data-scroll-target="#sec-deflist">定義リスト</a></li>
+  <li><a href="#sec-blockquote" id="toc-sec-blockquote" class="nav-link" data-scroll-target="#sec-blockquote">引用ブロック (blockquote)</a></li>
+  <li><a href="#sec-video" id="toc-sec-video" class="nav-link" data-scroll-target="#sec-video">video 埋め込み</a></li>
+  <li><a href="#sec-conditional" id="toc-sec-conditional" class="nav-link" data-scroll-target="#sec-conditional">conditional content (出力形式で出し分け)</a></li>
+  <li><a href="#sec-citation" id="toc-sec-citation" class="nav-link" data-scroll-target="#sec-citation">BibTeX 引用</a></li>
+  <li><a href="#sec-references-list" id="toc-sec-references-list" class="nav-link" data-scroll-target="#sec-references-list">参考文献</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/your-org/your-repo/edit/main/textbook/textbook.qmd" class="toc-action"><i class="bi bi-github"></i>編集</a></li><li><a href="https://github.com/your-org/your-repo/issues/new" class="toc-action"><i class="bi empty"></i>問題を報告</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../textbook/textbook.html">本編</a></li><li class="breadcrumb-item"><a href="../textbook/textbook.html"><span class="chapter-title">本編</span></a></li></ol></nav>
 <div class="quarto-title">
@@ -309,7 +382,7 @@ window.Quarto = {
 <p><span id="eq-maxwell-ampere"><span class="math display">
 \nabla \times \mathbf{B} - \frac{1}{c}\frac{\partial \mathbf{E}}{\partial t} = \frac{4\pi}{c}\mathbf{J}
 \tag{3.1}</span></span></p>
-<p><a href="#eq-maxwell-ampere" class="quarto-xref">式&nbsp;<span>3.1</span></a> は Maxwell-Ampère の法則です。</p>
+<p><a href="#eq-maxwell-ampere" class="quarto-xref">式&nbsp;<span>7.1</span></a> は Maxwell-Ampère の法則です。</p>
 </section>
 <section id="図表の例" class="level2">
 <h2 class="anchored" data-anchor-id="図表の例">図表の例</h2>
@@ -585,6 +658,764 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiaW1w
 </tbody>
 </table>
 <p>紙に載せる図は matplotlib、ウェブで読者が触る図は Plotly、と使い分けるのが標準です。</p>
+</section>
+</section>
+<section id="sec-diagrams-and-math" class="level1">
+<h1>図解と数学環境</h1>
+<p>このセクションは Quarto の <strong>図解</strong> (Mermaid / Graphviz) と <strong>数学環境</strong> (定義・定理・証明) のショーケースです。コピペで自分の章に持ち込めます。</p>
+<section id="sec-mermaid-flow" class="level2">
+<h2 class="anchored" data-anchor-id="sec-mermaid-flow">Mermaid フローチャート</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div id="fig-flow" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-flow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-flow">flowchart LR
+    A[入力] --&gt; B{条件分岐}
+    B -- yes --&gt; C[処理 X]
+    B -- no  --&gt; D[処理 Y]
+    C --&gt; E[出力]
+    D --&gt; E
+</pre>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-flow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;7.1: アルゴリズムのフロー
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-flow" class="quarto-xref">図&nbsp;<span>7.1</span></a> が示すように、Mermaid の <code>flowchart</code> で分岐構造を簡潔に描けます。</p>
+</section>
+<section id="sec-mermaid-sequence" class="level2">
+<h2 class="anchored" data-anchor-id="sec-mermaid-sequence">Mermaid シーケンス図</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div id="fig-sequence" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sequence-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-sequence">sequenceDiagram
+    participant U as User
+    participant S as Server
+    U-&gt;&gt;S: Request
+    S--&gt;&gt;U: Response
+    Note over U,S: ハンドシェイク完了
+</pre>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sequence-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;7.2: クライアント・サーバ間の通信
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-mermaid-state" class="level2">
+<h2 class="anchored" data-anchor-id="sec-mermaid-state">Mermaid 状態遷移</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div id="fig-state" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-state-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-state">stateDiagram-v2
+    [*] --&gt; 赤
+    赤 --&gt; 青: 30s
+    青 --&gt; 黄: 25s
+    黄 --&gt; 赤: 5s
+</pre>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-state-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;7.3: 信号機の状態遷移
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-graphviz" class="level2">
+<h2 class="anchored" data-anchor-id="sec-graphviz">Graphviz (DOT)</h2>
+<p><code>{mermaid}</code> の代替として <strong>Graphviz</strong> も使えます。複雑なノード配置は DOT の方が制御しやすい場面があります。</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div id="fig-dot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<svg width="672" height="480" viewbox="0.00 0.00 199.68 81.01" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 77.01)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-77.01 195.68,-77.01 195.68,4 -4,4"></polygon>
+<!-- A -->
+<g id="node1" class="node">
+<title>A</title>
+<ellipse fill="none" stroke="black" cx="18.01" cy="-18.01" rx="18.02" ry="18.02"></ellipse>
+<text text-anchor="middle" x="18.01" y="-13.81" font-family="Times,serif" font-size="14.00">A</text>
+</g>
+<!-- B -->
+<g id="node2" class="node">
+<title>B</title>
+<ellipse fill="none" stroke="black" cx="94.68" cy="-55.01" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="94.68" y="-50.81" font-family="Times,serif" font-size="14.00">B</text>
+</g>
+<!-- A&#45;&gt;B -->
+<g id="edge1" class="edge">
+<title>A-&gt;B</title>
+<path fill="none" stroke="black" d="M34.48,-25.68C44.49,-30.64 57.75,-37.2 69.17,-42.87"></path>
+<polygon fill="black" stroke="black" points="67.72,-46.05 78.23,-47.35 70.82,-39.78 67.72,-46.05"></polygon>
+<text text-anchor="middle" x="56.35" y="-41.21" font-family="Times,serif" font-size="14.00">f</text>
+</g>
+<!-- C -->
+<g id="node3" class="node">
+<title>C</title>
+<ellipse fill="none" stroke="black" cx="173.68" cy="-18.01" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="173.68" y="-13.81" font-family="Times,serif" font-size="14.00">C</text>
+</g>
+<!-- A&#45;&gt;C -->
+<g id="edge3" class="edge">
+<title>A-&gt;C</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M36.12,-15.46C47.57,-13.88 63,-12.01 76.68,-11.21 92.66,-10.27 96.71,-10.31 112.68,-11.21 123.48,-11.82 135.32,-13.04 145.61,-14.29"></path>
+<polygon fill="black" stroke="black" points="145.3,-17.77 155.66,-15.56 146.18,-10.83 145.3,-17.77"></polygon>
+<text text-anchor="middle" x="94.68" y="-16.21" font-family="Times,serif" font-size="14.00">g∘f</text>
+</g>
+<!-- B&#45;&gt;C -->
+<g id="edge2" class="edge">
+<title>B-&gt;C</title>
+<path fill="none" stroke="black" d="M111.27,-47.52C121.81,-42.46 135.95,-35.66 148.01,-29.87"></path>
+<polygon fill="black" stroke="black" points="149.63,-32.97 157.12,-25.49 146.59,-26.66 149.63,-32.97"></polygon>
+<text text-anchor="middle" x="134.18" y="-41.21" font-family="Times,serif" font-size="14.00">g</text>
+</g>
+</g>
+</svg>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;7.4: Graphviz による有向グラフ
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-equations" class="level2">
+<h2 class="anchored" data-anchor-id="sec-equations">数式と cross-reference</h2>
+<p>ディスプレイ数式に <code>{#eq-...}</code> ラベルを付けると、本文から <code>@eq-...</code> で参照できます。</p>
+<p><span id="eq-maxwell-ampere"><span class="math display">
+\nabla \times \vec{B} = \mu_0 \vec{J} + \mu_0 \varepsilon_0 \frac{\partial \vec{E}}{\partial t}
+\tag{7.1}</span></span></p>
+<p><a href="#eq-maxwell-ampere" class="quarto-xref">式&nbsp;<span>7.1</span></a> はマクスウェル方程式の Ampère-Maxwell 則です。電流密度に加えて変位電流 <span class="math inline">\partial_t \vec{E}</span> が現れる点が古典 Ampère 則からの拡張になっています。</p>
+<section id="sec-commutative-array" class="level3">
+<h3 class="anchored" data-anchor-id="sec-commutative-array">可換図式 (LaTeX <code>array</code> 環境)</h3>
+<p>数式環境内で <code>\xrightarrow</code> と縦矢印を組み合わせて可換図式を描けます。</p>
+<p><span id="eq-commutative"><span class="math display">
+\begin{array}{ccc}
+A &amp; \xrightarrow{f} &amp; B \\
+\downarrow{\pi} &amp; &amp; \downarrow{\pi'} \\
+A/{\sim} &amp; \xrightarrow{\bar{f}} &amp; B/{\sim}
+\end{array}
+\tag{7.2}</span></span></p>
+</section>
+<section id="sec-commutative-mermaid" class="level3">
+<h3 class="anchored" data-anchor-id="sec-commutative-mermaid">可換図式 (Mermaid)</h3>
+<p>同じ可換図式を Mermaid のグラフでも書けます。HTML 出力では Mermaid の方が見栄えが良いことも。</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div id="fig-commutative" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-commutative-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-commutative">graph LR
+    A((A)) -- f --&gt; B((B))
+    A -- π --&gt; AS((A/~))
+    B -- π' --&gt; BS((B/~))
+    AS -- f̄ --&gt; BS
+</pre>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-commutative-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;7.5: 可換図式 (Mermaid 版)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-theorems" class="level2">
+<h2 class="anchored" data-anchor-id="sec-theorems">定義・定理・証明</h2>
+<p>Quarto は <strong><code>#thm-</code> <code>#def-</code> <code>#lem-</code> <code>#cor-</code> <code>#prp-</code> <code>#cnj-</code> <code>#exm-</code> <code>#exr-</code> <code>#sol-</code> <code>#rem-</code> <code>#alg-</code></strong> の theorem-like 環境を提供します。番号付け・cross-ref が自動。</p>
+<section id="sec-definition-example" class="level3">
+<h3 class="anchored" data-anchor-id="sec-definition-example">定義</h3>
+<div id="def-group" class="theorem definition">
+<p><span class="theorem-title"><strong>定義 7.1 (群 (group))</strong></span> 集合 <span class="math inline">G</span> と二項演算 <span class="math inline">\cdot : G \times G \to G</span> の組 <span class="math inline">(G, \cdot)</span> が <strong>群</strong> であるとは、以下を満たすこと。</p>
+<ol type="1">
+<li><strong>結合律</strong>: <span class="math inline">(a \cdot b) \cdot c = a \cdot (b \cdot c)</span></li>
+<li><strong>単位元の存在</strong>: <span class="math inline">\exists e \in G,\ \forall a \in G,\ e \cdot a = a \cdot e = a</span></li>
+<li><strong>逆元の存在</strong>: <span class="math inline">\forall a \in G,\ \exists a^{-1} \in G,\ a \cdot a^{-1} = a^{-1} \cdot a = e</span></li>
+</ol>
+</div>
+<p><a href="#def-group" class="quarto-xref">定義&nbsp;<span>7.1</span></a> は代数学の出発点です。</p>
+</section>
+<section id="sec-lemma-theorem" class="level3">
+<h3 class="anchored" data-anchor-id="sec-lemma-theorem">補題と定理</h3>
+<div id="lem-cancellation" class="theorem lemma">
+<p><span class="theorem-title"><strong>補題 7.1 (消去律)</strong></span> 群 <span class="math inline">G</span> において、<span class="math inline">a \cdot b = a \cdot c \Rightarrow b = c</span>。</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>証明</em>. </span>両辺に左から <span class="math inline">a^{-1}</span> をかける。<span class="math inline">a^{-1} a b = a^{-1} a c</span> より <span class="math inline">b = c</span>。<span class="math inline">\square</span></p>
+</div>
+<div id="thm-unique-identity" class="theorem">
+<p><span class="theorem-title"><strong>定理 7.1 (単位元の一意性)</strong></span> 群の単位元は一意に定まる。</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>証明</em>. </span><span class="math inline">e, e'</span> をともに単位元とする。単位元の定義から <span class="math inline">e = e \cdot e' = e'</span>。よって <span class="math inline">e = e'</span>。<span class="math inline">\square</span></p>
+</div>
+<p><a href="#thm-unique-identity" class="quarto-xref">定理&nbsp;<span>7.1</span></a> は <a href="#lem-cancellation" class="quarto-xref">補題&nbsp;<span>7.1</span></a> と独立に証明できる基本事実です。</p>
+</section>
+<section id="sec-corollary-proposition" class="level3">
+<h3 class="anchored" data-anchor-id="sec-corollary-proposition">系・命題</h3>
+<div id="cor-inverse-unique" class="theorem corollary">
+<p><span class="theorem-title"><strong>系 7.1 (逆元の一意性)</strong></span> 群の各元の逆元は一意に定まる。</p>
+</div>
+<div id="prp-power-rule" class="theorem proposition">
+<p><span class="theorem-title"><strong>命題 7.1 (冪則)</strong></span> <span class="math inline">\forall a \in G,\ \forall m, n \in \mathbb{Z}: a^m \cdot a^n = a^{m+n}</span>。</p>
+</div>
+</section>
+<section id="sec-exm-exr-sol" class="level3">
+<h3 class="anchored" data-anchor-id="sec-exm-exr-sol">例題と演習・解答</h3>
+<div id="exm-cyclic" class="theorem example">
+<p><span class="theorem-title"><strong>例 7.1 (例: 巡回群)</strong></span> 整数の加法群 <span class="math inline">(\mathbb{Z}, +)</span> は単位元 <span class="math inline">0</span> をもち、<span class="math inline">1</span> で生成される無限巡回群である。</p>
+</div>
+<div id="exr-symmetric" class="theorem exercise">
+<p><span class="theorem-title"><strong>練習 7.1 (演習)</strong></span> 3 次対称群 <span class="math inline">S_3</span> の位数を求め、可換群でないことを示せ。</p>
+</div>
+<div id="sol-symmetric" class="proof solution">
+<p><span class="proof-title"><em>解答 7.1</em> (解答). </span><span class="math inline">|S_3| = 3! = 6</span>。互換 <span class="math inline">(1\ 2)</span> と <span class="math inline">(2\ 3)</span> は可換でない: <span class="math inline">(1\ 2)(2\ 3) = (1\ 2\ 3)</span> だが <span class="math inline">(2\ 3)(1\ 2) = (1\ 3\ 2)</span>。</p>
+</div>
+<p><a href="#exr-symmetric" class="quarto-xref">練習&nbsp;<span>7.1</span></a> の解答は <a href="#sol-symmetric" class="quarto-xref">Solution&nbsp;<span>7.1</span></a>。</p>
+</section>
+</section>
+</section>
+<section id="sec-layout-and-callouts" class="level1">
+<h1>レイアウトと callout</h1>
+<p>ここでは Quarto の <strong>タブセット</strong>、<strong>グリッドレイアウト</strong>、<strong>callout</strong> (note/tip/warning/caution/important + custom) を実例で見せます。</p>
+<section id="sec-tabset" class="level2">
+<h2 class="anchored" data-anchor-id="sec-tabset">タブセット (panel-tabset)</h2>
+<p>複数の言語実装や説明スタイルを 1 ヶ所に並べたい時に便利。タブの切り替え状態は <code>group="..."</code> 属性でページ間で同期できます。</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="lang">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Julia</a></li></ul>
+<div class="tab-content" data-group="lang">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> euclidean(x, y):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.linalg.norm(np.asarray(x) <span class="op">-</span> np.asarray(y))</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>euclidean <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) <span class="fu">sqrt</span>(<span class="fu">sum</span>((x <span class="sc">-</span> y)<span class="sc">^</span><span class="dv">2</span>))</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">euclidean</span>(x, y) <span class="op">=</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>((x <span class="op">.-</span> y) <span class="op">.^</span> <span class="fl">2</span>))</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<p>タブの上にもう一度同じ <code>group="lang"</code> を付けると、片方のタブで Python を選ぶともう片方も追従します。</p>
+</section>
+<section id="sec-grid" class="level2">
+<h2 class="anchored" data-anchor-id="sec-grid">グリッドレイアウト</h2>
+<p>Bootstrap 12 列グリッド。<code>.g-col-N</code> で N/12 の幅を取ります。</p>
+<div class="grid">
+<section id="左カラム" class="level3 g-col-6">
+<h3 class="anchored" data-anchor-id="左カラム">左カラム</h3>
+<ul>
+<li>比較したい概念 A</li>
+<li>数式: <span class="math inline">\sigma = \sqrt{\dfrac{1}{n}\sum (x_i - \bar{x})^2}</span></li>
+<li>適用条件: 正規分布近似可</li>
+</ul>
+</section>
+<section id="右カラム" class="level3 g-col-6">
+<h3 class="anchored" data-anchor-id="右カラム">右カラム</h3>
+<ul>
+<li>比較したい概念 B</li>
+<li>数式: <span class="math inline">\mathrm{MAD} = \dfrac{1}{n}\sum |x_i - \bar{x}|</span></li>
+<li>適用条件: ロバスト推定</li>
+</ul>
+</section>
+</div>
+<p><code>g-col-4</code> + <code>g-col-8</code>、3 等分なら <code>g-col-4</code> を 3 つなど自由に組み合わせられます。</p>
+</section>
+<section id="sec-callouts-default" class="level2">
+<h2 class="anchored" data-anchor-id="sec-callouts-default">5 種の標準 callout</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+ノート
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>note</strong>: 補足情報の通常表示。<code>{.callout-note}</code> で囲むだけ。</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+ヒント
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>tip</strong>: 効率化や別解の提案。</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+警告
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>warning</strong>: 落とし穴や注意点。</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+注意
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>caution</strong>: 高リスクな操作 / 既知のバグ / 破壊的変更。</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+重要
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>important</strong>: 必須要件。読み飛ばすと後の議論が成立しない情報。</p>
+</div>
+</div>
+</section>
+<section id="sec-callout-appearance" class="level2">
+<h2 class="anchored" data-anchor-id="sec-callout-appearance">appearance バリエーション</h2>
+<p><code>appearance="simple"</code> で枠とアイコンだけのコンパクト表示、<code>appearance="minimal"</code> で枠線のみ。</p>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ヒント</span>simple appearance
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>線とアイコンだけのコンパクト表示。長い文章を 1 つのまとまりとして見せたい時に。</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">警告</span>minimal appearance
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>枠線さえ薄い。本文と続けて読ませたい場合に。</p>
+</div>
+</div>
+</section>
+<section id="sec-callout-collapse" class="level2">
+<h2 class="anchored" data-anchor-id="sec-callout-collapse">折りたたみ callout</h2>
+<p><code>collapse="true"</code> で初期状態 collapsed。長い証明・チェックリスト・解答を「読みたい人だけ展開」させる用途に。</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ノート</span>クリックで展開: 章末チェックリスト
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul class="task-list">
+<li><label><input type="checkbox">5 種の callout を使い分けられる</label></li>
+<li><label><input type="checkbox"><code>appearance</code> の 3 段階の違いを説明できる</label></li>
+<li><label><input type="checkbox"><code>collapse="true"</code> がいつ便利か言える</label></li>
+<li><label><input type="checkbox">custom callout の追加方法を <a href="#sec-callout-custom" class="quarto-xref"><span>カスタム callout (.field-notes / .important-point)</span></a> で確認した</label></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-callout-custom" class="level2">
+<h2 class="anchored" data-anchor-id="sec-callout-custom">カスタム callout (<code>.field-notes</code> / <code>.important-point</code>)</h2>
+<p>テンプレ同梱の <code>templates/styles.css</code> で 2 つのカスタム callout を定義しています。クラス名を変えるだけで独自分野色のメモが追加できます。</p>
+<div class="field-notes">
+<p><strong>Field Notes クラスの使い方</strong>: <code>.field-notes</code> で囲んだ div は青系の独自スタイル + 見出し “Field Notes” 付きで表示されます。実装は <code>quarto/templates/styles.css</code> の数行です。教科の色 (緑 = 物理 / 紫 = 数学 / 茶 = 歴史) ごとにコピペしてクラス名を増やすだけで独自分野メモを足せます。</p>
+</div>
+<div class="important-point">
+<p><strong>Important Point クラスの使い方</strong>: 重要事項を赤系で強調。<code>.callout-important</code> よりタイポグラフィ寄りの軽いトーンで、定理の核心や試験必出ポイントを際立たせるのに使います。</p>
+</div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ヒント</span>カスタム callout を新規追加する手順
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><code>quarto/templates/styles.css</code> 末尾に新しい CSS クラスをコピーで追加 (<code>.field-notes</code> を雛形に)</li>
+<li><code>::before</code> の <code>content:</code> 属性で見出しラベルを変更</li>
+<li><code>background-color</code> と <code>border-left</code> の色を変更</li>
+<li>qmd で <code>::: {.your-class} ... :::</code> のように囲む</li>
+</ol>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-figures-and-tables" class="level1 page-columns page-full">
+<h1>図表のレイアウト</h1>
+<p>ここでは Quarto の <strong>subfigure layout</strong>、<strong>margin / aside</strong>、<strong>lightbox gallery</strong>、<strong>pipe / grid table</strong> + <strong>table cross-ref</strong> を実例で見せます。</p>
+<section id="sec-subfig" class="level2">
+<h2 class="anchored" data-anchor-id="sec-subfig">subfigure (layout-ncol)</h2>
+<p>複数の図を 1 つの figure コンテナにまとめ、N 列に並べる:</p>
+<div id="fig-trig" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-trig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-trig" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-sine" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-sine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="../assets/images/figures/sine.png" class="lightbox" data-gallery="fig-trig" title="図&nbsp;9.1&nbsp;(a): sine 関数"><img src="../assets/images/figures/sine.png" class="img-fluid figure-img" data-ref-parent="fig-trig"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-sine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) sine 関数
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-trig" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-cosine" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-cosine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="../assets/images/figures/cosine.png" class="lightbox" data-gallery="fig-trig" title="図&nbsp;9.1&nbsp;(b): cosine 関数"><img src="../assets/images/figures/cosine.png" class="img-fluid figure-img" data-ref-parent="fig-trig"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-cosine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) cosine 関数
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-trig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;9.1: 三角関数の比較
+</figcaption>
+</figure>
+</div>
+<p><a href="#fig-trig" class="quarto-xref">図&nbsp;<span>9.1</span></a> が親、<a href="#fig-sine" class="quarto-xref">図&nbsp;<span>9.1 (a)</span></a> / <a href="#fig-cosine" class="quarto-xref">図&nbsp;<span>9.1 (b)</span></a> が個別の subfigure を指します。</p>
+</section>
+<section id="sec-column-page" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="sec-column-page">column: page で本文幅を超えて広げる</h2>
+<p><code>column: page</code> を使うと本文幅 (1100px) より広い表示エリアを取れます。横長グラフや巨大な表に。</p>
+<div id="fig-wide" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-wide-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
+<a href="../assets/images/figures/scatter.png" class="lightbox page-columns page-full" data-gallery="quarto-lightbox-gallery-3" title="図&nbsp;9.2: 横長サンプル — column: page"><img src="../assets/images/figures/scatter.png" class="img-fluid figure-img column-page"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wide-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;9.2: 横長サンプル — column: page
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="sec-margin" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="sec-margin">margin / aside (傍注)</h2>
+<p>本文の右マージンに補足情報を出す 2 つの方法。</p>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="margin-aside">これは <code>.aside</code> 形式の傍注です。本文の流れを止めずに補足できます。</span></div></div>
+<p>通常の段落です。<code>.aside</code> で囲んだ inline テキストは右マージンに小さく表示されます。</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><strong>Column-Margin Block</strong></p>
+<p><code>.column-margin</code> 形式では複数行・図・表もマージンに置けます。下に小さな図を置いた例:</p>
+<div id="fig-margin-sine" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-margin-sine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="../assets/images/figures/sine.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="図&nbsp;9.3: margin 内の図"><img src="../assets/images/figures/sine.png" class="img-fluid figure-img" style="width:80.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-margin-sine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;9.3: margin 内の図
+</figcaption>
+</figure>
+</div>
+</div></div><p><code>.aside</code> は inline、<code>.column-margin</code> は block レベルと使い分けます。</p>
+</section>
+<section id="sec-lightbox" class="level2">
+<h2 class="anchored" data-anchor-id="sec-lightbox">lightbox gallery</h2>
+<p><code>_quarto.yml</code> で <code>lightbox: auto</code> を有効化済み。クリックすると拡大表示 + ギャラリーモードでナビゲーション。<code>group="..."</code> で同じグループの画像をまとめて見られます。</p>
+<p><img src="../assets/images/figures/sine.png" class="img-fluid" style="width:30.0%" data-group="trig-gallery" alt="図&nbsp;fig-gallery-1"> <img src="../assets/images/figures/cosine.png" class="img-fluid" style="width:30.0%" data-group="trig-gallery" alt="図&nbsp;fig-gallery-2"> <img src="../assets/images/figures/scatter.png" class="img-fluid" style="width:30.0%" data-group="trig-gallery" alt="図&nbsp;fig-gallery-3"></p>
+<p>クリックして拡大、左右矢印で次の画像へ移動できます。</p>
+</section>
+<section id="sec-pipe-table" class="level2">
+<h2 class="anchored" data-anchor-id="sec-pipe-table">pipe table</h2>
+<p>軽量で読みやすい記法。テーブル幅は内容で自動調整。</p>
+<div id="tbl-calculus" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-calculus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+表&nbsp;9.1: 三角・指数・対数の微積分対応表
+</figcaption>
+<div aria-describedby="tbl-calculus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">関数</th>
+<th style="text-align: center;">微分</th>
+<th style="text-align: center;">積分 (定数省略)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\sin x</span></td>
+<td style="text-align: center;"><span class="math inline">\cos x</span></td>
+<td style="text-align: center;"><span class="math inline">-\cos x</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\cos x</span></td>
+<td style="text-align: center;"><span class="math inline">-\sin x</span></td>
+<td style="text-align: center;"><span class="math inline">\sin x</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">e^x</span></td>
+<td style="text-align: center;"><span class="math inline">e^x</span></td>
+<td style="text-align: center;"><span class="math inline">e^x</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\ln x</span></td>
+<td style="text-align: center;"><span class="math inline">1/x</span></td>
+<td style="text-align: center;"><span class="math inline">x \ln x - x</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><a href="#tbl-calculus" class="quarto-xref">表&nbsp;<span>9.1</span></a> のように <code>{#tbl-...}</code> ラベル + <code>@tbl-...</code> で参照できます。<code>:</code> の位置 (左/中央/右) で各列の整列を指定。</p>
+</section>
+<section id="sec-grid-table" class="level2">
+<h2 class="anchored" data-anchor-id="sec-grid-table">grid table</h2>
+<p>セル内で複数行 / リスト / コードブロックを使いたい時は grid table。罫線を <code>+</code> <code>=</code> <code>-</code> <code>|</code> で書きます。</p>
+<div id="tbl-divs" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-divs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+表&nbsp;9.2: Quarto の代表的な div 構文
+</figcaption>
+<div aria-describedby="tbl-divs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 37%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>環境</th>
+<th>コード例</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>theorem</td>
+<td><code>::: {#thm-name}</code></td>
+<td>定理 (番号付け)</td>
+</tr>
+<tr class="even">
+<td>proof</td>
+<td><code>::: {.proof}</code></td>
+<td>証明 (番号なし)</td>
+</tr>
+<tr class="odd">
+<td>callout</td>
+<td><code>::: {.callout-tip}</code></td>
+<td>補足情報 (5 種)</td>
+</tr>
+<tr class="even">
+<td>tabset</td>
+<td><code>::: {.panel-tabset}</code></td>
+<td>タブ切替</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><a href="#tbl-divs" class="quarto-xref">表&nbsp;<span>9.2</span></a> には <a href="#sec-callouts-default" class="quarto-xref"><span>5 種の標準 callout</span></a> / <a href="#sec-tabset" class="quarto-xref"><span>タブセット (panel-tabset)</span></a> / <a href="#sec-theorems" class="quarto-xref"><span>定義・定理・証明</span></a> が対応します。</p>
+</section>
+<section id="sec-figures-summary" class="level2">
+<h2 class="anchored" data-anchor-id="sec-figures-summary">まとめ</h2>
+<ul>
+<li>subfigure → <code>layout-ncol=N</code> を親 div に</li>
+<li>横長 → <code>.column-page</code></li>
+<li>マージン補足 → inline は <code>.aside</code>、block は <code>.column-margin</code></li>
+<li>lightbox → <code>_quarto.yml</code> に <code>lightbox: auto</code>、<code>group="..."</code> でギャラリー化</li>
+<li>表 → 軽い場合 pipe table、複雑なら grid table</li>
+<li>図表参照 → <code>{#fig-...}</code> <code>{#tbl-...}</code> を付け <code>@fig-...</code> <code>@tbl-...</code> で本文から参照</li>
+</ul>
+</section>
+</section>
+<section id="sec-text-and-citations" class="level1">
+<h1>テキスト要素と引用</h1>
+<p>ここでは Quarto の <strong>コード注釈 (annotation)</strong>、<strong>脚注</strong>、<strong>定義リスト</strong>、<strong>引用ブロック</strong>、<strong>video shortcode</strong>、<strong>conditional content</strong>、<strong>BibTeX 引用</strong> + <strong>参考文献</strong> を実例で見せます。</p>
+<section id="sec-code-annotation" class="level2">
+<h2 class="anchored" data-anchor-id="sec-code-annotation">コード注釈 (hover style)</h2>
+<p><code>&lt;1&gt;</code> <code>&lt;2&gt;</code> … のマーカーをコード行に付け、後ろに番号付きリストで説明を書くと、HTML 出力ではマーカーホバーで対応する解説がポップアップ表示されます (<code>code-annotations: hover</code> 必要)。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-2"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> trapezoid(f, a, b, n<span class="op">=</span><span class="dv">100</span>):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-2-2" class="code-annotation-target"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> (b <span class="op">-</span> a) <span class="op">/</span> n</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-2-3" class="code-annotation-target"><a href="#annotated-cell-2-3" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> <span class="fl">0.5</span> <span class="op">*</span> (f(a) <span class="op">+</span> f(b))</span>
+<span id="annotated-cell-2-4"><a href="#annotated-cell-2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, n):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-2-5" class="code-annotation-target"><a href="#annotated-cell-2-5" aria-hidden="true" tabindex="-1"></a>        s <span class="op">+=</span> f(a <span class="op">+</span> i <span class="op">*</span> h)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-2-6" class="code-annotation-target"><a href="#annotated-cell-2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> s <span class="op">*</span> h</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1">数値積分関数 <code>trapezoid</code> を定義。<code>f</code> は被積分関数、<code>[a, b]</code> は積分区間、<code>n</code> は分割数。</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="2" data-code-annotation="2">等間隔 <code>h</code> の刻み幅。</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="3" data-code-annotation="3">端点を 1/2 で重み付け (台形公式の境界項)。</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="5" data-code-annotation="4">内部点をフルウェイトで足し込む。</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="6" data-code-annotation="5">全体に <code>h</code> を掛けて積分の近似値を返す。</span>
+</dd>
+</dl>
+<p>注釈モードは <code>code-annotations: hover | below | none</code> で切替。<code>below</code> はコード下に展開表示、<code>hover</code> はマーカーホバー、<code>none</code> で無効化。</p>
+</section>
+<section id="sec-footnote" class="level2">
+<h2 class="anchored" data-anchor-id="sec-footnote">脚注 (footnote)</h2>
+<p>本文中で軽く触れたいだけの補足は脚注で<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。番号は自動振りされ、ページ末にまとめて表示されます<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。</p>
+</section>
+<section id="sec-deflist" class="level2">
+<h2 class="anchored" data-anchor-id="sec-deflist">定義リスト</h2>
+<p>用語と説明をペアで並べる時は <strong>定義リスト</strong> (<code>term : definition</code>)。索引や用語集に向きます。</p>
+<dl>
+<dt>固有値 (eigenvalue)</dt>
+<dd>
+線形写像 <span class="math inline">A: V \to V</span> に対し、<span class="math inline">Av = \lambda v</span> を満たす非ゼロベクトル <span class="math inline">v</span> が存在するスカラー <span class="math inline">\lambda \in \mathbb{C}</span>。
+</dd>
+<dt>固有ベクトル (eigenvector)</dt>
+<dd>
+上の関係を満たす非ゼロベクトル <span class="math inline">v</span>。スカラー倍を除いて一意。
+</dd>
+<dt>スペクトル (spectrum)</dt>
+<dd>
+行列の固有値の集合 <span class="math inline">\sigma(A) = \{\lambda_1, \dots, \lambda_n\}</span>。
+</dd>
+</dl>
+</section>
+<section id="sec-blockquote" class="level2">
+<h2 class="anchored" data-anchor-id="sec-blockquote">引用ブロック (blockquote)</h2>
+<blockquote class="blockquote">
+<p>数学とは答えを得る術ではなく、より良い問いを立てる術である。</p>
+<p>— ジョルジュ・カントール (出典不詳)</p>
+</blockquote>
+<p>引用に出典をつける慣習は <code>--- 著者</code> を末尾に。</p>
+</section>
+<section id="sec-video" class="level2">
+<h2 class="anchored" data-anchor-id="sec-video">video 埋め込み</h2>
+<p>YouTube / Vimeo / mp4 を直接埋め込めます。Quarto には <code></code> shortcode がありますが、Quarto 1.8.x には shortcode 内部で <code>nil 'fail'</code> を呼ぶ既知バグがあるため、現状は <strong>raw HTML <code>&lt;iframe&gt;</code></strong> が安定です。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Quarto shortcode (将来的にバグ修正されたら推奨) --&gt;</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p>下は iframe による埋め込み:</p>
+<div id="fig-video" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-video-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wo9vZccmqwc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="">
+</iframe>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-video-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;10.1: CERN: The Journey of Discovery
+</figcaption>
+</figure>
+</div>
+<p><a href="#fig-video" class="quarto-xref">図&nbsp;<span>10.1</span></a> のように div で囲んで <code>#fig-...</code> を付けると figure として cross-ref できます。</p>
+</section>
+<section id="sec-conditional" class="level2">
+<h2 class="anchored" data-anchor-id="sec-conditional">conditional content (出力形式で出し分け)</h2>
+<p><code>.content-visible</code> / <code>.content-hidden</code> クラスで HTML / PDF / docx 別に表示を切り替えられます。</p>
+<p><strong>この段落は HTML 出力でのみ見えます</strong>。インタラクティブな要素 (Quarto Live / 動画 / lightbox) を入れる時に。</p>
+<p>逆に <code>.content-hidden when-format="..."</code> で「指定形式では非表示」も書けます。</p>
+</section>
+<section id="sec-citation" class="level2">
+<h2 class="anchored" data-anchor-id="sec-citation">BibTeX 引用</h2>
+<p><code>templates/references.bib</code> の各エントリを <code>@キー</code> で参照すると、自動で文献番号と本文末の参考文献リストが生成されます。</p>
+<ul>
+<li>力学の古典的教科書としては <span class="citation" data-cites="landau1976">Landau と Lifshitz (<a href="#ref-landau1976" role="doc-biblioref">1976年</a>)</span> が標準。</li>
+<li>量子情報の包括的な教科書 <span class="citation" data-cites="nielsen2010">Nielsen と Chuang (<a href="#ref-nielsen2010" role="doc-biblioref">2010年</a>)</span> はほぼすべての研究者が手に取る一冊。</li>
+<li>特殊相対性理論の原論文 <span class="citation" data-cites="einstein1905">Einstein (<a href="#ref-einstein1905" role="doc-biblioref">1905年</a>)</span> は Annalen der Physik に掲載された。</li>
+<li>情報理論の創始 <span class="citation" data-cites="shannon1948">(<a href="#ref-shannon1948" role="doc-biblioref">Shannon 1948年</a>)</span> と組版システムの古典 <span class="citation" data-cites="knuth1984">(<a href="#ref-knuth1984" role="doc-biblioref">Knuth 1984年</a>)</span> は計算機科学側からも引かれる。</li>
+<li>Quarto 自体の公式ドキュメント <span class="citation" data-cites="quarto2024">(<a href="#ref-quarto2024" role="doc-biblioref">Quarto Authors 2024年</a>)</span> も参照。</li>
+</ul>
+<p>カッコ付き参照は <code>[@key]</code>、文中参照は <code>@key</code>。複数参照は <code>[@a; @b; @c]</code>。</p>
+</section>
+<section id="sec-references-list" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-references-list">参考文献</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-einstein1905" class="csl-entry" role="listitem">
+Einstein, Albert. 1905年. <span>「Zur Elektrodynamik bewegter Körper」</span>. <em>Annalen der Physik</em> 322 (10): 891–921.
+</div>
+<div id="ref-knuth1984" class="csl-entry" role="listitem">
+Knuth, Donald E. 1984年. <em>The TeXbook</em>. Addison-Wesley.
+</div>
+<div id="ref-landau1976" class="csl-entry" role="listitem">
+Landau, L. D., と E. M. Lifshitz. 1976年. <em>Mechanics</em>. 3rd 版. Course of Theoretical Physics, Vol. 1. Butterworth-Heinemann.
+</div>
+<div id="ref-nielsen2010" class="csl-entry" role="listitem">
+Nielsen, Michael A., と Isaac L. Chuang. 2010年. <em>Quantum Computation and Quantum Information: 10th Anniversary Edition</em>. Cambridge University Press.
+</div>
+<div id="ref-quarto2024" class="csl-entry" role="listitem">
+Quarto Authors. 2024年. <em>Quarto: An open-source scientific and technical publishing system</em>. <a href="https://quarto.org/" class="uri">Https://quarto.org/</a>.
+</div>
+<div id="ref-shannon1948" class="csl-entry" role="listitem">
+Shannon, Claude E. 1948年. <span>「A Mathematical Theory of Communication」</span>. <em>The Bell System Technical Journal</em> 27: 379–423.
+</div>
+</div>
+<p>上の <code>#refs</code> div に Quarto が自動で参考文献リストを挿入します。<code>csl: ...</code> で APA / MLA / IEEE などの引用スタイルを切り替え可能。</p>
 
 
 <!-- -->
@@ -607,6 +1438,13 @@ eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJweW9kaWRlLTMiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2RO
 W10=
 </script>
 </section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>台形公式の誤差は <span class="math inline">\mathcal{O}(h^2)</span> で、Simpson 公式の <span class="math inline">\mathcal{O}(h^4)</span> より遅い収束です。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>脚注は Pandoc 拡張で、<code>[^label]: 内容</code> を本文と離れた場所に書けば自動的にページ末にまとめてくれます。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
@@ -1132,40 +1970,48 @@ window._ojs.runtime.interpretFromScriptTags();
   <div class="nav-page nav-page-next">
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">ソースコード</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "本編"</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">engine:</span><span class="co"> markdown</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="an">filters:</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">  - r-wasm/live</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Quarto Live が Pyodide 起動時に直列インストールするパッケージ。</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># `{pyodide}` セルの中で `await micropip.install(...)` を使うと、</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 別セルが await 中に並列で動き出し、Pyodide ワーカ内の固定名環境 "result" を</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 上書きして display 出力先が混線する (未報告の上流バグ)。</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># packages: にまとめて宣言すれば、どのセルも走る前に install が完了するので</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># セル内コードに await が一切残らず、race の余地がなくなる。</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="an">pyodide:</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">  packages:</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">    - plotly</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">    - nbformat</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">    - jsonschema</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>このファイルが教科書本体の **唯一の信頼できる情報源 (single source of truth)** です。</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>章ごとのコンテンツは <span class="in">`_*.qmd`</span> ファイル (アンダースコア接頭辞 = Quarto がレンダリング対象から除外) に分割し、</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>ここから <span class="in">`{{&lt; include &gt;}}`</span> でまとめます。</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="in">`filters: [r-wasm/live]`</span> をこのファイルに付けることで、配下のすべてのパーシャルで</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="in">`{ojs}`</span> / <span class="in">`{pyodide}`</span> ブロックが有効になります (Quarto Live 拡張)。</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>{{&lt; include _01_introduction.qmd &gt;}}</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>{{&lt; include _02_chapter.qmd &gt;}}</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>{{&lt; include _03_interactive_demo.qmd &gt;}}</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>{{&lt; include _04_plotly_demo.qmd &gt;}}</span></code></pre></div><button title="コピー" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "本編"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="an">engine:</span><span class="co"> markdown</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="an">filters:</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">  - r-wasm/live</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Quarto Live が Pyodide 起動時に直列インストールするパッケージ。</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># `{pyodide}` セルの中で `await micropip.install(...)` を使うと、</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 別セルが await 中に並列で動き出し、Pyodide ワーカ内の固定名環境 "result" を</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 上書きして display 出力先が混線する (未報告の上流バグ)。</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># packages: にまとめて宣言すれば、どのセルも走る前に install が完了するので</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># セル内コードに await が一切残らず、race の余地がなくなる。</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="an">pyodide:</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">  packages:</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">    - plotly</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">    - nbformat</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">    - jsonschema</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>このファイルが教科書本体の **唯一の信頼できる情報源 (single source of truth)** です。</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>章ごとのコンテンツは <span class="in">`_*.qmd`</span> ファイル (アンダースコア接頭辞 = Quarto がレンダリング対象から除外) に分割し、</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>ここから <span class="in">`{{&lt; include &gt;}}`</span> でまとめます。</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="in">`filters: [r-wasm/live]`</span> をこのファイルに付けることで、配下のすべてのパーシャルで</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="in">`{ojs}`</span> / <span class="in">`{pyodide}`</span> ブロックが有効になります (Quarto Live 拡張)。</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>{{&lt; include _01_introduction.qmd &gt;}}</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>{{&lt; include _02_chapter.qmd &gt;}}</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>{{&lt; include _03_interactive_demo.qmd &gt;}}</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>{{&lt; include _04_plotly_demo.qmd &gt;}}</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>{{&lt; include _05_diagrams_and_math.qmd &gt;}}</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>{{&lt; include _06_layout_and_callouts.qmd &gt;}}</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>{{&lt; include _07_figures_and_tables.qmd &gt;}}</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>{{&lt; include _08_text_and_citations.qmd &gt;}}</span></code></pre></div><button title="コピー" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
@@ -1187,6 +2033,39 @@ window._ojs.runtime.interpretFromScriptTags();
     </div>
   </div>
 </footer>
+<script>videojs(video_shortcode_videojs_video1);</script>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

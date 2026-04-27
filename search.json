@@ -49,7 +49,7 @@
     "href": "textbook/textbook.html#この章で学ぶこと",
     "title": "本編",
     "section": "この章で学ぶこと",
-    "text": "この章で学ぶこと\n\nパーシャルファイル (_*.qmd) は YAML フロントマター禁止。親 (textbook.qmd) に集約します。\n数式は LaTeX で記述。インラインは $E = mc^2$、ディスプレイは:\n\n\n\\nabla \\times \\mathbf{B} - \\frac{1}{c}\\frac{\\partial \\mathbf{E}}{\\partial t} = \\frac{4\\pi}{c}\\mathbf{J}\n\\tag{3.1}\n式 3.1 は Maxwell-Ampère の法則です。",
+    "text": "この章で学ぶこと\n\nパーシャルファイル (_*.qmd) は YAML フロントマター禁止。親 (textbook.qmd) に集約します。\n数式は LaTeX で記述。インラインは $E = mc^2$、ディスプレイは:\n\n\n\\nabla \\times \\mathbf{B} - \\frac{1}{c}\\frac{\\partial \\mathbf{E}}{\\partial t} = \\frac{4\\pi}{c}\\mathbf{J}\n\\tag{3.1}\n式 7.1 は Maxwell-Ampère の法則です。",
     "crumbs": [
       "ホーム",
       "本編",
@@ -170,6 +170,342 @@
     "title": "本編",
     "section": "matplotlib と Plotly の使い分け",
     "text": "matplotlib と Plotly の使い分け\n\n\n\n\n\n\n\n\n\nmatplotlib (FuncAnimation)\nPlotly\n\n\n\n\nコード量\nやや多い (figure / line / update 関数)\n少ない (animation_frame 1 引数)\n\n\nフォント設定\n日本語は addfont 必須\nOS フォント (追加設定不要)\n\n\nインタラクション\nコマ送り / 再生 / 停止\nコマ送り / 再生 / 停止 / hover / pan / zoom\n\n\n出力形式\nPNG (静止画) または JS プレイヤー\nSVG / WebGL ベースの interactive plot\n\n\n論文用\nベクター PDF が綺麗、印刷向き\n印刷用 export はやや弱い\n\n\nデータ次元\n2D が中心\n2D / 3D / 地理 / dashboard も得意\n\n\n\n紙に載せる図は matplotlib、ウェブで読者が触る図は Plotly、と使い分けるのが標準です。",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#sec-mermaid-flow",
+    "href": "textbook/textbook.html#sec-mermaid-flow",
+    "title": "本編",
+    "section": "Mermaid フローチャート",
+    "text": "Mermaid フローチャート\n\n\n\n\n\n\nflowchart LR\n    A[入力] --&gt; B{条件分岐}\n    B -- yes --&gt; C[処理 X]\n    B -- no  --&gt; D[処理 Y]\n    C --&gt; E[出力]\n    D --&gt; E\n\n\n\n\n図 7.1: アルゴリズムのフロー\n\n\n\n\n\n図 7.1 が示すように、Mermaid の flowchart で分岐構造を簡潔に描けます。",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#sec-mermaid-sequence",
+    "href": "textbook/textbook.html#sec-mermaid-sequence",
+    "title": "本編",
+    "section": "Mermaid シーケンス図",
+    "text": "Mermaid シーケンス図\n\n\n\n\n\n\nsequenceDiagram\n    participant U as User\n    participant S as Server\n    U-&gt;&gt;S: Request\n    S--&gt;&gt;U: Response\n    Note over U,S: ハンドシェイク完了\n\n\n\n\n図 7.2: クライアント・サーバ間の通信",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#sec-mermaid-state",
+    "href": "textbook/textbook.html#sec-mermaid-state",
+    "title": "本編",
+    "section": "Mermaid 状態遷移",
+    "text": "Mermaid 状態遷移\n\n\n\n\n\n\nstateDiagram-v2\n    [*] --&gt; 赤\n    赤 --&gt; 青: 30s\n    青 --&gt; 黄: 25s\n    黄 --&gt; 赤: 5s\n\n\n\n\n図 7.3: 信号機の状態遷移",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#sec-graphviz",
+    "href": "textbook/textbook.html#sec-graphviz",
+    "title": "本編",
+    "section": "Graphviz (DOT)",
+    "text": "Graphviz (DOT)\n{mermaid} の代替として Graphviz も使えます。複雑なノード配置は DOT の方が制御しやすい場面があります。\n\n\n\n\n\n\n\n\nG\n\n\n\nA\n\nA\n\n\n\nB\n\nB\n\n\n\nA-&gt;B\n\n\nf\n\n\n\nC\n\nC\n\n\n\nA-&gt;C\n\n\ng∘f\n\n\n\nB-&gt;C\n\n\ng\n\n\n\n\n\n\n図 7.4: Graphviz による有向グラフ",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#sec-equations",
+    "href": "textbook/textbook.html#sec-equations",
+    "title": "本編",
+    "section": "数式と cross-reference",
+    "text": "数式と cross-reference\nディスプレイ数式に {#eq-...} ラベルを付けると、本文から @eq-... で参照できます。\n\n\\nabla \\times \\vec{B} = \\mu_0 \\vec{J} + \\mu_0 \\varepsilon_0 \\frac{\\partial \\vec{E}}{\\partial t}\n\\tag{7.1}\n式 7.1 はマクスウェル方程式の Ampère-Maxwell 則です。電流密度に加えて変位電流 \\partial_t \\vec{E} が現れる点が古典 Ampère 則からの拡張になっています。\n\n可換図式 (LaTeX array 環境)\n数式環境内で \\xrightarrow と縦矢印を組み合わせて可換図式を描けます。\n\n\\begin{array}{ccc}\nA & \\xrightarrow{f} & B \\\\\n\\downarrow{\\pi} & & \\downarrow{\\pi'} \\\\\nA/{\\sim} & \\xrightarrow{\\bar{f}} & B/{\\sim}\n\\end{array}\n\\tag{7.2}\n\n\n可換図式 (Mermaid)\n同じ可換図式を Mermaid のグラフでも書けます。HTML 出力では Mermaid の方が見栄えが良いことも。\n\n\n\n\n\n\ngraph LR\n    A((A)) -- f --&gt; B((B))\n    A -- π --&gt; AS((A/~))\n    B -- π' --&gt; BS((B/~))\n    AS -- f̄ --&gt; BS\n\n\n\n\n図 7.5: 可換図式 (Mermaid 版)",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#sec-theorems",
+    "href": "textbook/textbook.html#sec-theorems",
+    "title": "本編",
+    "section": "定義・定理・証明",
+    "text": "定義・定理・証明\nQuarto は #thm- #def- #lem- #cor- #prp- #cnj- #exm- #exr- #sol- #rem- #alg- の theorem-like 環境を提供します。番号付け・cross-ref が自動。\n\n定義\n\n定義 7.1 (群 (group)) 集合 G と二項演算 \\cdot : G \\times G \\to G の組 (G, \\cdot) が 群 であるとは、以下を満たすこと。\n\n結合律: (a \\cdot b) \\cdot c = a \\cdot (b \\cdot c)\n単位元の存在: \\exists e \\in G,\\ \\forall a \\in G,\\ e \\cdot a = a \\cdot e = a\n逆元の存在: \\forall a \\in G,\\ \\exists a^{-1} \\in G,\\ a \\cdot a^{-1} = a^{-1} \\cdot a = e\n\n\n定義 7.1 は代数学の出発点です。\n\n\n補題と定理\n\n補題 7.1 (消去律) 群 G において、a \\cdot b = a \\cdot c \\Rightarrow b = c。\n\n\n証明. 両辺に左から a^{-1} をかける。a^{-1} a b = a^{-1} a c より b = c。\\square\n\n\n定理 7.1 (単位元の一意性) 群の単位元は一意に定まる。\n\n\n証明. e, e' をともに単位元とする。単位元の定義から e = e \\cdot e' = e'。よって e = e'。\\square\n\n定理 7.1 は 補題 7.1 と独立に証明できる基本事実です。\n\n\n系・命題\n\n系 7.1 (逆元の一意性) 群の各元の逆元は一意に定まる。\n\n\n命題 7.1 (冪則) \\forall a \\in G,\\ \\forall m, n \\in \\mathbb{Z}: a^m \\cdot a^n = a^{m+n}。\n\n\n\n例題と演習・解答\n\n例 7.1 (例: 巡回群) 整数の加法群 (\\mathbb{Z}, +) は単位元 0 をもち、1 で生成される無限巡回群である。\n\n\n練習 7.1 (演習) 3 次対称群 S_3 の位数を求め、可換群でないことを示せ。\n\n\n解答 7.1 (解答). |S_3| = 3! = 6。互換 (1\\ 2) と (2\\ 3) は可換でない: (1\\ 2)(2\\ 3) = (1\\ 2\\ 3) だが (2\\ 3)(1\\ 2) = (1\\ 3\\ 2)。\n\n練習 7.1 の解答は Solution 7.1。",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#sec-tabset",
+    "href": "textbook/textbook.html#sec-tabset",
+    "title": "本編",
+    "section": "タブセット (panel-tabset)",
+    "text": "タブセット (panel-tabset)\n複数の言語実装や説明スタイルを 1 ヶ所に並べたい時に便利。タブの切り替え状態は group=\"...\" 属性でページ間で同期できます。\n\nPythonRJulia\n\n\nimport numpy as np\ndef euclidean(x, y):\n    return np.linalg.norm(np.asarray(x) - np.asarray(y))\n\n\neuclidean &lt;- function(x, y) sqrt(sum((x - y)^2))\n\n\neuclidean(x, y) = sqrt(sum((x .- y) .^ 2))\n\n\n\nタブの上にもう一度同じ group=\"lang\" を付けると、片方のタブで Python を選ぶともう片方も追従します。",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#sec-grid",
+    "href": "textbook/textbook.html#sec-grid",
+    "title": "本編",
+    "section": "グリッドレイアウト",
+    "text": "グリッドレイアウト\nBootstrap 12 列グリッド。.g-col-N で N/12 の幅を取ります。\n\n\n左カラム\n\n比較したい概念 A\n数式: \\sigma = \\sqrt{\\dfrac{1}{n}\\sum (x_i - \\bar{x})^2}\n適用条件: 正規分布近似可\n\n\n\n右カラム\n\n比較したい概念 B\n数式: \\mathrm{MAD} = \\dfrac{1}{n}\\sum |x_i - \\bar{x}|\n適用条件: ロバスト推定\n\n\n\ng-col-4 + g-col-8、3 等分なら g-col-4 を 3 つなど自由に組み合わせられます。",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#sec-callouts-default",
+    "href": "textbook/textbook.html#sec-callouts-default",
+    "title": "本編",
+    "section": "5 種の標準 callout",
+    "text": "5 種の標準 callout\n\n\n\n\n\n\nノート\n\n\n\nnote: 補足情報の通常表示。{.callout-note} で囲むだけ。\n\n\n\n\n\n\n\n\nヒント\n\n\n\ntip: 効率化や別解の提案。\n\n\n\n\n\n\n\n\n警告\n\n\n\nwarning: 落とし穴や注意点。\n\n\n\n\n\n\n\n\n注意\n\n\n\ncaution: 高リスクな操作 / 既知のバグ / 破壊的変更。\n\n\n\n\n\n\n\n\n重要\n\n\n\nimportant: 必須要件。読み飛ばすと後の議論が成立しない情報。",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#sec-callout-appearance",
+    "href": "textbook/textbook.html#sec-callout-appearance",
+    "title": "本編",
+    "section": "appearance バリエーション",
+    "text": "appearance バリエーション\nappearance=\"simple\" で枠とアイコンだけのコンパクト表示、appearance=\"minimal\" で枠線のみ。\n\n\n\n\n\n\nヒントsimple appearance\n\n\n\n線とアイコンだけのコンパクト表示。長い文章を 1 つのまとまりとして見せたい時に。\n\n\n\n\n\n\n\n\n警告minimal appearance\n\n\n\n枠線さえ薄い。本文と続けて読ませたい場合に。",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#sec-callout-collapse",
+    "href": "textbook/textbook.html#sec-callout-collapse",
+    "title": "本編",
+    "section": "折りたたみ callout",
+    "text": "折りたたみ callout\ncollapse=\"true\" で初期状態 collapsed。長い証明・チェックリスト・解答を「読みたい人だけ展開」させる用途に。\n\n\n\n\n\n\nノートクリックで展開: 章末チェックリスト\n\n\n\n\n\n\n5 種の callout を使い分けられる\nappearance の 3 段階の違いを説明できる\ncollapse=\"true\" がいつ便利か言える\ncustom callout の追加方法を カスタム callout (.field-notes / .important-point) で確認した",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#sec-callout-custom",
+    "href": "textbook/textbook.html#sec-callout-custom",
+    "title": "本編",
+    "section": "カスタム callout (.field-notes / .important-point)",
+    "text": "カスタム callout (.field-notes / .important-point)\nテンプレ同梱の templates/styles.css で 2 つのカスタム callout を定義しています。クラス名を変えるだけで独自分野色のメモが追加できます。\n\nField Notes クラスの使い方: .field-notes で囲んだ div は青系の独自スタイル + 見出し “Field Notes” 付きで表示されます。実装は quarto/templates/styles.css の数行です。教科の色 (緑 = 物理 / 紫 = 数学 / 茶 = 歴史) ごとにコピペしてクラス名を増やすだけで独自分野メモを足せます。\n\n\nImportant Point クラスの使い方: 重要事項を赤系で強調。.callout-important よりタイポグラフィ寄りの軽いトーンで、定理の核心や試験必出ポイントを際立たせるのに使います。\n\n\n\n\n\n\n\nヒントカスタム callout を新規追加する手順\n\n\n\n\nquarto/templates/styles.css 末尾に新しい CSS クラスをコピーで追加 (.field-notes を雛形に)\n::before の content: 属性で見出しラベルを変更\nbackground-color と border-left の色を変更\nqmd で ::: {.your-class} ... ::: のように囲む",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#sec-subfig",
+    "href": "textbook/textbook.html#sec-subfig",
+    "title": "本編",
+    "section": "subfigure (layout-ncol)",
+    "text": "subfigure (layout-ncol)\n複数の図を 1 つの figure コンテナにまとめ、N 列に並べる:\n\n\n\n\n\n\n\n\n\n\n\n(a) sine 関数\n\n\n\n\n\n\n\n\n\n\n\n(b) cosine 関数\n\n\n\n\n\n\n\n図 9.1: 三角関数の比較\n\n\n\n図 9.1 が親、図 9.1 (a) / 図 9.1 (b) が個別の subfigure を指します。",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#sec-column-page",
+    "href": "textbook/textbook.html#sec-column-page",
+    "title": "本編",
+    "section": "column: page で本文幅を超えて広げる",
+    "text": "column: page で本文幅を超えて広げる\ncolumn: page を使うと本文幅 (1100px) より広い表示エリアを取れます。横長グラフや巨大な表に。\n\n\n\n\n\n\n図 9.2: 横長サンプル — column: page",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#sec-margin",
+    "href": "textbook/textbook.html#sec-margin",
+    "title": "本編",
+    "section": "margin / aside (傍注)",
+    "text": "margin / aside (傍注)\n本文の右マージンに補足情報を出す 2 つの方法。\nこれは .aside 形式の傍注です。本文の流れを止めずに補足できます。\n通常の段落です。.aside で囲んだ inline テキストは右マージンに小さく表示されます。\n\n\nColumn-Margin Block\n.column-margin 形式では複数行・図・表もマージンに置けます。下に小さな図を置いた例:\n\n\n\n\n\n\n図 9.3: margin 内の図\n\n\n\n.aside は inline、.column-margin は block レベルと使い分けます。",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#sec-lightbox",
+    "href": "textbook/textbook.html#sec-lightbox",
+    "title": "本編",
+    "section": "lightbox gallery",
+    "text": "lightbox gallery\n_quarto.yml で lightbox: auto を有効化済み。クリックすると拡大表示 + ギャラリーモードでナビゲーション。group=\"...\" で同じグループの画像をまとめて見られます。\n  \nクリックして拡大、左右矢印で次の画像へ移動できます。",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#sec-pipe-table",
+    "href": "textbook/textbook.html#sec-pipe-table",
+    "title": "本編",
+    "section": "pipe table",
+    "text": "pipe table\n軽量で読みやすい記法。テーブル幅は内容で自動調整。\n\n\n\n表 9.1: 三角・指数・対数の微積分対応表\n\n\n\n\n\n関数\n微分\n積分 (定数省略)\n\n\n\n\n\\sin x\n\\cos x\n-\\cos x\n\n\n\\cos x\n-\\sin x\n\\sin x\n\n\ne^x\ne^x\ne^x\n\n\n\\ln x\n1/x\nx \\ln x - x\n\n\n\n\n\n\n表 9.1 のように {#tbl-...} ラベル + @tbl-... で参照できます。: の位置 (左/中央/右) で各列の整列を指定。",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#sec-grid-table",
+    "href": "textbook/textbook.html#sec-grid-table",
+    "title": "本編",
+    "section": "grid table",
+    "text": "grid table\nセル内で複数行 / リスト / コードブロックを使いたい時は grid table。罫線を + = - | で書きます。\n\n\n\n表 9.2: Quarto の代表的な div 構文\n\n\n\n\n\n\n\n\n\n\n環境\nコード例\n用途\n\n\n\n\ntheorem\n::: {#thm-name}\n定理 (番号付け)\n\n\nproof\n::: {.proof}\n証明 (番号なし)\n\n\ncallout\n::: {.callout-tip}\n補足情報 (5 種)\n\n\ntabset\n::: {.panel-tabset}\nタブ切替\n\n\n\n\n\n\n表 9.2 には 5 種の標準 callout / タブセット (panel-tabset) / 定義・定理・証明 が対応します。",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#sec-figures-summary",
+    "href": "textbook/textbook.html#sec-figures-summary",
+    "title": "本編",
+    "section": "まとめ",
+    "text": "まとめ\n\nsubfigure → layout-ncol=N を親 div に\n横長 → .column-page\nマージン補足 → inline は .aside、block は .column-margin\nlightbox → _quarto.yml に lightbox: auto、group=\"...\" でギャラリー化\n表 → 軽い場合 pipe table、複雑なら grid table\n図表参照 → {#fig-...} {#tbl-...} を付け @fig-... @tbl-... で本文から参照",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#sec-code-annotation",
+    "href": "textbook/textbook.html#sec-code-annotation",
+    "title": "本編",
+    "section": "コード注釈 (hover style)",
+    "text": "コード注釈 (hover style)\n&lt;1&gt; &lt;2&gt; … のマーカーをコード行に付け、後ろに番号付きリストで説明を書くと、HTML 出力ではマーカーホバーで対応する解説がポップアップ表示されます (code-annotations: hover 必要)。\n1def trapezoid(f, a, b, n=100):\n2    h = (b - a) / n\n3    s = 0.5 * (f(a) + f(b))\n    for i in range(1, n):\n4        s += f(a + i * h)\n5    return s * h\n\n1\n\n数値積分関数 trapezoid を定義。f は被積分関数、[a, b] は積分区間、n は分割数。\n\n2\n\n等間隔 h の刻み幅。\n\n3\n\n端点を 1/2 で重み付け (台形公式の境界項)。\n\n4\n\n内部点をフルウェイトで足し込む。\n\n5\n\n全体に h を掛けて積分の近似値を返す。\n\n\n注釈モードは code-annotations: hover | below | none で切替。below はコード下に展開表示、hover はマーカーホバー、none で無効化。",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#sec-footnote",
+    "href": "textbook/textbook.html#sec-footnote",
+    "title": "本編",
+    "section": "脚注 (footnote)",
+    "text": "脚注 (footnote)\n本文中で軽く触れたいだけの補足は脚注で1。番号は自動振りされ、ページ末にまとめて表示されます2。",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#sec-deflist",
+    "href": "textbook/textbook.html#sec-deflist",
+    "title": "本編",
+    "section": "定義リスト",
+    "text": "定義リスト\n用語と説明をペアで並べる時は 定義リスト (term : definition)。索引や用語集に向きます。\n\n固有値 (eigenvalue)\n\n線形写像 A: V \\to V に対し、Av = \\lambda v を満たす非ゼロベクトル v が存在するスカラー \\lambda \\in \\mathbb{C}。\n\n固有ベクトル (eigenvector)\n\n上の関係を満たす非ゼロベクトル v。スカラー倍を除いて一意。\n\nスペクトル (spectrum)\n\n行列の固有値の集合 \\sigma(A) = \\{\\lambda_1, \\dots, \\lambda_n\\}。",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#sec-blockquote",
+    "href": "textbook/textbook.html#sec-blockquote",
+    "title": "本編",
+    "section": "引用ブロック (blockquote)",
+    "text": "引用ブロック (blockquote)\n\n数学とは答えを得る術ではなく、より良い問いを立てる術である。\n— ジョルジュ・カントール (出典不詳)\n\n引用に出典をつける慣習は --- 著者 を末尾に。",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#sec-video",
+    "href": "textbook/textbook.html#sec-video",
+    "title": "本編",
+    "section": "video 埋め込み",
+    "text": "video 埋め込み\nYouTube / Vimeo / mp4 を直接埋め込めます。Quarto には  shortcode がありますが、Quarto 1.8.x には shortcode 内部で nil 'fail' を呼ぶ既知バグがあるため、現状は raw HTML &lt;iframe&gt; が安定です。\n&lt;!-- Quarto shortcode (将来的にバグ修正されたら推奨) --&gt;\n下は iframe による埋め込み:\n\n\n\n\n\n\n\n図 10.1: CERN: The Journey of Discovery\n\n\n\n図 10.1 のように div で囲んで #fig-... を付けると figure として cross-ref できます。",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#sec-conditional",
+    "href": "textbook/textbook.html#sec-conditional",
+    "title": "本編",
+    "section": "conditional content (出力形式で出し分け)",
+    "text": "conditional content (出力形式で出し分け)\n.content-visible / .content-hidden クラスで HTML / PDF / docx 別に表示を切り替えられます。\nこの段落は HTML 出力でのみ見えます。インタラクティブな要素 (Quarto Live / 動画 / lightbox) を入れる時に。\n逆に .content-hidden when-format=\"...\" で「指定形式では非表示」も書けます。",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#sec-citation",
+    "href": "textbook/textbook.html#sec-citation",
+    "title": "本編",
+    "section": "BibTeX 引用",
+    "text": "BibTeX 引用\ntemplates/references.bib の各エントリを @キー で参照すると、自動で文献番号と本文末の参考文献リストが生成されます。\n\n力学の古典的教科書としては Landau と Lifshitz (1976年) が標準。\n量子情報の包括的な教科書 Nielsen と Chuang (2010年) はほぼすべての研究者が手に取る一冊。\n特殊相対性理論の原論文 Einstein (1905年) は Annalen der Physik に掲載された。\n情報理論の創始 (Shannon 1948年) と組版システムの古典 (Knuth 1984年) は計算機科学側からも引かれる。\nQuarto 自体の公式ドキュメント (Quarto Authors 2024年) も参照。\n\nカッコ付き参照は [@key]、文中参照は @key。複数参照は [@a; @b; @c]。",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#sec-references-list",
+    "href": "textbook/textbook.html#sec-references-list",
+    "title": "本編",
+    "section": "参考文献",
+    "text": "参考文献\n\n\nEinstein, Albert. 1905年. 「Zur Elektrodynamik bewegter Körper」. Annalen der Physik 322 (10): 891–921.\n\n\nKnuth, Donald E. 1984年. The TeXbook. Addison-Wesley.\n\n\nLandau, L. D., と E. M. Lifshitz. 1976年. Mechanics. 3rd 版. Course of Theoretical Physics, Vol. 1. Butterworth-Heinemann.\n\n\nNielsen, Michael A., と Isaac L. Chuang. 2010年. Quantum Computation and Quantum Information: 10th Anniversary Edition. Cambridge University Press.\n\n\nQuarto Authors. 2024年. Quarto: An open-source scientific and technical publishing system. Https://quarto.org/.\n\n\nShannon, Claude E. 1948年. 「A Mathematical Theory of Communication」. The Bell System Technical Journal 27: 379–423.\n\n\n上の #refs div に Quarto が自動で参考文献リストを挿入します。csl: ... で APA / MLA / IEEE などの引用スタイルを切り替え可能。",
+    "crumbs": [
+      "ホーム",
+      "本編",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>本編</span>"
+    ]
+  },
+  {
+    "objectID": "textbook/textbook.html#footnotes",
+    "href": "textbook/textbook.html#footnotes",
+    "title": "本編",
+    "section": "",
+    "text": "台形公式の誤差は \\mathcal{O}(h^2) で、Simpson 公式の \\mathcal{O}(h^4) より遅い収束です。↩︎\n脚注は Pandoc 拡張で、[^label]: 内容 を本文と離れた場所に書けば自動的にページ末にまとめてくれます。↩︎",
     "crumbs": [
       "ホーム",
       "本編",
