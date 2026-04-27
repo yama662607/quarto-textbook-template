@@ -1,11 +1,20 @@
 ## X.Y セクションタイトル [textbook.pdf p.XX](../assets/pdf/textbook.pdf#page=YY) {#sec-X-Y}
 
 <!--
+  ============================================================
+  これは copy-paste 用スケルトンです (book からは render されません)。
+  PDF を翻訳しつつ Phase 1 (忠実翻訳) → Phase 2 (解説拡充) で章を起こす
+  ためのセクション断片の出発点。
+
   使い方:
-  1. この断片ファイルを quarto/textbook/_NN_section-title.qmd として保存
+  1. このファイルを quarto/textbook/_NN_section-title.qmd として保存
   2. YAML ヘッダーは付けない (親 textbook.qmd が持つため不要)
   3. textbook.qmd 側に {{< include _NN_section-title.qmd >}} を追加
   4. Phase 1 (忠実翻訳) → Phase 2 (解説拡充) の順で書く
+
+  Live demo は `quarto/textbook/_05_diagrams_and_math.qmd` (定理環境)
+  ・`_06_layout_and_callouts.qmd` (callout) を参照。
+  ============================================================
 -->
 
 ---
@@ -105,7 +114,7 @@ graph LR
 <!--
 Python/Qiskit による実装例（必要な場合のみ）:
 
-```{python}
+```{pyodide}
 #| label: fig-X-Y-impl
 #| fig-cap: "実装例"
 # ここにコードを記述

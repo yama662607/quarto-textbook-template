@@ -1,3 +1,14 @@
+<!--
+  ============================================================
+  これは copy-paste 用スケルトンです (book からは render されません)。
+  V-S-V サイクル (Visual → Symbolic → Verify) の Theory フェーズ用
+  レッスン雛形。直感 → 数式 → 図解 → アルゴリズム → クイズの流れ。
+  `cp templates/theory_template.qmd quarto/textbook/_NN_xxx.qmd`
+  してから書き始めてください。
+
+  Live demo は `_05〜_08` を参照。
+  ============================================================
+-->
 ---
 # ================================
 # YAML ヘッダー：Quarto ドキュメントのメタデータ設定
@@ -157,7 +168,7 @@ sequenceDiagram
 ::: {#fig-charts layout-ncol=2}
 # layout-ncol=2 で2列に配置
 
-```{python}
+```{pyodide}
 #| label: fig-chart-1
 #| fig-cap: "チャート 1"
 # Python コードを実行して図を生成
@@ -166,7 +177,7 @@ plt.plot([1, 2, 3], [1, 4, 9])
 plt.show()
 ```
 
-```{python}
+```{pyodide}
 #| label: fig-chart-2
 #| fig-cap: "チャート 2"
 plt.plot([1, 2, 3], [1, 2, 3])
@@ -186,7 +197,7 @@ plt.show()
 
 実際にコードを実行して結果を表示できます。
 
-```{python}
+```{pyodide}
 #| label: fig-plot
 #| fig-cap: "Matplotlibによるプロット"
 #| code-fold: false

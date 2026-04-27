@@ -1,3 +1,13 @@
+<!--
+  ============================================================
+  これは copy-paste 用スケルトンです (book からは render されません)。
+  数学・物理寄りの章 (定理 + 証明 + 線形代数) の出発点として使います。
+  `cp templates/math_focused_template.qmd quarto/textbook/_NN_xxx.qmd`
+  してから書き始めてください。
+
+  Live demo は `quarto/textbook/_05_diagrams_and_math.qmd` を参照。
+  ============================================================
+-->
 ---
 title: "Chapter XX: [タイトル]"
 subtitle: "Focus: 線形代数的構造と証明のロジック"
@@ -82,7 +92,7 @@ $$
 ## Pythonによる計算確認
 抽象的な性質を具体的な行列で確認します。
 
-```{python}
+```{pyodide}
 import numpy as np
 
 # パウリ行列の定義
