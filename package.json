@@ -9,7 +9,7 @@
     "test": "echo \"No npm tests — use 'just test' instead.\""
   },
   "dependencies": {
-    "dompurify": "^3.3.1",
+    "dompurify": "^3.4.4",
     "jsdom": "^27.3.0",
     "mermaid": "^11.12.2"
   }
