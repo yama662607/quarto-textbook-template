@@ -42,6 +42,11 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: '1.3.14'
+
       - name: Set up Quarto (for render-check syntax validation)
         uses: quarto-dev/quarto-actions/setup@v2
 
@@ -49,7 +54,7 @@ jobs:
         run: uv sync
 
       - name: Install Node dependencies
-        run: npm ci
+        run: bun install --frozen-lockfile
 
       - name: Run quality checks
         run: just check

@@ -1,0 +1,54 @@
+---
+title: "Quarto 機能テンプレート"
+subtitle: "Quarto の標準機能をまとめて使う章"
+---
+
+# Quarto 機能テンプレート
+
+Quarto の機能をまとめて使う章を作るための copy-paste 元です。機能を短く試したい場合や、教材内に複数の表現を組み合わせたい場合に使います。
+このページは閲覧用です。実際に編集を始めるときは、下のコピー元ファイルを `quarto/textbook/_NN_topic.qmd` にコピーします。
+
+| 項目 | 内容 |
+| --- | --- |
+| コピー元 | `quarto/templates/quarto_feature_showcase.qmd` |
+| コピー先例 | `quarto/textbook/_10_quarto_features.qmd` |
+| 向いている用途 | tabset、図表、数式、引用、コード、レイアウトの確認 |
+
+```bash
+cp quarto/templates/quarto_feature_showcase.qmd quarto/textbook/_10_topic.qmd
+```
+
+## 含めやすい機能
+
+| 機能 | 統合サンプル |
+| --- | --- |
+| Mermaid / Graphviz | [図解と数学環境](../textbook/textbook.qmd#sec-diagrams-and-math) |
+| callout / tabset / grid | [レイアウトと callout](../textbook/textbook.qmd#sec-layout-and-callouts) |
+| figure / table / lightbox | [図表のレイアウト](../textbook/textbook.qmd#sec-figures-and-tables) |
+| citation / footnote / annotation | [テキスト要素と引用](../textbook/textbook.qmd#sec-text-and-citations) |
+| Quarto Live / Pyodide | [インタラクティブ・シミュレーション](../textbook/textbook.qmd#sec-interactive-demo) |
+| simulation showcase | [シミュレーション教材](../textbook/textbook.qmd#sec-simulation-showcase) |
+
+## 章の骨格
+
+```markdown
+# Quarto 機能の章
+
+## レイアウト
+
+::: {.panel-tabset}
+## 視点 A
+[内容]
+
+## 視点 B
+[内容]
+:::
+
+## 図表
+
+![図の説明](../assets/images/example.png){#fig-example fig-alt="代替テキスト"}
+
+## 引用
+
+本文中で @shannon1948 のように引用する。
+```

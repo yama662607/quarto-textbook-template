@@ -68,15 +68,25 @@ from pyodide.http import pyfetch
 
 warnings.simplefilter("ignore")  # font 登録前後の Glyph missing 警告を抑制
 
-if not os.path.exists("/tmp/NotoSansJP.ttf"):
-    # ⚠️ pyfetch は **worker スクリプト** (/site_libs/quarto-contrib/...) を base に解決する。
-    # ページ URL 基準ではない。`../../../` で 3 段戻ればルートに到達する
-    # (extra `..` はルートで吸収されるので qmd の階層に関係なく安全)。
-    resp = await pyfetch("../../../assets/fonts/NotoSansJP-Regular.ttf")
-    with open("/tmp/NotoSansJP.ttf", "wb") as f:
-        f.write(await resp.bytes())
-font_manager.fontManager.addfont("/tmp/NotoSansJP.ttf")  # キャッシュ済でも毎回呼ぶ
-matplotlib.rcParams["font.family"] = "Noto Sans JP"
+try:
+    font_path = "/tmp/NotoSansJP.ttf"
+
+    def valid_ttf(path):
+        if not os.path.exists(path) or os.path.getsize(path) < 1_000_000:
+            return False
+        with open(path, "rb") as f:
+            return f.read(4) in (b"\x00\x01\x00\x00", b"OTTO", b"ttcf")
+
+    if not valid_ttf(font_path):
+        resp = await pyfetch("/assets/fonts/NotoSansJP-Regular.ttf")
+        font_bytes = await resp.bytes()
+        with open(font_path, "wb") as f:
+            f.write(font_bytes)
+    if valid_ttf(font_path):
+        font_manager.fontManager.addfont(font_path)
+        matplotlib.rcParams["font.family"] = "Noto Sans JP"
+except Exception:
+    pass  # フォント登録に失敗しても描画は続ける
 matplotlib.rcParams["axes.unicode_minus"] = False
 
 # --- ここから描画 ---

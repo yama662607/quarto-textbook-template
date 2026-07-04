@@ -10,9 +10,9 @@ Quarto Book ベースの教科書 / 講義ノートサイト。HTML を GitHub P
 ## Setup commands
 
 ```bash
-just check-env   # ツール (uv / just / quarto / npm) 確認
-just setup       # uv sync + npm install
-just docs        # http://localhost:4312 でプレビュー
+just check-env   # ツール (uv / just / quarto / node / bun) 確認
+just setup       # uv sync + bun install
+just docs        # http://localhost:4312 でプレビュー (公式 quarto preview + partial watcher)
 ```
 
 ## ⚠️ PDF 取り込みの必須ワークフロー
@@ -55,7 +55,7 @@ uv run python tools/extract_pdf.py <pdf_path> --mode simple --start <s> --end <e
 3. `{ojs}` ブロックでスライダー (`Inputs.range(...)`) を定義、`tex` でラベルに LaTeX 数式
 4. `{pyodide}` ブロックに `#| autorun: true` と `#| input: ["a", "b", ...]` を付け、スライダー値を Python 変数として受け取る
 5. **日本語フォント (matplotlib)**: 描画セルの先頭に `_03_interactive_demo.qmd` の font-load ブロックをコピー — `pyfetch` で `assets/fonts/NotoSansJP-Regular.ttf` を取得して `font_manager.fontManager.addfont` で登録。**font setup を別セルにすると順序が保証されない** ので、**描画セルに inline する** こと。Plotly は OS フォントを使うため不要
-6. `pyfetch` の URL は **`../../../assets/fonts/...` で固定** (qmd の階層に合わせて変えない — pyfetch は worker スクリプト基準で解決するため)
+6. `pyfetch` の URL は **`/assets/fonts/...` の絶対パスで固定** (qmd の階層に合わせて変えない)
 
 詳しい手順・dead-end・トラブルシュートは [docs/quarto-live.md](docs/quarto-live.md) を参照。
 
@@ -131,8 +131,8 @@ just test        # pytest のみ
 
 | コマンド | 用途 |
 | --- | --- |
-| `just check-env` | ツール (uv / just / quarto / npm) 存在確認 |
-| `just setup` | base 依存インストール (`uv sync` + `npm install`) |
+| `just check-env` | ツール (uv / just / quarto / node / bun) 存在確認 |
+| `just setup` | base 依存インストール (`uv sync` + `bun install`) |
 | `just setup-all` | base + 全 extras (重い、~数 GB) |
 | `just check` | 品質ゲート (fmt-check + lint + typecheck + validate-docs + render-check + test) |
 | `just check-full` | `check` + 実 HTML レンダリング |
@@ -140,6 +140,7 @@ just test        # pytest のみ
 | `just test [args]` | pytest |
 | `just clean` | ビルド成果物削除 (cross-platform) |
 | `just docs` | プレビューサーバー起動 (port 4312) |
+| `just docs-official` | 公式 Quarto preview のみ起動 (partial watcher なし) |
 | `just fix-docs` | プレビュー復旧 (Win/Mac/Linux 対応) |
 | `just render-site` | HTML 実レンダリング |
 | `just render-book-pdf` | PDF 実レンダリング |

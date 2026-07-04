@@ -1,0 +1,53 @@
+---
+title: "V-S-V レッスンテンプレート"
+subtitle: "Visual → Symbolic → Verbal の流れで概念を導入する"
+---
+
+# V-S-V レッスンテンプレート
+
+直感から数式へ導くレッスン向けのテンプレートです。抽象概念をいきなり定義せず、Visual → Symbolic → Verbal の順に組み立てます。
+このページは閲覧用です。実際に編集を始めるときは、下のコピー元ファイルを `quarto/textbook/_NN_topic.qmd` にコピーします。
+
+| 項目 | 内容 |
+| --- | --- |
+| コピー元 | `quarto/templates/theory_template.qmd` |
+| コピー先例 | `quarto/textbook/_10_decay_model.qmd` |
+| 向いている用途 | 導入講義、直感説明、図解、数式化、確認問題 |
+
+```bash
+cp quarto/templates/theory_template.qmd quarto/textbook/_10_topic.qmd
+```
+
+## 章の骨格
+
+```markdown
+# 理論と直感
+
+::: {.callout-note}
+## このレッスンのゴール
+
+1. 直感的な意味を説明できる。
+2. 数式で定義できる。
+3. 具体例で確認できる。
+
+:::
+
+## Visual
+
+[比喩、図解、Mermaid などで説明する。]
+
+## Symbolic
+
+$$
+y = f(x)
+$$
+
+## Verbal
+
+[数式を言葉で読み解く。]
+```
+
+## 参考にする統合サンプル
+
+- [レイアウトと callout](../textbook/textbook.qmd#sec-layout-and-callouts)
+- [図解と数学環境](../textbook/textbook.qmd#sec-diagrams-and-math)

@@ -1,0 +1,516 @@
+# 第9章 シミュレーション教材のショーケース {#sec-simulation-showcase}
+
+他プロジェクトで使われたシミュレーション教材の型を、このテンプレートで再利用しやすい形に整理したサンプルです。数式を説明してから、ブラウザ内で動く可視化で確かめる流れを想定しています。
+
+::: {.callout-note}
+## 使い分け
+
+- **matplotlib + `FuncAnimation`**: 物理の時間発展、Jupyter / VSCode にコピーしたい教材に向く。
+- **Plotly**: 3D 曲線、曲面、hover、pan / zoom を読者に触らせたい教材に向く。
+- **OJS + Plotly.js**: Python を起動せず、軽い 3D interactive を作りたい教材に向く。
+
+:::
+
+## 単振り子: 数式から数値積分へ {#sec-sim-pendulum}
+
+長さ $\ell$ の単振り子は
+
+$$
+\ell \ddot{\theta} = -g\sin\theta
+$$ {#eq-sim-pendulum-eom}
+
+に従います。微小振動近似を使わず、[@eq-sim-pendulum-eom] を Euler-Cromer 法で直接積分すると、大きな振幅でも運動を確認できます。
+
+```{ojs}
+//| echo: false
+//| output: false
+_simulation_showcase_loader = true
+```
+
+```{pyodide}
+#| autorun: true
+import os
+import warnings
+import matplotlib
+from matplotlib import font_manager
+
+warnings.simplefilter("ignore")
+
+try:
+    from pyodide.http import pyfetch
+
+    font_path = "/tmp/NotoSansJP.ttf"
+
+    def valid_ttf(path):
+        if not os.path.exists(path) or os.path.getsize(path) < 1_000_000:
+            return False
+        with open(path, "rb") as f:
+            return f.read(4) in (b"\x00\x01\x00\x00", b"OTTO", b"ttcf")
+
+    if not valid_ttf(font_path):
+        resp = await pyfetch("/assets/fonts/NotoSansJP-Regular.ttf")
+        font_bytes = await resp.bytes()
+        with open(font_path, "wb") as f:
+            f.write(font_bytes)
+    if valid_ttf(font_path):
+        font_manager.fontManager.addfont(font_path)
+        matplotlib.rcParams["font.family"] = "Noto Sans JP"
+except Exception:
+    pass
+matplotlib.rcParams["axes.unicode_minus"] = False
+
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+g = 9.8
+L = 1.0
+theta0 = np.deg2rad(55)
+omega0 = 0.0
+dt = 0.025
+t_end = 5.0
+n_steps = int(t_end / dt)
+
+t = np.arange(n_steps) * dt
+theta = np.empty(n_steps)
+omega = np.empty(n_steps)
+theta[0], omega[0] = theta0, omega0
+
+for i in range(n_steps - 1):
+    omega[i + 1] = omega[i] - (g / L) * np.sin(theta[i]) * dt
+    theta[i + 1] = theta[i] + omega[i + 1] * dt
+
+x = L * np.sin(theta)
+y = -L * np.cos(theta)
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))
+ax1.set_xlim(-1.2 * L, 1.2 * L)
+ax1.set_ylim(-1.25 * L, 0.25 * L)
+ax1.set_aspect("equal")
+ax1.grid(True, linestyle="--", alpha=0.35)
+ax1.set_title("単振り子")
+ax1.plot(0, 0, "ko", markersize=5)
+(rod,) = ax1.plot([], [], "k-", lw=2)
+(bob,) = ax1.plot([], [], "ro", markersize=14)
+(trail,) = ax1.plot([], [], "r-", alpha=0.25, lw=1)
+
+ax2.set_xlim(0, t_end)
+ax2.set_ylim(-1.1 * theta0, 1.1 * theta0)
+ax2.grid(True, linestyle="--", alpha=0.35)
+ax2.set_xlabel("時間 t [s]")
+ax2.set_ylabel(r"角度 $\theta$ [rad]")
+ax2.set_title(r"$\theta(t)$")
+(theta_line,) = ax2.plot([], [], "b-", lw=1.5)
+(theta_dot,) = ax2.plot([], [], "bo", markersize=5)
+
+def update_pendulum(i):
+    rod.set_data([0, x[i]], [0, y[i]])
+    bob.set_data([x[i]], [y[i]])
+    trail.set_data(x[: i + 1], y[: i + 1])
+    theta_line.set_data(t[: i + 1], theta[: i + 1])
+    theta_dot.set_data([t[i]], [theta[i]])
+    return rod, bob, trail, theta_line, theta_dot
+
+ani = FuncAnimation(fig, update_pendulum, frames=n_steps, interval=25, blit=True)
+plt.close(fig)
+HTML(ani.to_jshtml())
+```
+
+::: {.callout-tip}
+`theta0` を小さくすると線形近似に近づき、大きくすると周期が線形理論 $T = 2\pi\sqrt{\ell/g}$ からずれることを観察できます。
+
+:::
+
+## 極座標運動: 導出と軌道の対応 {#sec-sim-polar-kinematics}
+
+等角螺旋 $r = ae^{k\theta}$ 上を $\dot{\theta} = \omega$ で動く点を考えます。極座標の速度・加速度公式
+
+$$
+\vec{v} = \dot{r}\hat{e}_r + r\dot{\theta}\hat{e}_\theta,\qquad
+\vec{a} = (\ddot{r} - r\dot{\theta}^2)\hat{e}_r + (r\ddot{\theta} + 2\dot{r}\dot{\theta})\hat{e}_\theta
+$$ {#eq-sim-polar-acceleration}
+
+を導出したあと、軌道をアニメーションで確認する教材パターンです。
+
+```{pyodide}
+#| autorun: true
+import os
+import warnings
+import matplotlib
+from matplotlib import font_manager
+
+warnings.simplefilter("ignore")
+
+try:
+    from pyodide.http import pyfetch
+
+    font_path = "/tmp/NotoSansJP.ttf"
+
+    def valid_ttf(path):
+        if not os.path.exists(path) or os.path.getsize(path) < 1_000_000:
+            return False
+        with open(path, "rb") as f:
+            return f.read(4) in (b"\x00\x01\x00\x00", b"OTTO", b"ttcf")
+
+    if not valid_ttf(font_path):
+        resp = await pyfetch("/assets/fonts/NotoSansJP-Regular.ttf")
+        font_bytes = await resp.bytes()
+        with open(font_path, "wb") as f:
+            f.write(font_bytes)
+    if valid_ttf(font_path):
+        font_manager.fontManager.addfont(font_path)
+        matplotlib.rcParams["font.family"] = "Noto Sans JP"
+except Exception:
+    pass
+matplotlib.rcParams["axes.unicode_minus"] = False
+
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+a = 1.0
+k = 0.18
+omega = 1.6
+t_end = 5.0
+n_frames = 140
+t = np.linspace(0, t_end, n_frames)
+
+theta = omega * t
+r = a * np.exp(k * theta)
+x = r * np.cos(theta)
+y = r * np.sin(theta)
+max_r = a * np.exp(abs(k) * omega * t_end)
+
+fig, ax = plt.subplots(figsize=(5.5, 5.5))
+ax.set_xlim(-1.1 * max_r, 1.1 * max_r)
+ax.set_ylim(-1.1 * max_r, 1.1 * max_r)
+ax.set_aspect("equal")
+ax.grid(True, linestyle="--", alpha=0.35)
+ax.set_title(rf"等角螺旋 $r = ae^{{k\theta}}$  (k={k})")
+(trail,) = ax.plot([], [], "k-", alpha=0.55, lw=1)
+(radius_line,) = ax.plot([], [], "b-", lw=1.4)
+(point,) = ax.plot([], [], "ro", markersize=9)
+
+def update_spiral(i):
+    trail.set_data(x[: i + 1], y[: i + 1])
+    radius_line.set_data([0, x[i]], [0, y[i]])
+    point.set_data([x[i]], [y[i]])
+    return trail, radius_line, point
+
+ani = FuncAnimation(fig, update_spiral, frames=n_frames, interval=35, blit=True)
+plt.close(fig)
+HTML(ani.to_jshtml())
+```
+
+## Lissajous 曲線: 3D パラメトリック曲線 {#sec-sim-lissajous}
+
+複数の振動を組み合わせると、位相差と周波数比によって軌道の形が変わります。Plotly を使うと、3D 曲線を回転・拡大しながら確認できます。
+
+```{pyodide}
+#| autorun: true
+import numpy as np
+import plotly.graph_objects as go
+
+t = np.linspace(0, 2 * np.pi, 320)
+x = np.sin(3 * t + np.pi / 2)
+y = np.sin(4 * t)
+z = np.sin(5 * t + np.pi / 4)
+
+fig = go.Figure()
+fig.add_trace(
+    go.Scatter3d(
+        x=x,
+        y=y,
+        z=z,
+        mode="lines",
+        line=dict(width=6, color=t, colorscale="Viridis"),
+        hovertemplate="x=%{x:.2f}<br>y=%{y:.2f}<br>z=%{z:.2f}<extra></extra>",
+        name="Lissajous",
+    )
+)
+fig.update_layout(
+    title="3D Lissajous curve: 位相差と周波数比が作る軌道",
+    height=520,
+    margin=dict(l=0, r=0, t=48, b=0),
+    scene=dict(
+        xaxis_title="x(t)",
+        yaxis_title="y(t)",
+        zaxis_title="z(t)",
+        aspectmode="cube",
+    ),
+)
+fig
+```
+
+## 包絡線と媒介変数: 曲面として見る {#sec-sim-envelope}
+
+パラメータ $a$ を持つ関数族 $y = f(x, a)$ は、$x$ と $a$ の 2 変数曲面として見ると関係がつかみやすくなります。以下は $f(x,a) = (x-a)^2 + \sin(2a)$ の例です。
+
+```{pyodide}
+#| autorun: true
+import numpy as np
+import plotly.graph_objects as go
+
+x = np.linspace(-3, 3, 90)
+a = np.linspace(-2.5, 2.5, 80)
+X, A = np.meshgrid(x, a)
+Y = (X - A) ** 2 + np.sin(2 * A)
+
+best_idx = np.argmin(Y, axis=0)
+envelope_a = a[best_idx]
+envelope_y = Y[best_idx, np.arange(len(x))]
+
+fig = go.Figure()
+fig.add_trace(
+    go.Surface(
+        x=X,
+        y=A,
+        z=Y,
+        opacity=0.72,
+        colorscale="Viridis",
+        showscale=False,
+        name="y=f(x,a)",
+    )
+)
+fig.add_trace(
+    go.Scatter3d(
+        x=x,
+        y=envelope_a,
+        z=envelope_y,
+        mode="lines",
+        line=dict(color="#dc2626", width=7),
+        name="最小値の軌跡",
+    )
+)
+fig.update_layout(
+    title="パラメータ付き関数族を曲面として見る",
+    height=520,
+    margin=dict(l=0, r=0, t=48, b=0),
+    scene=dict(xaxis_title="x", yaxis_title="parameter a", zaxis_title="y"),
+)
+fig
+```
+
+## Bloch 球: OJS + Plotly.js の軽量 3D interactive {#sec-sim-bloch}
+
+Python を起動せず、OJS だけで Plotly.js を呼ぶ例です。軽い 3D interactive を入れたい場合に向きます。
+
+```{ojs}
+//| echo: false
+{
+  const container = html`<div style="width: 100%; min-height: 520px;"></div>`;
+  const Plotly = await require("plotly.js-dist-min@2.35.2");
+  const nFrames = 61;
+  const thetaValues = Array.from({ length: nFrames }, (_, i) => (2 * Math.PI * i) / (nFrames - 1));
+  const v0 = [0, 0, 1];
+
+  function rotateY(vector, theta) {
+    const [x, y, z] = vector;
+    const c = Math.cos(theta);
+    const s = Math.sin(theta);
+    return [c * x + s * z, y, -s * x + c * z];
+  }
+
+  function vectorTrace(vector, color, name, width) {
+    return {
+      type: "scatter3d",
+      mode: "lines+markers",
+      x: [0, vector[0]],
+      y: [0, vector[1]],
+      z: [0, vector[2]],
+      line: { color, width },
+      marker: { size: [2, 5], color },
+      name,
+      hovertemplate: name + "<br>x=%{x:.3f}<br>y=%{y:.3f}<br>z=%{z:.3f}<extra></extra>",
+    };
+  }
+
+  const u = Array.from({ length: 32 }, (_, i) => (2 * Math.PI * i) / 31);
+  const v = Array.from({ length: 17 }, (_, i) => (Math.PI * i) / 16);
+  const sphereX = u.map((uu) => v.map((vv) => Math.cos(uu) * Math.sin(vv)));
+  const sphereY = u.map((uu) => v.map((vv) => Math.sin(uu) * Math.sin(vv)));
+  const sphereZ = u.map(() => v.map((vv) => Math.cos(vv)));
+  const orbit = thetaValues.map((theta) => rotateY(v0, theta));
+
+  const data = [
+    {
+      type: "surface",
+      x: sphereX,
+      y: sphereY,
+      z: sphereZ,
+      opacity: 0.13,
+      colorscale: "Greys",
+      showscale: false,
+      hoverinfo: "skip",
+      name: "Bloch sphere",
+    },
+    {
+      type: "scatter3d",
+      mode: "lines",
+      x: orbit.map((p) => p[0]),
+      y: orbit.map((p) => p[1]),
+      z: orbit.map((p) => p[2]),
+      line: { color: "rgba(37, 99, 235, 0.35)", width: 5 },
+      name: "回転軌道",
+      hoverinfo: "skip",
+    },
+    vectorTrace(v0, "#2563eb", "初期ベクトル", 5),
+    vectorTrace(rotateY(v0, 0), "#dc2626", "R_y(θ)v0", 10),
+  ];
+
+  const frames = thetaValues.map((theta, i) => {
+    const p = rotateY(v0, theta);
+    return {
+      name: "bloch-" + i,
+      data: [{ x: [0, p[0]], y: [0, p[1]], z: [0, p[2]] }],
+      traces: [3],
+    };
+  });
+
+  const animationOptions = {
+    mode: "immediate",
+    frame: { duration: 55, redraw: true },
+    transition: { duration: 0 },
+  };
+
+  const layout = {
+    title: "Bloch sphere: y 軸まわりの回転",
+    height: 520,
+    margin: { l: 0, r: 0, t: 48, b: 0 },
+    scene: {
+      aspectmode: "cube",
+      camera: { eye: { x: 1.45, y: 1.7, z: 1.2 } },
+      xaxis: { title: "X", range: [-1.25, 1.25] },
+      yaxis: { title: "Y", range: [-1.25, 1.25] },
+      zaxis: { title: "Z", range: [-1.25, 1.25] },
+    },
+    updatemenus: [
+      {
+        type: "buttons",
+        showactive: false,
+        x: 0,
+        y: -0.05,
+        buttons: [
+          { label: "再生", method: "animate", args: [null, { ...animationOptions, fromcurrent: true }] },
+          { label: "停止", method: "animate", args: [[null], { mode: "immediate", frame: { duration: 0 } }] },
+        ],
+      },
+    ],
+    sliders: [
+      {
+        active: 0,
+        x: 0.12,
+        y: -0.05,
+        len: 0.84,
+        steps: thetaValues.map((theta, i) => ({
+          method: "animate",
+          args: [["bloch-" + i], { ...animationOptions, frame: { duration: 0, redraw: true } }],
+          label: Math.round((theta * 180) / Math.PI) + "°",
+        })),
+      },
+    ],
+  };
+
+  await Plotly.newPlot(container, data, layout, { responsive: true, displaylogo: false });
+  await Plotly.addFrames(container, frames);
+  invalidation.then(() => Plotly.purge(container));
+  return container;
+}
+```
+
+## 結合振動子: スライダー入力と時間発展 {#sec-sim-coupled-oscillators}
+
+複数の振動子がばねで結合した系は、イオントラップや格子振動を説明するときの最小モデルになります。ここでは OJS のスライダーで結合係数を変え、Pyodide 側で時間発展を計算します。
+
+```{ojs}
+//| echo: false
+viewof coupling_k = Inputs.range([0.0, 0.45], { value: 0.20, step: 0.05, label: "結合係数 k_c" })
+viewof initial_a1 = Inputs.range([-1.2, 1.2], { value: 1.0, step: 0.1, label: "左端の初期変位 A1" })
+```
+
+```{pyodide}
+#| autorun: true
+#| input: ["coupling_k", "initial_a1"]
+import os
+import warnings
+import matplotlib
+from matplotlib import font_manager
+
+warnings.simplefilter("ignore")
+
+try:
+    from pyodide.http import pyfetch
+
+    font_path = "/tmp/NotoSansJP.ttf"
+
+    def valid_ttf(path):
+        if not os.path.exists(path) or os.path.getsize(path) < 1_000_000:
+            return False
+        with open(path, "rb") as f:
+            return f.read(4) in (b"\x00\x01\x00\x00", b"OTTO", b"ttcf")
+
+    if not valid_ttf(font_path):
+        resp = await pyfetch("/assets/fonts/NotoSansJP-Regular.ttf")
+        font_bytes = await resp.bytes()
+        with open(font_path, "wb") as f:
+            f.write(font_bytes)
+    if valid_ttf(font_path):
+        font_manager.fontManager.addfont(font_path)
+        matplotlib.rcParams["font.family"] = "Noto Sans JP"
+except Exception:
+    pass
+matplotlib.rcParams["axes.unicode_minus"] = False
+
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+n = 4
+dt = 0.025
+t_end = 6.0
+n_steps = int(t_end / dt)
+omega0 = 1.0
+
+q = np.zeros((n_steps, n))
+v = np.zeros((n_steps, n))
+q[0, 0] = initial_a1
+
+def acceleration(state):
+    acc = -omega0**2 * state.copy()
+    for j in range(n):
+        if j > 0:
+            acc[j] += coupling_k * (state[j - 1] - state[j])
+        if j < n - 1:
+            acc[j] += coupling_k * (state[j + 1] - state[j])
+    return acc
+
+for i in range(n_steps - 1):
+    v[i + 1] = v[i] + acceleration(q[i]) * dt
+    q[i + 1] = q[i] + v[i + 1] * dt
+
+x0 = np.arange(n)
+fig, ax = plt.subplots(figsize=(7, 3.8))
+ax.set_xlim(-0.5, n - 0.5)
+ax.set_ylim(-1.4, 1.4)
+ax.grid(True, linestyle="--", alpha=0.35)
+ax.set_xlabel("振動子 index")
+ax.set_ylabel("変位")
+ax.set_title(f"結合振動子: k_c={coupling_k:.2f}")
+(line,) = ax.plot([], [], "o-", lw=2, markersize=10)
+
+def update_coupled(i):
+    line.set_data(x0, q[i])
+    return (line,)
+
+ani = FuncAnimation(fig, update_coupled, frames=n_steps, interval=25, blit=True)
+plt.close(fig)
+HTML(ani.to_jshtml())
+```
+
+::: {.callout-tip}
+結合係数を大きくすると、左端に入れたエネルギーが隣の振動子へ移る速度が変わります。量子ハードウェアのフォノンバスなど、より専門的な題材へ進む前の導入例として使えます。
+
+:::

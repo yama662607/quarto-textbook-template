@@ -1,0 +1,47 @@
+---
+title: "章テンプレート一覧"
+subtitle: "目的別にコピーして使う qmd スケルトン"
+---
+
+# 章テンプレート一覧
+
+`quarto/templates/` 配下の qmd は、render 対象ではなくコピー元です。目的に近いものを `quarto/textbook/_NN_topic.qmd` としてコピーし、`textbook/textbook.qmd` に <code>{{&lt; include _NN_topic.qmd &gt;}}</code> を追加して使います。下のリンクは、コピー元の内容と使い方を確認するための閲覧ページです。
+
+## 目的別
+
+| 目的 | テンプレート閲覧ページ | コピー元ファイル | 向いている内容 |
+| --- | --- | --- | --- |
+| PDF 教科書を翻訳・解説する | [PDF textbook テンプレート](template-pages/textbook.qmd) | `quarto/templates/textbook_template.qmd` | Phase 1 の忠実翻訳、Phase 2 の補足解説、定理・証明・Remark |
+| 数学・物理の章を書く | [数学・物理テンプレート](template-pages/math-focused.qmd) | `quarto/templates/math_focused_template.qmd` | 定義、定理、証明、線形代数の補足、計算確認 |
+| 直感から数式へ導く | [V-S-V レッスンテンプレート](template-pages/theory.qmd) | `quarto/templates/theory_template.qmd` | V-S-V cycle、直感、図解、数式、実装、確認問題 |
+| Quarto 機能をまとめて使う | [Quarto 機能テンプレート](template-pages/quarto-features.qmd) | `quarto/templates/quarto_feature_showcase.qmd` | タブ、図表、数式、引用、コード、レイアウトの copy-paste 元 |
+
+## テンプレート詳細
+
+各テンプレートの閲覧ページでは、用途、コピー元、コピーコマンド、章の骨格を確認できます。実際の編集は `quarto/templates/*.qmd` を `quarto/textbook/_NN_topic.qmd` にコピーしてから始めます。
+
+## 他プロジェクトから採用したショーケース
+
+他プロジェクトの調査で見つかったシミュレーション教材の型は、[統合サンプルのシミュレーション教材](textbook/textbook.qmd#sec-simulation-showcase) に採用済みです。
+
+| 採用した型 | 元になった知見 | 統合サンプル |
+| --- | --- | --- |
+| simulation lesson template | `mechanics-class-simulation` の pendulum / polar kinematics | [単振り子](textbook/textbook.qmd#sec-sim-pendulum)、[極座標運動](textbook/textbook.qmd#sec-sim-polar-kinematics) |
+| Plotly parameter visualization | `mechanics-class-simulation` の Lissajous / envelope notebook | [Lissajous 曲線](textbook/textbook.qmd#sec-sim-lissajous)、[包絡線と媒介変数](textbook/textbook.qmd#sec-sim-envelope) |
+| lightweight OJS + Plotly template | `Quantum-information` の Bloch sphere | [Bloch 球](textbook/textbook.qmd#sec-sim-bloch) |
+| coupled oscillator simulation | `Quantum-information` の ion-trap / phonon bus simulation | [結合振動子](textbook/textbook.qmd#sec-sim-coupled-oscillators) |
+| PDF presentation checklist | `ai-descartes-textbook` の Phase 1/2 運用 | PDF textbook テンプレートの運用候補として継続 |
+
+## コピー後の確認
+
+実際に章を書くときは、目的に近いテンプレートを `quarto/textbook/_NN_topic.qmd` にコピーしてから編集します。
+
+1. partial に YAML front matter を残していないか確認する。
+2. `textbook/textbook.qmd` に include 行を 1 つ追加する。
+3. `just docs` で見え方を確認する。
+4. `just check` を通す。
+
+## 使い分け
+
+- 書き方だけ確認したい場合: [統合サンプル](textbook/textbook.qmd) の該当セクションを見る
+- 自分の章を書き始める場合: `quarto/templates/` の qmd をコピー

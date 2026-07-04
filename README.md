@@ -20,6 +20,7 @@
 - **GitHub Actions** で push 時に自動公開、3 OS マトリクスで品質チェック
 - **品質ゲート**: ruff + mypy + pytest + Quarto/Mermaid/LaTeX 整合性検証 + `quarto render --no-execute` 構文チェック
 - **AI エージェント対応** (`AGENTS.md` 準拠 + `CLAUDE.md` / `GEMINI.md` 同梱)
+- **Quarto 1.9+ 採用メモ**: list table / PDF accessibility / Typst book / LLM output の導入判断を [`docs/quarto-modern.md`](docs/quarto-modern.md) に整理
 
 ## How to use this template
 
@@ -53,7 +54,7 @@ OS に応じて 1 行:
 .\scripts\bootstrap.ps1
 ```
 
-ツール (just / uv / quarto / node) を OS のパッケージマネージャ (brew / apt / dnf / winget / scoop / 公式 curl installer) で入れた後、`uv sync` と `npm install` まで自動実行します。Python 3 だけ事前に必要 (大半の OS に同梱)。`--dry-run` で実際には実行せず内容を確認できます。
+ツール (just / uv / quarto / node / bun) を OS のパッケージマネージャ (brew / apt / dnf / winget / scoop / 公式 curl installer) で入れた後、`uv sync` と `bun install` まで自動実行します。Python 3 だけ事前に必要 (大半の OS に同梱)。`--dry-run` で実際には実行せず内容を確認できます。
 
 #### B. mise / asdf を使っている
 
@@ -61,7 +62,7 @@ OS に応じて 1 行:
 
 ```bash
 mise install              # または: asdf install
-uv sync && npm install
+uv sync && bun install
 ```
 
 #### C. ブラウザだけで試したい (GitHub Codespaces / VS Code Dev Containers)
@@ -77,13 +78,16 @@ uv sync && npm install
 | **just** | `brew install just` | [just.systems](https://just.systems/man/en/packages.html) | `winget install Casey.Just` または `scoop install just` |
 | **Quarto** | `brew install --cask quarto` | [.deb / .rpm](https://quarto.org/docs/get-started/) | [installer](https://quarto.org/docs/get-started/) |
 | **Node.js 20+** | `brew install node` | nvm/apt | [nodejs.org](https://nodejs.org/) |
+| **Bun 1.3+** | `brew install oven-sh/bun/bun` | [bun.sh](https://bun.sh/docs/installation) | [bun.sh](https://bun.sh/docs/installation) |
 
 その後:
 
 ```bash
-just setup    # uv sync + npm install
+just setup    # uv sync + bun install
 just docs     # http://localhost:4312
 ```
+
+`quarto/_quarto.yml` の `project.preview` で `host: 0.0.0.0` / `port: 4312` を設定しているため、同じ Wi-Fi 上の端末から `http://<your-lan-ip>:4312/` でも確認できます。
 
 ### 3. プレースホルダ書き換え
 
@@ -109,6 +113,18 @@ clone 後、以下のプレースホルダを置換してください:
 2. `git push origin main` すると `.github/workflows/publish.yml` が走り、自動で公開
 
 教科書本文で optional 機能 (Qiskit / Shinylive / Jupyter compute / OCR / LaTeX) を使う場合は `publish.yml` の `uv sync` 行に `--extra <name>` を追記してください (デフォルトは base のみで軽量化)。
+
+### 5. Quarto 新機能を採用するか決める
+
+このテンプレートは安定した Book 出力をデフォルトにしているため、Quarto 1.9+ の新機能は必要に応じて opt-in します。
+
+| 目的 | 見る場所 |
+| --- | --- |
+| 複雑な表を読みやすく保守したい | [`docs/quarto-modern.md`](docs/quarto-modern.md) の list table |
+| PDF/A や PDF/UA が必要 | [`docs/quarto-modern.md`](docs/quarto-modern.md) の `pdf-standard` |
+| LLM が読みやすいサイト出力が必要 | [`docs/quarto-modern.md`](docs/quarto-modern.md) の LLM-friendly output |
+| 高速な PDF 出力を検討したい | [`docs/quarto-modern.md`](docs/quarto-modern.md) の Typst book |
+| HTML のアクセシビリティを点検したい | [`docs/quarto-modern.md`](docs/quarto-modern.md) の axe 設定 |
 
 ## ディレクトリ構成
 
@@ -157,8 +173,9 @@ clone 後、以下のプレースホルダを置換してください:
 
 | コマンド | 用途 |
 | --- | --- |
-| `just check-env` | 必要ツール (uv, just, quarto, npm) の存在確認 |
-| `just setup` | 依存インストール (`uv sync` + `npm install`) |
+| `just check-env` | 必要ツール (uv, just, quarto, node, bun) の存在確認 |
+| `just quarto-capabilities` | Quarto バージョン別の新機能対応状況を表示 |
+| `just setup` | 依存インストール (`uv sync` + `bun install`) |
 | `just check` | 品質ゲート (fmt + lint + typecheck + validate-docs + render-check + test) |
 | `just check-full` | `check` + 実 HTML レンダリング |
 | `just fix` | 自動修正 (fmt + lint + validate-docs --fix) |
@@ -169,9 +186,12 @@ clone 後、以下のプレースホルダを置換してください:
 
 | コマンド | 用途 |
 | --- | --- |
-| `just docs` | プレビューサーバー (http://localhost:4312) |
+| `just docs` | プレビューサーバー (http://localhost:4312)。公式 `quarto preview` + partial watcher |
+| `just docs-official` | 公式 `quarto preview` のみ。`_*.qmd` partial 編集時の自動再レンダー確認には `just docs` 推奨 |
+| `just docs-a11y` | axe-core JSON console output 付き preview (ローカル点検用) |
 | `just fix-docs` | プレビュー復旧 (Win/Mac/Linux 対応) |
 | `just render-site` | HTML 実レンダリング |
+| `just render-a11y` | axe-core JSON console output 付き HTML レンダリング |
 | `just render-book-pdf` | PDF 実レンダリング |
 | `just render-check` | 構文チェック (compute 実行なし、CI と同等) |
 | `just validate-docs` | ドキュメント整合性検証 |

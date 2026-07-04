@@ -1,8 +1,16 @@
 # Quarto 機能 → live demo 対応表
 
-このテンプレに含まれる Quarto 機能を、どの partial で **動く例** として見られるかインデックス化したものです。「あの機能をどう書くんだっけ」と思ったらここから該当 partial に飛んでコピーしてください。
+このテンプレに含まれる Quarto 機能を、どの partial で **動く例** として見られるかインデックス化したものです。「あの機能をどう書くんだっけ」と思ったら、統合サンプル内の該当セクションを見てコピーしてください。
 
-## Live demo の場所
+## サイト内の入口
+
+| 入口 | 用途 |
+| :--- | :--- |
+| `quarto/textbook/textbook.qmd` | 既存 partial をまとめた統合サンプル。動く実例の唯一の代表ページ |
+| `quarto/template-catalog.qmd` | コピーして使う qmd スケルトンの一覧 |
+| `quarto/workflow-guide.qmd` | セットアップ、PDF 取り込み、検証、公開の流れ |
+
+## 既存 partial の場所
 
 各 partial は `quarto/textbook/textbook.qmd` から `{{< include >}}` で本に統合されており、`just docs` ローカルプレビューおよび GitHub Pages 公開先で実際に動作します。
 
@@ -12,8 +20,9 @@
 | [`_04_plotly_demo.qmd`](../quarto/textbook/_04_plotly_demo.qmd) | Plotly 静的 + アニメーション (`animation_frame`) (Pyodide) |
 | [`_05_diagrams_and_math.qmd`](../quarto/textbook/_05_diagrams_and_math.qmd) | Mermaid (flow / sequence / state) / Graphviz `{dot}` / theorem 8 種 (`#thm-` `#def-` `#lem-` `#cor-` `#prp-` `#exm-` `#exr-` `#sol-`) / `.proof` div / 可換図式 (LaTeX `array` + Mermaid) / 数式 cross-ref (`@eq-`) |
 | [`_06_layout_and_callouts.qmd`](../quarto/textbook/_06_layout_and_callouts.qmd) | `{.panel-tabset group="..."}` / Bootstrap grid (`{.grid}` + `{.g-col-N}`) / 5 種 callout (note / tip / warning / caution / important) / `appearance="simple"` `appearance="minimal"` / `collapse="true"` / カスタム CSS callout (`.field-notes` / `.important-point` — `templates/styles.css` 定義) |
-| [`_07_figures_and_tables.qmd`](../quarto/textbook/_07_figures_and_tables.qmd) | subfigure (`layout-ncol=N`) / `.column-page` / `.column-margin` / `.aside` (inline) / lightbox gallery (`group="..."`) / pipe table / grid table / table cross-ref (`@tbl-`) |
+| [`_07_figures_and_tables.qmd`](../quarto/textbook/_07_figures_and_tables.qmd) | subfigure (`layout-ncol=N`) / `fig-alt` / `.column-page` / `.column-margin` / `.aside` (inline) / lightbox gallery (`group="..."`) / pipe table / grid table / list table / `.landscape` / table cross-ref (`@tbl-`) |
 | [`_08_text_and_citations.qmd`](../quarto/textbook/_08_text_and_citations.qmd) | code annotation (hover) `# <1>` / 脚注 `[^label]` / 定義リスト / blockquote / video (iframe; Quarto 1.8.x の `{{< video >}}` は既知バグで現状 iframe 推奨) / conditional content (`.content-visible when-format="..."`) / BibTeX 引用 (`@key`) / 自動参考文献 (`#refs` div) |
+| [`_09_simulation_showcase.qmd`](../quarto/textbook/_09_simulation_showcase.qmd) | 単振り子 / 極座標運動 / 3D Lissajous / 包絡線曲面 / Bloch 球 / 結合振動子。matplotlib `FuncAnimation`、Plotly、OJS + Plotly.js の教材パターン |
 
 ## 既存 templates/*.qmd (出発点スケルトン — 本には render されない)
 
@@ -43,6 +52,7 @@
 ## 関連ドキュメント
 
 - [`docs/quarto-live.md`](quarto-live.md) — Pyodide (Quarto Live) 専門の動作レシピと既知 dead-end
+- [`docs/quarto-modern.md`](quarto-modern.md) — Quarto 1.9+ 新機能の採用判断
 - [`AGENTS.md`](../AGENTS.md) — AI agent 向けの規約 (qmd 編集の小刻みルール、ファイル分離、PDF 抽出ワークフロー)
 
 ## このテンプレを clone した利用者へ

@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """Bootstrap the development environment from a fresh machine.
 
-Installs (if missing): just, uv, quarto, node, then runs `uv sync` and
-`npm install`. After this finishes, `just docs` should work.
+Installs (if missing): just, uv, quarto, node, bun, then runs `uv sync` and
+`bun install`. After this finishes, `just docs` should work.
 
 Usage:
   python3 scripts/bootstrap.py              # detect OS, install everything
   python3 scripts/bootstrap.py --dry-run    # print what would happen
-  python3 scripts/bootstrap.py --skip-deps  # only install tools, skip uv sync / npm install
+  python3 scripts/bootstrap.py --skip-deps  # only install tools, skip uv sync / bun install
 
 Exit codes:
   0 — everything (or only the parts you asked for) succeeded
@@ -31,7 +31,7 @@ ROOT = Path(__file__).resolve().parent.parent
 # ---------------------------------------------------------------------------
 # Tool catalogue
 # ---------------------------------------------------------------------------
-TOOLS = ["just", "uv", "quarto", "node"]
+TOOLS = ["just", "uv", "quarto", "node", "bun"]
 
 
 def _is_installed(cmd: str) -> bool:
@@ -83,6 +83,7 @@ def install_macos(missing: list[str], dry: bool) -> None:
         "uv": ["brew", "install", "uv"],
         "quarto": ["brew", "install", "--cask", "quarto"],
         "node": ["brew", "install", "node"],
+        "bun": ["brew", "install", "oven-sh/bun/bun"],
     }
     for tool in missing:
         _run(tool, formula_map[tool], dry=dry)
@@ -106,6 +107,13 @@ def install_linux(missing: list[str], dry: bool) -> None:
             _run(
                 "uv",
                 "curl -LsSf https://astral.sh/uv/install.sh | sh",
+                dry=dry,
+                shell=True,
+            )
+        elif tool == "bun":
+            _run(
+                "bun",
+                "curl -fsSL https://bun.sh/install | bash",
                 dry=dry,
                 shell=True,
             )
@@ -165,12 +173,14 @@ def install_windows(missing: list[str], dry: bool) -> None:
         "uv": "astral-sh.uv",
         "quarto": "Posit.Quarto",
         "node": "OpenJS.NodeJS.LTS",
+        "bun": "Oven-sh.Bun",
     }
     scoop_pkgs = {
         "just": "just",
         "uv": "uv",
         "quarto": "quarto",
         "node": "nodejs-lts",
+        "bun": "bun",
     }
     for tool in missing:
         if have_winget:
@@ -188,7 +198,8 @@ def install_windows(missing: list[str], dry: bool) -> None:
                 "      just  → https://github.com/casey/just/releases\n"
                 "      uv    → https://docs.astral.sh/uv/getting-started/installation/\n"
                 "      quarto→ https://quarto.org/docs/get-started/\n"
-                "      node  → https://nodejs.org/",
+                "      node  → https://nodejs.org/\n"
+                "      bun   → https://bun.sh/docs/installation",
             )
             return
 
@@ -208,13 +219,12 @@ def install_project_deps(dry: bool) -> None:
             "uv not on PATH yet. Restart your shell and re-run `python3 "
             "scripts/bootstrap.py` (or `uv sync` directly).",
         )
-    if _is_installed("npm"):
-        _run("npm install", ["npm", "install"], dry=dry)
+    if _is_installed("bun"):
+        _run("bun install", ["bun", "install"], dry=dry)
     else:
         _manual(
-            "npm install",
-            "node/npm not on PATH yet. Restart your shell and re-run, or "
-            "run `npm install` directly.",
+            "bun install",
+            "bun not on PATH yet. Restart your shell and re-run, or run `bun install` directly.",
         )
 
 
@@ -229,7 +239,7 @@ def main() -> int:
     p.add_argument(
         "--skip-deps",
         action="store_true",
-        help="Install tools only; skip `uv sync` and `npm install`.",
+        help="Install tools only; skip `uv sync` and `bun install`.",
     )
     args = p.parse_args()
 

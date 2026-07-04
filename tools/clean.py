@@ -12,6 +12,7 @@ def clean():
         ".pytest_cache",
         ".ruff_cache",
         ".mypy_cache",
+        ".quarto-render.lock",
         "quarto/_book",
         "quarto/.quarto",
     ]

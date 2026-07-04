@@ -9,6 +9,7 @@ set dotenv-load := true
 set windows-shell := ["powershell.exe", "-NoLogo", "-Command"]
 
 pm := "uv"
+js_pm := "bun"
 python := "uv run python"
 
 # デフォルト: 全体の品質チェックを実行
@@ -18,23 +19,27 @@ default: check
 # Standard Interface (AI Agent Protocol)
 # =============================================================================
 
-# 環境の整合性チェック (uv / just / quarto / npm)
+# 環境の整合性チェック (uv / just / quarto / node / bun)
 check-env:
     @{{python}} tools/check_env.py
+
+# Quarto のバージョンに応じて、このテンプレートで使える新機能を表示
+quarto-capabilities:
+    @{{python}} tools/quarto_capabilities.py
 
 # 環境構築: 依存関係のインストール (base のみ — extras は明示的に追加)
 # 例: just setup-extras ocr math    で OCR と数式抽出も追加でインストール
 setup: check-env
     @echo "Setting up environment..."
     {{pm}} sync
-    npm install
+    {{js_pm}} install
     @echo "Environment setup complete."
 
 # 全 extras を追加: 重い (easyocr / pix2text / qiskit / shinylive 等を含む)
 setup-all:
     @echo "Setting up environment with ALL extras..."
     {{pm}} sync --all-extras
-    npm install
+    {{js_pm}} install
     @echo "Environment setup (all extras) complete."
 
 # 全体品質検証 (CI ゲート)
@@ -44,7 +49,7 @@ check: fmt-check lint typecheck validate-docs render-check test
 # 構文チェックのみの軽量レンダリング (compute blocks は実行しない)
 render-check:
     @echo "Quarto syntax check (no execute)..."
-    quarto render quarto --to html --execute-debug --no-execute
+    {{python}} tools/quarto_locked.py -- quarto render quarto --to html --execute-debug --no-execute
 
 # フル品質検証: HTML 実レンダリングまで含めて確認
 check-full: check render-site
@@ -96,8 +101,20 @@ clean:
 # Quarto プレビュー起動 (port 4312)。
 # 前回のプレビューを止め忘れて別ターミナルで再実行しても動くよう、
 # 起動前に必ず port 4312 に居座っているプロセスを掃除する。
+# 中では公式 `quarto preview` を使い、`_*.qmd` partial の変更を親 qmd に
+# 伝えるための小さな watcher だけを併走させる。
 docs: fix-docs
     @{{python}} tools/dev_server.py
+
+# 公式 Quarto preview のみを起動する。`_*.qmd` partial の変更が親 qmd に
+# 伝わらない場合があるため、通常の本文編集では `just docs` を使う。
+docs-official: fix-docs
+    {{python}} tools/quarto_locked.py -- quarto preview quarto --render html
+
+# axe-core の HTML アクセシビリティ結果を browser console に JSON 出力する preview。
+# 公開用ではなくローカル点検用。
+docs-a11y: fix-docs
+    {{python}} tools/quarto_locked.py -- quarto preview quarto --profile a11y --render html
 
 # プレビューが落ちない / ポートが使用中の場合の復旧 (Win/Mac/Linux 対応)。
 # `docs` から自動で呼ばれる。手動での復旧用にも単独実行可。
@@ -106,11 +123,15 @@ fix-docs:
 
 # Quarto HTML 実レンダリング
 render-site:
-    quarto render quarto --to html
+    {{python}} tools/quarto_locked.py -- quarto render quarto --to html
+
+# axe-core の HTML アクセシビリティ結果を browser console に JSON 出力してレンダリング。
+render-a11y:
+    {{python}} tools/quarto_locked.py -- quarto render quarto --profile a11y --to html
 
 # Quarto PDF 実レンダリング
 render-book-pdf:
-    quarto render quarto --to pdf
+    {{python}} tools/quarto_locked.py -- quarto render quarto --to pdf
 
 # ドキュメント整合性検証 (Quarto / Mermaid / LaTeX)
 validate-docs:

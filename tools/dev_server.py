@@ -4,6 +4,7 @@ import time
 from pathlib import Path
 
 from utils.find_quarto import find_quarto
+from utils.quarto_lock import QuartoLock, QuartoLockError
 
 
 def run_dev_server():
@@ -17,41 +18,47 @@ def run_dev_server():
         )
         sys.exit(1)
 
-    # コマンドの定義
+    # コマンドの定義。
+    # Preview の host / port / watch-inputs は quarto/_quarto.yml の
+    # project.preview に寄せ、ここでは公式 `quarto preview` をそのまま起動する。
     watcher_cmd = [
         sys.executable,
         str(project_root / "tools" / "utils" / "quarto_watcher.py"),
     ]
-    quarto_cmd = [quarto_bin, "preview", "quarto", "--port", "4312", "--render", "html"]
+    quarto_cmd = [quarto_bin, "preview", "quarto", "--render", "html"]
 
-    print(" Starting dev server (Watcher + Quarto Preview)...")
+    print(" Starting dev server (partial watcher + official Quarto Preview)...")
 
     processes = []
     try:
-        # ウォッチャーの起動
-        watcher_proc = subprocess.Popen(
-            watcher_cmd, stdout=sys.stdout, stderr=sys.stderr, cwd=str(project_root)
-        )
-        processes.append(watcher_proc)
+        with QuartoLock(project_root):
+            # ウォッチャーの起動
+            watcher_proc = subprocess.Popen(
+                watcher_cmd, stdout=sys.stdout, stderr=sys.stderr, cwd=str(project_root)
+            )
+            processes.append(watcher_proc)
 
-        # Quartoの起動
-        quarto_proc = subprocess.Popen(
-            quarto_cmd, stdout=sys.stdout, stderr=sys.stderr, cwd=str(project_root)
-        )
-        processes.append(quarto_proc)
+            # Quartoの起動
+            quarto_proc = subprocess.Popen(
+                quarto_cmd, stdout=sys.stdout, stderr=sys.stderr, cwd=str(project_root)
+            )
+            processes.append(quarto_proc)
 
-        # 両方のプロセスを監視
-        while True:
-            if watcher_proc.poll() is not None:
-                print("Watcher process terminated.")
-                break
-            if quarto_proc.poll() is not None:
-                print("Quarto process terminated.")
-                break
-            time.sleep(1)
+            # 両方のプロセスを監視
+            while True:
+                if watcher_proc.poll() is not None:
+                    print("Watcher process terminated.")
+                    break
+                if quarto_proc.poll() is not None:
+                    print("Quarto process terminated.")
+                    break
+                time.sleep(1)
 
     except KeyboardInterrupt:
         print("\n Shutting down...")
+    except QuartoLockError as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        sys.exit(2)
     finally:
         for proc in processes:
             if proc.poll() is None:
