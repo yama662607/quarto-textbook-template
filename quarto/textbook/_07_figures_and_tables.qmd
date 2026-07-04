@@ -8,9 +8,9 @@
 
 ::: {#fig-trig layout-ncol=2}
 
-![sine 関数](../assets/images/figures/sine.png){#fig-sine}
+![sine 関数](../assets/images/figures/sine.png){#fig-sine fig-alt="0 から 2π までの正弦波"}
 
-![cosine 関数](../assets/images/figures/cosine.png){#fig-cosine}
+![cosine 関数](../assets/images/figures/cosine.png){#fig-cosine fig-alt="0 から 2π までの余弦波"}
 
 三角関数の比較
 
@@ -22,7 +22,7 @@
 
 `column: page` を使うと本文幅 (1100px) より広い表示エリアを取れます。横長グラフや巨大な表に。
 
-![横長サンプル — column: page](../assets/images/figures/scatter.png){#fig-wide .column-page}
+![横長サンプル — column: page](../assets/images/figures/scatter.png){#fig-wide .column-page fig-alt="複数の点が右上がりに分布する散布図"}
 
 ## margin / aside (傍注) {#sec-margin}
 
@@ -37,7 +37,7 @@
 
 `.column-margin` 形式では複数行・図・表もマージンに置けます。下に小さな図を置いた例:
 
-![margin 内の図](../assets/images/figures/sine.png){#fig-margin-sine width=80%}
+![margin 内の図](../assets/images/figures/sine.png){#fig-margin-sine width=80% fig-alt="傍注内に表示された小さな正弦波"}
 
 :::
 
@@ -47,9 +47,9 @@
 
 `_quarto.yml` で `lightbox: auto` を有効化済み。クリックすると拡大表示 + ギャラリーモードでナビゲーション。`group="..."` で同じグループの画像をまとめて見られます。
 
-![@fig-gallery-1](../assets/images/figures/sine.png){group="trig-gallery" width=30%}
-![@fig-gallery-2](../assets/images/figures/cosine.png){group="trig-gallery" width=30%}
-![@fig-gallery-3](../assets/images/figures/scatter.png){group="trig-gallery" width=30%}
+![@fig-gallery-1](../assets/images/figures/sine.png){group="trig-gallery" width=30% fig-alt="正弦波のギャラリー画像"}
+![@fig-gallery-2](../assets/images/figures/cosine.png){group="trig-gallery" width=30% fig-alt="余弦波のギャラリー画像"}
+![@fig-gallery-3](../assets/images/figures/scatter.png){group="trig-gallery" width=30% fig-alt="散布図のギャラリー画像"}
 
 クリックして拡大、左右矢印で次の画像へ移動できます。
 
@@ -88,11 +88,55 @@
 
 [@tbl-divs] には [@sec-callouts-default] / [@sec-tabset] / [@sec-theorems] が対応します。
 
+## list table {#sec-list-table}
+
+Quarto 1.9 以降では、複雑な表を list table で書くと差分が読みやすくなります。現行 Quarto 1.8 系でも HTML 出力は確認できますが、チームで使う場合は Quarto 1.9+ に揃えるのが安全です。
+
+::: {#tbl-ingestion-checklist .list-table tbl-colwidths="[25,75]"}
+PDF 取り込み前後の確認表
+
+- - 作業
+  - 確認内容
+
+- - 診断
+  - `just diagnose-pdf <pdf>` でテキスト層と画像の有無を確認する
+
+- - 抽出
+  - `just extract-pdf <pdf> <start> <end>` を実行し、PNG と text / OCR / LaTeX を揃える
+
+- - 視認
+  - `quarto/assets/raw/<stem>_pages/` の PNG をページごとに開き、図表配置と式番号を確認する
+
+- - 執筆
+  - `_NN_topic.qmd` に小さく追記し、`textbook.qmd` から `{{< include >}}` する
+
+:::
+
+[@tbl-ingestion-checklist] のように、手順書・採点ルーブリック・用語表など「セルの中身が長くなりがちな表」に向いています。
+
+## 横向きページ用 `.landscape` {#sec-landscape}
+
+PDF 出力で横長の表や図を読みやすくしたい場合は `.landscape` div を使えます。HTML では通常のブロックとして表示されるため、同じ本文を HTML / PDF 両方に置きやすいのが利点です。
+
+::: {.landscape}
+
+| フェーズ | 主な作業 | 確認観点 | 出力 |
+|:---|:---|:---|:---|
+| 取り込み | PDF / 写真 / 講義メモを `research/inbox/` に置く | 原本の所在とページ番号が追える | 素材一式 |
+| 抽出 | `just extract-pdf` で画像・文字・数式を抽出 | 画像を見て OCR 誤読を補正する | raw 画像と抽出テキスト |
+| 執筆 | `_NN_topic.qmd` に小さく書き起こす | 見出し、式番号、図表参照が壊れていない | qmd partial |
+| 検証 | `just check` を実行する | render-check と validate-docs が通る | 公開可能な差分 |
+
+: PDF 横向きページに向く横長ワークフロー表 {#tbl-landscape-workflow}
+
+:::
+
 ## まとめ {#sec-figures-summary}
 
 - subfigure → `layout-ncol=N` を親 div に
 - 横長 → `.column-page`
 - マージン補足 → inline は `.aside`、block は `.column-margin`
 - lightbox → `_quarto.yml` に `lightbox: auto`、`group="..."` でギャラリー化
-- 表 → 軽い場合 pipe table、複雑なら grid table
+- 表 → 軽い場合 pipe table、複雑なら grid table / list table
+- PDF 横向きページ → `.landscape`
 - 図表参照 → `{#fig-...}` `{#tbl-...}` を付け `@fig-...` `@tbl-...` で本文から参照

@@ -56,7 +56,8 @@ def main():
         check_command("uv", "uv"),
         check_command("just", "just"),
         check_quarto(),
-        check_command("npm", "Node/npm"),
+        check_command("node", "Node"),
+        check_command("bun", "Bun"),
     ]
 
     print("\n--- Python Environment ---")

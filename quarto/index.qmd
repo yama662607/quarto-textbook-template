@@ -1,23 +1,46 @@
 ---
-title: "Your Textbook Title"
-subtitle: "サブタイトルやコース名"
+title: "Quarto Textbook Template"
+subtitle: "教科書・講義ノート・PDF 起こしを始めるためのスターター"
 author: "Your Name"
 date: last-modified
 ---
 
-# はじめに
+# Quarto Textbook Template
 
-この教科書サイトは [quarto-textbook-template](https://github.com/yama662607/quarto-textbook-template) を雛形に作成されています。
+このサイトは、Quarto Book で教材サイトを作るためのテンプレートです。まず統合サンプルで完成形を見て、必要な章テンプレートをコピーし、運用ワークフローに沿って編集します。
 
-## このサイトの構成
+::: {.template-entry-grid}
 
-- **本編**: 章ごとに分割された教科書本体
-- **演習・サポート** (任意): 補助資料
-- **資料 PDF** (任意): 元教科書や講義スライドへのリンク
+::: {.template-entry}
+## 統合サンプル
 
-## 利用方法
+このテンプレートで作れる教材の代表例です。Quarto Live、Plotly、シミュレーション、図表、定理、引用、callout などの動く例もここに集約しています。
 
-ローカルで編集・プレビューする場合は以下を実行:
+[動く統合サンプルを見る](textbook/textbook.qmd){.template-entry-link}
+
+:::
+
+::: {.template-entry}
+## 章テンプレート
+
+PDF 起こし、数学・物理、V-S-V レッスン、全機能盛り合わせなど、コピーして使う qmd スケルトンです。
+
+[テンプレートを選ぶ](template-catalog.qmd){.template-entry-link}
+
+:::
+
+::: {.template-entry}
+## 運用ワークフロー
+
+セットアップ、プレビュー、PDF 取り込み、検証、公開前チェックの流れを確認できます。
+
+[運用を確認する](workflow-guide.qmd){.template-entry-link}
+
+:::
+
+:::
+
+## 最初に試すコマンド
 
 ```bash
 just setup     # 初回のみ
@@ -25,4 +48,8 @@ just docs      # http://localhost:4312 でプレビュー
 just check     # 公開前の品質チェック
 ```
 
-詳しくはリポジトリ root の `README.md` を参照してください。
+`quarto/_quarto.yml` の preview 設定は `host: 0.0.0.0` / `port: 4312` なので、同じ Wi-Fi 上の端末からも `http://<Mac の IP>:4312/` で確認できます。
+
+## 編集の基本
+
+本文は `quarto/textbook/textbook.qmd` を親にし、章や節の中身を `_*.qmd` partial に分けて <code>{{&lt; include &gt;}}</code> します。機能の書き方は [統合サンプル](textbook/textbook.qmd) の該当セクションから探し、コピー元は [章テンプレート](template-catalog.qmd) から選んでください。

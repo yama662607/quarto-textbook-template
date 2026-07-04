@@ -53,11 +53,11 @@ def trapezoid(f, a, b, n=100):                         # <1>
 
 ## video 埋め込み {#sec-video}
 
-YouTube / Vimeo / mp4 を直接埋め込めます。Quarto には `{{< video URL >}}` shortcode がありますが、Quarto 1.8.x には shortcode 内部で `nil 'fail'` を呼ぶ既知バグがあるため、現状は **raw HTML `<iframe>`** が安定です。
+YouTube / Vimeo / mp4 を直接埋め込めます。Quarto には `{{&lt; video URL &gt;}}` shortcode がありますが、Quarto 1.8.x には shortcode 内部で `nil 'fail'` を呼ぶ既知バグがあるため、現状は **raw HTML `<iframe>`** が安定です。
 
 ```markdown
 <!-- Quarto shortcode (将来的にバグ修正されたら推奨) -->
-{{< video https://www.youtube.com/watch?v=wo9vZccmqwc >}}
+{{&lt; video https://www.youtube.com/watch?v=wo9vZccmqwc &gt;}}
 ```
 
 下は iframe による埋め込み:

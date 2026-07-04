@@ -35,9 +35,11 @@ Cross-platform Python helpers invoked from the Justfile.
 
 | ファイル | 用途 |
 | --- | --- |
-| `check_env.py` | uv / just / quarto / npm の存在 & バージョン確認 |
+| `check_env.py` | uv / just / quarto / node / bun の存在 & バージョン確認 |
+| `quarto_capabilities.py` | Quarto バージョン別に、このテンプレートで使える新機能を表示 |
 | `clean.py` | ビルド成果物削除 (cross-platform, shutil/glob ベース) |
-| `dev_server.py` | Quarto preview + watcher 起動 (port 4312) |
+| `dev_server.py` | 公式 Quarto preview + `_*.qmd` partial watcher 起動 (host/port は `_quarto.yml`) |
+| `quarto_locked.py` | Quarto render / preview の同時実行を防ぐ lock wrapper |
 | `validate_docs.py` | Quarto / Mermaid / LaTeX 整合性検証 + キャッシュ |
 | `kill_quarto_process.py` | Quarto preview プロセスを停止 (Win/Mac/Linux 対応) |
 

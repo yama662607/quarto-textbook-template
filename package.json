@@ -7,7 +7,7 @@
   "private": true,
   "packageManager": "bun@1.3.14",
   "scripts": {
-    "test": "echo \"No npm tests — use 'just test' instead.\""
+    "test": "echo \"No JS tests — use 'just test' instead.\""
   },
   "dependencies": {
     "dompurify": "^3.3.1",

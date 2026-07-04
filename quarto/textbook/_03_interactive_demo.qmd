@@ -32,14 +32,25 @@ warnings.simplefilter("ignore")
 
 try:
     from pyodide.http import pyfetch  # Pyodide でだけ存在
-    if not os.path.exists("/tmp/NotoSansJP.ttf"):
-        resp = await pyfetch("../../../assets/fonts/NotoSansJP-Regular.ttf")
-        with open("/tmp/NotoSansJP.ttf", "wb") as f:
-            f.write(await resp.bytes())
-    font_manager.fontManager.addfont("/tmp/NotoSansJP.ttf")
-    matplotlib.rcParams["font.family"] = "Noto Sans JP"
-except ImportError:
-    pass  # Pyodide ではないので OS のフォントに任せる
+
+    font_path = "/tmp/NotoSansJP.ttf"
+
+    def valid_ttf(path):
+        if not os.path.exists(path) or os.path.getsize(path) < 1_000_000:
+            return False
+        with open(path, "rb") as f:
+            return f.read(4) in (b"\x00\x01\x00\x00", b"OTTO", b"ttcf")
+
+    if not valid_ttf(font_path):
+        resp = await pyfetch("/assets/fonts/NotoSansJP-Regular.ttf")
+        font_bytes = await resp.bytes()
+        with open(font_path, "wb") as f:
+            f.write(font_bytes)
+    if valid_ttf(font_path):
+        font_manager.fontManager.addfont(font_path)
+        matplotlib.rcParams["font.family"] = "Noto Sans JP"
+except Exception:
+    pass  # フォント登録に失敗しても描画は続ける
 matplotlib.rcParams["axes.unicode_minus"] = False
 
 # --- ここから先は素の Python — Jupyter / VSCode にコピー可能 ---
@@ -101,5 +112,5 @@ OJS のループでスライダーを高速更新して `{pyodide}` を毎フレ
 1. このファイル (`_03_interactive_demo.qmd`) と同じパターンの新しい qmd を作る
 2. YAML に `filters: [r-wasm/live]` を含める (パーシャル `_*.qmd` ならスキップ可。親の `textbook.qmd` 側で指定)
 3. 日本語フォントブロック (`try: pyfetch ...`) は描画セルの先頭に置く — 順序が保証される
-4. `pyfetch` の URL は **`../../../assets/fonts/...` で固定** (qmd の階層に合わせて変えない)
+4. `pyfetch` の URL は **`/assets/fonts/...` の絶対パスで固定** (qmd の階層に合わせて変えない)
 5. アニメーションは `FuncAnimation` で組み、最終行で `HTML(ani.to_jshtml())` を返す

@@ -10,16 +10,18 @@ project:
     # 届けるために配布対象に含める。詳細は AGENTS.md の「対話シミュレーション」節。
     - "assets/fonts/**/*"
   preview:
+    host: 0.0.0.0
+    port: 4312
     watch-inputs: true
 
 book:
-  title: "Your Textbook Title"
+  title: "Quarto Textbook Template"
   author: "Your Name"
   date: last-modified
 
   # GitHub 連携 (utilizes book.repo-url + repo-actions for "Edit" / "Issue" links)
-  # テンプレ利用時は your-org/your-repo を書き換えてください。
-  repo-url: https://github.com/your-org/your-repo
+  # テンプレ利用時は自分のリポジトリ URL に書き換えてください。
+  repo-url: https://github.com/yama662607/quarto-textbook-template
   repo-branch: main
   repo-actions: [edit, issue]
 
@@ -41,9 +43,15 @@ book:
     collapse-level: 4
   chapters:
     - index.qmd
-    - part: "本編"
+    - textbook/textbook.qmd
+    - part: "章テンプレート"
       chapters:
-        - textbook/textbook.qmd
+        - template-catalog.qmd
+        - template-pages/textbook.qmd
+        - template-pages/math-focused.qmd
+        - template-pages/theory.qmd
+        - template-pages/quarto-features.qmd
+    - workflow-guide.qmd
   page-navigation: true
   page-footer:
     left: "© Your Name"

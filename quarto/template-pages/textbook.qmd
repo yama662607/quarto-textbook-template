@@ -1,0 +1,61 @@
+---
+title: "PDF textbook テンプレート"
+subtitle: "PDF を Phase 1 / Phase 2 で教材化する"
+---
+
+# PDF textbook テンプレート
+
+PDF 教科書や論文を、原文対応を保ちながら Quarto の章へ起こすためのテンプレートです。
+このページは閲覧用です。実際に編集を始めるときは、下のコピー元ファイルを `quarto/textbook/_NN_topic.qmd` にコピーします。
+
+| 項目 | 内容 |
+| --- | --- |
+| コピー元 | `quarto/templates/textbook_template.qmd` |
+| コピー先例 | `quarto/textbook/_10_linear_map.qmd` |
+| 向いている用途 | 忠実翻訳、補足解説、Remark、定理、証明、発表チェックリスト |
+
+```bash
+cp quarto/templates/textbook_template.qmd quarto/textbook/_10_topic.qmd
+```
+
+## 章の骨格
+
+```markdown
+## X.Y セクションタイトル [textbook.pdf p.XX](../assets/pdf/textbook.pdf#page=YY)
+
+### Phase 1: 忠実翻訳
+
+::: {#def-X-Y}
+## 定義 X.Y（概念名）
+
+[原文の定義を一言一句逃さず日本語訳する。]
+
+:::
+
+::: {.callout-caution icon="false"}
+## Remark X.Y
+
+[原文の Remark をそのまま日本語訳する。]
+
+:::
+
+### Phase 2: 解説と拡充
+
+::: {.callout-note}
+## 直感的な理解
+
+[原文にない補足や説明をここに書く。]
+
+:::
+```
+
+## 使う前の確認
+
+1. `just extract-pdf <pdf> <start> <end>` で画像とテキストを用意する。
+2. 生成された PNG を見て、図表配置、式番号、OCR 誤読を確認する。
+3. 1 セクションずつ qmd に起こし、`just docs` で見え方を確認する。
+
+## 関連ページ
+
+- [統合サンプル](../textbook/textbook.qmd)
+- [運用ワークフロー](../workflow-guide.qmd)

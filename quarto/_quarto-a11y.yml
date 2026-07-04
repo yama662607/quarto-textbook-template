@@ -1,0 +1,12 @@
+# Opt-in local accessibility profile.
+#
+# Use:
+#   just render-a11y
+#   just docs-a11y
+#
+# This writes axe-core results to the browser console as JSON. Keep it out of
+# the default published output because the report is for review, not readers.
+format:
+  html:
+    axe:
+      output: json

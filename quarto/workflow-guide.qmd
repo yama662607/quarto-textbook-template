@@ -1,0 +1,50 @@
+---
+title: "運用ワークフロー"
+subtitle: "セットアップから公開前チェックまで"
+---
+
+# 運用ワークフロー
+
+このテンプレートは、PDF・講義メモ・手書き資料から Quarto Book を作る作業を想定しています。小さく書いて、すぐ preview し、品質ゲートで確認します。
+
+## セットアップ
+
+```bash
+just check-env
+just setup
+just docs
+```
+
+`just docs` は公式 `quarto preview` に `_*.qmd` partial watcher を併走させます。公式 preview 単体の挙動を確認したい場合は `just docs-official` を使います。
+
+## PDF 取り込み
+
+PDF から qmd を起こす前に、必ず画像とテキストを両方用意します。
+
+```bash
+just diagnose-pdf path/to/textbook.pdf
+just extract-pdf path/to/textbook.pdf 12 15
+```
+
+`extract-pdf` は先に PNG を生成し、text / OCR / LaTeX 抽出を行います。生成された `quarto/assets/raw/<stem>_pages/page_NN.png` をページごとに開いて、図表配置、式番号、OCR 誤読を確認してから qmd に書き起こします。
+
+## qmd 編集
+
+- 本文統合点は `quarto/textbook/textbook.qmd`
+- 章・節の中身は `quarto/textbook/_*.qmd`
+- partial には YAML front matter を書かない
+- <code>{{&lt; include _NN_topic.qmd &gt;}}</code> を 1 つずつ追加する
+- Quarto 機能の書き方は [統合サンプル](textbook/textbook.qmd) の該当セクションから探す
+- 書き始めは [章テンプレート一覧](template-catalog.qmd) から目的に近いものを選ぶ
+
+## 検証
+
+```bash
+just check
+```
+
+`just check` は format、lint、typecheck、docs validation、Quarto render-check、pytest をまとめて実行します。ドキュメント編集後はこのコマンドを通してから公開します。
+
+## 公開
+
+既定では `main` push で GitHub Actions が HTML を render し、`gh-pages` に公開します。研究会資料など、公開タイミングを手動にしたい場合は `.github/workflows/publish.yml` の trigger を `workflow_dispatch` 中心に変更できます。

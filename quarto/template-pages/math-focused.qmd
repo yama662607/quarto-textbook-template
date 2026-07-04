@@ -1,0 +1,57 @@
+---
+title: "数学・物理テンプレート"
+subtitle: "定義、定理、証明を中心にした章"
+---
+
+# 数学・物理テンプレート
+
+定義、定理、証明、例題、演習を中心にした講義ノート向けのテンプレートです。
+このページは閲覧用です。実際に編集を始めるときは、下のコピー元ファイルを `quarto/textbook/_NN_topic.qmd` にコピーします。
+
+| 項目 | 内容 |
+| --- | --- |
+| コピー元 | `quarto/templates/math_focused_template.qmd` |
+| コピー先例 | `quarto/textbook/_10_metric_space.qmd` |
+| 向いている用途 | 数学ノート、物理の理論章、線形代数の補足、証明中心の教材 |
+
+```bash
+cp quarto/templates/math_focused_template.qmd quarto/textbook/_10_topic.qmd
+```
+
+## 章の骨格
+
+```markdown
+# 概要と目的
+
+::: {.callout-note}
+## この章の数理的ゴール
+
+1. 定義を正確に記述できる。
+2. 定理の証明を再現できる。
+3. 構造を説明できる。
+
+:::
+
+::: {#def-main}
+## [概念の名称]
+
+[定義を書く。]
+
+:::
+
+::: {#thm-main}
+## [定理名]
+
+[定理を書く。]
+
+:::
+
+::: {.proof}
+[証明を書く。]
+
+:::
+```
+
+## 参考にする統合サンプル
+
+- [図解と数学環境](../textbook/textbook.qmd#sec-diagrams-and-math)

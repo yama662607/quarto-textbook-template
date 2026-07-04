@@ -1,5 +1,5 @@
 ---
-title: "本編"
+title: "Quarto textbook 統合サンプル"
 engine: markdown
 filters:
   - r-wasm/live
@@ -40,3 +40,5 @@ pyodide:
 {{< include _07_figures_and_tables.qmd >}}
 
 {{< include _08_text_and_citations.qmd >}}
+
+{{< include _09_simulation_showcase.qmd >}}

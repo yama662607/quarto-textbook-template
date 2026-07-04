@@ -7,9 +7,9 @@
 
 $$
 \nabla \times \mathbf{B} - \frac{1}{c}\frac{\partial \mathbf{E}}{\partial t} = \frac{4\pi}{c}\mathbf{J}
-$$ {#eq-maxwell-ampere}
+$$ {#eq-intro-maxwell-ampere}
 
-@eq-maxwell-ampere は Maxwell-Ampère の法則です。
+@eq-intro-maxwell-ampere は Maxwell-Ampère の法則です。
 
 ## 図表の例
 
@@ -27,4 +27,6 @@ flowchart LR
 
 教科書 PDF を `quarto/assets/pdf/` に置いた場合の参照例:
 
+```markdown
 [元教科書 §1.2 を見る](../assets/pdf/textbook.pdf#page=12)
+```

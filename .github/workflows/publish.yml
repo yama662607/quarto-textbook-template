@@ -26,8 +26,13 @@ jobs:
         # PDF が要るときはローカルで `just render-book-pdf`。
         uses: quarto-dev/quarto-actions/setup@v2
 
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: '1.3.14'
+
       - name: Install Node dependencies
-        run: npm ci
+        run: bun install --frozen-lockfile
 
       - name: Setup Python
         uses: actions/setup-python@v5
