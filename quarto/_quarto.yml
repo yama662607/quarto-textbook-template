@@ -44,6 +44,13 @@ book:
   chapters:
     - index.qmd
     - textbook/textbook.qmd
+    - part: "導線サンプル"
+      chapters:
+        - example-map.qmd
+        - examples/topic-overview.qmd
+        - examples/simulation-page.qmd
+        - examples/exercise-page.qmd
+        - examples/support-page.qmd
     - part: "章テンプレート"
       chapters:
         - template-catalog.qmd
