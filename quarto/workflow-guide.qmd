@@ -34,15 +34,17 @@ just extract-pdf path/to/textbook.pdf 12 15
 - 章・節の中身は `quarto/textbook/_*.qmd`
 - partial には YAML front matter を書かない
 - <code>{{&lt; include _NN_topic.qmd &gt;}}</code> を 1 つずつ追加する
-- Quarto 機能の書き方は [統合サンプル](textbook/textbook.qmd) の該当セクションから探す
+- Quarto 機能の書き方は [教材本編サンプル](textbook/textbook.qmd) の該当セクションから探す
 - 書き始めは [章テンプレート一覧](template-catalog.qmd) から目的に近いものを選ぶ
 
-## qmd 追加後の導線整備
+## qmd 追加後の導線整備 {#sec-routing-after-qmd}
 
 qmd を作っただけでは、読者はそのページにたどり着けません。既存プロジェクトでは、次の 2 つを必ずセットで更新しています。
 
 1. `quarto/_quarto.yml` の `book.chapters`
 2. `quarto/index.qmd` のロードマップ表またはカード
+
+このテンプレートでは、まず `index.qmd` の「教材サイトの導線サンプル」表に 1 行追加します。公開用の教材では、ショーケースやテンプレート支援ページを主導線に残しすぎず、本文・演習・シミュレーション・補助資料を先に並べます。
 
 ### 単独ページを追加する場合
 
@@ -90,6 +92,19 @@ book:
 ```
 
 実際の配置例は [導線サンプル](example-map.qmd) を参照してください。
+
+## 教材構成の選び方
+
+既定では `quarto/textbook/textbook.qmd` を本文の親にします。大きい教材に育った場合も、最初はこの形を保つと壊れにくいです。
+
+| 型 | 使い所 | 追加する導線 |
+| --- | --- | --- |
+| 単一 textbook 型 | 普通の講義ノート、短い教科書、機能例の集約 | `textbook/textbook.qmd` を本文入口にし、partial を include |
+| 本文 + 単独ページ型 | 本文とは別にシミュレーション、演習、サポートを見せたい | `book.chapters` に単独ページを追加し、ホームのロードマップからリンク |
+| 複数原典ロードマップ型 | 複数の PDF、講義ノート、論文を並行して扱う | ホームに「原文 PDF / 解説 / 実装」表を置き、必要なら `textbook-*/textbook.qmd` を追加 |
+| 長編精読型 | 章ごとに独立したページとして読ませたい論文・本 | 部ごとの章一覧をホームに置き、各章 qmd を `book.chapters` に並べる。採用時は `AGENTS.md` の single source 方針も更新 |
+
+迷った場合は、まず「単一 textbook 型」で始めます。後から分割する方が、最初から複数系統を作るより破綻しにくいです。
 
 ## 検証
 

@@ -5,18 +5,56 @@ subtitle: "編集者向けの運用メモを置く例"
 
 # サポートページ
 
-サポートページには、読者向け本文ではなく、編集者が繰り返し参照する情報を置きます。`Quantum-information` の support ページのように、ホームや navbar から直接行ける場所に置くと便利です。
+サポートページには、読者向け本文ではなく、編集者や共同執筆者が繰り返し参照する情報を置きます。`Quantum-information` の support ページのように、ホームや navbar から直接行ける場所に置くと便利です。
 
-## 置くとよい情報
+## よく使う入口
 
-- 章を追加するときの手順
-- PDF 取り込みのルール
-- 図表・引用・数式の書き方
-- 公開前チェック
-- プロジェクト固有の用語や記法
+| 目的 | ページ |
+| --- | --- |
+| qmd 追加後の導線を確認する | [導線サンプル](../example-map.qmd) |
+| 章の書き始めを選ぶ | [章テンプレート一覧](../template-catalog.qmd) |
+| PDF 取り込みから公開まで確認する | [運用ワークフロー](../workflow-guide.qmd) |
+| Quarto の書き方をコピーする | [教材本編サンプル](../textbook/textbook.qmd) |
 
-## このテンプレートでの参照先
+## 章を追加するとき
 
-- [運用ワークフロー](../workflow-guide.qmd)
-- [章テンプレート一覧](../template-catalog.qmd)
-- [統合サンプル](../textbook/textbook.qmd)
+| 追加したいもの | 作る場所 | 次に更新する場所 |
+| --- | --- | --- |
+| 本文の章・節 | `quarto/textbook/_NN_topic.qmd` | `quarto/textbook/textbook.qmd` の include と `quarto/index.qmd` の本文ロードマップ |
+| 独立シミュレーション | `quarto/simulations/topic.qmd` | `quarto/_quarto.yml` の `book.chapters` と `quarto/index.qmd` |
+| 演習ページ | `quarto/exercises/topic.qmd` | `quarto/_quarto.yml` の `book.chapters` と関連本文からのリンク |
+| サポート資料 | `quarto/support/topic.qmd` | navbar または sidebar、ホーム下部の編集者向けリンク |
+
+## PDF 取り込み
+
+```bash
+just diagnose-pdf path/to/source.pdf
+just extract-pdf path/to/source.pdf 12 15
+```
+
+抽出結果だけで本文を書かず、生成された PNG を見ながら図表配置、式番号、OCR 誤読を確認します。
+
+## 公開前チェック
+
+```bash
+just docs
+just check
+```
+
+`just docs` が動いている間は render/check 系コマンドを同時に実行できません。プレビューを止めてから `just check` を実行してください。
+
+## navbar に出す場合
+
+よく使う補助ページは `quarto/_quarto.yml` の `navbar` に追加します。
+
+```yaml
+book:
+  navbar:
+    left:
+      - text: "ホーム"
+        href: index.qmd
+    right:
+      - text: "サポート"
+        href: examples/support-page.qmd
+```
+

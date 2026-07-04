@@ -7,16 +7,41 @@ date: last-modified
 
 # Quarto Textbook Template
 
-このサイトは、Quarto Book で教材サイトを作るためのテンプレートです。まず統合サンプルで完成形を見て、必要な章テンプレートをコピーし、運用ワークフローに沿って編集します。
+このサイトは、Quarto Book で教材サイトを作るためのテンプレートです。このホーム自体も派生プロジェクトの公開ホームの雛形です。自分の教材では、下の「公開用ホームに残す導線」を先に書き換え、ショーケースやテンプレート支援ページは編集用リンクとして整理してください。
+
+## 公開用ホームに残す導線
+
+まず読者が見るべき本文・演習・シミュレーションをここに並べます。テンプレートを使い始めたら、この表を自分の教材のロードマップに置き換えてください。
+
+| 入口 | 読者に見せる内容 | リンク例 |
+| --- | --- | --- |
+| 本文の入口 | 教材本体、章立て、読む順番 | [教材本編サンプル](textbook/textbook.qmd) |
+| 主要トピック | 1 つの講義回、論文節、理論項目 | [トピック概要ページ](examples/topic-overview.qmd) |
+| 動く確認 | Quarto Live / Plotly によるシミュレーション | [シミュレーションページ](examples/simulation-page.qmd) |
+| 演習・課題 | 問題、ヒント、解答方針、確認コード | [演習ページ](examples/exercise-page.qmd) |
+| 補助資料 | 記法、素材管理、PDF 取り込み、公開前チェック | [サポートページ](examples/support-page.qmd) |
+
+ショーケースはコピー元として便利ですが、派生プロジェクトの公開ホームでは主導線に残しすぎない方が自然です。必要な例だけ本文やサポートへ移し、不要なテンプレート支援リンクは公開前に外します。
+
+## テンプレート支援ページ
 
 ::: {.template-entry-grid}
 
 ::: {.template-entry}
-## 統合サンプル
+## 教材本編サンプル
 
-このテンプレートで作れる教材の代表例です。Quarto Live、Plotly、シミュレーション、図表、定理、引用、callout などの動く例もここに集約しています。
+このテンプレートで作れる本文の代表例です。Quarto Live、Plotly、シミュレーション、図表、定理、引用、callout などの動く例もここに集約しています。
 
-[動く統合サンプルを見る](textbook/textbook.qmd){.template-entry-link}
+[本編サンプルを見る](textbook/textbook.qmd){.template-entry-link}
+
+:::
+
+::: {.template-entry}
+## 導線サンプル
+
+qmd を追加した後、ホーム、sidebar、本文内 anchor へどうリンクするかの配置例です。
+
+[導線を確認する](example-map.qmd){.template-entry-link}
 
 :::
 
@@ -47,13 +72,37 @@ PDF 起こし、数学・物理、V-S-V レッスン、全機能盛り合わせ�
 | 入口 | 想定する内容 | リンク例 |
 | --- | --- | --- |
 | 理論ロードマップ | 教材全体の章立て、読む順番、主要セクションへの直リンク | [導線サンプル](example-map.qmd) |
-| 本文の代表章 | 複数 partial を束ねた本編、または精読教材の章 | [統合サンプル](textbook/textbook.qmd) |
+| 本文の代表章 | 複数 partial を束ねた本編、または精読教材の章 | [教材本編サンプル](textbook/textbook.qmd) |
 | 個別トピック | 1 つの講義回、論文節、理論項目を独立ページとして見せる | [トピック概要ページ](examples/topic-overview.qmd) |
 | シミュレーション | Quarto Live / Plotly で動く実験ページ | [シミュレーションページ](examples/simulation-page.qmd) |
 | 演習・課題 | 問題、ヒント、解答方針、確認コード | [演習ページ](examples/exercise-page.qmd) |
 | 執筆サポート | 記法、素材管理、PDF 取り込み、公開前チェック | [サポートページ](examples/support-page.qmd) |
 
 この配置は `mechanics-class-simulation` の「理論体系ノート / シミュレーション / 演習」、`Quantum-information` の「本文 / 実装ノート / サポート」、`ai-descartes-textbook` の「章立て目次」を元にした最小例です。
+
+迷ったら [導線サンプル](example-map.qmd) と [qmd 追加後の導線整備](workflow-guide.qmd#sec-routing-after-qmd) を見てください。
+
+## ホームロードマップの型
+
+教材の種類に応じて、ホームの表は次のどれかをコピーして始めます。
+
+### 理論・演習・シミュレーション型
+
+| 項目 | 本文 | 動く確認 | 演習 |
+| --- | --- | --- | --- |
+| 導入と記法 | [本文](textbook/textbook.qmd#sec-introduction) | [シミュレーション](examples/simulation-page.qmd) | [演習](examples/exercise-page.qmd) |
+
+### 原典 PDF・解説型
+
+| 原典 | PDF | 解説 | 実装・補足 |
+| --- | --- | --- | --- |
+| Chapter 1 | `assets/pdf/chapter1.pdf` | [本文](textbook/textbook.qmd) | [サポート](examples/support-page.qmd) |
+
+### 長編精読型
+
+| 部 | 章 | 内容 | ページ |
+| --- | --- | --- | --- |
+| 第 I 部 | 00 | 全体像と読み方 | [トピック概要](examples/topic-overview.qmd) |
 
 ## 最初に試すコマンド
 
@@ -67,4 +116,4 @@ just check     # 公開前の品質チェック
 
 ## 編集の基本
 
-本文は `quarto/textbook/textbook.qmd` を親にし、章や節の中身を `_*.qmd` partial に分けて <code>{{&lt; include &gt;}}</code> します。機能の書き方は [統合サンプル](textbook/textbook.qmd) の該当セクションから探し、コピー元は [章テンプレート](template-catalog.qmd) から選んでください。
+本文は `quarto/textbook/textbook.qmd` を親にし、章や節の中身を `_*.qmd` partial に分けて <code>{{&lt; include &gt;}}</code> します。機能の書き方は [教材本編サンプル](textbook/textbook.qmd) の該当セクションから探し、コピー元は [章テンプレート](template-catalog.qmd) から選んでください。

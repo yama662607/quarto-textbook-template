@@ -79,6 +79,10 @@ Mermaid / Graphviz / theorem 環境 / tabset / lightbox / 引用 などの **Qua
 - **Quarto/qmd**:
   - 本文は `_*.qmd` (アンダースコア接頭辞 = レンダリング対象から除外) に分割し、`textbook.qmd` から `{{< include >}}`
   - パーシャルファイルに **YAML フロントマターを書かない** (親ファイルに集約)
+  - **qmd を追加したら導線も更新する**:
+    - 本文 partial (`quarto/textbook/_NN_topic.qmd`) は `quarto/textbook/textbook.qmd` に include し、ホームから飛ばしたい見出しに `{#sec-id}` を付ける
+    - 単独ページ (simulation / exercise / support など) は `quarto/_quarto.yml` の `book.chapters` に登録し、`quarto/index.qmd` のロードマップ表からリンクする
+    - 派生プロジェクトの公開ホームでは、ショーケースやテンプレート支援ページよりも本文・演習・シミュレーションへの導線を先に置く
   - `:::` (fenced div) の **閉じる前に空行必須** (`just fix` で自動修正可)
   - 数式: インライン `$...$`、ディスプレイ `$$...$$ {#eq-label}`、参照は `@eq-label`
   - 図表: Mermaid (`{mermaid}` ブロック)、PNG/JPG は `quarto/assets/images/`
@@ -108,7 +112,7 @@ just test        # pytest のみ
 
 - ❌ `pip install` を提案しない → `uv add <pkg>` または `uv sync --extra <name>` を使う
 - ❌ `_*.qmd` に YAML ヘッダーを追加しない
-- ❌ `quarto/textbook/chapter1.qmd` のような新規ルート qmd を作らない (パーシャルに分ける)
+- ❌ `quarto/textbook/chapter1.qmd` のような本文章ルート qmd を作らない。本文は `quarto/textbook/_*.qmd` partial に分け、`quarto/textbook/textbook.qmd` から include する。シミュレーション・演習・サポートのような独立ページは `quarto/_quarto.yml` の `book.chapters` に登録する場合のみ作成可
 - ❌ `:::` の閉じる前の空行を省略しない
 - ❌ Justfile に Unix 専用コマンド (`lsof`, `pkill`, `xargs`, `export PATH=`) を追加しない → 必ず `tools/*.py` 経由で cross-platform 化
 - ❌ `quarto/assets/raw/`, `quarto/assets/private/`, `research/inbox/*/` 配下のファイルを commit しない (gitignore 済)
