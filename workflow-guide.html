@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Your Name">
 
-<title>Quarto Textbook Template</title>
+<title>運用ワークフロー – Quarto Textbook Template</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -69,7 +68,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./textbook/textbook.html" rel="next">
+<link href="./template-pages/quarto-features.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -152,7 +151,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-title">Quarto Textbook Template</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./workflow-guide.html"><span class="chapter-title">運用ワークフロー</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -166,7 +165,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Quarto Textbook Template</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Quarto Textbook Template</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -212,7 +211,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./workflow-guide.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">運用ワークフロー</span></a>
+  <a href="./workflow-guide.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">運用ワークフロー</span></a>
   </div>
 </li>
     </ul>
@@ -225,40 +224,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">目次</h2>
    
   <ul>
-  <li><a href="#quarto-textbook-template" id="toc-quarto-textbook-template" class="nav-link active" data-scroll-target="#quarto-textbook-template">Quarto Textbook Template</a>
+  <li><a href="#運用ワークフロー" id="toc-運用ワークフロー" class="nav-link active" data-scroll-target="#運用ワークフロー">運用ワークフロー</a>
   <ul class="collapse">
-  <li><a href="#最初に試すコマンド" id="toc-最初に試すコマンド" class="nav-link" data-scroll-target="#最初に試すコマンド">最初に試すコマンド</a></li>
-  <li><a href="#編集の基本" id="toc-編集の基本" class="nav-link" data-scroll-target="#編集の基本">編集の基本</a></li>
+  <li><a href="#セットアップ" id="toc-セットアップ" class="nav-link" data-scroll-target="#セットアップ">セットアップ</a></li>
+  <li><a href="#pdf-取り込み" id="toc-pdf-取り込み" class="nav-link" data-scroll-target="#pdf-取り込み">PDF 取り込み</a></li>
+  <li><a href="#qmd-編集" id="toc-qmd-編集" class="nav-link" data-scroll-target="#qmd-編集">qmd 編集</a></li>
+  <li><a href="#検証" id="toc-検証" class="nav-link" data-scroll-target="#検証">検証</a></li>
+  <li><a href="#公開" id="toc-公開" class="nav-link" data-scroll-target="#公開">公開</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/yama662607/quarto-textbook-template/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>編集</a></li><li><a href="https://github.com/yama662607/quarto-textbook-template/issues/new" class="toc-action"><i class="bi empty"></i>問題を報告</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/yama662607/quarto-textbook-template/edit/main/workflow-guide.qmd" class="toc-action"><i class="bi bi-github"></i>編集</a></li><li><a href="https://github.com/yama662607/quarto-textbook-template/issues/new" class="toc-action"><i class="bi empty"></i>問題を報告</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Quarto Textbook Template</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> コード</button></div></div>
-<p class="subtitle lead">教科書・講義ノート・PDF 起こしを始めるためのスターター</p>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-title">運用ワークフロー</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> コード</button></div></div>
+<p class="subtitle lead">セットアップから公開前チェックまで</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">作者</div>
-    <div class="quarto-title-meta-contents">
-             <p>Your Name </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">公開</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">2026年7月4日</p>
-    </div>
-  </div>
   
     
   </div>
@@ -268,36 +258,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="quarto-textbook-template" class="level1">
-<h1>Quarto Textbook Template</h1>
-<p>このサイトは、Quarto Book で教材サイトを作るためのテンプレートです。まず統合サンプルで完成形を見て、必要な章テンプレートをコピーし、運用ワークフローに沿って編集します。</p>
-<div class="template-entry-grid">
-<section id="統合サンプル" class="level2 template-entry">
-<h2 class="anchored" data-anchor-id="統合サンプル">統合サンプル</h2>
-<p>このテンプレートで作れる教材の代表例です。Quarto Live、Plotly、シミュレーション、図表、定理、引用、callout などの動く例もここに集約しています。</p>
-<p><a href="./textbook/textbook.html" class="template-entry-link">動く統合サンプルを見る</a></p>
+<section id="運用ワークフロー" class="level1">
+<h1>運用ワークフロー</h1>
+<p>このテンプレートは、PDF・講義メモ・手書き資料から Quarto Book を作る作業を想定しています。小さく書いて、すぐ preview し、品質ゲートで確認します。</p>
+<section id="セットアップ" class="level2">
+<h2 class="anchored" data-anchor-id="セットアップ">セットアップ</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> check-env</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> setup</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> docs</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>just docs</code> は公式 <code>quarto preview</code> に <code>_*.qmd</code> partial watcher を併走させます。公式 preview 単体の挙動を確認したい場合は <code>just docs-official</code> を使います。</p>
 </section>
-<section id="章テンプレート" class="level2 template-entry">
-<h2 class="anchored" data-anchor-id="章テンプレート">章テンプレート</h2>
-<p>PDF 起こし、数学・物理、V-S-V レッスン、全機能盛り合わせなど、コピーして使う qmd スケルトンです。</p>
-<p><a href="./template-catalog.html" class="template-entry-link">テンプレートを選ぶ</a></p>
+<section id="pdf-取り込み" class="level2">
+<h2 class="anchored" data-anchor-id="pdf-取り込み">PDF 取り込み</h2>
+<p>PDF から qmd を起こす前に、必ず画像とテキストを両方用意します。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> diagnose-pdf path/to/textbook.pdf</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> extract-pdf path/to/textbook.pdf 12 15</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>extract-pdf</code> は先に PNG を生成し、text / OCR / LaTeX 抽出を行います。生成された <code>quarto/assets/raw/&lt;stem&gt;_pages/page_NN.png</code> をページごとに開いて、図表配置、式番号、OCR 誤読を確認してから qmd に書き起こします。</p>
 </section>
-<section id="運用ワークフロー" class="level2 template-entry">
-<h2 class="anchored" data-anchor-id="運用ワークフロー">運用ワークフロー</h2>
-<p>セットアップ、プレビュー、PDF 取り込み、検証、公開前チェックの流れを確認できます。</p>
-<p><a href="./workflow-guide.html" class="template-entry-link">運用を確認する</a></p>
+<section id="qmd-編集" class="level2">
+<h2 class="anchored" data-anchor-id="qmd-編集">qmd 編集</h2>
+<ul>
+<li>本文統合点は <code>quarto/textbook/textbook.qmd</code></li>
+<li>章・節の中身は <code>quarto/textbook/_*.qmd</code></li>
+<li>partial には YAML front matter を書かない</li>
+<li><code>{{&lt; include _NN_topic.qmd &gt;}}</code> を 1 つずつ追加する</li>
+<li>Quarto 機能の書き方は <a href="./textbook/textbook.html">統合サンプル</a> の該当セクションから探す</li>
+<li>書き始めは <a href="./template-catalog.html">章テンプレート一覧</a> から目的に近いものを選ぶ</li>
+</ul>
 </section>
-</div>
-<section id="最初に試すコマンド" class="level2">
-<h2 class="anchored" data-anchor-id="最初に試すコマンド">最初に試すコマンド</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> setup     <span class="co"># 初回のみ</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> docs      <span class="co"># http://localhost:4312 でプレビュー</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> check     <span class="co"># 公開前の品質チェック</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>quarto/_quarto.yml</code> の preview 設定は <code>host: 0.0.0.0</code> / <code>port: 4312</code> なので、同じ Wi-Fi 上の端末からも <code>http://&lt;Mac の IP&gt;:4312/</code> で確認できます。</p>
+<section id="検証" class="level2">
+<h2 class="anchored" data-anchor-id="検証">検証</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> check</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>just check</code> は format、lint、typecheck、docs validation、Quarto render-check、pytest をまとめて実行します。ドキュメント編集後はこのコマンドを通してから公開します。</p>
 </section>
-<section id="編集の基本" class="level2">
-<h2 class="anchored" data-anchor-id="編集の基本">編集の基本</h2>
-<p>本文は <code>quarto/textbook/textbook.qmd</code> を親にし、章や節の中身を <code>_*.qmd</code> partial に分けて <code>{{&lt; include &gt;}}</code> します。機能の書き方は <a href="./textbook/textbook.html">統合サンプル</a> の該当セクションから探し、コピー元は <a href="./template-catalog.html">章テンプレート</a> から選んでください。</p>
+<section id="公開" class="level2">
+<h2 class="anchored" data-anchor-id="公開">公開</h2>
+<p>既定では <code>main</code> push で GitHub Actions が HTML を render し、<code>gh-pages</code> に公開します。研究会資料など、公開タイミングを手動にしたい場合は <code>.github/workflows/publish.yml</code> の trigger を <code>workflow_dispatch</code> 中心に変更できます。</p>
 
 
 <!-- -->
@@ -834,68 +830,63 @@ document.addEventListener('DOMContentLoaded', function () {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./template-pages/quarto-features.html" class="pagination-link" aria-label="Quarto 機能テンプレート">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Quarto 機能テンプレート</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./textbook/textbook.html" class="pagination-link" aria-label="Quarto textbook 統合サンプル">
-        <span class="nav-page-text"><span class="chapter-title">Quarto textbook 統合サンプル</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">ソースコード</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Quarto Textbook Template"</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "教科書・講義ノート・PDF 起こしを始めるためのスターター"</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Your Name"</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> last-modified</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu"># Quarto Textbook Template</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>このサイトは、Quarto Book で教材サイトを作るためのテンプレートです。まず統合サンプルで完成形を見て、必要な章テンプレートをコピーし、運用ワークフローに沿って編集します。</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>::: {.template-entry-grid}</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>::: {.template-entry}</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## 統合サンプル</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>このテンプレートで作れる教材の代表例です。Quarto Live、Plotly、シミュレーション、図表、定理、引用、callout などの動く例もここに集約しています。</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">動く統合サンプルを見る</span><span class="co">](textbook/textbook.qmd)</span>{.template-entry-link}</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>::: {.template-entry}</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="fu">## 章テンプレート</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>PDF 起こし、数学・物理、V-S-V レッスン、全機能盛り合わせなど、コピーして使う qmd スケルトンです。</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">テンプレートを選ぶ</span><span class="co">](template-catalog.qmd)</span>{.template-entry-link}</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>::: {.template-entry}</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="fu">## 運用ワークフロー</span></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>セットアップ、プレビュー、PDF 取り込み、検証、公開前チェックの流れを確認できます。</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">運用を確認する</span><span class="co">](workflow-guide.qmd)</span>{.template-entry-link}</span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="fu">## 最初に試すコマンド</span></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> setup     <span class="co"># 初回のみ</span></span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> docs      <span class="co"># http://localhost:4312 でプレビュー</span></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> check     <span class="co"># 公開前の品質チェック</span></span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="in">`quarto/_quarto.yml`</span> の preview 設定は <span class="in">`host: 0.0.0.0`</span> / <span class="in">`port: 4312`</span> なので、同じ Wi-Fi 上の端末からも <span class="in">`http://&lt;Mac の IP&gt;:4312/`</span> で確認できます。</span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="fu">## 編集の基本</span></span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>本文は <span class="in">`quarto/textbook/textbook.qmd`</span> を親にし、章や節の中身を <span class="in">`_*.qmd`</span> partial に分けて <span class="dt">&lt;</span><span class="kw">code</span><span class="dt">&gt;</span>{{<span class="dv">&amp;lt;</span> include <span class="dv">&amp;gt;</span>}}<span class="dt">&lt;/</span><span class="kw">code</span><span class="dt">&gt;</span> します。機能の書き方は <span class="co">[</span><span class="ot">統合サンプル</span><span class="co">](textbook/textbook.qmd)</span> の該当セクションから探し、コピー元は <span class="co">[</span><span class="ot">章テンプレート</span><span class="co">](template-catalog.qmd)</span> から選んでください。</span></code></pre></div><button title="コピー" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "運用ワークフロー"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "セットアップから公開前チェックまで"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu"># 運用ワークフロー</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>このテンプレートは、PDF・講義メモ・手書き資料から Quarto Book を作る作業を想定しています。小さく書いて、すぐ preview し、品質ゲートで確認します。</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">## セットアップ</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> check-env</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> setup</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> docs</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="in">`just docs`</span> は公式 <span class="in">`quarto preview`</span> に <span class="in">`_*.qmd`</span> partial watcher を併走させます。公式 preview 単体の挙動を確認したい場合は <span class="in">`just docs-official`</span> を使います。</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## PDF 取り込み</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>PDF から qmd を起こす前に、必ず画像とテキストを両方用意します。</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> diagnose-pdf path/to/textbook.pdf</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> extract-pdf path/to/textbook.pdf 12 15</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="in">`extract-pdf`</span> は先に PNG を生成し、text / OCR / LaTeX 抽出を行います。生成された <span class="in">`quarto/assets/raw/&lt;stem&gt;_pages/page_NN.png`</span> をページごとに開いて、図表配置、式番号、OCR 誤読を確認してから qmd に書き起こします。</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="fu">## qmd 編集</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>本文統合点は <span class="in">`quarto/textbook/textbook.qmd`</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>章・節の中身は <span class="in">`quarto/textbook/_*.qmd`</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>partial には YAML front matter を書かない</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="dt">&lt;</span><span class="kw">code</span><span class="dt">&gt;</span>{{<span class="dv">&amp;lt;</span> include _NN_topic.qmd <span class="dv">&amp;gt;</span>}}<span class="dt">&lt;/</span><span class="kw">code</span><span class="dt">&gt;</span> を 1 つずつ追加する</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Quarto 機能の書き方は <span class="co">[</span><span class="ot">統合サンプル</span><span class="co">](textbook/textbook.qmd)</span> の該当セクションから探す</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>書き始めは <span class="co">[</span><span class="ot">章テンプレート一覧</span><span class="co">](template-catalog.qmd)</span> から目的に近いものを選ぶ</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="fu">## 検証</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> check</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a><span class="in">`just check`</span> は format、lint、typecheck、docs validation、Quarto render-check、pytest をまとめて実行します。ドキュメント編集後はこのコマンドを通してから公開します。</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a><span class="fu">## 公開</span></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>既定では <span class="in">`main`</span> push で GitHub Actions が HTML を render し、<span class="in">`gh-pages`</span> に公開します。研究会資料など、公開タイミングを手動にしたい場合は <span class="in">`.github/workflows/publish.yml`</span> の trigger を <span class="in">`workflow_dispatch`</span> 中心に変更できます。</span></code></pre></div><button title="コピー" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
@@ -905,7 +896,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/yama662607/quarto-textbook-template/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>編集</a></li><li><a href="https://github.com/yama662607/quarto-textbook-template/issues/new" class="toc-action"><i class="bi empty"></i>問題を報告</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/yama662607/quarto-textbook-template/edit/main/workflow-guide.qmd" class="toc-action"><i class="bi bi-github"></i>編集</a></li><li><a href="https://github.com/yama662607/quarto-textbook-template/issues/new" class="toc-action"><i class="bi empty"></i>問題を報告</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">

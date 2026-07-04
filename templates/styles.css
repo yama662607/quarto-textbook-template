@@ -152,6 +152,106 @@ table {
   margin: 1.5rem 0;
 }
 
+.template-entry-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 2rem 0 2.5rem;
+}
+
+.template-entry {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1.1rem 1.2rem 1.2rem;
+  background: #ffffff;
+}
+
+.template-entry h2 {
+  margin-top: 0;
+  font-size: 1.15rem;
+}
+
+.template-entry p {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+.template-entry-link {
+  font-weight: 700;
+}
+
+/* list table は長いコマンドやパスを含むことが多いので、モバイルで
+   ページ全体の水平スクロールを発生させないよう幅と折り返しを制御する。 */
+.list-table,
+.list-table table {
+  max-width: 100%;
+}
+
+.list-table table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.list-table th,
+.list-table td {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.list-table code {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 700px) {
+  .template-entry-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cell,
+  .cell-output,
+  .cell-output-display,
+  .js-plotly-plot,
+  .plot-container,
+  .svg-container,
+  .quarto-live,
+  .cm-editor,
+  .cm-scroller {
+    max-width: 100%;
+  }
+
+  .cell-output-display,
+  .js-plotly-plot,
+  .plot-container,
+  .svg-container {
+    overflow-x: auto;
+  }
+
+  .cm-scroller {
+    overflow-x: auto !important;
+  }
+
+  .cm-content,
+  .cm-line {
+    width: auto !important;
+    max-width: 100%;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  .math-display,
+  .katex-display {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  html,
+  body {
+    overflow-x: hidden;
+  }
+}
+
 /* 数式の余白 */
 .math-display {
   margin: 1.5rem 0;
@@ -287,22 +387,6 @@ main a.btn,
   margin-right: auto !important;
 }
 
-/* 左サイドバーは空で残す（グリッドの幅を確保して本文を中央配置） */
-#quarto-sidebar {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  overflow: hidden !important;
-}
-
-#quarto-sidebar>* {
-  display: none !important;
-}
-
-#quarto-sidebar-glass {
-  display: none !important;
-}
-
 /* サイドバー折りたたみボタン */
 #right-sidebar-toggle {
   position: fixed;
@@ -332,4 +416,17 @@ main a.btn,
 /* 右サイドバーのアニメーション */
 #quarto-margin-sidebar {
   transition: width 0.25s ease, min-width 0.25s ease, padding 0.25s ease;
+}
+
+@media (max-width: 991.98px) {
+  #right-sidebar-toggle {
+    display: none !important;
+  }
+
+  #quarto-margin-sidebar {
+    width: auto !important;
+    min-width: 0 !important;
+    padding: initial !important;
+    overflow: visible !important;
+  }
 }
