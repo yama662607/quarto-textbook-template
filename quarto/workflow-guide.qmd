@@ -37,6 +37,60 @@ just extract-pdf path/to/textbook.pdf 12 15
 - Quarto 機能の書き方は [統合サンプル](textbook/textbook.qmd) の該当セクションから探す
 - 書き始めは [章テンプレート一覧](template-catalog.qmd) から目的に近いものを選ぶ
 
+## qmd 追加後の導線整備
+
+qmd を作っただけでは、読者はそのページにたどり着けません。既存プロジェクトでは、次の 2 つを必ずセットで更新しています。
+
+1. `quarto/_quarto.yml` の `book.chapters`
+2. `quarto/index.qmd` のロードマップ表またはカード
+
+### 単独ページを追加する場合
+
+講義回、シミュレーション、演習、サポートページのように 1 ページとして見せたい qmd は、`book.chapters` に追加します。
+
+```yaml
+book:
+  chapters:
+    - index.qmd
+    - part: "シミュレーション"
+      chapters:
+        - simulations/pendulum.qmd
+    - part: "演習問題"
+      chapters:
+        - exercises/polar_kinematics.qmd
+```
+
+そのうえで、ホームにも直接リンクします。
+
+```markdown
+| 項目 | ページ |
+| --- | --- |
+| 単振り子 | [シミュレーション](simulations/pendulum.qmd) |
+| 極座標運動 | [演習](exercises/polar_kinematics.qmd) |
+```
+
+### 本文 partial を追加する場合
+
+`quarto/textbook/_05_topic.qmd` のような partial は sidebar に直接並べず、親の `textbook/textbook.qmd` に include します。
+
+```markdown
+{{</* include _05_topic.qmd */>}}
+```
+
+ホームから特定の節に直接飛ばしたい場合は、partial 内の見出しに anchor を付けます。
+
+```markdown
+## 新しいトピック {#sec-new-topic}
+```
+
+ホームでは親ページと anchor を組み合わせてリンクします。
+
+```markdown
+[新しいトピック](textbook/textbook.qmd#sec-new-topic)
+```
+
+実際の配置例は [導線サンプル](example-map.qmd) を参照してください。
+
 ## 検証
 
 ```bash

@@ -42,6 +42,7 @@ just docs
 | ページ | 用途 |
 | --- | --- |
 | ホーム | テンプレート全体の入口 |
+| 導線サンプル | qmd を追加した後に sidebar とホームへ置く例 |
 | 章テンプレート一覧 | 教材・演習・理論ノートなどの書き方サンプル |
 | ワークフロー | 素材取り込みから公開までの運用手順 |
 | 本文サンプル | 実際の textbook 構成 |
@@ -67,7 +68,7 @@ Quarto の新しめの機能や採用判断は [`docs/quarto-modern.md`](docs/qu
 | ファイル | 変更内容 |
 | --- | --- |
 | `quarto/_quarto.yml` | タイトル、著者、リポジトリ URL、footer |
-| `quarto/index.qmd` | ホームの説明 |
+| `quarto/index.qmd` | ホームの説明、主要ページへの導線 |
 | `quarto/textbook/textbook.qmd` | 本文に含める章の構成 |
 | `quarto/textbook/_*.qmd` | 各章の本文 |
 | `package.json`, `pyproject.toml` | プロジェクト名・説明 |
@@ -75,6 +76,8 @@ Quarto の新しめの機能や採用判断は [`docs/quarto-modern.md`](docs/qu
 | `LICENSE`, `.github/CODEOWNERS`, `SECURITY.md` | 所有者情報 |
 
 本文は `quarto/textbook/textbook.qmd` に集約し、章は `_01_*.qmd` のような partial に分けて `{{< include >}}` で読み込みます。
+
+単独ページを作った場合は、`quarto/_quarto.yml` の `book.chapters` と `quarto/index.qmd` のロードマップ表の両方にリンクを追加します。partial を作った場合は、親の `textbook/textbook.qmd` に include し、ホームから飛ばしたい節には `{#sec-id}` を付けてリンクします。具体例は `quarto/example-map.qmd` と `quarto/examples/` を見てください。
 
 ## よく使うコマンド
 
@@ -118,6 +121,8 @@ push 後、`.github/workflows/check.yml` と `.github/workflows/publish.yml` が
 ```text
 quarto/                  # Quarto ソース
   index.qmd              # ホーム
+  example-map.qmd        # qmd 追加後の導線サンプル
+  examples/              # 単独ページ配置の最小例
   template-catalog.qmd   # 章テンプレート一覧
   workflow-guide.qmd     # 運用ワークフロー
   textbook/              # 本文サンプル
