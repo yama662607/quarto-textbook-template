@@ -72,7 +72,7 @@ uv run python tools/extract_pdf.py <pdf_path> --mode simple --start <s> --end <e
 
 Mermaid / Graphviz / theorem 環境 / tabset / lightbox / 引用 などの **Quarto 標準機能** を実際にどう書くかは、本にレンダされている partial 群を直接コピーするのが最速です。partial → 機能の対応表は [docs/features.md](docs/features.md) にあります。
 
-新しい章を起こすときは `quarto/templates/*_template.qmd` のうち目的に近いものをコピーして始めてください (これらは render 対象外の **出発点スケルトン**)。
+新しい章を起こすときは `quarto/templates/*_template.qmd` のうち目的に近いものをコピーして始めてください (これらは render 対象外の **出発点スケルトン**)。`quarto/textbook/_NN_topic.qmd` partial に貼る場合は、コピー元の YAML front matter (`---` で囲まれた先頭ブロック) を削除してください。
 
 ## Code style
 

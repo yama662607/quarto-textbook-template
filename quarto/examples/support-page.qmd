@@ -15,7 +15,7 @@ subtitle: "編集者向けの運用メモを置く例"
 | 章の書き始めを選ぶ | [章テンプレート一覧](../template-catalog.qmd) |
 | PDF 取り込みから公開まで確認する | [運用ワークフロー](../workflow-guide.qmd) |
 | Quarto の書き方をコピーする | [教材本編サンプル](../textbook/textbook.qmd) |
-| 論文を精読教科書にする | [論文精読ページ](paper-deep-dive-page.qmd) と root の `docs/paper-deep-dive.md` |
+| 論文を精読教科書にする | [論文精読ページ](paper-deep-dive-page.qmd) と [全文ガイド](https://github.com/yama662607/quarto-textbook-template/blob/main/docs/paper-deep-dive.md) |
 
 ## 章を追加するとき
 
@@ -24,7 +24,7 @@ subtitle: "編集者向けの運用メモを置く例"
 | 本文の章・節 | `quarto/textbook/_NN_topic.qmd` | `quarto/textbook/textbook.qmd` の include と `quarto/index.qmd` の本文ロードマップ |
 | 独立シミュレーション | `quarto/simulations/topic.qmd` | `quarto/_quarto.yml` の `book.chapters` と `quarto/index.qmd` |
 | 演習ページ | `quarto/exercises/topic.qmd` | `quarto/_quarto.yml` の `book.chapters` と関連本文からのリンク |
-| 論文精読章 | `quarto/textbook/_NN_topic.qmd` または独立章 qmd | `quarto/index.qmd` の長編精読型ロードマップと前後章リンク |
+| 論文精読章 | 既定は `quarto/textbook/_NN_topic.qmd`。独立章にするなら `quarto/chapters/NN-topic.qmd` など `textbook/` 外 | `quarto/index.qmd` の長編精読型ロードマップ、`book.chapters`、前後章リンク |
 | サポート資料 | `quarto/support/topic.qmd` | navbar または sidebar、ホーム下部の編集者向けリンク |
 
 ## PDF 取り込み
