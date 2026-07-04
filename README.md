@@ -5,254 +5,137 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Made with Quarto](https://img.shields.io/badge/Made%20with-Quarto-39729E)](https://quarto.org)
 
-教科書・授業ノート・写真や PDF など各種素材から **Quarto** ドキュメントを構築し、**GitHub Pages** に公開するためのテンプレートリポジトリです。
+Quarto Book で教科書・講義ノート・演習資料を作り、GitHub Pages に公開するためのテンプレートです。本文サンプル、章テンプレート、Quarto 機能ショーケース、ブラウザ内 Python シミュレーションを最初から含めています。
 
-> [!TIP]
-> このリポジトリは GitHub の "**Use this template**" ボタンから新規プロジェクトとして即コピーできます。
+## Quick Start
 
-## 主な特徴
-
-- **Quarto Book** ベース (HTML / PDF 両対応)
-- **対話シミュレーション**: [Quarto Live](https://r-wasm.github.io/quarto-live/) + Pyodide で **ブラウザ完結** の Python (numpy/matplotlib) を実行。サーバー不要、生徒が Notebook にコピペしてそのまま動かせる素のコード。日本語フォントの組み込み済 (`assets/fonts/NotoSansJP-Regular.ttf`)
-- **PDF 取り込み (画像化 + 文字抽出)** — `render_pdf.py` (画像) と `extract_pdf.py` (text / OCR / LaTeX 数式) の併用が前提
-- **Mermaid / KaTeX** によるダイアグラム & 数式
-- **Justfile** による統一コマンドインターフェース (Win/Mac/Linux)
-- **GitHub Actions** で push 時に自動公開、3 OS マトリクスで品質チェック
-- **品質ゲート**: ruff + mypy + pytest + Quarto/Mermaid/LaTeX 整合性検証 + `quarto render --no-execute` 構文チェック
-- **AI エージェント対応** (`AGENTS.md` 準拠 + `CLAUDE.md` / `GEMINI.md` 同梱)
-- **Quarto 1.9+ 採用メモ**: list table / PDF accessibility / Typst book / LLM output の導入判断を [`docs/quarto-modern.md`](docs/quarto-modern.md) に整理
-
-## How to use this template
-
-### 1. テンプレートからリポジトリ作成
-
-**GitHub Web UI から (推奨)**: リポジトリページ右上の "**Use this template**" → "**Create a new repository**" → 自分の Organization / アカウントを選び、リポジトリ名を入力 → "Create repository"。完了後、ローカルに clone:
+GitHub の **Use this template** から新しいリポジトリを作り、clone します。
 
 ```bash
 git clone https://github.com/<you>/<your-repo>.git
 cd <your-repo>
 ```
 
-**`gh` CLI を使う場合** (要 `gh auth login`):
-
-```bash
-gh repo create my-textbook --template yama662607/quarto-textbook-template --public --clone
-cd my-textbook
-```
-
-### 2. セットアップ — 4 つの選び方
-
-#### A. 何も入っていない端末を使う・お任せで動かしたい (推奨)
-
-OS に応じて 1 行:
+初回セットアップ:
 
 ```bash
 # macOS / Linux
 ./scripts/bootstrap.sh
 
-# Windows (PowerShell)
+# Windows PowerShell
 .\scripts\bootstrap.ps1
 ```
 
-ツール (just / uv / quarto / node / bun) を OS のパッケージマネージャ (brew / apt / dnf / winget / scoop / 公式 curl installer) で入れた後、`uv sync` と `bun install` まで自動実行します。Python 3 だけ事前に必要 (大半の OS に同梱)。`--dry-run` で実際には実行せず内容を確認できます。
-
-#### B. mise / asdf を使っている
-
-`mise.toml` と `.tool-versions` を同梱しているので 1 発:
+既に `uv` / `bun` / `just` / `quarto` が入っている場合:
 
 ```bash
-mise install              # または: asdf install
-uv sync && bun install
+just setup
+just docs
 ```
 
-#### C. ブラウザだけで試したい (GitHub Codespaces / VS Code Dev Containers)
+プレビューは [http://localhost:4312](http://localhost:4312) で開きます。同じ Wi-Fi の端末からは `http://<your-lan-ip>:4312/` でも確認できます。
 
-`.devcontainer/devcontainer.json` 同梱。リポジトリページの **`<> Code` → `Codespaces` → `Create codespace on main`** を押すだけで、5 分後にブラウザで `just docs` が動かせる状態になります。VS Code 派なら "Dev Containers: Reopen in Container" でも可。Docker が必要。
+## まず見るページ
 
-#### D. 自分でツールを選んで入れたい
+`just docs` 後、トップページから以下へ移動できます。
 
-| ツール | macOS | Linux | Windows |
-| --- | --- | --- | --- |
-| **Python 3.12+** | `brew install python@3.12` | apt/dnf | [python.org](https://www.python.org/) |
-| **uv** | `brew install uv` | `curl -LsSf https://astral.sh/uv/install.sh \| sh` | `powershell -c "irm https://astral.sh/uv/install.ps1 \| iex"` |
-| **just** | `brew install just` | [just.systems](https://just.systems/man/en/packages.html) | `winget install Casey.Just` または `scoop install just` |
-| **Quarto** | `brew install --cask quarto` | [.deb / .rpm](https://quarto.org/docs/get-started/) | [installer](https://quarto.org/docs/get-started/) |
-| **Node.js 20+** | `brew install node` | nvm/apt | [nodejs.org](https://nodejs.org/) |
-| **Bun 1.3+** | `brew install oven-sh/bun/bun` | [bun.sh](https://bun.sh/docs/installation) | [bun.sh](https://bun.sh/docs/installation) |
-
-その後:
-
-```bash
-just setup    # uv sync + bun install
-just docs     # http://localhost:4312
-```
-
-`quarto/_quarto.yml` の `project.preview` で `host: 0.0.0.0` / `port: 4312` を設定しているため、同じ Wi-Fi 上の端末から `http://<your-lan-ip>:4312/` でも確認できます。
-
-### 3. プレースホルダ書き換え
-
-clone 後、以下のプレースホルダを置換してください:
-
-| ファイル | 書き換える箇所 |
+| ページ | 用途 |
 | --- | --- |
-| `pyproject.toml` | `name`, `description`, `authors` |
-| `package.json` | `name`, `description` |
-| `quarto/_quarto.yml` | `book.title`, `book.author`, `book.repo-url`, `book.repo-branch`, `page-footer` |
-| `quarto/index.qmd` | タイトル・サブタイトル・著者・本文 |
-| `quarto/textbook/textbook.qmd` 等 | サンプル本文を自分の章構成に置換 |
-| `LICENSE` | copyright 年と保有者 |
-| `README.md` | このファイル全体 (バッジ URL の `yama662607/quarto-textbook-template` も) |
-| `.github/CODEOWNERS` | `* @yama662607` をあなたの GitHub アカウント / チームに |
-| `.devcontainer/devcontainer.json` | `name` ("Quarto Textbook Template" → 派生プロジェクト名) |
-| `SECURITY.md` | リポジトリ URL (`yama662607/quarto-textbook-template`) |
-| `CHANGELOG.md` | 0.1.0 エントリのコピーライト年や、自分のリリース履歴 |
+| ホーム | テンプレート全体の入口 |
+| 章テンプレート一覧 | 教材・演習・理論ノートなどの書き方サンプル |
+| ワークフロー | 素材取り込みから公開までの運用手順 |
+| 本文サンプル | 実際の textbook 構成 |
+| 機能ショーケース | Mermaid、表、引用、Quarto Live、Plotly、シミュレーションなど |
 
-### 4. GitHub Pages の有効化
+## このテンプレートに含まれるもの
 
-1. GitHub リポジトリの Settings → Pages → Source を **`gh-pages` branch** に設定
-2. `git push origin main` すると `.github/workflows/publish.yml` が走り、自動で公開
+- Quarto Book の HTML / PDF 出力
+- GitHub Pages 自動公開
+- Quarto Live + Pyodide によるブラウザ内 Python 実行
+- matplotlib / Plotly の対話シミュレーション例
+- Mermaid、Graphviz、KaTeX、引用、list table などのサンプル
+- PDF 取り込み補助ツール
+- `just check` による品質確認
+- AI エージェント向け編集規約 (`AGENTS.md`)
 
-教科書本文で optional 機能 (Qiskit / Shinylive / Jupyter compute / OCR / LaTeX) を使う場合は `publish.yml` の `uv sync` 行に `--extra <name>` を追記してください (デフォルトは base のみで軽量化)。
+Quarto の新しめの機能や採用判断は [`docs/quarto-modern.md`](docs/quarto-modern.md) にまとめています。
 
-### 5. Quarto 新機能を採用するか決める
+## 書き換える場所
 
-このテンプレートは安定した Book 出力をデフォルトにしているため、Quarto 1.9+ の新機能は必要に応じて opt-in します。
+新しい教材として使うときは、まず以下を自分のプロジェクト向けに変更します。
 
-| 目的 | 見る場所 |
+| ファイル | 変更内容 |
 | --- | --- |
-| 複雑な表を読みやすく保守したい | [`docs/quarto-modern.md`](docs/quarto-modern.md) の list table |
-| PDF/A や PDF/UA が必要 | [`docs/quarto-modern.md`](docs/quarto-modern.md) の `pdf-standard` |
-| LLM が読みやすいサイト出力が必要 | [`docs/quarto-modern.md`](docs/quarto-modern.md) の LLM-friendly output |
-| 高速な PDF 出力を検討したい | [`docs/quarto-modern.md`](docs/quarto-modern.md) の Typst book |
-| HTML のアクセシビリティを点検したい | [`docs/quarto-modern.md`](docs/quarto-modern.md) の axe 設定 |
+| `quarto/_quarto.yml` | タイトル、著者、リポジトリ URL、footer |
+| `quarto/index.qmd` | ホームの説明 |
+| `quarto/textbook/textbook.qmd` | 本文に含める章の構成 |
+| `quarto/textbook/_*.qmd` | 各章の本文 |
+| `package.json`, `pyproject.toml` | プロジェクト名・説明 |
+| `README.md` | 派生先プロジェクトの説明 |
+| `LICENSE`, `.github/CODEOWNERS`, `SECURITY.md` | 所有者情報 |
 
-## ディレクトリ構成
+本文は `quarto/textbook/textbook.qmd` に集約し、章は `_01_*.qmd` のような partial に分けて `{{< include >}}` で読み込みます。
 
-```
-.
-├── quarto/                  # Quarto ソース
-│   ├── _quarto.yml         # サイト設定 (output-dir: _book)
-│   ├── index.qmd           # トップページ
-│   ├── textbook/           # 本編 (textbook.qmd + _NN_*.qmd で章分割)
-│   ├── templates/          # CSS / sidebar JS / qmd テンプレ
-│   ├── preamble.tex        # PDF 出力用 LaTeX プリアンブル
-│   ├── _freeze/            # compute block 結果キャッシュ (commit する)
-│   └── assets/             # 画像・PDF など
-│       ├── images/         # 公開図版
-│       ├── pdf/            # 公開 PDF
-│       ├── raw/            # 個人保管 (gitignore)
-│       └── private/        # 機密素材 (gitignore)
-├── research/               # 素材インテイク・下書き
-│   ├── inbox/             # 取り込み待ち素材 (gitignore)
-│   ├── notes/             # 個人メモ
-│   ├── drafts/            # 公開前下書き
-│   └── guidelines/        # 編集ガイドライン
-├── tools/                  # 開発支援スクリプト (Python)
-│   ├── README.md          # 各ツールの用途
-│   ├── check_env.py       # 環境チェック
-│   ├── dev_server.py      # Quarto preview + watcher
-│   ├── validate_docs.py   # Quarto/Mermaid/LaTeX 検証
-│   ├── render_pdf.py      # PDF → PNG 画像化
-│   ├── extract_pdf.py     # PDF 文字抽出 (auto/simple/ocr/latex)
-│   ├── clean.py           # ビルド成果物削除
-│   └── kill_quarto_process.py # Win/Mac/Linux 対応プロセス停止
-├── tests/                  # pytest
-├── .github/workflows/      # CI/CD (publish.yml + check.yml)
-├── Justfile                # 統一コマンド
-├── pyproject.toml          # Python 依存 (PEP 735 dependency-groups)
-├── package.json            # Node 依存
-├── AGENTS.md               # AI エージェント向け規約 (本体)
-├── CLAUDE.md               # Claude Code 用 (@AGENTS.md 参照)
-├── GEMINI.md               # Gemini CLI 用 (@AGENTS.md 参照)
-└── LICENSE                 # MIT
-```
-
-## コマンド一覧 (`just <task>`)
-
-### 標準インターフェース
+## よく使うコマンド
 
 | コマンド | 用途 |
 | --- | --- |
-| `just check-env` | 必要ツール (uv, just, quarto, node, bun) の存在確認 |
-| `just quarto-capabilities` | Quarto バージョン別の新機能対応状況を表示 |
-| `just setup` | 依存インストール (`uv sync` + `bun install`) |
-| `just check` | 品質ゲート (fmt + lint + typecheck + validate-docs + render-check + test) |
-| `just check-full` | `check` + 実 HTML レンダリング |
-| `just fix` | 自動修正 (fmt + lint + validate-docs --fix) |
-| `just test` | pytest 実行 |
-| `just clean` | ビルド成果物削除 (cross-platform) |
+| `just setup` | 依存関係をインストール |
+| `just docs` | ローカルプレビュー |
+| `just check` | 品質チェック |
+| `just fix` | 自動修正 |
+| `just render-site` | HTML を実レンダリング |
+| `just render-book-pdf` | PDF をレンダリング |
+| `just clean` | ビルド成果物を削除 |
+| `just quarto-capabilities` | 現在の Quarto で使える機能を確認 |
 
-### Quarto
+`just docs` と render/check 系コマンドは同時に実行できません。Quarto の出力競合を避けるため、テンプレート側でロックしています。
 
-| コマンド | 用途 |
-| --- | --- |
-| `just docs` | プレビューサーバー (http://localhost:4312)。公式 `quarto preview` + partial watcher |
-| `just docs-official` | 公式 `quarto preview` のみ。`_*.qmd` partial 編集時の自動再レンダー確認には `just docs` 推奨 |
-| `just docs-a11y` | axe-core JSON console output 付き preview (ローカル点検用) |
-| `just fix-docs` | プレビュー復旧 (Win/Mac/Linux 対応) |
-| `just render-site` | HTML 実レンダリング |
-| `just render-a11y` | axe-core JSON console output 付き HTML レンダリング |
-| `just render-book-pdf` | PDF 実レンダリング |
-| `just render-check` | 構文チェック (compute 実行なし、CI と同等) |
-| `just validate-docs` | ドキュメント整合性検証 |
-| `just validate-docs-fix` | 自動修正可能なエラーを修正 |
+## PDF から教材を作る場合
 
-### PDF 取り込み (両方の併用が必須)
-
-> ⚠️ **AGENTS.md の必須ワークフロー**: qmd 作成前に **`render-pdf` と `extract-pdf` の両方を実行**し、画像と文字情報を照合してください。
-
-| コマンド | 用途 |
-| --- | --- |
-| `just render-pdf <pdf> <start> <end>` | PDF ページを PNG 化 (画像で誤読チェック) |
-| `just extract-pdf <pdf> [opts]` | 文字 / OCR / LaTeX 抽出 (`--mode auto` がデフォルト) |
-| `just diagnose-pdf <pdf>` | PDF 構造診断 (どの mode を使うか判断) |
-
-詳細は [`tools/README.md`](tools/README.md) と [`AGENTS.md`](AGENTS.md) を参照。
-
-## オプション機能
-
-依存をインストールして有効化:
+PDF やスキャン画像から qmd を作るときは、必ず画像確認と文字抽出を併用します。
 
 ```bash
-uv sync --extra ocr        # 画像 PDF の OCR (easyocr, ~1GB)
-uv sync --extra math       # 数式抽出 (pix2text, 大型 ML モデル)
-uv sync --extra notebook   # numpy / matplotlib / jupyter
-uv sync --extra quantum    # Qiskit
-uv sync --extra shiny      # Shinylive 対話シミュレーション
-uv sync --extra viz        # plotly / pyvis
-uv sync --all-extras       # 全部入り
+just diagnose-pdf <pdf>
+just render-pdf <pdf> <start> <end>
+just extract-pdf <pdf> <start> <end>
 ```
 
-## 編集ワークフロー
+抽出されたテキストだけで書き起こさず、生成された PNG を見ながら式、図表、ページ対応を確認してください。詳しくは [`AGENTS.md`](AGENTS.md) と [`tools/README.md`](tools/README.md) を参照してください。
 
-1. `research/inbox/YYYY-MM-DD_topic/` に元素材 (写真・スキャン PDF・講義スライド等) を置く
-2. `just diagnose-pdf <pdf>` で PDF 構造を確認、適切な mode を選定
-3. **`just render-pdf` と `just extract-pdf` を併用** して画像と文字情報を取得
-4. 両方を照合しながら `quarto/textbook/_NN_*.qmd` に書き起こす
-5. `just docs` でプレビュー、`just check` で品質確認
-6. `git push` で GitHub Pages に自動公開
+## 公開
 
-## AI エージェントとの協働
+GitHub Pages を使う場合:
 
-[`AGENTS.md`](AGENTS.md) に編集規約を記載 ([agents.md spec](https://agents.md) 準拠)。
+1. GitHub の Settings -> Pages を開く
+2. Source を `gh-pages` branch に設定
+3. `main` に push する
 
-- **Claude Code**: `CLAUDE.md` が `@AGENTS.md` を import
-- **Gemini CLI**: `GEMINI.md` が `@AGENTS.md` を import
-- **Codex / Cursor / Copilot 等**: `AGENTS.md` を直接参照
+push 後、`.github/workflows/check.yml` と `.github/workflows/publish.yml` が走ります。
+
+## 構成
+
+```text
+quarto/                  # Quarto ソース
+  index.qmd              # ホーム
+  template-catalog.qmd   # 章テンプレート一覧
+  workflow-guide.qmd     # 運用ワークフロー
+  textbook/              # 本文サンプル
+  templates/             # CSS / HTML / qmd テンプレート
+  assets/                # 画像・PDF・フォント
+docs/                    # 補足ドキュメント
+tools/                   # 開発支援 Python ツール
+tests/                   # pytest
+Justfile                 # 統一コマンド
+AGENTS.md                # AI エージェント向け規約
+```
 
 ## クレジット
 
-このテンプレートは以下のプロジェクトの知見を統合して作成されました:
+- [Quarto Live](https://github.com/r-wasm/quarto-live) - ブラウザ内 Python 実行
+- [Noto Sans JP](https://github.com/notofonts/noto-cjk) - Pyodide matplotlib 用日本語フォント
 
-- [yama662607/Quantum-information](https://github.com/yama662607/Quantum-information) — ベース構成、validate_docs、pix2text 数式抽出
-- [yukicomadaqq/peskin](https://github.com/yukicomadaqq/peskin) — easyocr による画像 PDF 対応、PDF 診断
-- mechanics-class-simulation — Shinylive 統合、シンプル PDF 抽出
-- Field-Theory — 標準ディレクトリ構成
-
-## サードパーティ素材のクレジット
-
-- [Quarto Live](https://github.com/r-wasm/quarto-live) — ブラウザ内 Python 実行 (Apache 2.0 / `quarto/_extensions/r-wasm/live/`)
-- [Noto Sans JP](https://github.com/notofonts/noto-cjk) — Pyodide matplotlib 用日本語フォント (SIL OFL 1.1 / `quarto/assets/fonts/NotoSansJP-Regular.ttf`)
+このテンプレートは、関連する Quarto 教材プロジェクトで得た運用知見を統合して作成しています。
 
 ## ライセンス
 
