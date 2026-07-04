@@ -83,6 +83,7 @@ Mermaid / Graphviz / theorem 環境 / tabset / lightbox / 引用 などの **Qua
     - 本文 partial (`quarto/textbook/_NN_topic.qmd`) は `quarto/textbook/textbook.qmd` に include し、ホームから飛ばしたい見出しに `{#sec-id}` を付ける
     - 単独ページ (simulation / exercise / support など) は `quarto/_quarto.yml` の `book.chapters` に登録し、`quarto/index.qmd` のロードマップ表からリンクする
     - 派生プロジェクトの公開ホームでは、ショーケースやテンプレート支援ページよりも本文・演習・シミュレーションへの導線を先に置く
+  - **論文精読教材**を作る場合は、先に `docs/paper-deep-dive.md` を読み、原文引用・忠実訳・行間補完・通し具体例・限界章・検証チェックリストを章設計に反映する
   - `:::` (fenced div) の **閉じる前に空行必須** (`just fix` で自動修正可)
   - 数式: インライン `$...$`、ディスプレイ `$$...$$ {#eq-label}`、参照は `@eq-label`
   - 図表: Mermaid (`{mermaid}` ブロック)、PNG/JPG は `quarto/assets/images/`

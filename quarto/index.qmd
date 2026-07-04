@@ -23,7 +23,9 @@ date: last-modified
 
 ショーケースはコピー元として便利ですが、派生プロジェクトの公開ホームでは主導線に残しすぎない方が自然です。必要な例だけ本文やサポートへ移し、不要なテンプレート支援リンクは公開前に外します。
 
-## テンプレート支援ページ
+ホームの別パターンを作りたい場合は、[導線サンプル](example-map.qmd) の「ホームロードマップの型」をコピーしてください。
+
+## 編集者向け入口
 
 ::: {.template-entry-grid}
 
@@ -39,9 +41,18 @@ date: last-modified
 ::: {.template-entry}
 ## 導線サンプル
 
-qmd を追加した後、ホーム、sidebar、本文内 anchor へどうリンクするかの配置例です。
+qmd を追加した後、ホーム、sidebar、本文内 anchor へどうリンクするかの配置例と、ホームロードマップの型です。
 
 [導線を確認する](example-map.qmd){.template-entry-link}
+
+:::
+
+::: {.template-entry}
+## 論文精読ガイド
+
+論文を 1 本の精読教科書に作り替えるときの章構成、引用、忠実訳、行間補完、検証の型です。
+
+[精読ページ例を見る](examples/paper-deep-dive-page.qmd){.template-entry-link}
 
 :::
 
@@ -64,45 +75,6 @@ PDF 起こし、数学・物理、V-S-V レッスン、全機能盛り合わせ�
 :::
 
 :::
-
-## 教材サイトの導線サンプル
-
-既存の教材プロジェクトでは、左サイドバーに章を並べるだけでなく、ホームにも目的別の入口を置くと迷いにくくなります。新しい qmd を追加したら、`quarto/_quarto.yml` の `book.chapters` に入れ、ホームの表にもリンクを追加します。
-
-| 入口 | 想定する内容 | リンク例 |
-| --- | --- | --- |
-| 理論ロードマップ | 教材全体の章立て、読む順番、主要セクションへの直リンク | [導線サンプル](example-map.qmd) |
-| 本文の代表章 | 複数 partial を束ねた本編、または精読教材の章 | [教材本編サンプル](textbook/textbook.qmd) |
-| 個別トピック | 1 つの講義回、論文節、理論項目を独立ページとして見せる | [トピック概要ページ](examples/topic-overview.qmd) |
-| シミュレーション | Quarto Live / Plotly で動く実験ページ | [シミュレーションページ](examples/simulation-page.qmd) |
-| 演習・課題 | 問題、ヒント、解答方針、確認コード | [演習ページ](examples/exercise-page.qmd) |
-| 執筆サポート | 記法、素材管理、PDF 取り込み、公開前チェック | [サポートページ](examples/support-page.qmd) |
-
-この配置は `mechanics-class-simulation` の「理論体系ノート / シミュレーション / 演習」、`Quantum-information` の「本文 / 実装ノート / サポート」、`ai-descartes-textbook` の「章立て目次」を元にした最小例です。
-
-迷ったら [導線サンプル](example-map.qmd) と [qmd 追加後の導線整備](workflow-guide.qmd#sec-routing-after-qmd) を見てください。
-
-## ホームロードマップの型
-
-教材の種類に応じて、ホームの表は次のどれかをコピーして始めます。
-
-### 理論・演習・シミュレーション型
-
-| 項目 | 本文 | 動く確認 | 演習 |
-| --- | --- | --- | --- |
-| 導入と記法 | [本文](textbook/textbook.qmd#sec-introduction) | [シミュレーション](examples/simulation-page.qmd) | [演習](examples/exercise-page.qmd) |
-
-### 原典 PDF・解説型
-
-| 原典 | PDF | 解説 | 実装・補足 |
-| --- | --- | --- | --- |
-| Chapter 1 | `assets/pdf/chapter1.pdf` | [本文](textbook/textbook.qmd) | [サポート](examples/support-page.qmd) |
-
-### 長編精読型
-
-| 部 | 章 | 内容 | ページ |
-| --- | --- | --- | --- |
-| 第 I 部 | 00 | 全体像と読み方 | [トピック概要](examples/topic-overview.qmd) |
 
 ## 最初に試すコマンド
 
