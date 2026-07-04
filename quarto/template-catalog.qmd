@@ -5,7 +5,7 @@ subtitle: "目的別にコピーして使う qmd スケルトン"
 
 # 章テンプレート一覧
 
-`quarto/templates/` 配下の qmd は、render 対象ではなくコピー元です。目的に近いものを `quarto/textbook/_NN_topic.qmd` としてコピーし、`textbook/textbook.qmd` に <code>{{&lt; include _NN_topic.qmd &gt;}}</code> を追加して使います。下のリンクは、コピー元の内容と使い方を確認するための閲覧ページです。
+`quarto/templates/` 配下の qmd は、render 対象ではなくコピー元です。目的に近いものを `quarto/textbook/_NN_topic.qmd` として使い、`textbook/textbook.qmd` に <code>{{&lt; include _NN_topic.qmd &gt;}}</code> を追加します。コピー元に YAML front matter がある場合、本文 partial へ貼るときは先頭の `---` で囲まれた YAML ブロックを削除してください。
 
 ## 目的別
 
@@ -19,7 +19,7 @@ subtitle: "目的別にコピーして使う qmd スケルトン"
 
 ## テンプレート詳細
 
-各テンプレートの閲覧ページでは、用途、コピー元、コピーコマンド、章の骨格を確認できます。実際の編集は `quarto/templates/*.qmd` を `quarto/textbook/_NN_topic.qmd` にコピーしてから始めます。
+各テンプレートの閲覧ページでは、用途、コピー元、コピーコマンド、章の骨格を確認できます。実際の編集は `quarto/templates/*.qmd` の本文部分を `quarto/textbook/_NN_topic.qmd` にコピーしてから始めます。単独ページとして使う場合だけ YAML front matter を残し、`book.chapters` に登録します。
 
 ## 他プロジェクトから採用した機能例
 

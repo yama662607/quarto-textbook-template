@@ -5,7 +5,7 @@ subtitle: "研究論文を精読教科書に変える章の型"
 
 # 論文精読ページ
 
-このページは、1 本の研究論文を「読者が本当に理解できる精読教科書」に作り替えるためのページ例です。詳しい編集方法論は、リポジトリ root の `docs/paper-deep-dive.md` にまとめています。
+このページは、1 本の研究論文を「読者が本当に理解できる精読教科書」に作り替えるためのページ例です。詳しい編集方法論は、リポジトリ root の `docs/paper-deep-dive.md` にまとめています。公開版では [全文ガイド](https://github.com/yama662607/quarto-textbook-template/blob/main/docs/paper-deep-dive.md) も参照できます。
 
 ## 目指すもの
 
@@ -77,11 +77,13 @@ $$ {#eq-paper-deep-dive-derivable}
 
 | 部 | 章 | 対応する論文部分 | ページ |
 | --- | --- | --- | --- |
-| 第 I 部 | 00 全体像 | Abstract / Introduction | `textbook/00-overview.qmd` |
-| 第 II 部 | 03 問題設定 | Results | `textbook/03-problem.qmd` |
-| 第 III 部 | 08 考察 | Discussion | `textbook/08-discussion.qmd` |
-| 第 IV 部 | 09 事例研究 | Methods | `textbook/09-case-study.qmd` |
-| 第 V 部 | 13 付録 | 難所・補足 | `textbook/13-appendix.qmd` |
+| 第 I 部 | 00 全体像 | Abstract / Introduction | `textbook/textbook.qmd#sec-paper-overview` |
+| 第 II 部 | 03 問題設定 | Results | `textbook/textbook.qmd#sec-paper-problem` |
+| 第 III 部 | 08 考察 | Discussion | `textbook/textbook.qmd#sec-paper-discussion` |
+| 第 IV 部 | 09 事例研究 | Methods | `textbook/textbook.qmd#sec-paper-case-study` |
+| 第 V 部 | 13 付録 | 難所・補足 | `textbook/textbook.qmd#sec-paper-appendix` |
+
+既定では上のように `textbook/textbook.qmd` + section anchor で運用します。章ごとに独立 qmd を並べる場合は、`chapters/00-overview.qmd` のように `textbook/` 外へ置き、`book.chapters` と `AGENTS.md` の運用方針をセットで更新してください。
 
 ## 完成チェックリスト
 

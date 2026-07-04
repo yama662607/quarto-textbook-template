@@ -17,6 +17,7 @@ date: last-modified
 | --- | --- | --- |
 | 本文の入口 | 教材本体、章立て、読む順番 | [教材本編サンプル](textbook/textbook.qmd) |
 | 主要トピック | 1 つの講義回、論文節、理論項目 | [トピック概要ページ](examples/topic-overview.qmd) |
+| 論文精読 | 原典、忠実訳、行間補完、章割り、検証手順 | [論文精読ページ](examples/paper-deep-dive-page.qmd) |
 | 動く確認 | Quarto Live / Plotly によるシミュレーション | [シミュレーションページ](examples/simulation-page.qmd) |
 | 演習・課題 | 問題、ヒント、解答方針、確認コード | [演習ページ](examples/exercise-page.qmd) |
 | 補助資料 | 記法、素材管理、PDF 取り込み、公開前チェック | [サポートページ](examples/support-page.qmd) |
