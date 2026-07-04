@@ -15,6 +15,7 @@ subtitle: "目的別にコピーして使う qmd スケルトン"
 | 数学・物理の章を書く | [数学・物理テンプレート](template-pages/math-focused.qmd) | `quarto/templates/math_focused_template.qmd` | 定義、定理、証明、線形代数の補足、計算確認 |
 | 直感から数式へ導く | [V-S-V レッスンテンプレート](template-pages/theory.qmd) | `quarto/templates/theory_template.qmd` | V-S-V cycle、直感、図解、数式、実装、確認問題 |
 | Quarto 機能をまとめて使う | [Quarto 機能テンプレート](template-pages/quarto-features.qmd) | `quarto/templates/quarto_feature_showcase.qmd` | タブ、図表、数式、引用、コード、レイアウトの copy-paste 元 |
+| 論文を精読教科書にする | [論文精読ページ例](examples/paper-deep-dive-page.qmd) | `docs/paper-deep-dive.md` | 原文引用、忠実訳、行間補完、章割り、検証チェックリスト |
 
 ## テンプレート詳細
 

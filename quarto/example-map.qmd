@@ -8,7 +8,7 @@ subtitle: "qmd を追加した後にホームと sidebar へ置く例"
 このページは、別プロジェクトでよく使っている「ホームから主要ページへ直接飛べる配置」をテンプレート内に再現したものです。新しい qmd を作ったら、ページを作るだけでなく、次の 2 か所へリンクを足します。
 
 1. `quarto/_quarto.yml` の `book.chapters`
-2. `quarto/index.qmd` のロードマップ表またはカード
+2. `quarto/index.qmd` の「公開用ホームに残す導線」表
 
 ## 配置例
 
@@ -19,13 +19,36 @@ subtitle: "qmd を追加した後にホームと sidebar へ置く例"
 | シミュレーション | `examples/simulation-page.qmd` | 「シミュレーション」配下 | 動く教材として目立つ位置に置く |
 | 演習 | `examples/exercise-page.qmd` | 「演習問題」配下 | 対応する理論ページの近くに置く |
 | サポート | `examples/support-page.qmd` | 「サポート」配下 | 編集者向け入口として下部に置く |
+| 論文精読 | `examples/paper-deep-dive-page.qmd` | 「精読ガイド」や「補助資料」配下 | 原典 PDF・解説型のロードマップからリンク |
+
+## ホームロードマップの型
+
+教材の種類に応じて、ホームの表は次のどれかをコピーして始めます。公開ホームには 1 つだけ採用し、残りの型は削除するかサポートページへ移します。
+
+### 理論・演習・シミュレーション型
+
+| 項目 | 本文 | 動く確認 | 演習 |
+| --- | --- | --- | --- |
+| 導入と記法 | [本文](textbook/textbook.qmd#sec-introduction) | [シミュレーション](examples/simulation-page.qmd) | [演習](examples/exercise-page.qmd) |
+
+### 原典 PDF・解説型
+
+| 原典 | PDF | 解説 | 実装・補足 |
+| --- | --- | --- | --- |
+| Chapter 1 | `assets/pdf/chapter1.pdf` | [本文](textbook/textbook.qmd) | [サポート](examples/support-page.qmd) |
+
+### 長編精読型
+
+| 部 | 章 | 内容 | ページ |
+| --- | --- | --- | --- |
+| 第 I 部 | 00 | 全体像と読み方 | [論文精読ページ](examples/paper-deep-dive-page.qmd) |
 
 ## qmd 追加後のチェックリスト
 
 - qmd が単独ページなら YAML front matter を書く。
 - `quarto/textbook/_*.qmd` の partial なら YAML front matter を書かない。
 - sidebar に出したい単独ページは `book.chapters` に追加する。
-- ホームから直接行きたいページは `index.qmd` にリンクを追加する。
+- ホームから直接行きたいページは `index.qmd` の「公開用ホームに残す導線」表にリンクを追加する。
 - ページ内の特定セクションへ飛ばしたい場合は、見出しに `{#sec-id}` を付ける。
 - `just docs` でホーム、sidebar、ページ下部の前後ナビゲーションを確認する。
 - `just check` を通す。

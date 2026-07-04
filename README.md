@@ -47,6 +47,7 @@ just docs
 | ワークフロー | 素材取り込みから公開までの運用手順 |
 | 本文サンプル | 実際の textbook 構成 |
 | 教材本編サンプル内の機能例 | Mermaid、表、引用、Quarto Live、Plotly、シミュレーションなど |
+| 論文精読ガイド | `docs/paper-deep-dive.md` と `quarto/examples/paper-deep-dive-page.qmd` |
 
 ## このテンプレートに含まれるもの
 
@@ -55,6 +56,7 @@ just docs
 - Quarto Live + Pyodide によるブラウザ内 Python 実行
 - matplotlib / Plotly の対話シミュレーション例
 - Mermaid、Graphviz、KaTeX、引用、list table などのサンプル
+- 論文を精読教科書に変える編集ガイド
 - PDF 取り込み補助ツール
 - `just check` による品質確認
 - AI エージェント向け編集規約 (`AGENTS.md`)
@@ -136,6 +138,7 @@ quarto/                  # Quarto ソース
   templates/             # CSS / HTML / qmd テンプレート
   assets/                # 画像・PDF・フォント
 docs/                    # 補足ドキュメント
+  paper-deep-dive.md     # 論文精読教科書の編集ガイド
 tools/                   # 開発支援 Python ツール
 tests/                   # pytest
 Justfile                 # 統一コマンド

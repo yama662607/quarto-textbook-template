@@ -46,6 +46,9 @@ book:
   chapters:
     - index.qmd
     - textbook/textbook.qmd
+    # 以下はテンプレート利用者向けの支援ページ。
+    # 派生プロジェクトを公開するときは、本文・演習・シミュレーションを先に置き、
+    # 不要な支援ページは削除するか sidebar 下部 / support 配下へ移動する。
     - part: "導線サンプル"
       chapters:
         - example-map.qmd
@@ -53,6 +56,7 @@ book:
         - examples/simulation-page.qmd
         - examples/exercise-page.qmd
         - examples/support-page.qmd
+        - examples/paper-deep-dive-page.qmd
     - part: "章テンプレート"
       chapters:
         - template-catalog.qmd
