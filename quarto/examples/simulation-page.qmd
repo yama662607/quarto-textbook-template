@@ -1,11 +1,18 @@
 ---
 title: "シミュレーションページ"
 subtitle: "動く教材を独立ページに置く例"
+engine: markdown
+filters:
+  - r-wasm/live
+pyodide:
+  packages:
+    - matplotlib
+    - numpy
 ---
 
 # シミュレーションページ
 
-シミュレーションは本文中に埋め込むこともできますが、ホームから直接開ける独立ページにしておくと、授業中のデモやスマートフォン確認で使いやすくなります。
+シミュレーションは本文中に埋め込むこともできますが、ホームから直接開ける独立ページにしておくと、授業中のデモやスマートフォン確認で使いやすくなります。このページは、単独 qmd としてコピーできる最小可動例です。
 
 ## シミュレーションの使い所 {#sec-simulation-use-case}
 
@@ -14,9 +21,64 @@ subtitle: "動く教材を独立ページに置く例"
 - 発表中に図だけを素早く見せる
 - 本文が長くなりすぎる場合に動的要素を分離する
 
+## 最小可動例
+
+```{ojs}
+//| echo: false
+viewof sim_amplitude = Inputs.range([0.2, 2.0], {step: 0.1, label: tex`\text{振幅 } A`, value: 1.0})
+viewof sim_frequency = Inputs.range([0.5, 4.0], {step: 0.1, label: tex`\text{周波数 } f`, value: 1.5})
+```
+
+```{pyodide}
+#| autorun: true
+#| input: ["sim_amplitude", "sim_frequency"]
+import os
+import warnings
+import matplotlib
+from matplotlib import font_manager
+
+warnings.simplefilter("ignore")
+
+try:
+    from pyodide.http import pyfetch
+
+    font_path = "/tmp/NotoSansJP.ttf"
+
+    def valid_ttf(path):
+        if not os.path.exists(path) or os.path.getsize(path) < 1_000_000:
+            return False
+        with open(path, "rb") as f:
+            return f.read(4) in (b"\x00\x01\x00\x00", b"OTTO", b"ttcf")
+
+    if not valid_ttf(font_path):
+        resp = await pyfetch("/assets/fonts/NotoSansJP-Regular.ttf")
+        font_bytes = await resp.bytes()
+        with open(font_path, "wb") as f:
+            f.write(font_bytes)
+    if valid_ttf(font_path):
+        font_manager.fontManager.addfont(font_path)
+        matplotlib.rcParams["font.family"] = "Noto Sans JP"
+except Exception:
+    pass
+matplotlib.rcParams["axes.unicode_minus"] = False
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+t = np.linspace(0, 2.0, 400)
+y = sim_amplitude * np.sin(2 * np.pi * sim_frequency * t)
+
+fig, ax = plt.subplots(figsize=(7, 3.5))
+ax.plot(t, y, lw=2)
+ax.set_xlabel("時間 $t$")
+ax.set_ylabel("変位 $x(t)$")
+ax.set_title(f"単振動: A={sim_amplitude:.1f}, f={sim_frequency:.1f}")
+ax.grid(True, linestyle="--", alpha=0.45)
+fig
+```
+
 ## 配置の考え方
 
 `examples/simulation-page.qmd` のように独立ページとして作り、`_quarto.yml` では「シミュレーション」や「導線サンプル」の part に入れます。ホームには「動く教材」として表やカードでリンクします。
 
-実際に動く Quarto Live / Plotly の書き方は、[統合サンプルのシミュレーション教材](../textbook/textbook.qmd#sec-simulation-showcase) をコピー元にしてください。
-
+より複雑な Quarto Live / Plotly の書き方は、[教材本編サンプルのシミュレーション教材](../textbook/textbook.qmd#sec-simulation-showcase) をコピー元にしてください。

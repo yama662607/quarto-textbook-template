@@ -20,11 +20,11 @@ subtitle: "目的別にコピーして使う qmd スケルトン"
 
 各テンプレートの閲覧ページでは、用途、コピー元、コピーコマンド、章の骨格を確認できます。実際の編集は `quarto/templates/*.qmd` を `quarto/textbook/_NN_topic.qmd` にコピーしてから始めます。
 
-## 他プロジェクトから採用したショーケース
+## 他プロジェクトから採用した機能例
 
-他プロジェクトの調査で見つかったシミュレーション教材の型は、[統合サンプルのシミュレーション教材](textbook/textbook.qmd#sec-simulation-showcase) に採用済みです。
+他プロジェクトの調査で見つかったシミュレーション教材の型は、[教材本編サンプルのシミュレーション教材](textbook/textbook.qmd#sec-simulation-showcase) に採用済みです。
 
-| 採用した型 | 元になった知見 | 統合サンプル |
+| 採用した型 | 元になった知見 | 教材本編サンプル |
 | --- | --- | --- |
 | simulation lesson template | `mechanics-class-simulation` の pendulum / polar kinematics | [単振り子](textbook/textbook.qmd#sec-sim-pendulum)、[極座標運動](textbook/textbook.qmd#sec-sim-polar-kinematics) |
 | Plotly parameter visualization | `mechanics-class-simulation` の Lissajous / envelope notebook | [Lissajous 曲線](textbook/textbook.qmd#sec-sim-lissajous)、[包絡線と媒介変数](textbook/textbook.qmd#sec-sim-envelope) |
@@ -43,5 +43,5 @@ subtitle: "目的別にコピーして使う qmd スケルトン"
 
 ## 使い分け
 
-- 書き方だけ確認したい場合: [統合サンプル](textbook/textbook.qmd) の該当セクションを見る
+- 書き方だけ確認したい場合: [教材本編サンプル](textbook/textbook.qmd) の該当セクションを見る
 - 自分の章を書き始める場合: `quarto/templates/` の qmd をコピー

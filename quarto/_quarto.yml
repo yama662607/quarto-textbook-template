@@ -41,6 +41,8 @@ book:
   sidebar:
     style: "docked"
     collapse-level: 4
+  # 新規の単独 qmd はここに追加する。
+  # textbook/_*.qmd partial はここへ直接追加せず、textbook/textbook.qmd に include する。
   chapters:
     - index.qmd
     - textbook/textbook.qmd

@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Made with Quarto](https://img.shields.io/badge/Made%20with-Quarto-39729E)](https://quarto.org)
 
-Quarto Book で教科書・講義ノート・演習資料を作り、GitHub Pages に公開するためのテンプレートです。本文サンプル、章テンプレート、Quarto 機能ショーケース、ブラウザ内 Python シミュレーションを最初から含めています。
+Quarto Book で教科書・講義ノート・演習資料を作り、GitHub Pages に公開するためのテンプレートです。本文サンプル、章テンプレート、Quarto 機能例、ブラウザ内 Python シミュレーションを最初から含めています。
 
 ## Quick Start
 
@@ -46,7 +46,7 @@ just docs
 | 章テンプレート一覧 | 教材・演習・理論ノートなどの書き方サンプル |
 | ワークフロー | 素材取り込みから公開までの運用手順 |
 | 本文サンプル | 実際の textbook 構成 |
-| 機能ショーケース | Mermaid、表、引用、Quarto Live、Plotly、シミュレーションなど |
+| 教材本編サンプル内の機能例 | Mermaid、表、引用、Quarto Live、Plotly、シミュレーションなど |
 
 ## このテンプレートに含まれるもの
 
@@ -77,7 +77,14 @@ Quarto の新しめの機能や採用判断は [`docs/quarto-modern.md`](docs/qu
 
 本文は `quarto/textbook/textbook.qmd` に集約し、章は `_01_*.qmd` のような partial に分けて `{{< include >}}` で読み込みます。
 
-単独ページを作った場合は、`quarto/_quarto.yml` の `book.chapters` と `quarto/index.qmd` のロードマップ表の両方にリンクを追加します。partial を作った場合は、親の `textbook/textbook.qmd` に include し、ホームから飛ばしたい節には `{#sec-id}` を付けてリンクします。具体例は `quarto/example-map.qmd` と `quarto/examples/` を見てください。
+qmd を追加したら、ページを作るだけで終わらせず、ホームと sidebar の導線も更新します。
+
+| 追加するもの | 最短手順 |
+| --- | --- |
+| 単独ページ | qmd を作る → `quarto/_quarto.yml` の `book.chapters` に追加 → `quarto/index.qmd` のロードマップ表にリンクを追加 → `just docs` でホーム / sidebar / 前後ナビを確認 |
+| 本文 partial | `quarto/textbook/_NN_topic.qmd` を作る → `quarto/textbook/textbook.qmd` に include を追加 → ホームから飛ばしたい見出しに `{#sec-id}` を付ける → `quarto/index.qmd` から `textbook/textbook.qmd#sec-id` へリンク |
+
+具体例は `quarto/example-map.qmd` と `quarto/examples/` を見てください。
 
 ## よく使うコマンド
 
