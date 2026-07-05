@@ -10,8 +10,6 @@ pyodide:
     - numpy
 ---
 
-# シミュレーションページ
-
 シミュレーションは本文中に埋め込むこともできますが、ホームから直接開ける独立ページにしておくと、授業中のデモやスマートフォン確認で使いやすくなります。このページは、単独 qmd としてコピーできる最小可動例です。
 
 ## シミュレーションの使い所 {#sec-simulation-use-case}
@@ -64,21 +62,35 @@ matplotlib.rcParams["axes.unicode_minus"] = False
 
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
 
 t = np.linspace(0, 2.0, 400)
-y = sim_amplitude * np.sin(2 * np.pi * sim_frequency * t)
+n_frames = 48
 
 fig, ax = plt.subplots(figsize=(7, 3.5))
-ax.plot(t, y, lw=2)
+(line,) = ax.plot([], [], lw=2)
+title = ax.set_title("")
+ax.set_xlim(0, 2.0)
+ax.set_ylim(-2.2, 2.2)
 ax.set_xlabel("時間 $t$")
 ax.set_ylabel("変位 $x(t)$")
-ax.set_title(f"単振動: A={sim_amplitude:.1f}, f={sim_frequency:.1f}")
 ax.grid(True, linestyle="--", alpha=0.45)
-fig
+
+def update(i):
+    phase = 2 * np.pi * i / n_frames
+    y = sim_amplitude * np.sin(2 * np.pi * sim_frequency * t + phase)
+    line.set_data(t, y)
+    title.set_text(f"単振動: A={sim_amplitude:.1f}, f={sim_frequency:.1f}")
+    return line, title
+
+ani = FuncAnimation(fig, update, frames=n_frames, interval=60, blit=False)
+plt.close(fig)
+HTML(ani.to_jshtml())
 ```
 
 ## 配置の考え方
 
-`examples/simulation-page.qmd` のように独立ページとして作り、`_quarto.yml` では「シミュレーション」や「導線サンプル」の part に入れます。ホームには「動く教材」として表やカードでリンクします。
+`simulations/simulation-page.qmd` のように独立ページとして作り、`_quarto.yml` では「演習・シミュレーション・補助資料」などの part に入れます。ホームには「動く教材」として表でリンクします。
 
 より複雑な Quarto Live / Plotly の書き方は、[教材本編サンプルのシミュレーション教材](../textbook/textbook.qmd#sec-simulation-showcase) をコピー元にしてください。

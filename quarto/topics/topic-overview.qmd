@@ -3,8 +3,6 @@ title: "トピック概要ページ"
 subtitle: "講義回・論文節・理論項目を単独ページにする例"
 ---
 
-# トピック概要ページ
-
 単独の qmd は、講義回、論文の節、独立した理論トピックをホームから直接見せたいときに使います。大きな本編に含める前の整理ページとしても使えます。
 
 ## このページで扱う問い
@@ -52,8 +50,8 @@ $$ {#eq-topic-derivable}
 | 次にすること | リンク |
 | --- | --- |
 | 本文で詳しく読む | [教材本編サンプル](../textbook/textbook.qmd#sec-introduction) |
-| 手を動かして確認する | [シミュレーションページ](simulation-page.qmd) |
-| 問題で確認する | [演習ページ](exercise-page.qmd) |
+| 手を動かして確認する | [シミュレーションページ](../simulations/simulation-page.qmd) |
+| 問題で確認する | [演習ページ](../exercises/exercise-page.qmd) |
 | 論文精読の章に育てる | [論文精読ページ](paper-deep-dive-page.qmd) |
 
 ## 本文 partial に移す場合

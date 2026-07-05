@@ -41,13 +41,14 @@ just docs
 
 | ページ | 用途 |
 | --- | --- |
-| ホーム | テンプレート全体の入口 |
+| ホーム | 派生プロジェクトで最後まで残す読者向け教材ホーム |
+| 制作者向けガイド | テンプレート利用者が最初に読む入口 |
 | 導線サンプル | qmd を追加した後に sidebar とホームへ置く例 |
 | 章テンプレート一覧 | 教材・演習・理論ノートなどの書き方サンプル |
 | ワークフロー | 素材取り込みから公開までの運用手順 |
 | 本文サンプル | 実際の textbook 構成 |
 | 教材本編サンプル内の機能例 | Mermaid、表、引用、Quarto Live、Plotly、シミュレーションなど |
-| 論文精読ガイド | `docs/paper-deep-dive.md` と `quarto/examples/paper-deep-dive-page.qmd` |
+| 公開リファレンス | `quarto/reference/*.qmd` に置いた機能対応表、Quarto Live、論文精読ガイド |
 
 ## このテンプレートに含まれるもの
 
@@ -61,7 +62,7 @@ just docs
 - `just check` による品質確認
 - AI エージェント向け編集規約 (`AGENTS.md`)
 
-Quarto の新しめの機能や採用判断は [`docs/quarto-modern.md`](docs/quarto-modern.md) にまとめています。
+Quarto の新しめの機能や採用判断は、公開サイトでは `quarto/reference/quarto-modern.qmd`、エージェント/開発者向け原本では `docs/quarto-modern.md` にまとめています。
 
 ## 書き換える場所
 
@@ -71,6 +72,7 @@ Quarto の新しめの機能や採用判断は [`docs/quarto-modern.md`](docs/qu
 | --- | --- |
 | `quarto/_quarto.yml` | タイトル、著者、リポジトリ URL、footer |
 | `quarto/index.qmd` | ホームの説明、主要ページへの導線 |
+| `quarto/template-guide.qmd` | 制作者向けの入口、派生先の運用方針 |
 | `quarto/textbook/textbook.qmd` | 本文に含める章の構成 |
 | `quarto/textbook/_*.qmd` | 各章の本文 |
 | `package.json`, `pyproject.toml` | プロジェクト名・説明 |
@@ -83,10 +85,10 @@ qmd を追加したら、ページを作るだけで終わらせず、ホーム�
 
 | 追加するもの | 最短手順 |
 | --- | --- |
-| 単独ページ | qmd を作る → `quarto/_quarto.yml` の `book.chapters` に追加 → `quarto/index.qmd` のロードマップ表にリンクを追加 → `just docs` でホーム / sidebar / 前後ナビを確認 |
+| 単独ページ | qmd を作る → `quarto/_quarto.yml` の `book.chapters` に追加 → 主要ページなら `quarto/index.qmd` の「読む順番」に追加 → `just docs` でホーム / sidebar / 前後ナビを確認 |
 | 本文 partial | `quarto/textbook/_NN_topic.qmd` を作る → `quarto/textbook/textbook.qmd` に include を追加 → ホームから飛ばしたい見出しに `{#sec-id}` を付ける → `quarto/index.qmd` から `textbook/textbook.qmd#sec-id` へリンク |
 
-具体例は `quarto/example-map.qmd` と `quarto/examples/` を見てください。
+実教材の新規ページは `topics/`、`simulations/`、`exercises/`、`support/` など目的別の場所に作ります。まず `quarto/template-guide.qmd` を読み、詳細な作業順序は `quarto/workflow-guide.qmd`、配置例は `quarto/example-map.qmd` を見てください。
 
 ## よく使うコマンド
 
@@ -109,11 +111,10 @@ PDF やスキャン画像から qmd を作るときは、必ず画像確認と�
 
 ```bash
 just diagnose-pdf <pdf>
-just render-pdf <pdf> <start> <end>
 just extract-pdf <pdf> <start> <end>
 ```
 
-抽出されたテキストだけで書き起こさず、生成された PNG を見ながら式、図表、ページ対応を確認してください。詳しくは [`AGENTS.md`](AGENTS.md) と [`tools/README.md`](tools/README.md) を参照してください。
+`extract-pdf` は先にページ PNG を生成し、その上で text/OCR/LaTeX 抽出を行います。抽出されたテキストだけで書き起こさず、生成された PNG を見ながら式、図表、ページ対応を確認してください。画像だけ欲しい例外時のみ `just render-pdf <pdf> <start> <end>` を使います。詳しくは [`AGENTS.md`](AGENTS.md) と [`tools/README.md`](tools/README.md) を参照してください。
 
 ## 公開
 
@@ -129,16 +130,22 @@ push 後、`.github/workflows/check.yml` と `.github/workflows/publish.yml` が
 
 ```text
 quarto/                  # Quarto ソース
-  index.qmd              # ホーム
+  index.qmd              # 読者向けホーム
+  template-guide.qmd     # 制作者向け入口
   example-map.qmd        # qmd 追加後の導線サンプル
-  examples/              # 単独ページ配置の最小例
+  topics/                # 独立トピック・論文精読ページ
+  simulations/           # 動く教材ページ
+  exercises/             # 演習ページ
+  support/               # 補助資料ページ
+  reference/             # 公開サイトで読める技術リファレンス
   template-catalog.qmd   # 章テンプレート一覧
+  template-pages/        # templates/*.qmd の閲覧ページ
   workflow-guide.qmd     # 運用ワークフロー
   textbook/              # 本文サンプル
   templates/             # CSS / HTML / qmd テンプレート
   assets/                # 画像・PDF・フォント
-docs/                    # 補足ドキュメント
-  paper-deep-dive.md     # 論文精読教科書の編集ガイド
+docs/                    # エージェント/開発者向け原本
+  *.md                   # reference/*.qmd に反映する元メモ
 tools/                   # 開発支援 Python ツール
 tests/                   # pytest
 Justfile                 # 統一コマンド

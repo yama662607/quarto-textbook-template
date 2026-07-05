@@ -5,7 +5,9 @@
 
 ## Project overview
 
-Quarto Book ベースの教科書 / 講義ノートサイト。HTML を GitHub Pages、PDF をオプションで生成。本文は `quarto/textbook/textbook.qmd` を信頼できる唯一の情報源 (single source of truth) とし、章ごとのコンテンツは `_*.qmd` パーシャルに分割して `{{< include >}}` で統合する。
+Quarto Book ベースの教科書 / 講義ノートサイト。HTML を GitHub Pages、PDF をオプションで生成。本文は `quarto/textbook/textbook.qmd` を信頼できる唯一の情報源 (single source of truth) とし、章ごとのコンテンツは `_*.qmd` パーシャルに分割して `{{< include >}}` で統合する。`quarto/topics/`, `quarto/simulations/`, `quarto/exercises/`, `quarto/support/` は、本編を補う reader-facing な単独ページとして使う。
+
+`docs/*.md` はエージェント/開発者向け原本、`quarto/reference/*.qmd` は公開サイトで読めるリファレンス。公開ページから `docs/*.md` へ直接リンクせず、必要な内容は `quarto/reference/*.qmd` へ反映して `book.chapters` に登録する。
 
 ## Setup commands
 
@@ -81,7 +83,9 @@ Mermaid / Graphviz / theorem 環境 / tabset / lightbox / 引用 などの **Qua
   - パーシャルファイルに **YAML フロントマターを書かない** (親ファイルに集約)
   - **qmd を追加したら導線も更新する**:
     - 本文 partial (`quarto/textbook/_NN_topic.qmd`) は `quarto/textbook/textbook.qmd` に include し、ホームから飛ばしたい見出しに `{#sec-id}` を付ける
-    - 単独ページ (simulation / exercise / support など) は `quarto/_quarto.yml` の `book.chapters` に登録し、`quarto/index.qmd` のロードマップ表からリンクする
+    - 単独ページ (simulation / exercise / support など) は `quarto/_quarto.yml` の `book.chapters` に登録し、主要ページだけ `quarto/index.qmd` の「読む順番」表からリンクする
+    - 単独ページは `quarto/topics/`, `quarto/simulations/`, `quarto/exercises/`, `quarto/support/` など目的別ディレクトリへ作る
+    - 公開ページから `docs/*.md` や `_*.qmd` partial へ直接リンクしない。ブラウザで読ませる文書は `quarto/reference/*.qmd` などの単独 qmd に変換し、`book.chapters` に登録してからリンクする。コピー元ファイルはリンクではなくコード表記にする
     - 派生プロジェクトの公開ホームでは、ショーケースやテンプレート支援ページよりも本文・演習・シミュレーションへの導線を先に置く
   - **論文精読教材**を作る場合は、先に `docs/paper-deep-dive.md` を読み、原文引用・忠実訳・行間補完・通し具体例・限界章・検証チェックリストを章設計に反映する
   - `:::` (fenced div) の **閉じる前に空行必須** (`just fix` で自動修正可)

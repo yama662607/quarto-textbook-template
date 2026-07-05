@@ -3,8 +3,6 @@ title: "章テンプレート一覧"
 subtitle: "目的別にコピーして使う qmd スケルトン"
 ---
 
-# 章テンプレート一覧
-
 `quarto/templates/` 配下の qmd は、render 対象ではなくコピー元です。目的に近いものを `quarto/textbook/_NN_topic.qmd` として使い、`textbook/textbook.qmd` に <code>{{&lt; include _NN_topic.qmd &gt;}}</code> を追加します。コピー元に YAML front matter がある場合、本文 partial へ貼るときは先頭の `---` で囲まれた YAML ブロックを削除してください。
 
 ## 目的別
@@ -15,7 +13,7 @@ subtitle: "目的別にコピーして使う qmd スケルトン"
 | 数学・物理の章を書く | [数学・物理テンプレート](template-pages/math-focused.qmd) | `quarto/templates/math_focused_template.qmd` | 定義、定理、証明、線形代数の補足、計算確認 |
 | 直感から数式へ導く | [V-S-V レッスンテンプレート](template-pages/theory.qmd) | `quarto/templates/theory_template.qmd` | V-S-V cycle、直感、図解、数式、実装、確認問題 |
 | Quarto 機能をまとめて使う | [Quarto 機能テンプレート](template-pages/quarto-features.qmd) | `quarto/templates/quarto_feature_showcase.qmd` | タブ、図表、数式、引用、コード、レイアウトの copy-paste 元 |
-| 論文を精読教科書にする | [論文精読ページ例](examples/paper-deep-dive-page.qmd) | `docs/paper-deep-dive.md` | 原文引用、忠実訳、行間補完、章割り、検証チェックリスト |
+| 論文を精読教科書にする | [論文精読ページ例](topics/paper-deep-dive-page.qmd) | [論文精読教科書のつくり方](reference/paper-deep-dive.qmd) | 原文引用、忠実訳、行間補完、章割り、検証チェックリスト |
 
 ## テンプレート詳細
 
@@ -41,6 +39,16 @@ subtitle: "目的別にコピーして使う qmd スケルトン"
 2. `textbook/textbook.qmd` に include 行を 1 つ追加する。
 3. `just docs` で見え方を確認する。
 4. `just check` を通す。
+
+## 新しいテンプレートを増やす場合
+
+章テンプレート自体を増やす場合は、コピー元と閲覧ページを分けます。
+
+1. `quarto/templates/foo_template.qmd` にコピー元を作る。
+2. `quarto/template-pages/foo.qmd` にブラウザで見られる閲覧ページを作る。
+3. この `template-catalog.qmd` の「目的別」表へ追加する。
+4. `quarto/_quarto.yml` の「制作者向け」part に閲覧ページを追加する。
+5. 必要なら [Quarto 機能対応表](reference/features.qmd) に、表示先とコピー元 partial の対応を追加する。
 
 ## 使い分け
 

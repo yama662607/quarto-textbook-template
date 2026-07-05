@@ -3,8 +3,6 @@ title: "V-S-V レッスンテンプレート"
 subtitle: "Visual → Symbolic → Verbal の流れで概念を導入する"
 ---
 
-# V-S-V レッスンテンプレート
-
 直感から数式へ導くレッスン向けのテンプレートです。抽象概念をいきなり定義せず、Visual → Symbolic → Verbal の順に組み立てます。
 このページは閲覧用です。実際に編集を始めるときは、下のコピー元ファイルを `quarto/textbook/_NN_topic.qmd` にコピーします。
 

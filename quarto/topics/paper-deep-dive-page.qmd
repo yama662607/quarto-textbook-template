@@ -3,9 +3,7 @@ title: "論文精読ページ"
 subtitle: "研究論文を精読教科書に変える章の型"
 ---
 
-# 論文精読ページ
-
-このページは、1 本の研究論文を「読者が本当に理解できる精読教科書」に作り替えるためのページ例です。詳しい編集方法論は、リポジトリ root の `docs/paper-deep-dive.md` にまとめています。公開版では [全文ガイド](https://github.com/yama662607/quarto-textbook-template/blob/main/docs/paper-deep-dive.md) も参照できます。
+このページは、1 本の研究論文を「読者が本当に理解できる精読教科書」に作り替えるためのページ例です。詳しい編集方法論は、公開サイト内の [論文精読教科書のつくり方](../reference/paper-deep-dive.qmd) で確認できます。
 
 ## 目指すもの
 
