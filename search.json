@@ -2,67 +2,56 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Quarto Textbook Template",
+    "title": "Your Textbook Title",
     "section": "",
-    "text": "Quarto Textbook Template\nこのサイトは、Quarto Book で教材サイトを作るためのテンプレートです。まず統合サンプルで完成形を見て、必要な章テンプレートをコピーし、運用ワークフローに沿って編集します。",
+    "text": "この教材で学ぶこと\nこのサイトは、講義ノート、演習、シミュレーション、補助資料をまとめた教材サイトです。読者が最初に見るページとして、このホームには本文・演習・動く確認への導線だけを置きます。",
     "crumbs": [
       "ホーム",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Quarto Textbook Template</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Your Textbook Title</span>"
     ]
   },
   {
-    "objectID": "index.html#統合サンプル",
-    "href": "index.html#統合サンプル",
-    "title": "Quarto Textbook Template",
-    "section": "統合サンプル",
-    "text": "統合サンプル\nこのテンプレートで作れる教材の代表例です。Quarto Live、Plotly、シミュレーション、図表、定理、引用、callout などの動く例もここに集約しています。\n動く統合サンプルを見る",
+    "objectID": "index.html#この教材で学ぶこと",
+    "href": "index.html#この教材で学ぶこと",
+    "title": "Your Textbook Title",
+    "section": "",
+    "text": "本文で概念と記法を確認する\nトピックページで 1 つの問いを短く復習する\nシミュレーションでパラメータを動かして挙動を見る\n演習ページで理解を確認する\n必要に応じて参考資料や原典精読ページへ戻る",
     "crumbs": [
       "ホーム",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Quarto Textbook Template</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Your Textbook Title</span>"
     ]
   },
   {
-    "objectID": "index.html#章テンプレート",
-    "href": "index.html#章テンプレート",
-    "title": "Quarto Textbook Template",
-    "section": "章テンプレート",
-    "text": "章テンプレート\nPDF 起こし、数学・物理、V-S-V レッスン、全機能盛り合わせなど、コピーして使う qmd スケルトンです。\nテンプレートを選ぶ",
+    "objectID": "index.html#読む順番",
+    "href": "index.html#読む順番",
+    "title": "Your Textbook Title",
+    "section": "読む順番",
+    "text": "読む順番\n\n\n\n入口\n読者に見せる内容\nページ\n\n\n\n\n本文の入口\n教材本体、章立て、読む順番\n教材本編サンプル\n\n\n主要トピック\n1 つの講義回、論文節、理論項目\nトピック概要ページ\n\n\n論文精読\n原典、忠実訳、行間補完、章割り、検証手順\n論文精読ページ\n\n\n動く確認\nQuarto Live / Plotly によるシミュレーション\nシミュレーションページ\n\n\n演習・課題\n問題、ヒント、解答方針、確認コード\n演習ページ\n\n\n補助資料\n記法、関連資料、よく使うリンク\n補助資料ページ",
     "crumbs": [
       "ホーム",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Quarto Textbook Template</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Your Textbook Title</span>"
     ]
   },
   {
-    "objectID": "index.html#運用ワークフロー",
-    "href": "index.html#運用ワークフロー",
-    "title": "Quarto Textbook Template",
-    "section": "運用ワークフロー",
-    "text": "運用ワークフロー\nセットアップ、プレビュー、PDF 取り込み、検証、公開前チェックの流れを確認できます。\n運用を確認する",
+    "objectID": "index.html#関連資料",
+    "href": "index.html#関連資料",
+    "title": "Your Textbook Title",
+    "section": "関連資料",
+    "text": "関連資料\n\n\n\n種類\nページ\n\n\n\n\nQuarto 機能の表示先\nQuarto 機能対応表\n\n\n論文を精読教科書にする方法\n論文精読教科書のつくり方\n\n\nブラウザ内 Python の作法\nQuarto Live レシピ",
     "crumbs": [
       "ホーム",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Quarto Textbook Template</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Your Textbook Title</span>"
     ]
   },
   {
-    "objectID": "index.html#最初に試すコマンド",
-    "href": "index.html#最初に試すコマンド",
-    "title": "Quarto Textbook Template",
-    "section": "最初に試すコマンド",
-    "text": "最初に試すコマンド\njust setup     # 初回のみ\njust docs      # http://localhost:4312 でプレビュー\njust check     # 公開前の品質チェック\nquarto/_quarto.yml の preview 設定は host: 0.0.0.0 / port: 4312 なので、同じ Wi-Fi 上の端末からも http://&lt;Mac の IP&gt;:4312/ で確認できます。",
+    "objectID": "index.html#制作者向け",
+    "href": "index.html#制作者向け",
+    "title": "Your Textbook Title",
+    "section": "制作者向け",
+    "text": "制作者向け\nこのテンプレートを使って教材を作る場合は、まず 制作者向けガイド を確認してください。テンプレート支援ページは本文作成中も残せるよう、sidebar の「制作者向け」にまとめています。",
     "crumbs": [
       "ホーム",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Quarto Textbook Template</span>"
-    ]
-  },
-  {
-    "objectID": "index.html#編集の基本",
-    "href": "index.html#編集の基本",
-    "title": "Quarto Textbook Template",
-    "section": "編集の基本",
-    "text": "編集の基本\n本文は quarto/textbook/textbook.qmd を親にし、章や節の中身を _*.qmd partial に分けて {{&lt; include &gt;}} します。機能の書き方は 統合サンプル の該当セクションから探し、コピー元は 章テンプレート から選んでください。",
-    "crumbs": [
-      "ホーム",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Quarto Textbook Template</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Your Textbook Title</span>"
     ]
   },
   {
@@ -73,6 +62,7 @@
     "text": "第1章 序論\nこのファイルが教科書本体の 唯一の信頼できる情報源 (single source of truth) です。 章ごとのコンテンツは _*.qmd ファイル (アンダースコア接頭辞 = Quarto がレンダリング対象から除外) に分割し、 ここから {{&lt; include &gt;}} でまとめます。\nfilters: [r-wasm/live] をこのファイルに付けることで、配下のすべてのパーシャルで {ojs} / {pyodide} ブロックが有効になります (Quarto Live 拡張)。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -84,6 +74,7 @@
     "text": "この章で学ぶこと\n\nパーシャルファイル (_*.qmd) は YAML フロントマター禁止。親 (textbook.qmd) に集約します。\n数式は LaTeX で記述。インラインは $E = mc^2$、ディスプレイは:\n\n\n\\nabla \\times \\mathbf{B} - \\frac{1}{c}\\frac{\\partial \\mathbf{E}}{\\partial t} = \\frac{4\\pi}{c}\\mathbf{J}\n\\tag{3.1}\n式 3.1 は Maxwell-Ampère の法則です。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -95,6 +86,7 @@
     "text": "図表の例\n\n\n\n\n\nflowchart LR\n    A[原稿] --&gt; B[validate-docs]\n    B --&gt; C{エラー?}\n    C --&gt;|Yes| D[fix]\n    C --&gt;|No| E[render-site]\n    D --&gt; B\n    E --&gt; F[GitHub Pages]",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -106,6 +98,7 @@
     "text": "元 PDF へのリンク (任意)\n教科書 PDF を quarto/assets/pdf/ に置いた場合の参照例:\n[元教科書 §1.2 を見る](../assets/pdf/textbook.pdf#page=12)",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -117,6 +110,7 @@
     "text": "節の例\nここに本文を書きます。第1章 序論 で述べたように…\n\n小節\n\n\n\n\n\n\nノート\n\n\n\nQuarto の callout は HTML / PDF 両方で綺麗にレンダリングされます。\n\n\n\n\n\n\n\n\n警告\n\n\n\nパーシャルファイル内では fenced div (:::) の 閉じる前に空行が必要 です (validate-docs が検出します)。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -128,6 +122,7 @@
     "text": "このサンプルの仕組み\n\n\n\n\n\n\n\n要素\n役割\n\n\n\n\nfilters: [r-wasm/live] (YAML)\nこの qmd で {ojs} / {pyodide} を有効化\n\n\n{ojs} ブロック\nInputs.range(...) でスライダー UI を生成\n\n\n{pyodide} ブロック\nブラウザ内 Python で計算と描画\n\n\n#| autorun: true\nページ表示時に自動実行\n\n\n#| input: [\"amplitude\", ...]\nスライダー値を Python 変数として受け取り、変更時に再実行\n\n\n日本語フォントブロック\nPyodide のときだけ pyfetch で TTF をロード、それ以外は OS フォントに任せる\n\n\nFuncAnimation + to_jshtml()\n標準 Python の方法でアニメーションを構築 → JS プレイヤーとして埋め込み",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -139,6 +134,7 @@
     "text": "なぜスライダーでアニメーションさせないのか\nOJS のループでスライダーを高速更新して {pyodide} を毎フレーム再実行する方法は 避けています:\n\nPyodide の matplotlib 再描画 (&gt;100ms / frame) が間隔に追いつかず描画が固まる\nQuarto Live 専用の仕掛け (viewof.dispatchEvent など) になり、Jupyter / VSCode に コードをコピーしたときに動かない\n\nFuncAnimation + to_jshtml() はフレームを Python 側で全部計算してから 1 つの インタラクティブ HTML プレイヤーとして書き出すので、上記の問題が両方解決します。 コードは Jupyter / VSCode でもそのまま動きます (Notebook なら最終行 HTML(ani.to_jshtml()) がそのまま表示される)。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -150,6 +146,7 @@
     "text": "新しい章を作るときのコピペ手順\n\nこのファイル (_03_interactive_demo.qmd) と同じパターンの新しい qmd を作る\nYAML に filters: [r-wasm/live] を含める (パーシャル _*.qmd ならスキップ可。親の textbook.qmd 側で指定)\n日本語フォントブロック (try: pyfetch ...) は描画セルの先頭に置く — 順序が保証される\npyfetch の URL は /assets/fonts/... の絶対パスで固定 (qmd の階層に合わせて変えない)\nアニメーションは FuncAnimation で組み、最終行で HTML(ani.to_jshtml()) を返す",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -161,6 +158,7 @@
     "text": "静的グラフ: 3D サーフェス\n\n\n\n\n\n\nドラッグで回転、スクロールでズーム、右上のツールバーで PNG 保存ができます。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -172,6 +170,7 @@
     "text": "アニメーション: 減衰振動の時間発展\nanimation_frame を渡すと、Plotly が 再生・一時停止・スライダー UI を自動生成 します。 matplotlib の FuncAnimation よりさらに記述量が少なく、ホバーで値を読めるのが利点。\n\n\n\n\n\n\n下の ▶ 再生ボタン を押すと、波形が時間とともに伸びていきます。スライダーを直接 ドラッグして任意のフレームに飛ぶこともできます。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -180,9 +179,10 @@
     "href": "textbook/textbook.html#このサンプルの仕組み-1",
     "title": "Quarto textbook 統合サンプル",
     "section": "このサンプルの仕組み",
-    "text": "このサンプルの仕組み\n\n\n\n\n\n\n\n要素\n役割\n\n\n\n\nawait micropip.install(\"plotly\")\nPyodide で plotly を動的取得 (Jupyter では try 節で skip)\n\n\nHTML(fig.to_html(include_plotlyjs=\"cdn\"))\nPyodide / Jupyter / VSCode のどこでも図を HTML として埋め込み (fig.show() は Pyodide で renderer 検出に失敗するため避ける)\n\n\nanimation_frame=\"frame\"\nフレームごとの DataFrame 行を Plotly が拾って自動でスライダー UI を生成",
+    "text": "このサンプルの仕組み\n\n\n\n\n\n\n\n要素\n役割\n\n\n\n\ntextbook.qmd の pyodide.packages\nPlotly / nbformat / jsonschema をセル実行前に直列ロードする。micropip.install(...) をセル内で呼ばない\n\n\nHTML(fig.to_html(include_plotlyjs=\"cdn\"))\nPyodide / Jupyter / VSCode のどこでも図を HTML として埋め込み (fig.show() は Pyodide で renderer 検出に失敗するため避ける)\n\n\nanimation_frame=\"frame\"\nフレームごとの DataFrame 行を Plotly が拾って自動でスライダー UI を生成",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -194,6 +194,7 @@
     "text": "matplotlib と Plotly の使い分け\n\n\n\n\n\n\n\n\n\nmatplotlib (FuncAnimation)\nPlotly\n\n\n\n\nコード量\nやや多い (figure / line / update 関数)\n少ない (animation_frame 1 引数)\n\n\nフォント設定\n日本語は addfont 必須\nOS フォント (追加設定不要)\n\n\nインタラクション\nコマ送り / 再生 / 停止\nコマ送り / 再生 / 停止 / hover / pan / zoom\n\n\n出力形式\nPNG (静止画) または JS プレイヤー\nSVG / WebGL ベースの interactive plot\n\n\n論文用\nベクター PDF が綺麗、印刷向き\n印刷用 export はやや弱い\n\n\nデータ次元\n2D が中心\n2D / 3D / 地理 / dashboard も得意\n\n\n\n紙に載せる図は matplotlib、ウェブで読者が触る図は Plotly、と使い分けるのが標準です。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -205,6 +206,7 @@
     "text": "Mermaid フローチャート\n\n\n\n\n\n\nflowchart LR\n    A[入力] --&gt; B{条件分岐}\n    B -- yes --&gt; C[処理 X]\n    B -- no  --&gt; D[処理 Y]\n    C --&gt; E[出力]\n    D --&gt; E\n\n\n\n\n図 7.1: アルゴリズムのフロー\n\n\n\n\n\n図 7.1 が示すように、Mermaid の flowchart で分岐構造を簡潔に描けます。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -216,6 +218,7 @@
     "text": "Mermaid シーケンス図\n\n\n\n\n\n\nsequenceDiagram\n    participant U as User\n    participant S as Server\n    U-&gt;&gt;S: Request\n    S--&gt;&gt;U: Response\n    Note over U,S: ハンドシェイク完了\n\n\n\n\n図 7.2: クライアント・サーバ間の通信",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -227,6 +230,7 @@
     "text": "Mermaid 状態遷移\n\n\n\n\n\n\nstateDiagram-v2\n    [*] --&gt; 赤\n    赤 --&gt; 青: 30s\n    青 --&gt; 黄: 25s\n    黄 --&gt; 赤: 5s\n\n\n\n\n図 7.3: 信号機の状態遷移",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -238,6 +242,7 @@
     "text": "Graphviz (DOT)\n{mermaid} の代替として Graphviz も使えます。複雑なノード配置は DOT の方が制御しやすい場面があります。\n\n\n\n\n\n\n\n\nG\n\n\n\nA\n\nA\n\n\n\nB\n\nB\n\n\n\nA-&gt;B\n\n\nf\n\n\n\nC\n\nC\n\n\n\nA-&gt;C\n\n\ng∘f\n\n\n\nB-&gt;C\n\n\ng\n\n\n\n\n\n\n図 7.4: Graphviz による有向グラフ",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -249,6 +254,7 @@
     "text": "数式と cross-reference\nディスプレイ数式に {#eq-...} ラベルを付けると、本文から @eq-... で参照できます。\n\n\\nabla \\times \\vec{B} = \\mu_0 \\vec{J} + \\mu_0 \\varepsilon_0 \\frac{\\partial \\vec{E}}{\\partial t}\n\\tag{7.1}\n式 7.1 はマクスウェル方程式の Ampère-Maxwell 則です。電流密度に加えて変位電流 \\partial_t \\vec{E} が現れる点が古典 Ampère 則からの拡張になっています。\n\n可換図式 (LaTeX array 環境)\n数式環境内で \\xrightarrow と縦矢印を組み合わせて可換図式を描けます。\n\n\\begin{array}{ccc}\nA & \\xrightarrow{f} & B \\\\\n\\downarrow{\\pi} & & \\downarrow{\\pi'} \\\\\nA/{\\sim} & \\xrightarrow{\\bar{f}} & B/{\\sim}\n\\end{array}\n\\tag{7.2}\n\n\n可換図式 (Mermaid)\n同じ可換図式を Mermaid のグラフでも書けます。HTML 出力では Mermaid の方が見栄えが良いことも。\n\n\n\n\n\n\ngraph LR\n    A((A)) -- f --&gt; B((B))\n    A -- π --&gt; AS((A/~))\n    B -- π' --&gt; BS((B/~))\n    AS -- f̄ --&gt; BS\n\n\n\n\n図 7.5: 可換図式 (Mermaid 版)",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -260,6 +266,7 @@
     "text": "定義・定理・証明\nQuarto は #thm- #def- #lem- #cor- #prp- #cnj- #exm- #exr- #sol- #rem- #alg- の theorem-like 環境を提供します。番号付け・cross-ref が自動。\n\n定義\n\n定義 7.1 (群 (group)) 集合 G と二項演算 \\cdot : G \\times G \\to G の組 (G, \\cdot) が 群 であるとは、以下を満たすこと。\n\n結合律: (a \\cdot b) \\cdot c = a \\cdot (b \\cdot c)\n単位元の存在: \\exists e \\in G,\\ \\forall a \\in G,\\ e \\cdot a = a \\cdot e = a\n逆元の存在: \\forall a \\in G,\\ \\exists a^{-1} \\in G,\\ a \\cdot a^{-1} = a^{-1} \\cdot a = e\n\n\n定義 7.1 は代数学の出発点です。\n\n\n補題と定理\n\n補題 7.1 (消去律) 群 G において、a \\cdot b = a \\cdot c \\Rightarrow b = c。\n\n\n証明. 両辺に左から a^{-1} をかける。a^{-1} a b = a^{-1} a c より b = c。\\square\n\n\n定理 7.1 (単位元の一意性) 群の単位元は一意に定まる。\n\n\n証明. e, e' をともに単位元とする。単位元の定義から e = e \\cdot e' = e'。よって e = e'。\\square\n\n定理 7.1 は 補題 7.1 と独立に証明できる基本事実です。\n\n\n系・命題\n\n系 7.1 (逆元の一意性) 群の各元の逆元は一意に定まる。\n\n\n命題 7.1 (冪則) \\forall a \\in G,\\ \\forall m, n \\in \\mathbb{Z}: a^m \\cdot a^n = a^{m+n}。\n\n\n\n例題と演習・解答\n\n例 7.1 (例: 巡回群) 整数の加法群 (\\mathbb{Z}, +) は単位元 0 をもち、1 で生成される無限巡回群である。\n\n\n練習 7.1 (演習) 3 次対称群 S_3 の位数を求め、可換群でないことを示せ。\n\n\n解答 7.1 (解答). |S_3| = 3! = 6。互換 (1\\ 2) と (2\\ 3) は可換でない: (1\\ 2)(2\\ 3) = (1\\ 2\\ 3) だが (2\\ 3)(1\\ 2) = (1\\ 3\\ 2)。\n\n練習 7.1 の解答は Solution 7.1。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -271,6 +278,7 @@
     "text": "タブセット (panel-tabset)\n複数の言語実装や説明スタイルを 1 ヶ所に並べたい時に便利。タブの切り替え状態は group=\"...\" 属性でページ間で同期できます。\n\nPythonRJulia\n\n\nimport numpy as np\ndef euclidean(x, y):\n    return np.linalg.norm(np.asarray(x) - np.asarray(y))\n\n\neuclidean &lt;- function(x, y) sqrt(sum((x - y)^2))\n\n\neuclidean(x, y) = sqrt(sum((x .- y) .^ 2))\n\n\n\nタブの上にもう一度同じ group=\"lang\" を付けると、片方のタブで Python を選ぶともう片方も追従します。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -282,6 +290,7 @@
     "text": "グリッドレイアウト\nBootstrap 12 列グリッド。.g-col-N で N/12 の幅を取ります。\n\n\n左カラム\n\n比較したい概念 A\n数式: \\sigma = \\sqrt{\\dfrac{1}{n}\\sum (x_i - \\bar{x})^2}\n適用条件: 正規分布近似可\n\n\n\n右カラム\n\n比較したい概念 B\n数式: \\mathrm{MAD} = \\dfrac{1}{n}\\sum |x_i - \\bar{x}|\n適用条件: ロバスト推定\n\n\n\ng-col-4 + g-col-8、3 等分なら g-col-4 を 3 つなど自由に組み合わせられます。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -293,6 +302,7 @@
     "text": "5 種の標準 callout\n\n\n\n\n\n\nノート\n\n\n\nnote: 補足情報の通常表示。{.callout-note} で囲むだけ。\n\n\n\n\n\n\n\n\nヒント\n\n\n\ntip: 効率化や別解の提案。\n\n\n\n\n\n\n\n\n警告\n\n\n\nwarning: 落とし穴や注意点。\n\n\n\n\n\n\n\n\n注意\n\n\n\ncaution: 高リスクな操作 / 既知のバグ / 破壊的変更。\n\n\n\n\n\n\n\n\n重要\n\n\n\nimportant: 必須要件。読み飛ばすと後の議論が成立しない情報。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -304,6 +314,7 @@
     "text": "appearance バリエーション\nappearance=\"simple\" で枠とアイコンだけのコンパクト表示、appearance=\"minimal\" で枠線のみ。\n\n\n\n\n\n\nヒントsimple appearance\n\n\n\n線とアイコンだけのコンパクト表示。長い文章を 1 つのまとまりとして見せたい時に。\n\n\n\n\n\n\n\n\n警告minimal appearance\n\n\n\n枠線さえ薄い。本文と続けて読ませたい場合に。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -315,6 +326,7 @@
     "text": "折りたたみ callout\ncollapse=\"true\" で初期状態 collapsed。長い証明・チェックリスト・解答を「読みたい人だけ展開」させる用途に。\n\n\n\n\n\n\nノートクリックで展開: 章末チェックリスト\n\n\n\n\n\n\n5 種の callout を使い分けられる\nappearance の 3 段階の違いを説明できる\ncollapse=\"true\" がいつ便利か言える\ncustom callout の追加方法を カスタム callout (.field-notes / .important-point) で確認した",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -326,6 +338,7 @@
     "text": "カスタム callout (.field-notes / .important-point)\nテンプレ同梱の templates/styles.css で 2 つのカスタム callout を定義しています。クラス名を変えるだけで独自分野色のメモが追加できます。\n\nField Notes クラスの使い方: .field-notes で囲んだ div は青系の独自スタイル + 見出し “Field Notes” 付きで表示されます。実装は quarto/templates/styles.css の数行です。教科の色 (緑 = 物理 / 紫 = 数学 / 茶 = 歴史) ごとにコピペしてクラス名を増やすだけで独自分野メモを足せます。\n\n\nImportant Point クラスの使い方: 重要事項を赤系で強調。.callout-important よりタイポグラフィ寄りの軽いトーンで、定理の核心や試験必出ポイントを際立たせるのに使います。\n\n\n\n\n\n\n\nヒントカスタム callout を新規追加する手順\n\n\n\n\nquarto/templates/styles.css 末尾に新しい CSS クラスをコピーで追加 (.field-notes を雛形に)\n::before の content: 属性で見出しラベルを変更\nbackground-color と border-left の色を変更\nqmd で ::: {.your-class} ... ::: のように囲む",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -337,6 +350,7 @@
     "text": "subfigure (layout-ncol)\n複数の図を 1 つの figure コンテナにまとめ、N 列に並べる:\n\n\n\n\n\n\n\n\n\n\n\n(a) sine 関数\n\n\n\n\n\n\n\n\n\n\n\n(b) cosine 関数\n\n\n\n\n\n\n\n図 9.1: 三角関数の比較\n\n\n\n図 9.1 が親、図 9.1 (a) / 図 9.1 (b) が個別の subfigure を指します。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -348,6 +362,7 @@
     "text": "column: page で本文幅を超えて広げる\ncolumn: page を使うと本文幅 (1100px) より広い表示エリアを取れます。横長グラフや巨大な表に。\n\n\n\n\n\n\n図 9.2: 横長サンプル — column: page",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -359,6 +374,7 @@
     "text": "margin / aside (傍注)\n本文の右マージンに補足情報を出す 2 つの方法。\nこれは .aside 形式の傍注です。本文の流れを止めずに補足できます。\n通常の段落です。.aside で囲んだ inline テキストは右マージンに小さく表示されます。\n\n\nColumn-Margin Block\n.column-margin 形式では複数行・図・表もマージンに置けます。下に小さな図を置いた例:\n\n\n\n\n\n\n図 9.3: margin 内の図\n\n\n\n.aside は inline、.column-margin は block レベルと使い分けます。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -370,6 +386,7 @@
     "text": "lightbox gallery\n_quarto.yml で lightbox: auto を有効化済み。クリックすると拡大表示 + ギャラリーモードでナビゲーション。group=\"...\" で同じグループの画像をまとめて見られます。\n  \nクリックして拡大、左右矢印で次の画像へ移動できます。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -381,6 +398,7 @@
     "text": "pipe table\n軽量で読みやすい記法。テーブル幅は内容で自動調整。\n\n\n\n表 9.1: 三角・指数・対数の微積分対応表\n\n\n\n\n\n関数\n微分\n積分 (定数省略)\n\n\n\n\n\\sin x\n\\cos x\n-\\cos x\n\n\n\\cos x\n-\\sin x\n\\sin x\n\n\ne^x\ne^x\ne^x\n\n\n\\ln x\n1/x\nx \\ln x - x\n\n\n\n\n\n\n表 9.1 のように {#tbl-...} ラベル + @tbl-... で参照できます。: の位置 (左/中央/右) で各列の整列を指定。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -392,6 +410,7 @@
     "text": "grid table\nセル内で複数行 / リスト / コードブロックを使いたい時は grid table。罫線を + = - | で書きます。\n\n\n\n表 9.2: Quarto の代表的な div 構文\n\n\n\n\n\n\n\n\n\n\n環境\nコード例\n用途\n\n\n\n\ntheorem\n::: {#thm-name}\n定理 (番号付け)\n\n\nproof\n::: {.proof}\n証明 (番号なし)\n\n\ncallout\n::: {.callout-tip}\n補足情報 (5 種)\n\n\ntabset\n::: {.panel-tabset}\nタブ切替\n\n\n\n\n\n\n表 9.2 には 5 種の標準 callout / タブセット (panel-tabset) / 定義・定理・証明 が対応します。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -403,6 +422,7 @@
     "text": "list table\nQuarto 1.9 以降では、複雑な表を list table で書くと差分が読みやすくなります。現行 Quarto 1.8 系でも HTML 出力は確認できますが、チームで使う場合は Quarto 1.9+ に揃えるのが安全です。\n\n\n\n表 9.3: PDF 取り込み前後の確認表\n\n\n\n\n\n\n\n\n\n作業\n確認内容\n\n\n\n\n診断\njust diagnose-pdf &lt;pdf&gt; でテキスト層と画像の有無を確認する\n\n\n抽出\njust extract-pdf &lt;pdf&gt; &lt;start&gt; &lt;end&gt; を実行し、PNG と text / OCR / LaTeX を揃える\n\n\n視認\nquarto/assets/raw/&lt;stem&gt;_pages/ の PNG をページごとに開き、図表配置と式番号を確認する\n\n\n執筆\n_NN_topic.qmd に小さく追記し、textbook.qmd から {{&lt; include &gt;}} する\n\n\n\n\n\n\n表 9.3 のように、手順書・採点ルーブリック・用語表など「セルの中身が長くなりがちな表」に向いています。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -414,6 +434,7 @@
     "text": "横向きページ用 .landscape\nPDF 出力で横長の表や図を読みやすくしたい場合は .landscape div を使えます。HTML では通常のブロックとして表示されるため、同じ本文を HTML / PDF 両方に置きやすいのが利点です。\n\n\n\n\n表 9.4: PDF 横向きページに向く横長ワークフロー表\n\n\n\n\n\n\n\n\n\n\n\nフェーズ\n主な作業\n確認観点\n出力\n\n\n\n\n取り込み\nPDF / 写真 / 講義メモを research/inbox/ に置く\n原本の所在とページ番号が追える\n素材一式\n\n\n抽出\njust extract-pdf で画像・文字・数式を抽出\n画像を見て OCR 誤読を補正する\nraw 画像と抽出テキスト\n\n\n執筆\n_NN_topic.qmd に小さく書き起こす\n見出し、式番号、図表参照が壊れていない\nqmd partial\n\n\n検証\njust check を実行する\nrender-check と validate-docs が通る\n公開可能な差分",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -425,6 +446,7 @@
     "text": "まとめ\n\nsubfigure → layout-ncol=N を親 div に\n横長 → .column-page\nマージン補足 → inline は .aside、block は .column-margin\nlightbox → _quarto.yml に lightbox: auto、group=\"...\" でギャラリー化\n表 → 軽い場合 pipe table、複雑なら grid table / list table\nPDF 横向きページ → .landscape\n図表参照 → {#fig-...} {#tbl-...} を付け @fig-... @tbl-... で本文から参照",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -436,6 +458,7 @@
     "text": "コード注釈 (hover style)\n&lt;1&gt; &lt;2&gt; … のマーカーをコード行に付け、後ろに番号付きリストで説明を書くと、HTML 出力ではマーカーホバーで対応する解説がポップアップ表示されます (code-annotations: hover 必要)。\n1def trapezoid(f, a, b, n=100):\n2    h = (b - a) / n\n3    s = 0.5 * (f(a) + f(b))\n    for i in range(1, n):\n4        s += f(a + i * h)\n5    return s * h\n\n1\n\n数値積分関数 trapezoid を定義。f は被積分関数、[a, b] は積分区間、n は分割数。\n\n2\n\n等間隔 h の刻み幅。\n\n3\n\n端点を 1/2 で重み付け (台形公式の境界項)。\n\n4\n\n内部点をフルウェイトで足し込む。\n\n5\n\n全体に h を掛けて積分の近似値を返す。\n\n\n注釈モードは code-annotations: hover | below | none で切替。below はコード下に展開表示、hover はマーカーホバー、none で無効化。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -447,6 +470,7 @@
     "text": "脚注 (footnote)\n本文中で軽く触れたいだけの補足は脚注で1。番号は自動振りされ、ページ末にまとめて表示されます2。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -458,6 +482,7 @@
     "text": "定義リスト\n用語と説明をペアで並べる時は 定義リスト (term : definition)。索引や用語集に向きます。\n\n固有値 (eigenvalue)\n\n線形写像 A: V \\to V に対し、Av = \\lambda v を満たす非ゼロベクトル v が存在するスカラー \\lambda \\in \\mathbb{C}。\n\n固有ベクトル (eigenvector)\n\n上の関係を満たす非ゼロベクトル v。スカラー倍を除いて一意。\n\nスペクトル (spectrum)\n\n行列の固有値の集合 \\sigma(A) = \\{\\lambda_1, \\dots, \\lambda_n\\}。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -469,6 +494,7 @@
     "text": "引用ブロック (blockquote)\n\n数学とは答えを得る術ではなく、より良い問いを立てる術である。\n— ジョルジュ・カントール (出典不詳)\n\n引用に出典をつける慣習は --- 著者 を末尾に。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -480,6 +506,7 @@
     "text": "video 埋め込み\nYouTube / Vimeo / mp4 を直接埋め込めます。Quarto には {&lt; video URL &gt;} shortcode がありますが、Quarto 1.8.x には shortcode 内部で nil 'fail' を呼ぶ既知バグがあるため、現状は raw HTML &lt;iframe&gt; が安定です。\n&lt;!-- Quarto shortcode (将来的にバグ修正されたら推奨) --&gt;\n{{&lt; video https://www.youtube.com/watch?v=wo9vZccmqwc &gt;}}\n下は iframe による埋め込み:\n\n\n\n\n\n\n\n図 10.1: CERN: The Journey of Discovery\n\n\n\n図 10.1 のように div で囲んで #fig-... を付けると figure として cross-ref できます。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -491,6 +518,7 @@
     "text": "conditional content (出力形式で出し分け)\n.content-visible / .content-hidden クラスで HTML / PDF / docx 別に表示を切り替えられます。\nこの段落は HTML 出力でのみ見えます。インタラクティブな要素 (Quarto Live / 動画 / lightbox) を入れる時に。\n逆に .content-hidden when-format=\"...\" で「指定形式では非表示」も書けます。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -502,6 +530,7 @@
     "text": "BibTeX 引用\ntemplates/references.bib の各エントリを @キー で参照すると、自動で文献番号と本文末の参考文献リストが生成されます。\n\n力学の古典的教科書としては Landau と Lifshitz (1976年) が標準。\n量子情報の包括的な教科書 Nielsen と Chuang (2010年) はほぼすべての研究者が手に取る一冊。\n特殊相対性理論の原論文 Einstein (1905年) は Annalen der Physik に掲載された。\n情報理論の創始 (Shannon 1948年) と組版システムの古典 (Knuth 1984年) は計算機科学側からも引かれる。\nQuarto 自体の公式ドキュメント (Quarto Authors 2024年) も参照。\n\nカッコ付き参照は [@key]、文中参照は @key。複数参照は [@a; @b; @c]。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -513,6 +542,7 @@
     "text": "参考文献\n\n\nEinstein, Albert. 1905年. 「Zur Elektrodynamik bewegter Körper」. Annalen der Physik 322 (10): 891–921.\n\n\nKnuth, Donald E. 1984年. The TeXbook. Addison-Wesley.\n\n\nLandau, L. D., と E. M. Lifshitz. 1976年. Mechanics. 3rd 版. Course of Theoretical Physics, Vol. 1. Butterworth-Heinemann.\n\n\nNielsen, Michael A., と Isaac L. Chuang. 2010年. Quantum Computation and Quantum Information: 10th Anniversary Edition. Cambridge University Press.\n\n\nQuarto Authors. 2024年. Quarto: An open-source scientific and technical publishing system. Https://quarto.org/.\n\n\nShannon, Claude E. 1948年. 「A Mathematical Theory of Communication」. The Bell System Technical Journal 27: 379–423.\n\n\n上の #refs div に Quarto が自動で参考文献リストを挿入します。csl: ... で APA / MLA / IEEE などの引用スタイルを切り替え可能。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -524,6 +554,7 @@
     "text": "単振り子: 数式から数値積分へ\n長さ \\ell の単振り子は\n\n\\ell \\ddot{\\theta} = -g\\sin\\theta\n\\tag{11.1}\nに従います。微小振動近似を使わず、式 11.1 を Euler-Cromer 法で直接積分すると、大きな振幅でも運動を確認できます。\n\n\nコード\n_simulation_showcase_loader = true\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nヒント\n\n\n\ntheta0 を小さくすると線形近似に近づき、大きくすると周期が線形理論 T = 2\\pi\\sqrt{\\ell/g} からずれることを観察できます。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -535,6 +566,7 @@
     "text": "極座標運動: 導出と軌道の対応\n等角螺旋 r = ae^{k\\theta} 上を \\dot{\\theta} = \\omega で動く点を考えます。極座標の速度・加速度公式\n\n\\vec{v} = \\dot{r}\\hat{e}_r + r\\dot{\\theta}\\hat{e}_\\theta,\\qquad\n\\vec{a} = (\\ddot{r} - r\\dot{\\theta}^2)\\hat{e}_r + (r\\ddot{\\theta} + 2\\dot{r}\\dot{\\theta})\\hat{e}_\\theta\n\\tag{11.2}\nを導出したあと、軌道をアニメーションで確認する教材パターンです。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -546,6 +578,7 @@
     "text": "Lissajous 曲線: 3D パラメトリック曲線\n複数の振動を組み合わせると、位相差と周波数比によって軌道の形が変わります。Plotly を使うと、3D 曲線を回転・拡大しながら確認できます。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -557,6 +590,7 @@
     "text": "包絡線と媒介変数: 曲面として見る\nパラメータ a を持つ関数族 y = f(x, a) は、x と a の 2 変数曲面として見ると関係がつかみやすくなります。以下は f(x,a) = (x-a)^2 + \\sin(2a) の例です。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -568,6 +602,7 @@
     "text": "Bloch 球: OJS + Plotly.js の軽量 3D interactive\nPython を起動せず、OJS だけで Plotly.js を呼ぶ例です。軽い 3D interactive を入れたい場合に向きます。\n\n\nコード\n{\n  const container = html`&lt;div style=\"width: 100%; min-height: 520px;\"&gt;&lt;/div&gt;`;\n  const Plotly = await require(\"plotly.js-dist-min@2.35.2\");\n  const nFrames = 61;\n  const thetaValues = Array.from({ length: nFrames }, (_, i) =&gt; (2 * Math.PI * i) / (nFrames - 1));\n  const v0 = [0, 0, 1];\n\n  function rotateY(vector, theta) {\n    const [x, y, z] = vector;\n    const c = Math.cos(theta);\n    const s = Math.sin(theta);\n    return [c * x + s * z, y, -s * x + c * z];\n  }\n\n  function vectorTrace(vector, color, name, width) {\n    return {\n      type: \"scatter3d\",\n      mode: \"lines+markers\",\n      x: [0, vector[0]],\n      y: [0, vector[1]],\n      z: [0, vector[2]],\n      line: { color, width },\n      marker: { size: [2, 5], color },\n      name,\n      hovertemplate: name + \"&lt;br&gt;x=%{x:.3f}&lt;br&gt;y=%{y:.3f}&lt;br&gt;z=%{z:.3f}&lt;extra&gt;&lt;/extra&gt;\",\n    };\n  }\n\n  const u = Array.from({ length: 32 }, (_, i) =&gt; (2 * Math.PI * i) / 31);\n  const v = Array.from({ length: 17 }, (_, i) =&gt; (Math.PI * i) / 16);\n  const sphereX = u.map((uu) =&gt; v.map((vv) =&gt; Math.cos(uu) * Math.sin(vv)));\n  const sphereY = u.map((uu) =&gt; v.map((vv) =&gt; Math.sin(uu) * Math.sin(vv)));\n  const sphereZ = u.map(() =&gt; v.map((vv) =&gt; Math.cos(vv)));\n  const orbit = thetaValues.map((theta) =&gt; rotateY(v0, theta));\n\n  const data = [\n    {\n      type: \"surface\",\n      x: sphereX,\n      y: sphereY,\n      z: sphereZ,\n      opacity: 0.13,\n      colorscale: \"Greys\",\n      showscale: false,\n      hoverinfo: \"skip\",\n      name: \"Bloch sphere\",\n    },\n    {\n      type: \"scatter3d\",\n      mode: \"lines\",\n      x: orbit.map((p) =&gt; p[0]),\n      y: orbit.map((p) =&gt; p[1]),\n      z: orbit.map((p) =&gt; p[2]),\n      line: { color: \"rgba(37, 99, 235, 0.35)\", width: 5 },\n      name: \"回転軌道\",\n      hoverinfo: \"skip\",\n    },\n    vectorTrace(v0, \"#2563eb\", \"初期ベクトル\", 5),\n    vectorTrace(rotateY(v0, 0), \"#dc2626\", \"R_y(θ)v0\", 10),\n  ];\n\n  const frames = thetaValues.map((theta, i) =&gt; {\n    const p = rotateY(v0, theta);\n    return {\n      name: \"bloch-\" + i,\n      data: [{ x: [0, p[0]], y: [0, p[1]], z: [0, p[2]] }],\n      traces: [3],\n    };\n  });\n\n  const animationOptions = {\n    mode: \"immediate\",\n    frame: { duration: 55, redraw: true },\n    transition: { duration: 0 },\n  };\n\n  const layout = {\n    title: \"Bloch sphere: y 軸まわりの回転\",\n    height: 520,\n    margin: { l: 0, r: 0, t: 48, b: 0 },\n    scene: {\n      aspectmode: \"cube\",\n      camera: { eye: { x: 1.45, y: 1.7, z: 1.2 } },\n      xaxis: { title: \"X\", range: [-1.25, 1.25] },\n      yaxis: { title: \"Y\", range: [-1.25, 1.25] },\n      zaxis: { title: \"Z\", range: [-1.25, 1.25] },\n    },\n    updatemenus: [\n      {\n        type: \"buttons\",\n        showactive: false,\n        x: 0,\n        y: -0.05,\n        buttons: [\n          { label: \"再生\", method: \"animate\", args: [null, { ...animationOptions, fromcurrent: true }] },\n          { label: \"停止\", method: \"animate\", args: [[null], { mode: \"immediate\", frame: { duration: 0 } }] },\n        ],\n      },\n    ],\n    sliders: [\n      {\n        active: 0,\n        x: 0.12,\n        y: -0.05,\n        len: 0.84,\n        steps: thetaValues.map((theta, i) =&gt; ({\n          method: \"animate\",\n          args: [[\"bloch-\" + i], { ...animationOptions, frame: { duration: 0, redraw: true } }],\n          label: Math.round((theta * 180) / Math.PI) + \"°\",\n        })),\n      },\n    ],\n  };\n\n  await Plotly.newPlot(container, data, layout, { responsive: true, displaylogo: false });\n  await Plotly.addFrames(container, frames);\n  invalidation.then(() =&gt; Plotly.purge(container));\n  return container;\n}",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -579,6 +614,7 @@
     "text": "結合振動子: スライダー入力と時間発展\n複数の振動子がばねで結合した系は、イオントラップや格子振動を説明するときの最小モデルになります。ここでは OJS のスライダーで結合係数を変え、Pyodide 側で時間発展を計算します。\n\n\nコード\nviewof coupling_k = Inputs.range([0.0, 0.45], { value: 0.20, step: 0.05, label: \"結合係数 k_c\" })\nviewof initial_a1 = Inputs.range([-1.2, 1.2], { value: 1.0, step: 0.1, label: \"左端の初期変位 A1\" })\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nヒント\n\n\n\n結合係数を大きくすると、左端に入れたエネルギーが隣の振動子へ移る速度が変わります。量子ハードウェアのフォノンバスなど、より専門的な題材へ進む前の導入例として使えます。",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
@@ -590,235 +626,800 @@
     "text": "台形公式の誤差は \\mathcal{O}(h^2) で、Simpson 公式の \\mathcal{O}(h^4) より遅い収束です。↩︎\n脚注は Pandoc 拡張で、[^label]: 内容 を本文と離れた場所に書けば自動的にページ末にまとめてくれます。↩︎",
     "crumbs": [
       "ホーム",
+      "教材",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Quarto textbook 統合サンプル</span>"
     ]
   },
   {
-    "objectID": "template-catalog.html",
-    "href": "template-catalog.html",
-    "title": "章テンプレート一覧",
+    "objectID": "topics/topic-overview.html",
+    "href": "topics/topic-overview.html",
+    "title": "トピック概要ページ",
     "section": "",
-    "text": "章テンプレート一覧\nquarto/templates/ 配下の qmd は、render 対象ではなくコピー元です。目的に近いものを quarto/textbook/_NN_topic.qmd としてコピーし、textbook/textbook.qmd に {{&lt; include _NN_topic.qmd &gt;}} を追加して使います。下のリンクは、コピー元の内容と使い方を確認するための閲覧ページです。",
+    "text": "このページで扱う問い\n単独の qmd は、講義回、論文の節、独立した理論トピックをホームから直接見せたいときに使います。大きな本編に含める前の整理ページとしても使えます。\nこの問いは、本文で定義や証明に入る前の入口です。読者が最初に知りたい言葉、記号、次に読むページをここで固定します。",
     "crumbs": [
       "ホーム",
-      "章テンプレート",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>章テンプレート一覧</span>"
+      "教材",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>トピック概要ページ</span>"
     ]
   },
   {
-    "objectID": "template-catalog.html#目的別",
-    "href": "template-catalog.html#目的別",
-    "title": "章テンプレート一覧",
-    "section": "目的別",
-    "text": "目的別\n\n\n\n目的\nテンプレート閲覧ページ\nコピー元ファイル\n向いている内容\n\n\n\n\nPDF 教科書を翻訳・解説する\nPDF textbook テンプレート\nquarto/templates/textbook_template.qmd\nPhase 1 の忠実翻訳、Phase 2 の補足解説、定理・証明・Remark\n\n\n数学・物理の章を書く\n数学・物理テンプレート\nquarto/templates/math_focused_template.qmd\n定義、定理、証明、線形代数の補足、計算確認\n\n\n直感から数式へ導く\nV-S-V レッスンテンプレート\nquarto/templates/theory_template.qmd\nV-S-V cycle、直感、図解、数式、実装、確認問題\n\n\nQuarto 機能をまとめて使う\nQuarto 機能テンプレート\nquarto/templates/quarto_feature_showcase.qmd\nタブ、図表、数式、引用、コード、レイアウトの copy-paste 元",
-    "crumbs": [
-      "ホーム",
-      "章テンプレート",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>章テンプレート一覧</span>"
-    ]
-  },
-  {
-    "objectID": "template-catalog.html#テンプレート詳細",
-    "href": "template-catalog.html#テンプレート詳細",
-    "title": "章テンプレート一覧",
-    "section": "テンプレート詳細",
-    "text": "テンプレート詳細\n各テンプレートの閲覧ページでは、用途、コピー元、コピーコマンド、章の骨格を確認できます。実際の編集は quarto/templates/*.qmd を quarto/textbook/_NN_topic.qmd にコピーしてから始めます。",
-    "crumbs": [
-      "ホーム",
-      "章テンプレート",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>章テンプレート一覧</span>"
-    ]
-  },
-  {
-    "objectID": "template-catalog.html#他プロジェクトから採用したショーケース",
-    "href": "template-catalog.html#他プロジェクトから採用したショーケース",
-    "title": "章テンプレート一覧",
-    "section": "他プロジェクトから採用したショーケース",
-    "text": "他プロジェクトから採用したショーケース\n他プロジェクトの調査で見つかったシミュレーション教材の型は、統合サンプルのシミュレーション教材 に採用済みです。\n\n\n\n採用した型\n元になった知見\n統合サンプル\n\n\n\n\nsimulation lesson template\nmechanics-class-simulation の pendulum / polar kinematics\n単振り子、極座標運動\n\n\nPlotly parameter visualization\nmechanics-class-simulation の Lissajous / envelope notebook\nLissajous 曲線、包絡線と媒介変数\n\n\nlightweight OJS + Plotly template\nQuantum-information の Bloch sphere\nBloch 球\n\n\ncoupled oscillator simulation\nQuantum-information の ion-trap / phonon bus simulation\n結合振動子\n\n\nPDF presentation checklist\nai-descartes-textbook の Phase 1/2 運用\nPDF textbook テンプレートの運用候補として継続",
-    "crumbs": [
-      "ホーム",
-      "章テンプレート",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>章テンプレート一覧</span>"
-    ]
-  },
-  {
-    "objectID": "template-catalog.html#コピー後の確認",
-    "href": "template-catalog.html#コピー後の確認",
-    "title": "章テンプレート一覧",
-    "section": "コピー後の確認",
-    "text": "コピー後の確認\n実際に章を書くときは、目的に近いテンプレートを quarto/textbook/_NN_topic.qmd にコピーしてから編集します。\n\npartial に YAML front matter を残していないか確認する。\ntextbook/textbook.qmd に include 行を 1 つ追加する。\njust docs で見え方を確認する。\njust check を通す。",
-    "crumbs": [
-      "ホーム",
-      "章テンプレート",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>章テンプレート一覧</span>"
-    ]
-  },
-  {
-    "objectID": "template-catalog.html#使い分け",
-    "href": "template-catalog.html#使い分け",
-    "title": "章テンプレート一覧",
-    "section": "使い分け",
-    "text": "使い分け\n\n書き方だけ確認したい場合: 統合サンプル の該当セクションを見る\n自分の章を書き始める場合: quarto/templates/ の qmd をコピー",
-    "crumbs": [
-      "ホーム",
-      "章テンプレート",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>章テンプレート一覧</span>"
-    ]
-  },
-  {
-    "objectID": "template-pages/textbook.html",
-    "href": "template-pages/textbook.html",
-    "title": "PDF textbook テンプレート",
+    "objectID": "topics/topic-overview.html#このページで扱う問い",
+    "href": "topics/topic-overview.html#このページで扱う問い",
+    "title": "トピック概要ページ",
     "section": "",
-    "text": "PDF textbook テンプレート\nPDF 教科書や論文を、原文対応を保ちながら Quarto の章へ起こすためのテンプレートです。 このページは閲覧用です。実際に編集を始めるときは、下のコピー元ファイルを quarto/textbook/_NN_topic.qmd にコピーします。",
+    "text": "ノート問い\n\n\n\n「データによく当てはまる」ことと「理論から導ける」ことは、どのように違うのでしょうか。",
     "crumbs": [
       "ホーム",
-      "章テンプレート",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>PDF textbook テンプレート</span>"
+      "教材",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>トピック概要ページ</span>"
     ]
   },
   {
-    "objectID": "template-pages/textbook.html#章の骨格",
-    "href": "template-pages/textbook.html#章の骨格",
-    "title": "PDF textbook テンプレート",
-    "section": "章の骨格",
-    "text": "章の骨格\n## X.Y セクションタイトル [textbook.pdf p.XX](../assets/pdf/textbook.pdf#page=YY)\n\n### Phase 1: 忠実翻訳\n\n::: {#def-X-Y}\n## 定義 X.Y（概念名）\n\n[原文の定義を一言一句逃さず日本語訳する。]\n\n:::\n\n::: {.callout-caution icon=\"false\"}\n## Remark X.Y\n\n[原文の Remark をそのまま日本語訳する。]\n\n:::\n\n### Phase 2: 解説と拡充\n\n::: {.callout-note}\n## 直感的な理解\n\n[原文にない補足や説明をここに書く。]\n\n:::",
+    "objectID": "topics/topic-overview.html#前提知識",
+    "href": "topics/topic-overview.html#前提知識",
+    "title": "トピック概要ページ",
+    "section": "前提知識",
+    "text": "前提知識\n\n\n\n前提\nこのページでの扱い\n\n\n\n\nデータ D\n観測値や実験値の集合\n\n\nモデル M\nデータを説明する式、規則、構造\n\n\n背景理論 B\n既に受け入れている法則、制約、仮定",
     "crumbs": [
       "ホーム",
-      "章テンプレート",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>PDF textbook テンプレート</span>"
+      "教材",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>トピック概要ページ</span>"
     ]
   },
   {
-    "objectID": "template-pages/textbook.html#使う前の確認",
-    "href": "template-pages/textbook.html#使う前の確認",
-    "title": "PDF textbook テンプレート",
-    "section": "使う前の確認",
-    "text": "使う前の確認\n\njust extract-pdf &lt;pdf&gt; &lt;start&gt; &lt;end&gt; で画像とテキストを用意する。\n生成された PNG を見て、図表配置、式番号、OCR 誤読を確認する。\n1 セクションずつ qmd に起こし、just docs で見え方を確認する。",
+    "objectID": "topics/topic-overview.html#中心となる考え方",
+    "href": "topics/topic-overview.html#中心となる考え方",
+    "title": "トピック概要ページ",
+    "section": "中心となる考え方",
+    "text": "中心となる考え方\nデータへの適合だけなら、次のような誤差を小さくする問題として書けます。\n\n\\operatorname{err}(M, D) = \\sum_i \\left(y_i - M(x_i)\\right)^2\n\\tag{3.1}\n一方で、理論から導けるかどうかは別の条件です。\n\n定義 3.1 定義（導出可能性）. モデル M が背景理論 B から導けるとき、M は B に対して導出可能であるという。\n\n\nB \\vdash M\n\\tag{3.2}\n式 式 3.1 は「どれだけ合うか」、式 式 3.2 は「なぜそれでよいと言えるか」を表します。",
     "crumbs": [
       "ホーム",
-      "章テンプレート",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>PDF textbook テンプレート</span>"
+      "教材",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>トピック概要ページ</span>"
     ]
   },
   {
-    "objectID": "template-pages/textbook.html#関連ページ",
-    "href": "template-pages/textbook.html#関連ページ",
-    "title": "PDF textbook テンプレート",
-    "section": "関連ページ",
-    "text": "関連ページ\n\n統合サンプル\n運用ワークフロー",
+    "objectID": "topics/topic-overview.html#読む順番",
+    "href": "topics/topic-overview.html#読む順番",
+    "title": "トピック概要ページ",
+    "section": "読む順番",
+    "text": "読む順番\n\n\n\n次にすること\nリンク\n\n\n\n\n本文で詳しく読む\n教材本編サンプル\n\n\n手を動かして確認する\nシミュレーションページ\n\n\n問題で確認する\n演習ページ\n\n\n論文精読の章に育てる\n論文精読ページ",
     "crumbs": [
       "ホーム",
-      "章テンプレート",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>PDF textbook テンプレート</span>"
+      "教材",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>トピック概要ページ</span>"
     ]
   },
   {
-    "objectID": "template-pages/math-focused.html",
-    "href": "template-pages/math-focused.html",
-    "title": "数学・物理テンプレート",
+    "objectID": "topics/topic-overview.html#本文-partial-に移す場合",
+    "href": "topics/topic-overview.html#本文-partial-に移す場合",
+    "title": "トピック概要ページ",
+    "section": "本文 partial に移す場合",
+    "text": "本文 partial に移す場合\nこのページが本編の 1 節として固まったら、quarto/textbook/_NN_topic.qmd に移し、親の textbook/textbook.qmd から include します。ホームから直接飛ばしたい見出しには {#sec-id} を付けます。",
+    "crumbs": [
+      "ホーム",
+      "教材",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>トピック概要ページ</span>"
+    ]
+  },
+  {
+    "objectID": "topics/paper-deep-dive-page.html",
+    "href": "topics/paper-deep-dive-page.html",
+    "title": "論文精読ページ",
     "section": "",
-    "text": "数学・物理テンプレート\n定義、定理、証明、例題、演習を中心にした講義ノート向けのテンプレートです。 このページは閲覧用です。実際に編集を始めるときは、下のコピー元ファイルを quarto/textbook/_NN_topic.qmd にコピーします。",
+    "text": "目指すもの\nこのページは、1 本の研究論文を「読者が本当に理解できる精読教科書」に作り替えるためのページ例です。詳しい編集方法論は、公開サイト内の 論文精読教科書のつくり方 で確認できます。\n論文は紙面と作法の制約で、定義、導出、動機、限界を省いています。精読教科書では、その行間を埋めます。",
     "crumbs": [
       "ホーム",
-      "章テンプレート",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>数学・物理テンプレート</span>"
+      "教材",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>論文精読ページ</span>"
     ]
   },
   {
-    "objectID": "template-pages/math-focused.html#章の骨格",
-    "href": "template-pages/math-focused.html#章の骨格",
-    "title": "数学・物理テンプレート",
-    "section": "章の骨格",
-    "text": "章の骨格\n# 概要と目的\n\n::: {.callout-note}\n## この章の数理的ゴール\n\n1. 定義を正確に記述できる。\n2. 定理の証明を再現できる。\n3. 構造を説明できる。\n\n:::\n\n::: {#def-main}\n## [概念の名称]\n\n[定義を書く。]\n\n:::\n\n::: {#thm-main}\n## [定理名]\n\n[定理を書く。]\n\n:::\n\n::: {.proof}\n[証明を書く。]\n\n:::",
-    "crumbs": [
-      "ホーム",
-      "章テンプレート",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>数学・物理テンプレート</span>"
-    ]
-  },
-  {
-    "objectID": "template-pages/math-focused.html#参考にする統合サンプル",
-    "href": "template-pages/math-focused.html#参考にする統合サンプル",
-    "title": "数学・物理テンプレート",
-    "section": "参考にする統合サンプル",
-    "text": "参考にする統合サンプル\n\n図解と数学環境",
-    "crumbs": [
-      "ホーム",
-      "章テンプレート",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>数学・物理テンプレート</span>"
-    ]
-  },
-  {
-    "objectID": "template-pages/theory.html",
-    "href": "template-pages/theory.html",
-    "title": "V-S-V レッスンテンプレート",
+    "objectID": "topics/paper-deep-dive-page.html#目指すもの",
+    "href": "topics/paper-deep-dive-page.html#目指すもの",
+    "title": "論文精読ページ",
     "section": "",
-    "text": "V-S-V レッスンテンプレート\n直感から数式へ導くレッスン向けのテンプレートです。抽象概念をいきなり定義せず、Visual → Symbolic → Verbal の順に組み立てます。 このページは閲覧用です。実際に編集を始めるときは、下のコピー元ファイルを quarto/textbook/_NN_topic.qmd にコピーします。",
+    "text": "原則\n書く内容\n目的\n\n\n\n\n忠実さ\n核心の原文引用と忠実訳\n原著の主張と解説者の解釈を分ける\n\n\n行間補完\n暗黙の定義、導出、動機\n読者が詰まる場所を先回りする\n\n\n通し具体例\n1 つの例を全章で使う\n抽象概念を毎回同じ足場に戻す\n\n\n誠実な限界\n仮定、できないこと、後続研究\n過大評価を避ける\n\n\n意味のある対話\n理解が進む箇所だけ live 化\n飾りではなく学習に効かせる\n\n\n検証可能性\n図、式、数値、コードを原著と照合\n誤読の伝播を防ぐ",
     "crumbs": [
       "ホーム",
-      "章テンプレート",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>V-S-V レッスンテンプレート</span>"
+      "教材",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>論文精読ページ</span>"
     ]
   },
   {
-    "objectID": "template-pages/theory.html#章の骨格",
-    "href": "template-pages/theory.html#章の骨格",
-    "title": "V-S-V レッスンテンプレート",
-    "section": "章の骨格",
-    "text": "章の骨格\n# 理論と直感\n\n::: {.callout-note}\n## このレッスンのゴール\n\n1. 直感的な意味を説明できる。\n2. 数式で定義できる。\n3. 具体例で確認できる。\n\n:::\n\n## Visual\n\n[比喩、図解、Mermaid などで説明する。]\n\n## Symbolic\n\n$$\ny = f(x)\n$$\n\n## Verbal\n\n[数式を言葉で読み解く。]",
+    "objectID": "topics/paper-deep-dive-page.html#章の型",
+    "href": "topics/paper-deep-dive-page.html#章の型",
+    "title": "論文精読ページ",
+    "section": "章の型",
+    "text": "章の型\n\n\n\n\n\n\nノート原文（抜粋, English）\n\n\n\n\n\n\n“Quote only the one to three sentences that anchor the argument.” — Author et al. YEAR (Knuth 1984年)\n\n\n\n\n\n忠実な日本語訳\nここに、上の引用に対応する自然な日本語訳を書きます。記号、式、固有名詞は原形を保ち、散文は日本語として読める形にします。\n\n\n詳細授業：なぜこれが必要なのか\n\n\n\n\n\n\nヒント直観\n\n\n\n論文の主張を理解するには、式そのものよりも「なぜその式を導入するのか」が先に必要です。数式の前に、日常語で問題設定を固定します。\n\n\n\n登場する対象を整理する\n\n\n\n記号\n名称\n何か\n読者が迷いやすい点\n\n\n\n\nD\ndata\n観測されたデータ\nノイズと真値の区別\n\n\nB\nbackground theory\n既知の理論・制約\nどこまで仮定してよいか\n\n\nM\nmodel\n発見したい式や構造\n当てはまりと導出可能性の違い\n\n\n\n\n定義 4.1 定義（導出可能性）. モデル M が背景理論 B から導けるとき、M は B に対して導出可能であるという。\n\n\nB \\vdash M\n\\tag{4.1}\nこの式は「データによく合う」こととは別の条件です。以後の章では、式 式 4.1 を通し具体例に戻しながら説明します。",
     "crumbs": [
       "ホーム",
-      "章テンプレート",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>V-S-V レッスンテンプレート</span>"
+      "教材",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>論文精読ページ</span>"
     ]
   },
   {
-    "objectID": "template-pages/theory.html#参考にする統合サンプル",
-    "href": "template-pages/theory.html#参考にする統合サンプル",
-    "title": "V-S-V レッスンテンプレート",
-    "section": "参考にする統合サンプル",
-    "text": "参考にする統合サンプル\n\nレイアウトと callout\n図解と数学環境",
+    "objectID": "topics/paper-deep-dive-page.html#制作工程",
+    "href": "topics/paper-deep-dive-page.html#制作工程",
+    "title": "論文精読ページ",
+    "section": "制作工程",
+    "text": "制作工程\n\n\n\n\n\n\n\n\nPhase\n作業\n完了条件\n\n\n\n\n0\nPDF 取り込み\nPNG を視認し、図表・式番号・OCR 誤読を確認した\n\n\n1\n章割り\nAbstract / Intro / Results / Discussion / Methods / 付録の対応が決まった\n\n\n2\n章ごとの執筆\n原文引用、忠実訳、行間補完、通し例が入った\n\n\n3\n対話デモ\n手を動かすと理解が進む箇所だけ live 化した\n\n\n4\n検証\n図、式、数値、コードを原著と照合した",
     "crumbs": [
       "ホーム",
-      "章テンプレート",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>V-S-V レッスンテンプレート</span>"
+      "教材",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>論文精読ページ</span>"
     ]
   },
   {
-    "objectID": "template-pages/quarto-features.html",
-    "href": "template-pages/quarto-features.html",
-    "title": "Quarto 機能テンプレート",
+    "objectID": "topics/paper-deep-dive-page.html#ホームへの置き方",
+    "href": "topics/paper-deep-dive-page.html#ホームへの置き方",
+    "title": "論文精読ページ",
+    "section": "ホームへの置き方",
+    "text": "ホームへの置き方\n論文精読教材では、ホームに部ごとの章一覧を置くと読者が迷いにくくなります。\n\n\n\n\n\n\n\n\n\n部\n章\n対応する論文部分\nページ\n\n\n\n\n第 I 部\n00 全体像\nAbstract / Introduction\ntextbook/textbook.qmd#sec-paper-overview\n\n\n第 II 部\n03 問題設定\nResults\ntextbook/textbook.qmd#sec-paper-problem\n\n\n第 III 部\n08 考察\nDiscussion\ntextbook/textbook.qmd#sec-paper-discussion\n\n\n第 IV 部\n09 事例研究\nMethods\ntextbook/textbook.qmd#sec-paper-case-study\n\n\n第 V 部\n13 付録\n難所・補足\ntextbook/textbook.qmd#sec-paper-appendix\n\n\n\n既定では上のように textbook/textbook.qmd + section anchor で運用します。章ごとに独立 qmd を並べる場合は、chapters/00-overview.qmd のように textbook/ 外へ置き、book.chapters と AGENTS.md の運用方針をセットで更新してください。",
+    "crumbs": [
+      "ホーム",
+      "教材",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>論文精読ページ</span>"
+    ]
+  },
+  {
+    "objectID": "topics/paper-deep-dive-page.html#完成チェックリスト",
+    "href": "topics/paper-deep-dive-page.html#完成チェックリスト",
+    "title": "論文精読ページ",
+    "section": "完成チェックリスト",
+    "text": "完成チェックリスト\n\n核心の原文引用を 1〜3 文だけ畳んで入れた\n忠実訳があり、記号・式・固有名詞を崩していない\n暗黙の定義を {#def-...} で明示した\n紛らわしい記号を対応表にした\n数式の前に直観 callout を置いた\n通し具体例で 1 度は着地させた\n前後章への相互参照を張った\n図、式番号、数値を原著と照合した\n難所は付録に逃がした\njust check を通した\n\n\n\n\n\n\n\nKnuth, Donald E. 1984年. The TeXbook. Addison-Wesley.",
+    "crumbs": [
+      "ホーム",
+      "教材",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>論文精読ページ</span>"
+    ]
+  },
+  {
+    "objectID": "simulations/simulation-page.html",
+    "href": "simulations/simulation-page.html",
+    "title": "シミュレーションページ",
     "section": "",
-    "text": "Quarto 機能テンプレート\nQuarto の機能をまとめて使う章を作るための copy-paste 元です。機能を短く試したい場合や、教材内に複数の表現を組み合わせたい場合に使います。 このページは閲覧用です。実際に編集を始めるときは、下のコピー元ファイルを quarto/textbook/_NN_topic.qmd にコピーします。",
+    "text": "シミュレーションの使い所\nシミュレーションは本文中に埋め込むこともできますが、ホームから直接開ける独立ページにしておくと、授業中のデモやスマートフォン確認で使いやすくなります。このページは、単独 qmd としてコピーできる最小可動例です。",
     "crumbs": [
       "ホーム",
-      "章テンプレート",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto 機能テンプレート</span>"
+      "演習・シミュレーション・補助資料",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>シミュレーションページ</span>"
     ]
   },
   {
-    "objectID": "template-pages/quarto-features.html#含めやすい機能",
-    "href": "template-pages/quarto-features.html#含めやすい機能",
-    "title": "Quarto 機能テンプレート",
-    "section": "含めやすい機能",
-    "text": "含めやすい機能\n\n\n\n機能\n統合サンプル\n\n\n\n\nMermaid / Graphviz\n図解と数学環境\n\n\ncallout / tabset / grid\nレイアウトと callout\n\n\nfigure / table / lightbox\n図表のレイアウト\n\n\ncitation / footnote / annotation\nテキスト要素と引用\n\n\nQuarto Live / Pyodide\nインタラクティブ・シミュレーション\n\n\nsimulation showcase\nシミュレーション教材",
+    "objectID": "simulations/simulation-page.html#sec-simulation-use-case",
+    "href": "simulations/simulation-page.html#sec-simulation-use-case",
+    "title": "シミュレーションページ",
+    "section": "",
+    "text": "理論ページを読んだ後に手を動かす\nパラメータを変えて挙動を比較する\n発表中に図だけを素早く見せる\n本文が長くなりすぎる場合に動的要素を分離する",
     "crumbs": [
       "ホーム",
-      "章テンプレート",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto 機能テンプレート</span>"
+      "演習・シミュレーション・補助資料",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>シミュレーションページ</span>"
     ]
   },
   {
-    "objectID": "template-pages/quarto-features.html#章の骨格",
-    "href": "template-pages/quarto-features.html#章の骨格",
-    "title": "Quarto 機能テンプレート",
-    "section": "章の骨格",
-    "text": "章の骨格\n# Quarto 機能の章\n\n## レイアウト\n\n::: {.panel-tabset}\n## 視点 A\n[内容]\n\n## 視点 B\n[内容]\n:::\n\n## 図表\n\n![図の説明](../assets/images/example.png){#fig-example fig-alt=\"代替テキスト\"}\n\n## 引用\n\n本文中で @shannon1948 のように引用する。",
+    "objectID": "simulations/simulation-page.html#最小可動例",
+    "href": "simulations/simulation-page.html#最小可動例",
+    "title": "シミュレーションページ",
+    "section": "最小可動例",
+    "text": "最小可動例\n\n\nコード\nviewof sim_amplitude = Inputs.range([0.2, 2.0], {step: 0.1, label: tex`\\text{振幅 } A`, value: 1.0})\nviewof sim_frequency = Inputs.range([0.5, 4.0], {step: 0.1, label: tex`\\text{周波数 } f`, value: 1.5})",
     "crumbs": [
       "ホーム",
-      "章テンプレート",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto 機能テンプレート</span>"
+      "演習・シミュレーション・補助資料",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>シミュレーションページ</span>"
+    ]
+  },
+  {
+    "objectID": "simulations/simulation-page.html#配置の考え方",
+    "href": "simulations/simulation-page.html#配置の考え方",
+    "title": "シミュレーションページ",
+    "section": "配置の考え方",
+    "text": "配置の考え方\nsimulations/simulation-page.qmd のように独立ページとして作り、_quarto.yml では「演習・シミュレーション・補助資料」などの part に入れます。ホームには「動く教材」として表でリンクします。\nより複雑な Quarto Live / Plotly の書き方は、教材本編サンプルのシミュレーション教材 をコピー元にしてください。",
+    "crumbs": [
+      "ホーム",
+      "演習・シミュレーション・補助資料",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>シミュレーションページ</span>"
+    ]
+  },
+  {
+    "objectID": "exercises/exercise-page.html",
+    "href": "exercises/exercise-page.html",
+    "title": "演習ページ",
+    "section": "",
+    "text": "前提と関連ページ\n演習は本文の直後に置く場合と、独立した問題集ページとして置く場合があります。独立ページにする場合は、主要な演習だけホームの「読む順番」から理論ページと並べてリンクします。",
+    "crumbs": [
+      "ホーム",
+      "演習・シミュレーション・補助資料",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>演習ページ</span>"
+    ]
+  },
+  {
+    "objectID": "exercises/exercise-page.html#前提と関連ページ",
+    "href": "exercises/exercise-page.html#前提と関連ページ",
+    "title": "演習ページ",
+    "section": "",
+    "text": "項目\n参照先\n\n\n\n\n使う概念\nトピック概要ページ\n\n\n動く確認\nシミュレーションページ\n\n\n本文内の関連章\n教材本編サンプル",
+    "crumbs": [
+      "ホーム",
+      "演習・シミュレーション・補助資料",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>演習ページ</span>"
+    ]
+  },
+  {
+    "objectID": "exercises/exercise-page.html#問題",
+    "href": "exercises/exercise-page.html#問題",
+    "title": "演習ページ",
+    "section": "問題",
+    "text": "問題\n\n\n\n\n\n\nヒント単振動の読み取り\n\n\n\n変位が\n\nx(t) = A \\sin(2\\pi f t)\n\nで表されるとします。A = 1.5, f = 2.0 のとき、周期 T と最大速度 v_{\\max} を求めてください。",
+    "crumbs": [
+      "ホーム",
+      "演習・シミュレーション・補助資料",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>演習ページ</span>"
+    ]
+  },
+  {
+    "objectID": "exercises/exercise-page.html#ヒント",
+    "href": "exercises/exercise-page.html#ヒント",
+    "title": "演習ページ",
+    "section": "ヒント",
+    "text": "ヒント\n\n\n\n\n\n\nノート見るべき式\n\n\n\n\n\n周期は T = 1/f です。速度は x(t) を時間微分して求めます。",
+    "crumbs": [
+      "ホーム",
+      "演習・シミュレーション・補助資料",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>演習ページ</span>"
+    ]
+  },
+  {
+    "objectID": "exercises/exercise-page.html#可視化の確認",
+    "href": "exercises/exercise-page.html#可視化の確認",
+    "title": "演習ページ",
+    "section": "可視化の確認",
+    "text": "可視化の確認\nシミュレーションページでは、振幅と周波数を変えたときに波形がどう変わるかを確認できます。演習ページに動く図を直接置きたい場合は、シミュレーションページ の最小可動例をコピーしてください。\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nA = 1.5\nf = 2.0\nt = np.linspace(0, 1.0, 400)\nx = A * np.sin(2 * np.pi * f * t)\n\nplt.plot(t, x)\nplt.xlabel(\"time\")\nplt.ylabel(\"x(t)\")\nplt.grid(True)\nplt.show()",
+    "crumbs": [
+      "ホーム",
+      "演習・シミュレーション・補助資料",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>演習ページ</span>"
+    ]
+  },
+  {
+    "objectID": "exercises/exercise-page.html#解答方針",
+    "href": "exercises/exercise-page.html#解答方針",
+    "title": "演習ページ",
+    "section": "解答方針",
+    "text": "解答方針\n\n\n\n\n\n\n重要解答\n\n\n\n\n\n周期は\n\nT = \\frac{1}{f} = \\frac{1}{2.0} = 0.5\n\nです。速度は\n\nv(t) = \\frac{dx}{dt} = 2\\pi f A \\cos(2\\pi f t)\n\nなので、最大速度は\n\nv_{\\max} = 2\\pi f A = 6\\pi\n\nです。",
+    "crumbs": [
+      "ホーム",
+      "演習・シミュレーション・補助資料",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>演習ページ</span>"
+    ]
+  },
+  {
+    "objectID": "exercises/exercise-page.html#よくある間違い",
+    "href": "exercises/exercise-page.html#よくある間違い",
+    "title": "演習ページ",
+    "section": "よくある間違い",
+    "text": "よくある間違い\n\n\n\n\n\n\n注意単位と記号をそろえる\n\n\n\n角周波数 \\omega と周波数 f を混同しないでください。\\omega = 2\\pi f なので、x(t)=A\\sin(\\omega t) と書く場合と x(t)=A\\sin(2\\pi f t) と書く場合で、係数の意味が変わります。",
+    "crumbs": [
+      "ホーム",
+      "演習・シミュレーション・補助資料",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>演習ページ</span>"
+    ]
+  },
+  {
+    "objectID": "exercises/exercise-page.html#発展問題",
+    "href": "exercises/exercise-page.html#発展問題",
+    "title": "演習ページ",
+    "section": "発展問題",
+    "text": "発展問題\n\n位相 \\phi を入れた x(t)=A\\sin(2\\pi f t + \\phi) では、v_{\\max} は変わるでしょうか。\n減衰項 e^{-\\gamma t} を掛けると、最大振幅は時間とともにどう変化するでしょうか。",
+    "crumbs": [
+      "ホーム",
+      "演習・シミュレーション・補助資料",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>演習ページ</span>"
+    ]
+  },
+  {
+    "objectID": "support/support-page.html",
+    "href": "support/support-page.html",
+    "title": "補助資料ページ",
+    "section": "",
+    "text": "よく使う入口\n補助資料ページには、本文を読む人が繰り返し参照する情報をまとめます。本文の流れを止めたくない記法、関連資料、データ、FAQ、訂正履歴などをここに逃がすと、ホームから残しやすいページになります。",
+    "crumbs": [
+      "ホーム",
+      "演習・シミュレーション・補助資料",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>補助資料ページ</span>"
+    ]
+  },
+  {
+    "objectID": "support/support-page.html#よく使う入口",
+    "href": "support/support-page.html#よく使う入口",
+    "title": "補助資料ページ",
+    "section": "",
+    "text": "目的\nページ\n\n\n\n\n教材全体を読む\n教材本編サンプル\n\n\n1 つのトピックだけ確認する\nトピック概要ページ\n\n\nパラメータを動かして確認する\nシミュレーションページ\n\n\n理解を確認する\n演習ページ\n\n\n論文精読の型を見る\n論文精読ページ",
+    "crumbs": [
+      "ホーム",
+      "演習・シミュレーション・補助資料",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>補助資料ページ</span>"
+    ]
+  },
+  {
+    "objectID": "support/support-page.html#記法と前提",
+    "href": "support/support-page.html#記法と前提",
+    "title": "補助資料ページ",
+    "section": "記法と前提",
+    "text": "記法と前提\n\n\n\n記号\n意味\n参照先\n\n\n\n\nx(t)\n時刻 t における状態量\n教材本編サンプル\n\n\nA\n振幅またはスケール係数\nシミュレーションページ\n\n\nf\n周波数\n演習ページ",
+    "crumbs": [
+      "ホーム",
+      "演習・シミュレーション・補助資料",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>補助資料ページ</span>"
+    ]
+  },
+  {
+    "objectID": "support/support-page.html#関連資料",
+    "href": "support/support-page.html#関連資料",
+    "title": "補助資料ページ",
+    "section": "関連資料",
+    "text": "関連資料\n\n\n\n種類\n置き場所の例\n\n\n\n\n原典 PDF\nquarto/assets/pdf/\n\n\n図版・スクリーンショット\nquarto/assets/images/\n\n\n公開用リファレンス\nQuarto 機能対応表\n\n\nブラウザ内 Python の作法\nQuarto Live レシピ",
+    "crumbs": [
+      "ホーム",
+      "演習・シミュレーション・補助資料",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>補助資料ページ</span>"
+    ]
+  },
+  {
+    "objectID": "support/support-page.html#よくある質問",
+    "href": "support/support-page.html#よくある質問",
+    "title": "補助資料ページ",
+    "section": "よくある質問",
+    "text": "よくある質問\n\n\n\n\n\n\nノートスマートフォンで見たい\n\n\n\njust docs または静的サーバーを host: 0.0.0.0 で起動している場合、同じ Wi-Fi 上の端末から http://&lt;Mac の IP&gt;:4312/ で確認できます。\n\n\n\n\n\n\n\n\nヒント教材を作る側の情報を見たい\n\n\n\nテンプレートの使い方、qmd の追加手順、コピー元テンプレートは 制作者向けガイド にまとめています。",
+    "crumbs": [
+      "ホーム",
+      "演習・シミュレーション・補助資料",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>補助資料ページ</span>"
+    ]
+  },
+  {
+    "objectID": "support/support-page.html#訂正更新履歴",
+    "href": "support/support-page.html#訂正更新履歴",
+    "title": "補助資料ページ",
+    "section": "訂正・更新履歴",
+    "text": "訂正・更新履歴\n\n\n\n日付\n内容\n\n\n\n\n2026-07-05\n補助資料ページの型を追加",
+    "crumbs": [
+      "ホーム",
+      "演習・シミュレーション・補助資料",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>補助資料ページ</span>"
+    ]
+  },
+  {
+    "objectID": "reference/features.html",
+    "href": "reference/features.html",
+    "title": "Quarto 機能対応表",
+    "section": "",
+    "text": "サイト内の入口\nこのページは、テンプレートに含まれる Quarto 機能を「ブラウザで見られる場所」と「コピー元のソース」に分けて整理します。公開サイトでは未レンダーの _*.qmd partial へ直接リンクせず、HTML 化されたページや section anchor へリンクします。",
+    "crumbs": [
+      "ホーム",
+      "リファレンス",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Quarto 機能対応表</span>"
+    ]
+  },
+  {
+    "objectID": "reference/features.html#サイト内の入口",
+    "href": "reference/features.html#サイト内の入口",
+    "title": "Quarto 機能対応表",
+    "section": "",
+    "text": "入口\n用途\n\n\n\n\n教材本編サンプル\npartial を統合した代表ページ。動く実例はここから探す\n\n\nシミュレーションページ\n独立ページとして Quarto Live を置く最小例\n\n\n章テンプレート一覧\nコピーして使う qmd スケルトンの一覧\n\n\n運用ワークフロー\nセットアップ、PDF 取り込み、検証、公開の流れ",
+    "crumbs": [
+      "ホーム",
+      "リファレンス",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Quarto 機能対応表</span>"
+    ]
+  },
+  {
+    "objectID": "reference/features.html#機能別の表示先",
+    "href": "reference/features.html#機能別の表示先",
+    "title": "Quarto 機能対応表",
+    "section": "機能別の表示先",
+    "text": "機能別の表示先\n\n\n\n機能\n表示できるページ\nコピー元\n\n\n\n\nQuarto Live + matplotlib\nインタラクティブ・シミュレーション\nquarto/textbook/_03_interactive_demo.qmd\n\n\nPlotly 静的図・アニメーション\nPlotly サンプル\nquarto/textbook/_04_plotly_demo.qmd\n\n\nMermaid / Graphviz / theorem\n図式・数式・定理環境\nquarto/textbook/_05_diagrams_and_math.qmd\n\n\ntabset / layout / callout\nレイアウトと callout\nquarto/textbook/_06_layout_and_callouts.qmd\n\n\nsubfigure / table / lightbox\n図表と表現\nquarto/textbook/_07_figures_and_tables.qmd\n\n\ncode annotation / 脚注 / 引用\nテキスト表現と引用\nquarto/textbook/_08_text_and_citations.qmd\n\n\n複数シミュレーション教材\nシミュレーション教材ショーケース\nquarto/textbook/_09_simulation_showcase.qmd",
+    "crumbs": [
+      "ホーム",
+      "リファレンス",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Quarto 機能対応表</span>"
+    ]
+  },
+  {
+    "objectID": "reference/features.html#コピー元テンプレート",
+    "href": "reference/features.html#コピー元テンプレート",
+    "title": "Quarto 機能対応表",
+    "section": "コピー元テンプレート",
+    "text": "コピー元テンプレート\n章を書き始めるための quarto/templates/*.qmd は 章テンプレート一覧 に集約しています。このページでは、すでに教材本編サンプルで動いている Quarto 機能の表示先だけを扱います。",
+    "crumbs": [
+      "ホーム",
+      "リファレンス",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Quarto 機能対応表</span>"
+    ]
+  },
+  {
+    "objectID": "reference/features.html#関連リファレンス",
+    "href": "reference/features.html#関連リファレンス",
+    "title": "Quarto 機能対応表",
+    "section": "関連リファレンス",
+    "text": "関連リファレンス\n\n論文精読教科書のつくり方\nQuarto Live レシピ\nQuarto 最新機能の採用メモ",
+    "crumbs": [
+      "ホーム",
+      "リファレンス",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Quarto 機能対応表</span>"
+    ]
+  },
+  {
+    "objectID": "reference/features.html#公開ページからリンクするとき",
+    "href": "reference/features.html#公開ページからリンクするとき",
+    "title": "Quarto 機能対応表",
+    "section": "公開ページからリンクするとき",
+    "text": "公開ページからリンクするとき\n\n.md や _*.qmd partial へ直接リンクしない。\n読者に見せるページは book.chapters に入れ、HTML 化されたページへリンクする。\nコピー元ファイルはリンクではなくコード表記にする。",
+    "crumbs": [
+      "ホーム",
+      "リファレンス",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Quarto 機能対応表</span>"
+    ]
+  },
+  {
+    "objectID": "reference/paper-deep-dive.html",
+    "href": "reference/paper-deep-dive.html",
+    "title": "論文精読教科書のつくり方",
+    "section": "",
+    "text": "論文精読教科書のつくり方（編集ガイド）\n1 本の研究論文を、読者が本当に理解できる精読教科書に作り替えるための編集方法論。 「Quarto でどう書くか（機能）」ではなく、「何を・どういう方針で書くか（編集判断）」をまとめる。",
+    "crumbs": [
+      "ホーム",
+      "リファレンス",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>論文精読教科書のつくり方</span>"
+    ]
+  },
+  {
+    "objectID": "reference/paper-deep-dive.html#この教科書が目指すもの大事なことの核",
+    "href": "reference/paper-deep-dive.html#この教科書が目指すもの大事なことの核",
+    "title": "論文精読教科書のつくり方",
+    "section": "0. この教科書が目指すもの（＝大事なことの核）",
+    "text": "0. この教科書が目指すもの（＝大事なことの核）\n論文そのものは、査読・紙面・作法の制約で「行間」を大量に飛ばして書かれている。 精読教科書の価値は、論文が割けなかったコストを肩代わりして行間を埋めることにある。 だから章を書くたびに、次の 6 原則に照らす。\n\n\n\n\n\n\n\n\n\n#\n原則\n一言でいうと\nなぜ効くか\n\n\n\n\n1\n忠実さ\n核心は原文引用＋忠実訳で固定\n読者が「訳者の解釈」と「原著の主張」を切り分けられる。信頼の錨\n\n\n2\n行間補完\n論文が省いた定義・動機・導出を足す\nここが教科書の本体。付加価値の 8 割\n\n\n3\n通し具体例\n1 つの例を全章で使い回す\n抽象概念が毎回「あの例でいうと」で着地する\n\n\n4\n誠実な限界\nできない事・仮定・その後の発展を明示\n過大評価を防ぎ、Q&A と次に読む論文へつながる\n\n\n5\n意味のある対話\n手を動かすと理解が進む所だけ live 化\n飾りの demo は逆に読者の集中を削る\n\n\n6\n検証可能性\n図・式・数値・コードを原著と突き合わせる\n教科書の誤りは原著の誤解として伝播する。最優先\n\n\n\nアンチパターン: 逐語訳をただ並べる／引用で紙面を埋める／全部を live demo にする／ 「限界」章を省く／図を低解像度のまま貼る。いずれも「読めるが分からない」教科書になる。",
+    "crumbs": [
+      "ホーム",
+      "リファレンス",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>論文精読教科書のつくり方</span>"
+    ]
+  },
+  {
+    "objectID": "reference/paper-deep-dive.html#章の解剖実証済みの型",
+    "href": "reference/paper-deep-dive.html#章の解剖実証済みの型",
+    "title": "論文精読教科書のつくり方",
+    "section": "1. 章の解剖（実証済みの型）",
+    "text": "1. 章の解剖（実証済みの型）\nAI-Descartes 教科書の各章はほぼ同じ骨格でできている。この型をコピーして中身を差し替える。\n## 節タイトル {#sec-xxx}\n\n::: {.callout-note collapse=\"true\"}\n## 原文（抜粋, English）\n\n&gt; \"核心となる 1〜3 文だけを原文で引用する。\" — Author et al. YEAR [@bibkey]\n\n:::\n\n### 忠実な日本語訳\n\n（上の引用に対応する自然な日本語訳。記号・式・固有名詞は原形のまま。\n逐語ではなく、意味を落とさず日本語として読める訳にする。）\n\n![図1 | キャプション（出典: Author et al. YEAR, Fig. 1, CC BY 4.0 [@bibkey]）](../assets/images/fig1.png){#fig-xxx}\n\n### 詳細授業：なぜこれが必要なのか {#sec-xxx-why}\n\n::: {.callout-tip}\n## 直観：〜\n\n（数式に入る前に、日常語で「何をやりたいのか」を 3〜5 行で。）\n:::\n\n#### 登場する対象を整理する\n\n| 記号 | 名称 | 何か | 図での表現 |\n| --- | --- | --- | --- |\n| $f$  | 発見モデル | … | 灰色の多様体 |\n\n::: {#def-xxx}\n**定義（〜）.** （論文が暗黙に使っている定義を明示的に書き下す。）\n$$ \\beta(f)=0 \\iff f \\text{ is derivable from } B $$ {#eq-xxx}\n:::\n\n（「なぜ」「どこで効くか」を、前後の章への相互参照 @sec-… / @fig-… / @eq-… で張る。）\n\n型のねらい\n\n原文は「畳む」（collapse=\"true\"）。読者は普段は訳を読み、疑ったときだけ原文を開ける。 引用は核心 1〜3 文まで。段落ごと引用しない（それは翻訳であって精読ではない）。\n図には必ず出典（出典: … , CC BY 4.0 [@bibkey]）。ライセンスの尊重かつ信頼の担保。 図のキャプション自体も、原文引用＋忠実訳で二重化すると誤読が消える。\n詳細授業が本体。①直観 callout → ②記号の対応表 → ③明示的な定義（{#def-}）→ ④式（{#eq-} で番号）→ ⑤前後章への相互参照、の順で「行間」を埋める。\n相互参照（@sec- @fig- @eq- @tbl-）を多めに張ると、本全体が 1 枚の地図になる。\n\n\nテンプレの出発点: 数式・定理中心の章は V-S-V レッスンテンプレート（V-S-V）、 PDF を訳しながら起こす章は PDF textbook テンプレート（Phase 1/2）を cp して書き始める。",
+    "crumbs": [
+      "ホーム",
+      "リファレンス",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>論文精読教科書のつくり方</span>"
+    ]
+  },
+  {
+    "objectID": "reference/paper-deep-dive.html#制作の工程論文-教科書",
+    "href": "reference/paper-deep-dive.html#制作の工程論文-教科書",
+    "title": "論文精読教科書のつくり方",
+    "section": "2. 制作の工程（論文 → 教科書）",
+    "text": "2. 制作の工程（論文 → 教科書）\n\nPhase 0 — 準備（取り込み）\n\njust extract-pdf &lt;pdf&gt; &lt;start&gt; &lt;end&gt; で画像化 + text/OCR/LaTeX 抽出。\n出力 PNG を 1 ページずつ Read で視認（AGENTS.md の必須手順）。 text と LaTeX だけでは図表配置・式番号・OCR 誤読を必ず取りこぼす。\n図は高解像度でクロップして quarto/assets/images/ に置く（低解像度のまま貼らない）。 出典行に元 Fig 番号と CC ライセンスを記録しておく。\n\n\n\nPhase 1 — 構造を決めきる（章割り）\n執筆前に、全章の構成を確定する。 ここを詰めきると各章は独立に書ける。\n\n論文の構造に沿って章立てする（Abstract / Intro / Results / Discussion / Methods / 付録）。 読者が原論文と往復できる。AI-Descartes 教科書の例:\n\n\n\n\n\n\n\n\n部\n章\n対応\n\n\n\n\n第 I 部 導入と全体像\n00 全体像・01 Abstract・02 Introduction\n論文の入口\n\n\n第 II 部 枠組み\n03 問題設定・04 距離(ε/β)・05 統合・06 相互作用・07 検証\nResults\n\n\n第 III 部 考察\n08 Discussion\nDiscussion\n\n\n第 IV 部 事例研究\n09 Kepler・10 時間の遅れ・11 Langmuir・12 限界\nMethods\n\n\n第 V 部 付録\n13 付録\n難所の隔離先\n\n\n\n通し具体例を 1 つ選ぶ（AI-Descartes では Kepler の第三法則）。抽象概念を導入するたびに、 この例で必ず着地させる。全章で使い回す。\n難所は付録へ隔離する。完全性・Gödel・重い証明など、本筋を止める話題は本編から追い出し、 付録に 1 節作って「深入りしたい人だけどうぞ」にする。本編の流れを守るのが最優先。\n伏線と回収を設計する。序盤で投げた問い（例: 「当てはまるだけでは足りない」）を、 事例章で回収する。教科書に物語の背骨が通る。\n\n\n\nPhase 2 — 章ごとに書く（V-S-V / Phase 1→2）\n1 章 = 1 パーシャル（_NN-title.qmd）。本テンプレの 2 つの流儀を使い分ける。\n\n忠実翻訳 → 解説拡充（textbook_template.qmd）: まず定義・定理・式番号を省略禁止で 忠実訳（Phase 1）、その上に直観・図解・行間補完を重ねる（Phase 2）。\nV-S-V（theory_template.qmd）: Visual（直観・図）→ Symbolic（数式）→ Verify（例・クイズ）の順。 数式が主役の章向き。\n\n\nパーシャル統合: 章本文は _NN-*.qmd に分割し、{{&lt; include &gt;}} で本に統合する （single source of truth の運用は AGENTS.md を参照）。\n\n\n\nPhase 3 — 対話デモ（効く所だけ）\n「スライダーを動かすと分かる」箇所だけを Quarto Live 化する（原則 6 のうち 5）。 手順・落とし穴は Quarto Live レシピ と AGENTS.md に集約済みなので必ず先に読む。要点だけ:\n\n追加パッケージは親 qmd の YAML pyodide.packages で宣言（セル内 micropip.install は禁止）。\n日本語フォントは描画セル先頭で pyfetch→addfont（別セルにしない）。\nfont.family を日本語にすると mathtext の $\\sqrt{}$ が豆腐化する → mathtext.fontset=\"cm\" を入れ、 ラベルの \\sqrt{X} は (X)^{1/2} に書き換える（Pyodide の matplotlib は根号中身を描けない）。\n\n\n\nPhase 4 — 検証と公開\n\njust check で品質確認、just docs（http://localhost:4312）でプレビュー。\n図・式・数値を原著と突き合わせる（原則 6）。特に数値と式番号は 1 つずつ照合。\nGitHub Pages へ公開（CI は .github/workflows/publish.yml）。",
+    "crumbs": [
+      "ホーム",
+      "リファレンス",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>論文精読教科書のつくり方</span>"
+    ]
+  },
+  {
+    "objectID": "reference/paper-deep-dive.html#大事なこと詳細な設計判断",
+    "href": "reference/paper-deep-dive.html#大事なこと詳細な設計判断",
+    "title": "論文精読教科書のつくり方",
+    "section": "3. 大事なこと（詳細な設計判断）",
+    "text": "3. 大事なこと（詳細な設計判断）\n工程には現れにくいが、質を分ける判断。\n\n引用は最小・訳は主。原文は疑ったとき用の錨として畳んでおき、読者が読むのは忠実訳。 「原文の壁」を作らない。\n忠実訳 ≠ 逐語訳。数式・記号・固有名詞（KeYmaera X, BARON, Kepler …）は原形、 散文は自然な日本語に。訳し崩さず、日本語として読めること。\n行間補完の作法: (a) 論文が暗黙に使う定義を {#def-} で明示化する、\n\n紛らわしい記号は対応表にする、(c) 数式の前に直観 callout、\n「なぜ必要か」「どこで効くか」を前後章の相互参照で示す。\n\n通し例は徹底して使い回す。新概念 → 必ず通し例で具体化 → 抽象へ戻す。\n誠実な限界を 1 章置く。仮定・スケール限界・再現に要る商用ソルバ等を隠さない。 その後の発展（続く論文・系譜）を添えると「次に読む 1 本」に自然につながる。\n表は画像でなく実 Markdown 表にして #tbl- を付ける（画像は #fig-）。検索・引用・改訂に効く。\nライセンスを尊重。CC BY 等なら出典明記で翻訳・図の再掲が可能。出典行を機械的に全図へ。",
+    "crumbs": [
+      "ホーム",
+      "リファレンス",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>論文精読教科書のつくり方</span>"
+    ]
+  },
+  {
+    "objectID": "reference/paper-deep-dive.html#よくある落とし穴実際に踏んだもの",
+    "href": "reference/paper-deep-dive.html#よくある落とし穴実際に踏んだもの",
+    "title": "論文精読教科書のつくり方",
+    "section": "4. よくある落とし穴（実際に踏んだもの）",
+    "text": "4. よくある落とし穴（実際に踏んだもの）\n\n\n\n症状\n原因\n対処\n\n\n\n\n対話章が何も描画しない\n親 qmd の YAML に pyodide.packages 未宣言で import 失敗\npyodide.packages: [numpy, matplotlib, …] を親に宣言（Quarto Live レシピ）\n\n\n数式ラベルの根号が黒箱（豆腐）\n日本語 font.family で mathtext が壊れる\nmathtext.fontset=\"cm\" ＋ \\sqrt{X}→(X)^{1/2}\n\n\n図がぼやける／文字が読めない\n低解像度のまま貼付\npdftoppm / magick で高 dpi クロップ、PNG を Read で視認してから貼る\n\n\n式番号・図配置がズレる\ntext＋LaTeX だけで qmd 化した\nextract-pdf の PNG を 1 枚ずつ Read（AGENTS.md の必須レビュー）\n\n\n出典が抜ける\n図を貼る時に出典行を忘れる\n図キャプションのテンプレに 出典: …, CC BY 4.0 [@key] を最初から入れておく\n\n\n本編が難所で止まる\n完全性・重い証明を本文に置いた\n付録へ隔離し、本文からは 1 行＋@sec-appendix 参照だけ",
+    "crumbs": [
+      "ホーム",
+      "リファレンス",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>論文精読教科書のつくり方</span>"
+    ]
+  },
+  {
+    "objectID": "reference/paper-deep-dive.html#章ごとの完成チェックリスト",
+    "href": "reference/paper-deep-dive.html#章ごとの完成チェックリスト",
+    "title": "論文精読教科書のつくり方",
+    "section": "5. 章ごとの完成チェックリスト",
+    "text": "5. 章ごとの完成チェックリスト\n各章を「完了」にする前に:\n\n核心の原文引用（1〜3 文）を collapse=\"true\" の callout に入れた\n対応する忠実訳がある（記号・式・固有名詞は原形）\n図に出典行（元 Fig 番号 + ライセンス + [@key]）がある／高解像度である\n論文が暗黙に使う定義を {#def-} で明示した\n紛らわしい記号を対応表にした\n数式の前に直観 callout を置いた\n通し具体例で 1 度は着地させた\n前後章への相互参照（@sec- @fig- @eq- @tbl-）を張った\n数値・式番号を原著と 1 つずつ照合した\n難所は付録に逃がした（本文は要点＋参照のみ）\njust check と just docs を通した",
+    "crumbs": [
+      "ホーム",
+      "リファレンス",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>論文精読教科書のつくり方</span>"
+    ]
+  },
+  {
+    "objectID": "reference/quarto-live.html",
+    "href": "reference/quarto-live.html",
+    "title": "Quarto Live レシピ",
+    "section": "",
+    "text": "Quarto Live (Pyodide) レシピ\nブラウザ内で動く Python (Quarto Live) を matplotlib / Plotly / 日本語フォントと組合せて使うときの 動作確認済の手順 と、 ハマりやすい落とし穴。\n動作するサンプル: - quarto/textbook/_03_interactive_demo.qmd (matplotlib + FuncAnimation) - quarto/textbook/_04_plotly_demo.qmd (Plotly 静的 + アニメーション)",
+    "crumbs": [
+      "ホーム",
+      "リファレンス",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Quarto Live レシピ</span>"
+    ]
+  },
+  {
+    "objectID": "reference/quarto-live.html#追加-python-パッケージは-yaml-の-pyodide.packages-で宣言する",
+    "href": "reference/quarto-live.html#追加-python-パッケージは-yaml-の-pyodide.packages-で宣言する",
+    "title": "Quarto Live レシピ",
+    "section": "追加 Python パッケージは YAML の pyodide.packages で宣言する",
+    "text": "追加 Python パッケージは YAML の pyodide.packages で宣言する\nPyodide にプリインストール済 (numpy, matplotlib, pandas, sympy 等) 以外 の パッケージを使うときは、親 qmd の YAML で列挙する。\n---\ntitle: \"本編\"\nfilters:\n  - r-wasm/live\npyodide:\n  packages:\n    - plotly\n    - nbformat\n    - jsonschema\n---\nセル内で await micropip.install(...) を呼ぶのは 避けること (理由は次節)。 この YAML 経路なら Quarto Live が Pyodide 起動時にシリアルインストールを完了 させるので、各 {pyodide} セルは import xxx を直接書ける ⇒ Jupyter / VSCode に コピペしても pip install 済前提で同じコードが動く。\n\nなぜセル内 await micropip.install(...) がダメか\nQuarto Live は各 {pyodide} セルを独立した OJS observable にし、OJS は 並列に 評価する。Pyodide ワーカは固定名 \"result\" の Python 環境を使い回す (live-runtime.js の PyodideEvaluator.process / envManager.create(\"result\", \"prep\"))。 セル1 が await micropip.install で yield した間に、OJS がセル2 の process() を 発火 → セル2 の envManager.create(\"result\", \"prep\") がセル1 の env を上書き → セル1 の display() 出力がセル2 の枠に出る、または消える。\nこれは r-wasm/quarto-live の未報告バグ (固定名 env が原因)。手動で個別に Run Code を押せば順次実行されて再現しないが、autorun: true のページロード時に 発症する。pyodide.packages 経路を使えばセル本体に await が一切残らないので race の発生源そのものが消え、回避できる。",
+    "crumbs": [
+      "ホーム",
+      "リファレンス",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Quarto Live レシピ</span>"
+    ]
+  },
+  {
+    "objectID": "reference/quarto-live.html#動作する組合せ",
+    "href": "reference/quarto-live.html#動作する組合せ",
+    "title": "Quarto Live レシピ",
+    "section": "動作する組合せ",
+    "text": "動作する組合せ\n\n拡張: quarto/_extensions/r-wasm/live/ を git で同梱 (r-wasm/quarto-live)\nフォント: Noto Sans JP の static Regular TTF (5.3 MB) を quarto/assets/fonts/NotoSansJP-Regular.ttf に配置\n\nDL URL: https://fonts.gstatic.com/s/notosansjp/v56/-F6jfjtqLzI2JPCgQBnw7HFyzSD-AsregP8VFBEj75s.ttf\n検証: file quarto/assets/fonts/NotoSansJP-Regular.ttf → TrueType Font data, 19 tables, 1st \"BASE\" が正解\n\n_quarto.yml: project.resources に assets/fonts/**/* を追加してビルド時に _book/ へコピーさせる\nqmd の YAML: filters: [r-wasm/live]。Book project では engine: markdown も併記して jupyter 依存を回避。include 構造の場合は 親 qmd 側 に書く\nOJS スライダー: viewof x = Inputs.range([...], {label: tex\\…`, value: …})`\nPyodide ブロック: #| autorun: true + #| input: [\"x\", \"y\", ...] で reactive\nフォントロードのイディオム (描画セルに inline):\n\n#| autorun: true\n#| input: [\"a\", \"b\"]\nimport os\nimport warnings\nimport matplotlib\nfrom matplotlib import font_manager\nfrom pyodide.http import pyfetch\n\nwarnings.simplefilter(\"ignore\")  # font 登録前後の Glyph missing 警告を抑制\n\ntry:\n    font_path = \"/tmp/NotoSansJP.ttf\"\n\n    def valid_ttf(path):\n        if not os.path.exists(path) or os.path.getsize(path) &lt; 1_000_000:\n            return False\n        with open(path, \"rb\") as f:\n            return f.read(4) in (b\"\\x00\\x01\\x00\\x00\", b\"OTTO\", b\"ttcf\")\n\n    if not valid_ttf(font_path):\n        resp = await pyfetch(\"/assets/fonts/NotoSansJP-Regular.ttf\")\n        font_bytes = await resp.bytes()\n        with open(font_path, \"wb\") as f:\n            f.write(font_bytes)\n    if valid_ttf(font_path):\n        font_manager.fontManager.addfont(font_path)\n        matplotlib.rcParams[\"font.family\"] = \"Noto Sans JP\"\nexcept Exception:\n    pass  # フォント登録に失敗しても描画は続ける\nmatplotlib.rcParams[\"axes.unicode_minus\"] = False\n\n# --- ここから描画 ---\nimport numpy as np\nimport matplotlib.pyplot as plt\n# ...",
+    "crumbs": [
+      "ホーム",
+      "リファレンス",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Quarto Live レシピ</span>"
+    ]
+  },
+  {
+    "objectID": "reference/quarto-live.html#検証済-dead-end-やってはいけないこと",
+    "href": "reference/quarto-live.html#検証済-dead-end-やってはいけないこと",
+    "title": "Quarto Live レシピ",
+    "section": "検証済 dead-end (やってはいけないこと)",
+    "text": "検証済 dead-end (やってはいけないこと)\n\n\n\n\n\n\n\nDon’t\nWhy\n\n\n\n\npyfetch(\"../assets/fonts/...\") のように .. を qmd の階層に合わせて減らす\npyfetch は worker base に対して解決するのでページ階層は無関係。../../../ で固定\n\n\nFont setup を edit: false, autorun: true の 別セルに分ける\n描画セルとの実行順序が保証されず、最初のフレームで Glyph missing 警告が大量発生\n\n\nqmd YAML の pyodide.resources で font 指定\nQuarto Live の filter モードでは効かない (network タブで fetch されない)\n\n\nojs_define(font_ready=True) で OJS dependency を作って描画セルが待つ\n最初のロード時 OJS が未定義エラー (font_ready is not defined) を出して止まる\n\n\nVariable font (NotoSansJP[wght].ttf、9.6 MB) を使う\nPyodide の matplotlib FreeType が parse できず In TTFont: unknown file format\n\n\n{pyodide} セル内で import shiny / import streamlit\nPyodide では動かない。Quarto Live は素の numpy / matplotlib 中心\n\n\nOJS の while + Promises.delay ループでスライダーを高速更新して {pyodide} を毎フレーム再実行\nmatplotlib 再描画 (&gt;100ms / frame) が間隔に追いつかず描画が固まる。さらに Quarto Live 専用なので Jupyter / VSCode にコピーすると動かない\n\n\n{pyodide} セル内で await micropip.install(...) を呼ぶ (autorun 複数セル時)\nOJS が並列実行し、Pyodide の固定名 env \"result\" が上書きされる。display 出力が別セル枠に出るか消える。pyodide.packages YAML を使うこと\n\n\nPlotly figure に対し fig.show() を呼ぶ\nPyodide で renderer 検出に失敗する。最終式に fig を置けば IPython の _repr_mimebundle_ 経由で描画される\n\n\nPlotly 図を HTML(fig.to_html(include_plotlyjs=\"cdn\", full_html=False)) で埋め込む\ninnerHTML 経由で挿入される &lt;script&gt; タグはブラウザが実行しないので空 div になる。fig 最終式 + pyodide.packages: [plotly, nbformat, jsonschema] のほうが確実",
+    "crumbs": [
+      "ホーム",
+      "リファレンス",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Quarto Live レシピ</span>"
+    ]
+  },
+  {
+    "objectID": "reference/quarto-live.html#アニメーション",
+    "href": "reference/quarto-live.html#アニメーション",
+    "title": "Quarto Live レシピ",
+    "section": "アニメーション",
+    "text": "アニメーション\n選択肢は 2 つ。標準的な Python のやり方なのでどちらも Jupyter / VSCode にコピーで動く。\n\nmatplotlib + FuncAnimation\nmatplotlib.animation.FuncAnimation + IPython.display.HTML(ani.to_jshtml())。 フレームを Python 側で全部計算 → JS プレイヤーとして埋め込まれる:\n\n再生 / 一時停止 / コマ送り / フレームスライダーが標準で付く\n毎フレームの Pyodide 再実行が不要\n出力は単一 PNG ベクター列なので印刷向き\n\nサンプル: _03_interactive_demo.qmd。\n\n\nPlotly + animation_frame / frames\npx.line(df, animation_frame=\"frame\", ...) だけで再生 UI が自動生成される。 3D サーフェスや hover ツールチップは Plotly の方が得意。pyodide.packages で plotly nbformat jsonschema の宣言が必要。\nサンプル: _04_plotly_demo.qmd。\n\n\n使い分け\n\n\n\n\nmatplotlib\nPlotly\n\n\n\n\nコード量\nやや多い\n少ない\n\n\n日本語\nfont_manager.addfont 必須\nOS フォント (追加設定不要)\n\n\nインタラクション\nコマ送り / 再生 / 停止\n+ hover / pan / zoom\n\n\n印刷用ベクター\n強い\n弱い\n\n\n3D / 地理 / dashboard\n弱い\n強い\n\n\n\n紙に載せる図は matplotlib、ウェブで触らせる図は Plotly。",
+    "crumbs": [
+      "ホーム",
+      "リファレンス",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Quarto Live レシピ</span>"
+    ]
+  },
+  {
+    "objectID": "reference/quarto-live.html#失敗時の典型症状と切り分け",
+    "href": "reference/quarto-live.html#失敗時の典型症状と切り分け",
+    "title": "Quarto Live レシピ",
+    "section": "失敗時の典型症状と切り分け",
+    "text": "失敗時の典型症状と切り分け\n\nIn FT2Font: Can not load face (unknown file format; error code 0x2) → 多くの場合 pyfetch が 404 を引いて HTML を TTF として読み込んでいる。 preview のログで (404: Not Found) を grep し、../../../ でルート相対になっているか確認\nタイトルや軸ラベルが豆腐 (□) → font が登録されていない。addfont を毎回呼んでいるか、font.family が \"Noto Sans JP\" か確認\n編集しても変化しない → include されるパーシャル (_*.qmd) は親 qmd を touch しないと preview が再レンダーしない場合がある。 完全リセットは下記キャッシュクリア",
+    "crumbs": [
+      "ホーム",
+      "リファレンス",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Quarto Live レシピ</span>"
+    ]
+  },
+  {
+    "objectID": "reference/quarto-live.html#キャッシュトラブル時",
+    "href": "reference/quarto-live.html#キャッシュトラブル時",
+    "title": "Quarto Live レシピ",
+    "section": "キャッシュトラブル時",
+    "text": "キャッシュトラブル時\nrm -rf quarto/_book quarto/.quarto ~/Library/Caches/quarto\nブラウザは hard reload (Cmd+Shift+R)。",
+    "crumbs": [
+      "ホーム",
+      "リファレンス",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Quarto Live レシピ</span>"
+    ]
+  },
+  {
+    "objectID": "reference/quarto-modern.html",
+    "href": "reference/quarto-modern.html",
+    "title": "Quarto 最新機能の採用メモ",
+    "section": "",
+    "text": "リリース別の注目点\nこのテンプレートは Quarto Book を安定運用することを優先し、最新機能は次の基準で採用する。\n教科書テンプレートに関係するものだけを抜粋する。",
+    "crumbs": [
+      "ホーム",
+      "リファレンス",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Quarto 最新機能の採用メモ</span>"
+    ]
+  },
+  {
+    "objectID": "reference/quarto-modern.html#リリース別の注目点",
+    "href": "reference/quarto-modern.html#リリース別の注目点",
+    "title": "Quarto 最新機能の採用メモ",
+    "section": "",
+    "text": "Quarto\n注目点\nshowcase への追加判断\n\n\n\n\n1.9\nfig-alt の PDF 反映、pdf-standard、list table、Typst book、LLM-friendly output、quarto use brand\nfig-alt と list table は採用済み。PDF/Typst/LLM/brand は opt-in\n\n\n1.8\nHTML accessibility checks (axe)、HTML tabset の改善、typst / dashboard / manuscript / revealjs の改善\naxe は調査用設定として docs。tabset は既存 showcase で維持。その他は用途別 docs\n\n\n1.7\ndashboards、typst、Lua filter、cross-reference、PDF/HTML 出力まわりの改善\nbook 本文に直結するものは限定的。dashboard は教材補助アプリ向けに別ページ化する場合だけ\n\n\n1.6\ncontents shortcode、.landscape div、typst、dashboards、Jupyter/Knitr 実行まわりの改善\ncontents と .landscape は本文 showcase に追加候補。typst は opt-in\n\n\n1.5\ntypst 出力、dashboard / manuscript の発展、計算・拡張まわりの改善\nPDF を高速化したい場合の別プロファイル候補\n\n\n1.4\ncross-reference、code annotation、HTML 出力、project / preview まわりの改善\ncode annotation と cross-reference は既存 showcase で採用済み",
+    "crumbs": [
+      "ホーム",
+      "リファレンス",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Quarto 最新機能の採用メモ</span>"
+    ]
+  },
+  {
+    "objectID": "reference/quarto-modern.html#quarto-1.9-系で注目する機能",
+    "href": "reference/quarto-modern.html#quarto-1.9-系で注目する機能",
+    "title": "Quarto 最新機能の採用メモ",
+    "section": "Quarto 1.9 系で注目する機能",
+    "text": "Quarto 1.9 系で注目する機能\nQuarto 1.9 では、教科書テンプレートに関係する機能として以下が追加・強化されている。\n\n\n\n\n\n\n\n機能\nこのテンプレートでの扱い\n\n\n\n\nfig-alt の PDF 出力反映\n図版サンプルで fig-alt を書く方針にする。HTML と PDF の両方でアクセシビリティを落としにくい\n\n\npdf-standard\nPDF/A や PDF/UA が必要な案件で opt-in。verapdf 検証が絡むためデフォルトでは無効\n\n\nlist table\n複雑な表を grid table より保守しやすく書ける。_07_figures_and_tables.qmd に実例を追加済み\n\n\nTypst book\n高速な PDF 作成候補。LaTeX 前提の preamble.tex と併用できないので、別プロファイル化して採用する\n\n\nLLM-friendly website output\nサイト全体を LLM に読ませたい場合に有用。ただし Quarto Book project では導入形が変わる可能性があるため、現時点では手順化に留める\n\n\nquarto use brand\n複数教材でロゴ・色・CSS を共有する運用になったら採用する",
+    "crumbs": [
+      "ホーム",
+      "リファレンス",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Quarto 最新機能の採用メモ</span>"
+    ]
+  },
+  {
+    "objectID": "reference/quarto-modern.html#すぐ採用する設定書き方",
+    "href": "reference/quarto-modern.html#すぐ採用する設定書き方",
+    "title": "Quarto 最新機能の採用メモ",
+    "section": "すぐ採用する設定・書き方",
+    "text": "すぐ採用する設定・書き方\n図には代替テキストを書く。\n![sine 関数](../assets/images/figures/sine.png){#fig-sine fig-alt=\"0 から 2π までの正弦波\"}\nHTML のアクセシビリティ確認が必要なときは、一時的に format.html.axe を有効にする。\nformat:\n  html:\n    axe:\n      output: json\noutput: json は browser console に axe-core の結果を出すため、Playwright などで拾いやすい。output: document はページ内にレポートを埋め込めるが、Quarto Live を含む Book では Quarto 1.8.26 時点で render 時に干渉するケースがあるため、このテンプレートの profile では json を使う。\nこのテンプレートでは opt-in profile として quarto/_quarto-a11y.yml を同梱している。\njust render-a11y  # axe JSON console output 付きで HTML render\njust docs-a11y    # axe JSON console output 付きで preview\nQuarto のバージョン別に使える機能を確認したい場合は、次を実行する。\njust quarto-capabilities",
+    "crumbs": [
+      "ホーム",
+      "リファレンス",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Quarto 最新機能の採用メモ</span>"
+    ]
+  },
+  {
+    "objectID": "reference/quarto-modern.html#showcase-に追加する価値が高いもの",
+    "href": "reference/quarto-modern.html#showcase-に追加する価値が高いもの",
+    "title": "Quarto 最新機能の採用メモ",
+    "section": "Showcase に追加する価値が高いもの",
+    "text": "Showcase に追加する価値が高いもの\n\ncontents shortcode\ncontents shortcode は、同じページ内の div やセクションの中身を別の場所に再掲できる。教科書では「定義を本文で提示し、章末まとめで再掲する」「演習の前に重要事項だけ再掲する」用途に合う。\n::: {#key-definition}\n重要な定義本文。\n:::\n\n::: {.callout-note}\n## 再掲\n\n\n\n:::\n\n\n.landscape div\n.landscape は PDF 出力で横向きページを作る用途に向く。HTML では通常の div として表示されるため、showcase に入れても HTML preview を壊しにくい。大きな表、横長の比較図、年表に向いている。\n::: {.landscape}\n\n| 長い項目 A | 長い項目 B | 長い項目 C |\n| --- | --- | --- |\n| ... | ... | ... |\n\n:::",
+    "crumbs": [
+      "ホーム",
+      "リファレンス",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Quarto 最新機能の採用メモ</span>"
+    ]
+  },
+  {
+    "objectID": "reference/quarto-modern.html#quarto-1.9-前提で使う例",
+    "href": "reference/quarto-modern.html#quarto-1.9-前提で使う例",
+    "title": "Quarto 最新機能の採用メモ",
+    "section": "Quarto 1.9+ 前提で使う例",
+    "text": "Quarto 1.9+ 前提で使う例\n複雑な表は list table にすると、grid table より差分が読みやすい。動く例は quarto/textbook/_07_figures_and_tables.qmd に含めている。\n::: {#tbl-workflow .list-table tbl-colwidths=\"[25,75]\"}\n導入作業の確認表\n\n- - 作業\n  - 確認内容\n\n- - セットアップ\n  - `just setup` 後に `just check-env` が通る\n\n- - 本文追加\n  - `_NN_topic.qmd` を作り、`textbook.qmd` に `{{&lt; include &gt;}}` を 1 つ追加する\n\n:::\nPDF アクセシビリティや長期保存要件がある場合は、Quarto 1.9+ で pdf-standard を検討する。\nformat:\n  pdf:\n    pdf-engine: xelatex\n    pdf-standard: pdf/a-2b\n厳密に PDF/UA を狙う場合は、見出し構造、図の fig-alt、表の意味構造、文書メタデータまで含めて確認する。自動検証には quarto install verapdf を使う。",
+    "crumbs": [
+      "ホーム",
+      "リファレンス",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Quarto 最新機能の採用メモ</span>"
+    ]
+  },
+  {
+    "objectID": "reference/quarto-modern.html#今はデフォルト採用しないもの",
+    "href": "reference/quarto-modern.html#今はデフォルト採用しないもの",
+    "title": "Quarto 最新機能の採用メモ",
+    "section": "今はデフォルト採用しないもの",
+    "text": "今はデフォルト採用しないもの\nllms-txt は LLM が読むためのサイト出力として有用だが、このテンプレートは project.type: book を使っている。Book の章構成、include された partial、公開先の _book 配置との相性を確認してから opt-in にする。\nTypst book は高速な PDF 出力として魅力がある。ただし、このテンプレートには LaTeX 用の preamble.tex と XeLaTeX 前提の PDF 設定があるため、単純に format.typst を足すと「LaTeX で効く体裁」と「Typst で効く体裁」が分岐する。採用時は quarto/_quarto.yml を分けるか、Quarto profile を使う。",
+    "crumbs": [
+      "ホーム",
+      "リファレンス",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Quarto 最新機能の採用メモ</span>"
+    ]
+  },
+  {
+    "objectID": "reference/quarto-modern.html#参照",
+    "href": "reference/quarto-modern.html#参照",
+    "title": "Quarto 最新機能の採用メモ",
+    "section": "参照",
+    "text": "参照\n\nQuarto 1.9 release: https://opensource.posit.co/blog/2026-03-24_1.9-release/\nQuarto 1.8 release: https://opensource.posit.co/blog/2025-10-13_1.8-release/\nQuarto 1.6 release: https://opensource.posit.co/blog/2024-11-25_1.6-release/\nQuarto release builds: https://quarto.org/docs/download/release.html\nHTML accessibility checks: https://quarto.org/docs/output-formats/html-accessibility.html\nTables / list tables: https://quarto.org/docs/authoring/tables.html\nTypst basics: https://quarto.org/docs/output-formats/typst.html\nOutput for LLMs: https://quarto.org/docs/websites/website-llms.html\nProject scripts: https://quarto.org/docs/projects/scripts.html",
+    "crumbs": [
+      "ホーム",
+      "リファレンス",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Quarto 最新機能の採用メモ</span>"
+    ]
+  },
+  {
+    "objectID": "template-guide.html",
+    "href": "template-guide.html",
+    "title": "制作者向けガイド",
+    "section": "",
+    "text": "最初に確認するページ\nこのページは、テンプレートを clone した直後に見る制作者向けの入口です。公開ホーム (index.qmd) は読者向けに残し、テンプレートの使い方、コピー元、運用手順はこのページからたどります。",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>制作者向けガイド</span>"
+    ]
+  },
+  {
+    "objectID": "template-guide.html#最初に確認するページ",
+    "href": "template-guide.html#最初に確認するページ",
+    "title": "制作者向けガイド",
+    "section": "",
+    "text": "目的\n開くページ\n役割\n\n\n\n\n本文の完成形を見る\n教材本編サンプル\nQuarto 機能、章構成、シミュレーションを統合した代表ページ\n\n\n新しい章を書き始める\n章テンプレート一覧\nquarto/templates/ のコピー元を目的別に選ぶ\n\n\nqmd 追加後の導線を決める\n導線サンプル\nホーム、sidebar、section anchor の置き方を確認する\n\n\n作業順序を確認する\n運用ワークフロー\nsetup、PDF 取り込み、編集、検証、公開の順番\n\n\n深い技術メモを見る\nQuarto 機能対応表\n表示できる HTML ページとコピー元 partial の対応を確認する",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>制作者向けガイド</span>"
+    ]
+  },
+  {
+    "objectID": "template-guide.html#どのファイルを作るか",
+    "href": "template-guide.html#どのファイルを作るか",
+    "title": "制作者向けガイド",
+    "section": "どのファイルを作るか",
+    "text": "どのファイルを作るか\n実教材のページは、目的別の場所に作ります。このテンプレートの初期サンプルも topics/、simulations/、exercises/、support/ に置いてあるので、派生プロジェクトでは近いページをコピーして名前を変え、book.chapters とホームの導線を更新します。\n\n\n\n\n\n\n\n\n目的\n作る場所\n追加で更新する場所\n\n\n\n\n本文の章・節\nquarto/textbook/_NN_topic.qmd\nquarto/textbook/textbook.qmd の include、必要ならホームの section link\n\n\n独立トピック\nquarto/topics/topic.qmd など\nbook.chapters、必要ならホームの「読む順番」\n\n\nシミュレーション\nquarto/simulations/topic.qmd など\nbook.chapters、本文や演習からのリンク\n\n\n演習ページ\nquarto/exercises/topic.qmd など\nbook.chapters、対応する本文からのリンク\n\n\n補助資料\nquarto/support/topic.qmd など\nbook.chapters、ホームまたは navbar\n\n\n公開リファレンス\nquarto/reference/topic.qmd\nbook.chapters の参考資料、関連ページからのリンク\n\n\n章テンプレート\nquarto/templates/foo_template.qmd\nquarto/template-pages/foo.qmd、template-catalog.qmd、book.chapters\n\n\n\n単独ページはまず book.chapters に登録します。navbar やホームは追加導線です。navbar にだけ置くと、Book の前後ナビゲーションや sidebar 上の位置が不安定になります。",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>制作者向けガイド</span>"
+    ]
+  },
+  {
+    "objectID": "template-guide.html#作業開始時の判断",
+    "href": "template-guide.html#作業開始時の判断",
+    "title": "制作者向けガイド",
+    "section": "作業開始時の判断",
+    "text": "作業開始時の判断\nエージェントは、ユーザーの依頼を受けたら先にこの表で置き場所を決めます。\n\n\n\n\n\n\n\n\n依頼\n判断\n触る主なファイル\n\n\n\n\n「本文を追加して」\n本文 partial を追加する\n_NN_topic.qmd, textbook.qmd\n\n\n「このページへ直接行けるようにして」\n単独ページとして book.chapters に登録する\n追加 qmd, _quarto.yml, 必要なら index.qmd\n\n\n「ホームに導線を出して」\n読者が最初に読む主要ページだけ index.qmd の「読む順番」に入れる\nindex.qmd\n\n\n「シミュレーションを追加して」\n本文内で説明するなら partial、単独で使うなら simulations/\n_*.qmd または simulations/*.qmd, _quarto.yml\n\n\n「テンプレートを増やして」\nコピー元と閲覧ページを両方作る\ntemplates/, template-pages/, template-catalog.qmd, _quarto.yml\n\n\n「公開サイトで読める資料を追加して」\nreference/ へ置く\nreference/*.qmd, _quarto.yml\n\n\n「エージェント向け規約を更新して」\ndocs/ または AGENTS.md を更新し、必要なら reference/ に反映する\ndocs/*.md, AGENTS.md, reference/*.qmd",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>制作者向けガイド</span>"
+    ]
+  },
+  {
+    "objectID": "template-guide.html#残すものと外すもの",
+    "href": "template-guide.html#残すものと外すもの",
+    "title": "制作者向けガイド",
+    "section": "残すものと外すもの",
+    "text": "残すものと外すもの\nテンプレート支援ページは、本文作成中もコピー元として有用なので削除前提にしません。派生プロジェクトで公開するときは、不要な支援ページを削除するのではなく、まず公開ホームの主導線から外し、sidebar の「制作者向け」や private な運用メモへ下げます。\n\n\n\n\n\n\n\n種類\n残し方\n\n\n\n\nquarto/templates/*.qmd\n章を書き始めるコピー元として残す\n\n\nquarto/template-pages/*.qmd\nコピー元の閲覧ページとして残す\n\n\nquarto/topics/, quarto/simulations/, quarto/exercises/, quarto/support/\n最初は配置例として残し、教材が育ったら実ページ名へ置き換える\n\n\nquarto/reference/*.qmd\n公開サイト内で読める技術リファレンスとして残す\n\n\ndocs/*.md\nエージェント/開発者向け原本として残す。公開ページから直接リンクしない",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>制作者向けガイド</span>"
+    ]
+  },
+  {
+    "objectID": "template-guide.html#qmd-を追加した後の最短チェック",
+    "href": "template-guide.html#qmd-を追加した後の最短チェック",
+    "title": "制作者向けガイド",
+    "section": "qmd を追加した後の最短チェック",
+    "text": "qmd を追加した後の最短チェック\n\n単独ページなら YAML front matter を書く。本文 partial なら YAML front matter を書かない。\n単独ページは quarto/_quarto.yml の book.chapters に追加する。\n本文 partial は quarto/textbook/textbook.qmd に {{&lt; include &gt;}} を追加する。\n読者が最初に見るべき主要ページだけ quarto/index.qmd の「読む順番」に追加する。\nページ内の特定セクションへ飛ばす場合は、見出しに {#sec-id} を付ける。\njust docs でホーム、sidebar、ページ下部の前後ナビゲーションを確認する。\njust check を通す。",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>制作者向けガイド</span>"
+    ]
+  },
+  {
+    "objectID": "template-guide.html#最初に試すコマンド",
+    "href": "template-guide.html#最初に試すコマンド",
+    "title": "制作者向けガイド",
+    "section": "最初に試すコマンド",
+    "text": "最初に試すコマンド\njust setup     # 初回のみ\njust docs      # http://localhost:4312 でプレビュー\njust check     # 公開前の品質チェック\nquarto/_quarto.yml の preview 設定は host: 0.0.0.0 / port: 4312 なので、同じ Wi-Fi 上の端末からも http://&lt;Mac の IP&gt;:4312/ で確認できます。",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>制作者向けガイド</span>"
+    ]
+  },
+  {
+    "objectID": "template-guide.html#正本の考え方",
+    "href": "template-guide.html#正本の考え方",
+    "title": "制作者向けガイド",
+    "section": "正本の考え方",
+    "text": "正本の考え方\n公開サイトで読者や共同執筆者に見せる文書は quarto/reference/*.qmd に置きます。docs/*.md は GitHub 上の説明、エージェント向け原本、作業メモとして残します。両方に近い内容を置く場合は、先に docs/*.md を更新し、公開に必要な内容だけ quarto/reference/*.qmd へ反映します。",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>制作者向けガイド</span>"
     ]
   },
   {
@@ -826,21 +1427,23 @@
     "href": "workflow-guide.html",
     "title": "運用ワークフロー",
     "section": "",
-    "text": "運用ワークフロー\nこのテンプレートは、PDF・講義メモ・手書き資料から Quarto Book を作る作業を想定しています。小さく書いて、すぐ preview し、品質ゲートで確認します。",
+    "text": "セットアップ\nこのテンプレートは、PDF・講義メモ・手書き資料から Quarto Book を作る作業を想定しています。小さく書いて、すぐ preview し、品質ゲートで確認します。\njust docs は公式 quarto preview に _*.qmd partial watcher を併走させます。公式 preview 単体の挙動を確認したい場合は just docs-official を使います。",
     "crumbs": [
       "ホーム",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>運用ワークフロー</span>"
+      "制作者向け",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>運用ワークフロー</span>"
     ]
   },
   {
     "objectID": "workflow-guide.html#セットアップ",
     "href": "workflow-guide.html#セットアップ",
     "title": "運用ワークフロー",
-    "section": "セットアップ",
-    "text": "セットアップ\njust check-env\njust setup\njust docs\njust docs は公式 quarto preview に _*.qmd partial watcher を併走させます。公式 preview 単体の挙動を確認したい場合は just docs-official を使います。",
+    "section": "",
+    "text": "just check-env\njust setup\njust docs",
     "crumbs": [
       "ホーム",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>運用ワークフロー</span>"
+      "制作者向け",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>運用ワークフロー</span>"
     ]
   },
   {
@@ -851,7 +1454,8 @@
     "text": "PDF 取り込み\nPDF から qmd を起こす前に、必ず画像とテキストを両方用意します。\njust diagnose-pdf path/to/textbook.pdf\njust extract-pdf path/to/textbook.pdf 12 15\nextract-pdf は先に PNG を生成し、text / OCR / LaTeX 抽出を行います。生成された quarto/assets/raw/&lt;stem&gt;_pages/page_NN.png をページごとに開いて、図表配置、式番号、OCR 誤読を確認してから qmd に書き起こします。",
     "crumbs": [
       "ホーム",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>運用ワークフロー</span>"
+      "制作者向け",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>運用ワークフロー</span>"
     ]
   },
   {
@@ -859,10 +1463,59 @@
     "href": "workflow-guide.html#qmd-編集",
     "title": "運用ワークフロー",
     "section": "qmd 編集",
-    "text": "qmd 編集\n\n本文統合点は quarto/textbook/textbook.qmd\n章・節の中身は quarto/textbook/_*.qmd\npartial には YAML front matter を書かない\n{{&lt; include _NN_topic.qmd &gt;}} を 1 つずつ追加する\nQuarto 機能の書き方は 統合サンプル の該当セクションから探す\n書き始めは 章テンプレート一覧 から目的に近いものを選ぶ",
+    "text": "qmd 編集\n\n本文統合点は quarto/textbook/textbook.qmd\n章・節の中身は quarto/textbook/_*.qmd\npartial には YAML front matter を書かない\n{{&lt; include _NN_topic.qmd &gt;}} を 1 つずつ追加する\nQuarto 機能の書き方は 教材本編サンプル の該当セクションから探す\n書き始めは 章テンプレート一覧 から目的に近いものを選ぶ",
     "crumbs": [
       "ホーム",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>運用ワークフロー</span>"
+      "制作者向け",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>運用ワークフロー</span>"
+    ]
+  },
+  {
+    "objectID": "workflow-guide.html#sec-routing-after-qmd",
+    "href": "workflow-guide.html#sec-routing-after-qmd",
+    "title": "運用ワークフロー",
+    "section": "qmd 追加後の導線整備",
+    "text": "qmd 追加後の導線整備\nqmd を作っただけでは、読者はそのページにたどり着けません。単独ページを追加した場合は、まず book.chapters に登録します。ホームは主要ページだけに絞り、細かいページは sidebar、本文中リンク、補助資料ページからたどれるようにします。\n\nquarto/_quarto.yml の book.chapters に登録する\n主要ページだけ quarto/index.qmd の「読む順番」表へ追加する\n関連する本文・演習・補助資料から相互リンクを張る\n\n公開用の教材では、ショーケースやテンプレート支援ページを主導線に残しすぎず、本文・演習・シミュレーション・補助資料を先に並べます。\n\n単独ページを追加する場合\n講義回、シミュレーション、演習、サポートページのように 1 ページとして見せたい qmd は、book.chapters に追加します。\nbook:\n  chapters:\n    - index.qmd\n    - part: \"シミュレーション\"\n      chapters:\n        - simulations/pendulum.qmd\n    - part: \"演習問題\"\n      chapters:\n        - exercises/polar_kinematics.qmd\nそのうえで、ホームにも直接リンクします。\n| 項目 | ページ |\n| --- | --- |\n| 単振り子 | [シミュレーション](simulations/pendulum.qmd) |\n| 極座標運動 | [演習](exercises/polar_kinematics.qmd) |\n\n\n本文 partial を追加する場合\nquarto/textbook/_05_topic.qmd のような partial は sidebar に直接並べず、親の textbook/textbook.qmd に include します。\n{{&lt; include _05_topic.qmd &gt;}}\nホームから特定の節に直接飛ばしたい場合は、partial 内の見出しに anchor を付けます。\n## 新しいトピック {#sec-new-topic}\nホームでは親ページと anchor を組み合わせてリンクします。\n[新しいトピック](textbook/textbook.qmd#sec-new-topic)\n実際の配置例は 導線サンプル を参照してください。",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>運用ワークフロー</span>"
+    ]
+  },
+  {
+    "objectID": "workflow-guide.html#markdown-文書を公開ページから見せる場合",
+    "href": "workflow-guide.html#markdown-文書を公開ページから見せる場合",
+    "title": "運用ワークフロー",
+    "section": "Markdown 文書を公開ページから見せる場合",
+    "text": "Markdown 文書を公開ページから見せる場合\nQuarto project は .md も入力として扱えますが、このテンプレートでは公開サイトの導線を安定させるため、読者に見せる文書は quarto/ 配下の .qmd ページとして book.chapters に登録します。\n\n\n\n\n\n\n\nやりたいこと\n推奨\n\n\n\n\nGitHub やエージェント向けの説明を置く\ndocs/*.md に置く。公開サイトからは直接リンクしない\n\n\nブラウザで読ませるガイドを置く\nquarto/reference/topic.qmd に変換し、book.chapters に追加する\n\n\n本文中に短い共通部品を再利用する\n_*.qmd partial にして {{&lt; include &gt;}} で読み込む\n\n\nコピー元ファイルを示す\nリンクではなく quarto/templates/foo.qmd のようにコード表記にする\n\n\n\n公開ページから docs/foo.md や _NN_partial.qmd へ直接リンクすると、静的配信では HTML 化されたページが存在せず、ブラウザで読めないか、ソースファイル表示になります。リンクしたい場合は、対応する qmd ページを作り、[表示名](reference/foo.qmd) のように qmd へリンクしてください。Quarto の render 後は .html へのリンクに変換されます。",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>運用ワークフロー</span>"
+    ]
+  },
+  {
+    "objectID": "workflow-guide.html#教材構成の選び方",
+    "href": "workflow-guide.html#教材構成の選び方",
+    "title": "運用ワークフロー",
+    "section": "教材構成の選び方",
+    "text": "教材構成の選び方\n既定では quarto/textbook/textbook.qmd を本文の親にします。大きい教材に育った場合も、最初はこの形を保つと壊れにくいです。\n\n\n\n\n\n\n\n\n型\n使い所\n追加する導線\n\n\n\n\n単一 textbook 型\n普通の講義ノート、短い教科書、機能例の集約\ntextbook/textbook.qmd を本文入口にし、partial を include\n\n\n本文 + 単独ページ型\n本文とは別にシミュレーション、演習、サポートを見せたい\nbook.chapters に単独ページを追加し、主要ページだけホームの「読む順番」からリンク\n\n\n複数原典ロードマップ型\n複数の PDF、講義ノート、論文を並行して扱う\nホームに「原文 PDF / 解説 / 実装」表を置き、必要なら textbook-*/textbook.qmd を追加\n\n\n長編精読型\n章ごとに独立したページとして読ませたい論文・本\n部ごとの章一覧をホームに置き、各章 qmd を book.chapters に並べる。採用時は AGENTS.md の single source 方針も更新\n\n\n\n迷った場合は、まず「単一 textbook 型」で始めます。後から分割する方が、最初から複数系統を作るより破綻しにくいです。",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>運用ワークフロー</span>"
+    ]
+  },
+  {
+    "objectID": "workflow-guide.html#論文精読教材を作る場合",
+    "href": "workflow-guide.html#論文精読教材を作る場合",
+    "title": "運用ワークフロー",
+    "section": "論文精読教材を作る場合",
+    "text": "論文精読教材を作る場合\n研究論文 1 本を教科書化する場合は、公開サイト内の 論文精読教科書のつくり方 を先に読みます。Quarto の書き方ではなく、何をどう書くかの編集判断がまとまっています。\n\n\n\n\n\n\n\n工程\nやること\n\n\n\n\n原則を固定する\n忠実さ、行間補完、通し具体例、誠実な限界、意味のある対話、検証可能性を章ごとに確認する\n\n\n章割りを決める\nAbstract / Introduction / Results / Discussion / Methods / 付録に対応する部と章を先に決める\n\n\n章の型を使う\n原文引用、忠実訳、詳細授業、記号表、定義、式、相互参照の順で書く\n\n\n図表を検証する\n高解像度画像、出典、ライセンス、式番号、数値を原著と照合する\n\n\n\nQuarto 上の最小例は 論文精読ページ を参照してください。 対話デモを入れる場合は、先に Quarto Live レシピ の制約を確認してください。",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>運用ワークフロー</span>"
     ]
   },
   {
@@ -873,7 +1526,8 @@
     "text": "検証\njust check\njust check は format、lint、typecheck、docs validation、Quarto render-check、pytest をまとめて実行します。ドキュメント編集後はこのコマンドを通してから公開します。",
     "crumbs": [
       "ホーム",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>運用ワークフロー</span>"
+      "制作者向け",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>運用ワークフロー</span>"
     ]
   },
   {
@@ -884,7 +1538,308 @@
     "text": "公開\n既定では main push で GitHub Actions が HTML を render し、gh-pages に公開します。研究会資料など、公開タイミングを手動にしたい場合は .github/workflows/publish.yml の trigger を workflow_dispatch 中心に変更できます。",
     "crumbs": [
       "ホーム",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>運用ワークフロー</span>"
+      "制作者向け",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>運用ワークフロー</span>"
+    ]
+  },
+  {
+    "objectID": "example-map.html",
+    "href": "example-map.html",
+    "title": "導線サンプル",
+    "section": "",
+    "text": "配置例\nこのページは、別プロジェクトでよく使っている「ホームから主要ページへ直接飛べる配置」をテンプレート内に再現したものです。新しい qmd を作ったら、ページを作るだけでなく、次の 2 か所へリンクを足します。",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>導線サンプル</span>"
+    ]
+  },
+  {
+    "objectID": "example-map.html#配置例",
+    "href": "example-map.html#配置例",
+    "title": "導線サンプル",
+    "section": "",
+    "text": "分類\nqmd の置き場所\nsidebar での見せ方\nホームでの見せ方\n\n\n\n\n本文\ntextbook/textbook.qmd と _*.qmd partial\nbook.chapters 直下、または「本文」「理論体系ノート」などの part\n教材の中心入口として大きく置く\n\n\n個別トピック\ntopics/topic-overview.qmd\n「教材」や「講義ノート」配下\n必要なら「読む順番」の 1 行にする\n\n\nシミュレーション\nsimulations/simulation-page.qmd\n「シミュレーション」配下\n動く教材として目立つ位置に置く\n\n\n演習\nexercises/exercise-page.qmd\n「演習問題」配下\n対応する理論ページの近くに置く\n\n\n補助資料\nsupport/support-page.qmd\n「参考資料」や「補助資料」配下\n読者が繰り返し参照する資料として置く\n\n\n論文精読\ntopics/paper-deep-dive-page.qmd\n「精読ガイド」や「補助資料」配下\n原典 PDF・解説型のロードマップからリンク",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>導線サンプル</span>"
+    ]
+  },
+  {
+    "objectID": "example-map.html#ホームロードマップの型",
+    "href": "example-map.html#ホームロードマップの型",
+    "title": "導線サンプル",
+    "section": "ホームロードマップの型",
+    "text": "ホームロードマップの型\n教材の種類に応じて、ホームの表は次のどれかをコピーして始めます。公開ホームには 1 つだけ採用し、残りの型は制作者向けページや private な運用メモへ下げます。\n\n理論・演習・シミュレーション型\n\n\n\n項目\n本文\n動く確認\n演習\n\n\n\n\n導入と記法\n本文\nシミュレーション\n演習\n\n\n\n\n\n原典 PDF・解説型\n\n\n\n原典\nPDF\n解説\n実装・補足\n\n\n\n\nChapter 1\nassets/pdf/chapter1.pdf\n本文\nサポート\n\n\n\n\n\n長編精読型\n\n\n\n部\n章\n内容\nページ\n\n\n\n\n第 I 部\n00\n全体像と読み方\n論文精読ページ",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>導線サンプル</span>"
+    ]
+  },
+  {
+    "objectID": "example-map.html#qmd-追加後のチェックリスト",
+    "href": "example-map.html#qmd-追加後のチェックリスト",
+    "title": "導線サンプル",
+    "section": "qmd 追加後のチェックリスト",
+    "text": "qmd 追加後のチェックリスト\n\nqmd が単独ページなら YAML front matter を書く。\nquarto/textbook/_*.qmd の partial なら YAML front matter を書かない。\nsidebar に出したい単独ページは book.chapters に追加する。\nホームから直接行きたいページは index.qmd の「読む順番」表にリンクを追加する。\nページ内の特定セクションへ飛ばしたい場合は、見出しに {#sec-id} を付ける。\njust docs でホーム、sidebar、ページ下部の前後ナビゲーションを確認する。\njust check を通す。\n公開前に、ショーケースやテンプレート支援ページが読者向けホームで目立ちすぎていないか確認する。",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>導線サンプル</span>"
+    ]
+  },
+  {
+    "objectID": "example-map.html#リンク例",
+    "href": "example-map.html#リンク例",
+    "title": "導線サンプル",
+    "section": "リンク例",
+    "text": "リンク例\n\n\n\n目的\nリンク\n\n\n\n\nページ全体へ飛ぶ\nトピック概要ページ\n\n\nページ内のセクションへ飛ぶ\nシミュレーションの使い所\n\n\n教材本編サンプル内の機能例へ飛ぶ\nシミュレーション教材",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>導線サンプル</span>"
+    ]
+  },
+  {
+    "objectID": "template-catalog.html",
+    "href": "template-catalog.html",
+    "title": "章テンプレート一覧",
+    "section": "",
+    "text": "目的別\nquarto/templates/ 配下の qmd は、render 対象ではなくコピー元です。目的に近いものを quarto/textbook/_NN_topic.qmd として使い、textbook/textbook.qmd に {{&lt; include _NN_topic.qmd &gt;}} を追加します。コピー元に YAML front matter がある場合、本文 partial へ貼るときは先頭の --- で囲まれた YAML ブロックを削除してください。",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>章テンプレート一覧</span>"
+    ]
+  },
+  {
+    "objectID": "template-catalog.html#目的別",
+    "href": "template-catalog.html#目的別",
+    "title": "章テンプレート一覧",
+    "section": "",
+    "text": "目的\nテンプレート閲覧ページ\nコピー元ファイル\n向いている内容\n\n\n\n\nPDF 教科書を翻訳・解説する\nPDF textbook テンプレート\nquarto/templates/textbook_template.qmd\nPhase 1 の忠実翻訳、Phase 2 の補足解説、定理・証明・Remark\n\n\n数学・物理の章を書く\n数学・物理テンプレート\nquarto/templates/math_focused_template.qmd\n定義、定理、証明、線形代数の補足、計算確認\n\n\n直感から数式へ導く\nV-S-V レッスンテンプレート\nquarto/templates/theory_template.qmd\nV-S-V cycle、直感、図解、数式、実装、確認問題\n\n\nQuarto 機能をまとめて使う\nQuarto 機能テンプレート\nquarto/templates/quarto_feature_showcase.qmd\nタブ、図表、数式、引用、コード、レイアウトの copy-paste 元\n\n\n論文を精読教科書にする\n論文精読ページ例\n論文精読教科書のつくり方\n原文引用、忠実訳、行間補完、章割り、検証チェックリスト",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>章テンプレート一覧</span>"
+    ]
+  },
+  {
+    "objectID": "template-catalog.html#テンプレート詳細",
+    "href": "template-catalog.html#テンプレート詳細",
+    "title": "章テンプレート一覧",
+    "section": "テンプレート詳細",
+    "text": "テンプレート詳細\n各テンプレートの閲覧ページでは、用途、コピー元、コピーコマンド、章の骨格を確認できます。実際の編集は quarto/templates/*.qmd の本文部分を quarto/textbook/_NN_topic.qmd にコピーしてから始めます。単独ページとして使う場合だけ YAML front matter を残し、book.chapters に登録します。",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>章テンプレート一覧</span>"
+    ]
+  },
+  {
+    "objectID": "template-catalog.html#他プロジェクトから採用した機能例",
+    "href": "template-catalog.html#他プロジェクトから採用した機能例",
+    "title": "章テンプレート一覧",
+    "section": "他プロジェクトから採用した機能例",
+    "text": "他プロジェクトから採用した機能例\n他プロジェクトの調査で見つかったシミュレーション教材の型は、教材本編サンプルのシミュレーション教材 に採用済みです。\n\n\n\n採用した型\n元になった知見\n教材本編サンプル\n\n\n\n\nsimulation lesson template\nmechanics-class-simulation の pendulum / polar kinematics\n単振り子、極座標運動\n\n\nPlotly parameter visualization\nmechanics-class-simulation の Lissajous / envelope notebook\nLissajous 曲線、包絡線と媒介変数\n\n\nlightweight OJS + Plotly template\nQuantum-information の Bloch sphere\nBloch 球\n\n\ncoupled oscillator simulation\nQuantum-information の ion-trap / phonon bus simulation\n結合振動子\n\n\nPDF presentation checklist\nai-descartes-textbook の Phase 1/2 運用\nPDF textbook テンプレートの運用候補として継続",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>章テンプレート一覧</span>"
+    ]
+  },
+  {
+    "objectID": "template-catalog.html#コピー後の確認",
+    "href": "template-catalog.html#コピー後の確認",
+    "title": "章テンプレート一覧",
+    "section": "コピー後の確認",
+    "text": "コピー後の確認\n実際に章を書くときは、目的に近いテンプレートを quarto/textbook/_NN_topic.qmd にコピーしてから編集します。\n\npartial に YAML front matter を残していないか確認する。\ntextbook/textbook.qmd に include 行を 1 つ追加する。\njust docs で見え方を確認する。\njust check を通す。",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>章テンプレート一覧</span>"
+    ]
+  },
+  {
+    "objectID": "template-catalog.html#新しいテンプレートを増やす場合",
+    "href": "template-catalog.html#新しいテンプレートを増やす場合",
+    "title": "章テンプレート一覧",
+    "section": "新しいテンプレートを増やす場合",
+    "text": "新しいテンプレートを増やす場合\n章テンプレート自体を増やす場合は、コピー元と閲覧ページを分けます。\n\nquarto/templates/foo_template.qmd にコピー元を作る。\nquarto/template-pages/foo.qmd にブラウザで見られる閲覧ページを作る。\nこの template-catalog.qmd の「目的別」表へ追加する。\nquarto/_quarto.yml の「制作者向け」part に閲覧ページを追加する。\n必要なら Quarto 機能対応表 に、表示先とコピー元 partial の対応を追加する。",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>章テンプレート一覧</span>"
+    ]
+  },
+  {
+    "objectID": "template-catalog.html#使い分け",
+    "href": "template-catalog.html#使い分け",
+    "title": "章テンプレート一覧",
+    "section": "使い分け",
+    "text": "使い分け\n\n書き方だけ確認したい場合: 教材本編サンプル の該当セクションを見る\n自分の章を書き始める場合: quarto/templates/ の qmd をコピー",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>章テンプレート一覧</span>"
+    ]
+  },
+  {
+    "objectID": "template-pages/textbook.html",
+    "href": "template-pages/textbook.html",
+    "title": "PDF textbook テンプレート",
+    "section": "",
+    "text": "章の骨格\nPDF 教科書や論文を、原文対応を保ちながら Quarto の章へ起こすためのテンプレートです。 このページは閲覧用です。実際に編集を始めるときは、下のコピー元ファイルを quarto/textbook/_NN_topic.qmd にコピーします。",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>PDF textbook テンプレート</span>"
+    ]
+  },
+  {
+    "objectID": "template-pages/textbook.html#章の骨格",
+    "href": "template-pages/textbook.html#章の骨格",
+    "title": "PDF textbook テンプレート",
+    "section": "",
+    "text": "## X.Y セクションタイトル [textbook.pdf p.XX](../assets/pdf/textbook.pdf#page=YY)\n\n### Phase 1: 忠実翻訳\n\n::: {#def-X-Y}\n## 定義 X.Y（概念名）\n\n[原文の定義を一言一句逃さず日本語訳する。]\n\n:::\n\n::: {.callout-caution icon=\"false\"}\n## Remark X.Y\n\n[原文の Remark をそのまま日本語訳する。]\n\n:::\n\n### Phase 2: 解説と拡充\n\n::: {.callout-note}\n## 直感的な理解\n\n[原文にない補足や説明をここに書く。]\n\n:::",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>PDF textbook テンプレート</span>"
+    ]
+  },
+  {
+    "objectID": "template-pages/textbook.html#使う前の確認",
+    "href": "template-pages/textbook.html#使う前の確認",
+    "title": "PDF textbook テンプレート",
+    "section": "使う前の確認",
+    "text": "使う前の確認\n\njust extract-pdf &lt;pdf&gt; &lt;start&gt; &lt;end&gt; で画像とテキストを用意する。\n生成された PNG を見て、図表配置、式番号、OCR 誤読を確認する。\n1 セクションずつ qmd に起こし、just docs で見え方を確認する。",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>PDF textbook テンプレート</span>"
+    ]
+  },
+  {
+    "objectID": "template-pages/textbook.html#関連ページ",
+    "href": "template-pages/textbook.html#関連ページ",
+    "title": "PDF textbook テンプレート",
+    "section": "関連ページ",
+    "text": "関連ページ\n\n統合サンプル\n運用ワークフロー",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>PDF textbook テンプレート</span>"
+    ]
+  },
+  {
+    "objectID": "template-pages/math-focused.html",
+    "href": "template-pages/math-focused.html",
+    "title": "数学・物理テンプレート",
+    "section": "",
+    "text": "章の骨格\n定義、定理、証明、例題、演習を中心にした講義ノート向けのテンプレートです。 このページは閲覧用です。実際に編集を始めるときは、下のコピー元ファイルを quarto/textbook/_NN_topic.qmd にコピーします。",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>数学・物理テンプレート</span>"
+    ]
+  },
+  {
+    "objectID": "template-pages/math-focused.html#章の骨格",
+    "href": "template-pages/math-focused.html#章の骨格",
+    "title": "数学・物理テンプレート",
+    "section": "",
+    "text": "# 概要と目的\n\n::: {.callout-note}\n## この章の数理的ゴール\n\n1. 定義を正確に記述できる。\n2. 定理の証明を再現できる。\n3. 構造を説明できる。\n\n:::\n\n::: {#def-main}\n## [概念の名称]\n\n[定義を書く。]\n\n:::\n\n::: {#thm-main}\n## [定理名]\n\n[定理を書く。]\n\n:::\n\n::: {.proof}\n[証明を書く。]\n\n:::",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>数学・物理テンプレート</span>"
+    ]
+  },
+  {
+    "objectID": "template-pages/math-focused.html#参考にする統合サンプル",
+    "href": "template-pages/math-focused.html#参考にする統合サンプル",
+    "title": "数学・物理テンプレート",
+    "section": "参考にする統合サンプル",
+    "text": "参考にする統合サンプル\n\n図解と数学環境",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>数学・物理テンプレート</span>"
+    ]
+  },
+  {
+    "objectID": "template-pages/theory.html",
+    "href": "template-pages/theory.html",
+    "title": "V-S-V レッスンテンプレート",
+    "section": "",
+    "text": "章の骨格\n直感から数式へ導くレッスン向けのテンプレートです。抽象概念をいきなり定義せず、Visual → Symbolic → Verbal の順に組み立てます。 このページは閲覧用です。実際に編集を始めるときは、下のコピー元ファイルを quarto/textbook/_NN_topic.qmd にコピーします。",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>V-S-V レッスンテンプレート</span>"
+    ]
+  },
+  {
+    "objectID": "template-pages/theory.html#章の骨格",
+    "href": "template-pages/theory.html#章の骨格",
+    "title": "V-S-V レッスンテンプレート",
+    "section": "",
+    "text": "# 理論と直感\n\n::: {.callout-note}\n## このレッスンのゴール\n\n1. 直感的な意味を説明できる。\n2. 数式で定義できる。\n3. 具体例で確認できる。\n\n:::\n\n## Visual\n\n[比喩、図解、Mermaid などで説明する。]\n\n## Symbolic\n\n$$\ny = f(x)\n$$\n\n## Verbal\n\n[数式を言葉で読み解く。]",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>V-S-V レッスンテンプレート</span>"
+    ]
+  },
+  {
+    "objectID": "template-pages/theory.html#参考にする統合サンプル",
+    "href": "template-pages/theory.html#参考にする統合サンプル",
+    "title": "V-S-V レッスンテンプレート",
+    "section": "参考にする統合サンプル",
+    "text": "参考にする統合サンプル\n\nレイアウトと callout\n図解と数学環境",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>V-S-V レッスンテンプレート</span>"
+    ]
+  },
+  {
+    "objectID": "template-pages/quarto-features.html",
+    "href": "template-pages/quarto-features.html",
+    "title": "Quarto 機能テンプレート",
+    "section": "",
+    "text": "含めやすい機能\nQuarto の機能をまとめて使う章を作るための copy-paste 元です。機能を短く試したい場合や、教材内に複数の表現を組み合わせたい場合に使います。 このページは閲覧用です。実際に編集を始めるときは、下のコピー元ファイルを quarto/textbook/_NN_topic.qmd にコピーします。",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Quarto 機能テンプレート</span>"
+    ]
+  },
+  {
+    "objectID": "template-pages/quarto-features.html#含めやすい機能",
+    "href": "template-pages/quarto-features.html#含めやすい機能",
+    "title": "Quarto 機能テンプレート",
+    "section": "",
+    "text": "機能\n統合サンプル\n\n\n\n\nMermaid / Graphviz\n図解と数学環境\n\n\ncallout / tabset / grid\nレイアウトと callout\n\n\nfigure / table / lightbox\n図表のレイアウト\n\n\ncitation / footnote / annotation\nテキスト要素と引用\n\n\nQuarto Live / Pyodide\nインタラクティブ・シミュレーション\n\n\nsimulation showcase\nシミュレーション教材",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Quarto 機能テンプレート</span>"
+    ]
+  },
+  {
+    "objectID": "template-pages/quarto-features.html#章の骨格",
+    "href": "template-pages/quarto-features.html#章の骨格",
+    "title": "Quarto 機能テンプレート",
+    "section": "章の骨格",
+    "text": "章の骨格\n# Quarto 機能の章\n\n## レイアウト\n\n::: {.panel-tabset}\n## 視点 A\n[内容]\n\n## 視点 B\n[内容]\n:::\n\n## 図表\n\n![図の説明](../assets/images/example.png){#fig-example fig-alt=\"代替テキスト\"}\n\n## 引用\n\n本文中で @shannon1948 のように引用する。",
+    "crumbs": [
+      "ホーム",
+      "制作者向け",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Quarto 機能テンプレート</span>"
     ]
   }
 ]

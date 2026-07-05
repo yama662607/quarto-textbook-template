@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>論文精読教科書のつくり方 – Your Textbook Title</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../reference/quarto-live.html" rel="next">
+<link href="../reference/features.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-d3066294b2252dfa146dd395ba885c64.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "一致なし",
+    "search-matching-documents-text": "一致した文書",
+    "search-copy-link-title": "検索へのリンクをコピー",
+    "search-hide-matches-text": "追加の検索結果を非表示",
+    "search-more-match-text": "追加の検索結果",
+    "search-more-matches-text": "追加の検索結果",
+    "search-clear-button-title": "消去",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "検索",
+    "search-label": "サーチ"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<!--
+  Quarto Live (filter mode) does not auto-load plotly.js even when a
+  {pyodide} cell uses plotly. Load it from CDN once per page so that
+  mime-type renders (`Plotly.newPlot(...)`) work.
+-->
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+
+
+<link rel="stylesheet" href="../templates/styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Your Textbook Title</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="サーチ"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="ナビゲーションを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../index.html" aria-current="page"> 
+<span class="menu-text">ホーム</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+    <a href="https://github.com/yama662607/quarto-textbook-template/tree/main/quarto/" title="ソースコード" class="quarto-navigation-tool px-1" aria-label="ソースコード"><i class="bi bi-github"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/features.html">リファレンス</a></li><li class="breadcrumb-item"><a href="../reference/paper-deep-dive.html"><span class="chapter-title">論文精読教科書のつくり方</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Your Textbook Title</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">教材</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../textbook/textbook.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Quarto textbook 統合サンプル</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../topics/topic-overview.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">トピック概要ページ</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../topics/paper-deep-dive-page.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">論文精読ページ</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">演習・シミュレーション・補助資料</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../simulations/simulation-page.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">シミュレーションページ</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/exercise-page.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">演習ページ</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../support/support-page.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">補助資料ページ</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">リファレンス</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/features.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Quarto 機能対応表</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/paper-deep-dive.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">論文精読教科書のつくり方</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/quarto-live.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Quarto Live レシピ</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/quarto-modern.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Quarto 最新機能の採用メモ</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">制作者向け</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../template-guide.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">制作者向けガイド</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workflow-guide.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">運用ワークフロー</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../example-map.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">導線サンプル</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../template-catalog.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">章テンプレート一覧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../template-pages/textbook.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">PDF textbook テンプレート</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../template-pages/math-focused.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">数学・物理テンプレート</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../template-pages/theory.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">V-S-V レッスンテンプレート</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../template-pages/quarto-features.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Quarto 機能テンプレート</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">目次</h2>
+   
+  <ul>
+  <li><a href="#論文精読教科書のつくり方編集ガイド" id="toc-論文精読教科書のつくり方編集ガイド" class="nav-link active" data-scroll-target="#論文精読教科書のつくり方編集ガイド">論文精読教科書のつくり方（編集ガイド）</a>
+  <ul class="collapse">
+  <li><a href="#この教科書が目指すもの大事なことの核" id="toc-この教科書が目指すもの大事なことの核" class="nav-link" data-scroll-target="#この教科書が目指すもの大事なことの核">0. この教科書が目指すもの（＝大事なことの核）</a></li>
+  <li><a href="#章の解剖実証済みの型" id="toc-章の解剖実証済みの型" class="nav-link" data-scroll-target="#章の解剖実証済みの型">1. 章の解剖（実証済みの型）</a>
+  <ul class="collapse">
+  <li><a href="#型のねらい" id="toc-型のねらい" class="nav-link" data-scroll-target="#型のねらい">型のねらい</a></li>
+  </ul></li>
+  <li><a href="#制作の工程論文-教科書" id="toc-制作の工程論文-教科書" class="nav-link" data-scroll-target="#制作の工程論文-教科書">2. 制作の工程（論文 → 教科書）</a>
+  <ul class="collapse">
+  <li><a href="#phase-0-準備取り込み" id="toc-phase-0-準備取り込み" class="nav-link" data-scroll-target="#phase-0-準備取り込み">Phase 0 — 準備（取り込み）</a></li>
+  <li><a href="#phase-1-構造を決めきる章割り" id="toc-phase-1-構造を決めきる章割り" class="nav-link" data-scroll-target="#phase-1-構造を決めきる章割り">Phase 1 — 構造を決めきる（章割り）</a></li>
+  <li><a href="#phase-2-章ごとに書くv-s-v-phase-12" id="toc-phase-2-章ごとに書くv-s-v-phase-12" class="nav-link" data-scroll-target="#phase-2-章ごとに書くv-s-v-phase-12">Phase 2 — 章ごとに書く（V-S-V / Phase 1→2）</a></li>
+  <li><a href="#phase-3-対話デモ効く所だけ" id="toc-phase-3-対話デモ効く所だけ" class="nav-link" data-scroll-target="#phase-3-対話デモ効く所だけ">Phase 3 — 対話デモ（効く所だけ）</a></li>
+  <li><a href="#phase-4-検証と公開" id="toc-phase-4-検証と公開" class="nav-link" data-scroll-target="#phase-4-検証と公開">Phase 4 — 検証と公開</a></li>
+  </ul></li>
+  <li><a href="#大事なこと詳細な設計判断" id="toc-大事なこと詳細な設計判断" class="nav-link" data-scroll-target="#大事なこと詳細な設計判断">3. 大事なこと（詳細な設計判断）</a></li>
+  <li><a href="#よくある落とし穴実際に踏んだもの" id="toc-よくある落とし穴実際に踏んだもの" class="nav-link" data-scroll-target="#よくある落とし穴実際に踏んだもの">4. よくある落とし穴（実際に踏んだもの）</a></li>
+  <li><a href="#章ごとの完成チェックリスト" id="toc-章ごとの完成チェックリスト" class="nav-link" data-scroll-target="#章ごとの完成チェックリスト">5. 章ごとの完成チェックリスト</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/yama662607/quarto-textbook-template/edit/main/quarto/reference/paper-deep-dive.qmd" class="toc-action"><i class="bi bi-github"></i>編集</a></li><li><a href="https://github.com/yama662607/quarto-textbook-template/issues/new" class="toc-action"><i class="bi empty"></i>問題を報告</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/features.html">リファレンス</a></li><li class="breadcrumb-item"><a href="../reference/paper-deep-dive.html"><span class="chapter-title">論文精読教科書のつくり方</span></a></li></ol></nav>
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-title">論文精読教科書のつくり方</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> コード</button></div></div>
+<p class="subtitle lead">研究論文を読者が理解できる教科書に変える編集ガイド</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="論文精読教科書のつくり方編集ガイド" class="level1">
+<h1>論文精読教科書のつくり方（編集ガイド）</h1>
+<p>1 本の研究論文を、<strong>読者が本当に理解できる精読教科書</strong>に作り替えるための編集方法論。 「Quarto でどう書くか（機能）」ではなく、「<strong>何を・どういう方針で書くか</strong>（編集判断）」をまとめる。</p>
+<ul>
+<li>機能の書き方 → <a href="../reference/features.html">機能対応表</a>（Quarto 機能 → live demo 対応表）</li>
+<li>ブラウザ内 Python → <a href="../reference/quarto-live.html">Quarto Live レシピ</a>（Pyodide レシピ）</li>
+<li>取り込み・規約・禁止事項 → <code>AGENTS.md</code></li>
+<li><strong>この文書 → 論文を教科書に変える編集の型と工程</strong></li>
+</ul>
+<blockquote class="blockquote">
+<p>実証: この方法論は本テンプレートから起こした <a href="https://yama662607.github.io/ai-descartes-textbook/">AI-Descartes 精読教科書</a> （Nature Communications 論文を全 14 章に精読、CC BY 4.0）で運用し、有効性を確認したもの。 以下の例はそこから採っている。</p>
+</blockquote>
+<hr>
+<section id="この教科書が目指すもの大事なことの核" class="level2">
+<h2 class="anchored" data-anchor-id="この教科書が目指すもの大事なことの核">0. この教科書が目指すもの（＝大事なことの核）</h2>
+<p>論文そのものは、査読・紙面・作法の制約で「<strong>行間</strong>」を大量に飛ばして書かれている。 精読教科書の価値は、論文が割けなかったコストを肩代わりして<strong>行間を埋める</strong>ことにある。 だから章を書くたびに、次の 6 原則に照らす。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>原則</th>
+<th>一言でいうと</th>
+<th>なぜ効くか</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><strong>忠実さ</strong></td>
+<td>核心は原文引用＋忠実訳で固定</td>
+<td>読者が「訳者の解釈」と「原著の主張」を切り分けられる。信頼の錨</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td><strong>行間補完</strong></td>
+<td>論文が省いた定義・動機・導出を足す</td>
+<td>ここが教科書の本体。付加価値の 8 割</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><strong>通し具体例</strong></td>
+<td>1 つの例を全章で使い回す</td>
+<td>抽象概念が毎回「あの例でいうと」で着地する</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><strong>誠実な限界</strong></td>
+<td>できない事・仮定・その後の発展を明示</td>
+<td>過大評価を防ぎ、Q&amp;A と次に読む論文へつながる</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td><strong>意味のある対話</strong></td>
+<td>手を動かすと理解が進む所だけ live 化</td>
+<td>飾りの demo は逆に読者の集中を削る</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td><strong>検証可能性</strong></td>
+<td>図・式・数値・コードを原著と突き合わせる</td>
+<td>教科書の誤りは原著の誤解として伝播する。最優先</td>
+</tr>
+</tbody>
+</table>
+<p><strong>アンチパターン</strong>: 逐語訳をただ並べる／引用で紙面を埋める／全部を live demo にする／ 「限界」章を省く／図を低解像度のまま貼る。いずれも「読めるが分からない」教科書になる。</p>
+<hr>
+</section>
+<section id="章の解剖実証済みの型" class="level2">
+<h2 class="anchored" data-anchor-id="章の解剖実証済みの型">1. 章の解剖（実証済みの型）</h2>
+<p>AI-Descartes 教科書の各章はほぼ同じ骨格でできている。この型をコピーして中身を差し替える。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## 節タイトル {#sec-xxx}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true"}</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">## 原文（抜粋, English）</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; "核心となる 1〜3 文だけを原文で引用する。" — Author et al. YEAR </span><span class="co">[</span><span class="ot">@bibkey</span><span class="co">]</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">### 忠実な日本語訳</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>（上の引用に対応する自然な日本語訳。記号・式・固有名詞は原形のまま。</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>逐語ではなく、意味を落とさず日本語として読める訳にする。）</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>!<span class="co">[</span><span class="ot">図1 | キャプション（出典: Author et al. YEAR, Fig. 1, CC BY 4.0 [@bibkey]）</span><span class="co">](../assets/images/fig1.png)</span>{#fig-xxx}</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">### 詳細授業：なぜこれが必要なのか {#sec-xxx-why}</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## 直観：〜</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>（数式に入る前に、日常語で「何をやりたいのか」を 3〜5 行で。）</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 登場する対象を整理する</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 記号 <span class="pp">|</span> 名称 <span class="pp">|</span> 何か <span class="pp">|</span> 図での表現 <span class="pp">|</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="pp">| ---</span> <span class="pp">| ---</span> <span class="pp">| ---</span> <span class="pp">| ---</span> <span class="pp">|</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $f$  <span class="pp">|</span> 発見モデル <span class="pp">|</span> … <span class="pp">|</span> 灰色の多様体 <span class="pp">|</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>::: {#def-xxx}</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>**定義（〜）.** （論文が暗黙に使っている定義を明示的に書き下す。）</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>$$ \beta(f)=0 \iff f \text{ is derivable from } B $$ {#eq-xxx}</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>（「なぜ」「どこで効くか」を、前後の章への相互参照 @sec-… / @fig-… / @eq-… で張る。）</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="型のねらい" class="level3">
+<h3 class="anchored" data-anchor-id="型のねらい">型のねらい</h3>
+<ul>
+<li><strong>原文は「畳む」</strong>（<code>collapse="true"</code>）。読者は普段は訳を読み、疑ったときだけ原文を開ける。 引用は<strong>核心 1〜3 文まで</strong>。段落ごと引用しない（それは翻訳であって精読ではない）。</li>
+<li><strong>図には必ず出典</strong>（<code>出典: … , CC BY 4.0 [@bibkey]</code>）。ライセンスの尊重かつ信頼の担保。 図のキャプション自体も、原文引用＋忠実訳で二重化すると誤読が消える。</li>
+<li><strong>詳細授業</strong>が本体。①直観 callout → ②記号の対応表 → ③明示的な定義（<code>{#def-}</code>）→ ④式（<code>{#eq-}</code> で番号）→ ⑤前後章への相互参照、の順で「行間」を埋める。</li>
+<li>相互参照（<code>@sec-</code> <code>@fig-</code> <code>@eq-</code> <code>@tbl-</code>）を<strong>多めに</strong>張ると、本全体が 1 枚の地図になる。</li>
+</ul>
+<blockquote class="blockquote">
+<p>テンプレの出発点: 数式・定理中心の章は <a href="../template-pages/theory.html">V-S-V レッスンテンプレート</a>（V-S-V）、 PDF を訳しながら起こす章は <a href="../template-pages/textbook.html">PDF textbook テンプレート</a>（Phase 1/2）を <code>cp</code> して書き始める。</p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="制作の工程論文-教科書" class="level2">
+<h2 class="anchored" data-anchor-id="制作の工程論文-教科書">2. 制作の工程（論文 → 教科書）</h2>
+<section id="phase-0-準備取り込み" class="level3">
+<h3 class="anchored" data-anchor-id="phase-0-準備取り込み">Phase 0 — 準備（取り込み）</h3>
+<ol type="1">
+<li><code>just extract-pdf &lt;pdf&gt; &lt;start&gt; &lt;end&gt;</code> で画像化 + text/OCR/LaTeX 抽出。</li>
+<li><strong>出力 PNG を 1 ページずつ Read で視認</strong>（AGENTS.md の必須手順）。 text と LaTeX だけでは図表配置・式番号・OCR 誤読を必ず取りこぼす。</li>
+<li>図は高解像度でクロップして <code>quarto/assets/images/</code> に置く（低解像度のまま貼らない）。 出典行に元 Fig 番号と CC ライセンスを記録しておく。</li>
+</ol>
+</section>
+<section id="phase-1-構造を決めきる章割り" class="level3">
+<h3 class="anchored" data-anchor-id="phase-1-構造を決めきる章割り">Phase 1 — 構造を決めきる（章割り）</h3>
+<p><strong>執筆前に、全章の構成を確定する。</strong> ここを詰めきると各章は独立に書ける。</p>
+<ul>
+<li><p><strong>論文の構造に沿って章立てする</strong>（Abstract / Intro / Results / Discussion / Methods / 付録）。 読者が原論文と往復できる。AI-Descartes 教科書の例:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>部</th>
+<th>章</th>
+<th>対応</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>第 I 部 導入と全体像</td>
+<td>00 全体像・01 Abstract・02 Introduction</td>
+<td>論文の入口</td>
+</tr>
+<tr class="even">
+<td>第 II 部 枠組み</td>
+<td>03 問題設定・04 距離(ε/β)・05 統合・06 相互作用・07 検証</td>
+<td>Results</td>
+</tr>
+<tr class="odd">
+<td>第 III 部 考察</td>
+<td>08 Discussion</td>
+<td>Discussion</td>
+</tr>
+<tr class="even">
+<td>第 IV 部 事例研究</td>
+<td>09 Kepler・10 時間の遅れ・11 Langmuir・12 限界</td>
+<td>Methods</td>
+</tr>
+<tr class="odd">
+<td>第 V 部 付録</td>
+<td>13 付録</td>
+<td>難所の隔離先</td>
+</tr>
+</tbody>
+</table></li>
+<li><p><strong>通し具体例を 1 つ選ぶ</strong>（AI-Descartes では Kepler の第三法則）。抽象概念を導入するたびに、 この例で必ず着地させる。全章で使い回す。</p></li>
+<li><p><strong>難所は付録へ隔離する</strong>。完全性・Gödel・重い証明など、本筋を止める話題は本編から追い出し、 付録に 1 節作って「深入りしたい人だけどうぞ」にする。本編の流れを守るのが最優先。</p></li>
+<li><p><strong>伏線と回収を設計する</strong>。序盤で投げた問い（例: 「当てはまるだけでは足りない」）を、 事例章で回収する。教科書に物語の背骨が通る。</p></li>
+</ul>
+</section>
+<section id="phase-2-章ごとに書くv-s-v-phase-12" class="level3">
+<h3 class="anchored" data-anchor-id="phase-2-章ごとに書くv-s-v-phase-12">Phase 2 — 章ごとに書く（V-S-V / Phase 1→2）</h3>
+<p>1 章 = 1 パーシャル（<code>_NN-title.qmd</code>）。本テンプレの 2 つの流儀を使い分ける。</p>
+<ul>
+<li><strong>忠実翻訳 → 解説拡充</strong>（<code>textbook_template.qmd</code>）: まず定義・定理・式番号を<strong>省略禁止</strong>で 忠実訳（Phase 1）、その上に直観・図解・行間補完を重ねる（Phase 2）。</li>
+<li><strong>V-S-V</strong>（<code>theory_template.qmd</code>）: Visual（直観・図）→ Symbolic（数式）→ Verify（例・クイズ）の順。 数式が主役の章向き。</li>
+</ul>
+<blockquote class="blockquote">
+<p>パーシャル統合: 章本文は <code>_NN-*.qmd</code> に分割し、<code>{{&lt; include &gt;}}</code> で本に統合する （single source of truth の運用は AGENTS.md を参照）。</p>
+</blockquote>
+</section>
+<section id="phase-3-対話デモ効く所だけ" class="level3">
+<h3 class="anchored" data-anchor-id="phase-3-対話デモ効く所だけ">Phase 3 — 対話デモ（効く所だけ）</h3>
+<p>「スライダーを動かすと分かる」箇所だけを Quarto Live 化する（原則 6 のうち 5）。 <strong>手順・落とし穴は <a href="../reference/quarto-live.html">Quarto Live レシピ</a> と <code>AGENTS.md</code> に集約済み</strong>なので必ず先に読む。要点だけ:</p>
+<ul>
+<li>追加パッケージは<strong>親 qmd の YAML <code>pyodide.packages</code></strong> で宣言（セル内 <code>micropip.install</code> は禁止）。</li>
+<li>日本語フォントは描画セル先頭で <code>pyfetch</code>→<code>addfont</code>（別セルにしない）。</li>
+<li><strong><code>font.family</code> を日本語にすると mathtext の <code>$\sqrt{}$</code> が豆腐化する</strong> → <code>mathtext.fontset="cm"</code> を入れ、 ラベルの <code>\sqrt{X}</code> は <code>(X)^{1/2}</code> に書き換える（Pyodide の matplotlib は根号中身を描けない）。</li>
+</ul>
+</section>
+<section id="phase-4-検証と公開" class="level3">
+<h3 class="anchored" data-anchor-id="phase-4-検証と公開">Phase 4 — 検証と公開</h3>
+<ul>
+<li><code>just check</code> で品質確認、<code>just docs</code>（<code>http://localhost:4312</code>）でプレビュー。</li>
+<li><strong>図・式・数値を原著と突き合わせる</strong>（原則 6）。特に数値と式番号は 1 つずつ照合。</li>
+<li>GitHub Pages へ公開（CI は <code>.github/workflows/publish.yml</code>）。</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="大事なこと詳細な設計判断" class="level2">
+<h2 class="anchored" data-anchor-id="大事なこと詳細な設計判断">3. 大事なこと（詳細な設計判断）</h2>
+<p>工程には現れにくいが、質を分ける判断。</p>
+<ul>
+<li><strong>引用は最小・訳は主</strong>。原文は疑ったとき用の錨として畳んでおき、読者が読むのは忠実訳。 「原文の壁」を作らない。</li>
+<li><strong>忠実訳 ≠ 逐語訳</strong>。数式・記号・固有名詞（<code>KeYmaera X</code>, <code>BARON</code>, <code>Kepler</code> …）は原形、 散文は自然な日本語に。訳し崩さず、日本語として読めること。</li>
+<li><strong>行間補完の作法</strong>: (a) 論文が暗黙に使う定義を <code>{#def-}</code> で<strong>明示化</strong>する、
+<ol start="2" type="a">
+<li>紛らわしい記号は<strong>対応表</strong>にする、(c) 数式の前に<strong>直観 callout</strong>、</li>
+<li>「なぜ必要か」「どこで効くか」を<strong>前後章の相互参照</strong>で示す。</li>
+</ol></li>
+<li><strong>通し例は徹底して使い回す</strong>。新概念 → 必ず通し例で具体化 → 抽象へ戻す。</li>
+<li><strong>誠実な限界を 1 章</strong>置く。仮定・スケール限界・再現に要る商用ソルバ等を隠さない。 その後の発展（続く論文・系譜）を添えると「次に読む 1 本」に自然につながる。</li>
+<li><strong>表は画像でなく実 Markdown 表</strong>にして <code>#tbl-</code> を付ける（画像は <code>#fig-</code>）。検索・引用・改訂に効く。</li>
+<li><strong>ライセンスを尊重</strong>。CC BY 等なら出典明記で翻訳・図の再掲が可能。出典行を機械的に全図へ。</li>
+</ul>
+<hr>
+</section>
+<section id="よくある落とし穴実際に踏んだもの" class="level2">
+<h2 class="anchored" data-anchor-id="よくある落とし穴実際に踏んだもの">4. よくある落とし穴（実際に踏んだもの）</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>症状</th>
+<th>原因</th>
+<th>対処</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>対話章が何も描画しない</td>
+<td>親 qmd の YAML に <code>pyodide.packages</code> 未宣言で import 失敗</td>
+<td><code>pyodide.packages: [numpy, matplotlib, …]</code> を親に宣言（<a href="../reference/quarto-live.html">Quarto Live レシピ</a>）</td>
+</tr>
+<tr class="even">
+<td>数式ラベルの根号が黒箱（豆腐）</td>
+<td>日本語 <code>font.family</code> で mathtext が壊れる</td>
+<td><code>mathtext.fontset="cm"</code> ＋ <code>\sqrt{X}</code>→<code>(X)^{1/2}</code></td>
+</tr>
+<tr class="odd">
+<td>図がぼやける／文字が読めない</td>
+<td>低解像度のまま貼付</td>
+<td>pdftoppm / magick で高 dpi クロップ、PNG を Read で視認してから貼る</td>
+</tr>
+<tr class="even">
+<td>式番号・図配置がズレる</td>
+<td>text＋LaTeX だけで qmd 化した</td>
+<td><code>extract-pdf</code> の PNG を 1 枚ずつ Read（AGENTS.md の必須レビュー）</td>
+</tr>
+<tr class="odd">
+<td>出典が抜ける</td>
+<td>図を貼る時に出典行を忘れる</td>
+<td>図キャプションのテンプレに <code>出典: …, CC BY 4.0 [@key]</code> を最初から入れておく</td>
+</tr>
+<tr class="even">
+<td>本編が難所で止まる</td>
+<td>完全性・重い証明を本文に置いた</td>
+<td>付録へ隔離し、本文からは 1 行＋<code>@sec-appendix</code> 参照だけ</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="章ごとの完成チェックリスト" class="level2">
+<h2 class="anchored" data-anchor-id="章ごとの完成チェックリスト">5. 章ごとの完成チェックリスト</h2>
+<p>各章を「完了」にする前に:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">核心の原文引用（1〜3 文）を <code>collapse="true"</code> の callout に入れた</label></li>
+<li><label><input type="checkbox">対応する忠実訳がある（記号・式・固有名詞は原形）</label></li>
+<li><label><input type="checkbox">図に出典行（元 Fig 番号 + ライセンス + <code>[@key]</code>）がある／高解像度である</label></li>
+<li><label><input type="checkbox">論文が暗黙に使う定義を <code>{#def-}</code> で明示した</label></li>
+<li><label><input type="checkbox">紛らわしい記号を対応表にした</label></li>
+<li><label><input type="checkbox">数式の前に直観 callout を置いた</label></li>
+<li><label><input type="checkbox">通し具体例で 1 度は着地させた</label></li>
+<li><label><input type="checkbox">前後章への相互参照（<code>@sec-</code> <code>@fig-</code> <code>@eq-</code> <code>@tbl-</code>）を張った</label></li>
+<li><label><input type="checkbox">数値・式番号を原著と 1 つずつ照合した</label></li>
+<li><label><input type="checkbox">難所は付録に逃がした（本文は要点＋参照のみ）</label></li>
+<li><label><input type="checkbox"><code>just check</code> と <code>just docs</code> を通した</label></li>
+</ul>
+
+
+<!-- -->
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const desktopQuery = window.matchMedia('(min-width: 992px)');
+  const rightSidebar = document.getElementById('quarto-margin-sidebar');
+
+  if (!rightSidebar) {
+    return;
+  }
+
+  const btn = document.createElement('button');
+  btn.id = 'right-sidebar-toggle';
+  btn.type = 'button';
+  btn.setAttribute('aria-controls', 'quarto-margin-sidebar');
+  document.body.appendChild(btn);
+
+  let collapsed = false;
+
+  function resetSidebar() {
+    rightSidebar.style.width = '';
+    rightSidebar.style.minWidth = '';
+    rightSidebar.style.overflow = '';
+    rightSidebar.style.padding = '';
+  }
+
+  function setButtonState() {
+    btn.hidden = !desktopQuery.matches;
+
+    if (!desktopQuery.matches) {
+      resetSidebar();
+      return;
+    }
+
+    const rect = rightSidebar.getBoundingClientRect();
+    btn.innerHTML = collapsed ? '&#8249;' : '&#8250;';
+    btn.setAttribute('aria-expanded', String(!collapsed));
+    btn.setAttribute('aria-label', collapsed ? '目次を開く' : '目次を折りたたむ');
+    btn.style.left = collapsed ? (window.innerWidth - 18) + 'px' : (rect.left - 24) + 'px';
+  }
+
+  function collapseSidebar() {
+    rightSidebar.style.width = '0';
+    rightSidebar.style.minWidth = '0';
+    rightSidebar.style.overflow = 'hidden';
+    rightSidebar.style.padding = '0';
+    collapsed = true;
+    setButtonState();
+  }
+
+  function expandSidebar() {
+    resetSidebar();
+    collapsed = false;
+    requestAnimationFrame(setButtonState);
+  }
+
+  btn.addEventListener('click', function () {
+    if (!desktopQuery.matches) {
+      return;
+    }
+    if (collapsed) {
+      expandSidebar();
+    } else {
+      collapseSidebar();
+    }
+  });
+
+  desktopQuery.addEventListener('change', setButtonState);
+  window.addEventListener('resize', setButtonState);
+  setButtonState();
+});
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "コピーしました");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "コピーしました");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../reference/features.html" class="pagination-link" aria-label="Quarto 機能対応表">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Quarto 機能対応表</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../reference/quarto-live.html" class="pagination-link" aria-label="Quarto Live レシピ">
+        <span class="nav-page-text"><span class="chapter-title">Quarto Live レシピ</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">ソースコード</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "論文精読教科書のつくり方"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "研究論文を読者が理解できる教科書に変える編集ガイド"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu"># 論文精読教科書のつくり方（編集ガイド）</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>1 本の研究論文を、**読者が本当に理解できる精読教科書**に作り替えるための編集方法論。</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>「Quarto でどう書くか（機能）」ではなく、「**何を・どういう方針で書くか**（編集判断）」をまとめる。</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>機能の書き方 → <span class="co">[</span><span class="ot">機能対応表</span><span class="co">](features.qmd)</span>（Quarto 機能 → live demo 対応表）</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>ブラウザ内 Python → <span class="co">[</span><span class="ot">Quarto Live レシピ</span><span class="co">](quarto-live.qmd)</span>（Pyodide レシピ）</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>取り込み・規約・禁止事項 → <span class="in">`AGENTS.md`</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**この文書 → 論文を教科書に変える編集の型と工程**</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 実証: この方法論は本テンプレートから起こした</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; </span><span class="co">[</span><span class="ot">AI-Descartes 精読教科書</span><span class="co">](https://yama662607.github.io/ai-descartes-textbook/)</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; （Nature Communications 論文を全 14 章に精読、CC BY 4.0）で運用し、有効性を確認したもの。</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 以下の例はそこから採っている。</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="fu">## 0. この教科書が目指すもの（＝大事なことの核）</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>論文そのものは、査読・紙面・作法の制約で「**行間**」を大量に飛ばして書かれている。</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>精読教科書の価値は、論文が割けなかったコストを肩代わりして**行間を埋める**ことにある。</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>だから章を書くたびに、次の 6 原則に照らす。</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> # <span class="pp">|</span> 原則 <span class="pp">|</span> 一言でいうと <span class="pp">|</span> なぜ効くか <span class="pp">|</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="pp">| ---</span> <span class="pp">| ---</span> <span class="pp">| ---</span> <span class="pp">| ---</span> <span class="pp">|</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 1 <span class="pp">|</span> **忠実さ** <span class="pp">|</span> 核心は原文引用＋忠実訳で固定 <span class="pp">|</span> 読者が「訳者の解釈」と「原著の主張」を切り分けられる。信頼の錨 <span class="pp">|</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2 <span class="pp">|</span> **行間補完** <span class="pp">|</span> 論文が省いた定義・動機・導出を足す <span class="pp">|</span> ここが教科書の本体。付加価値の 8 割 <span class="pp">|</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 3 <span class="pp">|</span> **通し具体例** <span class="pp">|</span> 1 つの例を全章で使い回す <span class="pp">|</span> 抽象概念が毎回「あの例でいうと」で着地する <span class="pp">|</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 4 <span class="pp">|</span> **誠実な限界** <span class="pp">|</span> できない事・仮定・その後の発展を明示 <span class="pp">|</span> 過大評価を防ぎ、Q&amp;A と次に読む論文へつながる <span class="pp">|</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 5 <span class="pp">|</span> **意味のある対話** <span class="pp">|</span> 手を動かすと理解が進む所だけ live 化 <span class="pp">|</span> 飾りの demo は逆に読者の集中を削る <span class="pp">|</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 6 <span class="pp">|</span> **検証可能性** <span class="pp">|</span> 図・式・数値・コードを原著と突き合わせる <span class="pp">|</span> 教科書の誤りは原著の誤解として伝播する。最優先 <span class="pp">|</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>**アンチパターン**: 逐語訳をただ並べる／引用で紙面を埋める／全部を live demo にする／</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>「限界」章を省く／図を低解像度のまま貼る。いずれも「読めるが分からない」教科書になる。</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="fu">## 1. 章の解剖（実証済みの型）</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>AI-Descartes 教科書の各章はほぼ同じ骨格でできている。この型をコピーして中身を差し替える。</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="in">```markdown</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="fu">## 節タイトル {#sec-xxx}</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true"}</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="fu">## 原文（抜粋, English）</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; "核心となる 1〜3 文だけを原文で引用する。" — Author et al. YEAR </span><span class="co">[</span><span class="ot">@bibkey</span><span class="co">]</span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="fu">### 忠実な日本語訳</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>（上の引用に対応する自然な日本語訳。記号・式・固有名詞は原形のまま。</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>逐語ではなく、意味を落とさず日本語として読める訳にする。）</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>!<span class="co">[</span><span class="ot">図1 | キャプション（出典: Author et al. YEAR, Fig. 1, CC BY 4.0 [@bibkey]）</span><span class="co">](../assets/images/fig1.png)</span>{#fig-xxx}</span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="fu">### 詳細授業：なぜこれが必要なのか {#sec-xxx-why}</span></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="fu">## 直観：〜</span></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>（数式に入る前に、日常語で「何をやりたいのか」を 3〜5 行で。）</span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 登場する対象を整理する</span></span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 記号 <span class="pp">|</span> 名称 <span class="pp">|</span> 何か <span class="pp">|</span> 図での表現 <span class="pp">|</span></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a><span class="pp">| ---</span> <span class="pp">| ---</span> <span class="pp">| ---</span> <span class="pp">| ---</span> <span class="pp">|</span></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $f$  <span class="pp">|</span> 発見モデル <span class="pp">|</span> … <span class="pp">|</span> 灰色の多様体 <span class="pp">|</span></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>::: {#def-xxx}</span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>**定義（〜）.** （論文が暗黙に使っている定義を明示的に書き下す。）</span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>$$ \beta(f)=0 \iff f \text{ is derivable from } B $$ {#eq-xxx}</span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>（「なぜ」「どこで効くか」を、前後の章への相互参照 @sec-… / @fig-… / @eq-… で張る。）</span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a><span class="fu">### 型のねらい</span></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**原文は「畳む」**（<span class="in">`collapse="true"`</span>）。読者は普段は訳を読み、疑ったときだけ原文を開ける。</span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>  引用は**核心 1〜3 文まで**。段落ごと引用しない（それは翻訳であって精読ではない）。</span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**図には必ず出典**（<span class="in">`出典: … , CC BY 4.0 [@bibkey]`</span>）。ライセンスの尊重かつ信頼の担保。</span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>  図のキャプション自体も、原文引用＋忠実訳で二重化すると誤読が消える。</span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**詳細授業**が本体。①直観 callout → ②記号の対応表 → ③明示的な定義（<span class="in">`{#def-}`</span>）→</span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>  ④式（<span class="in">`{#eq-}`</span> で番号）→ ⑤前後章への相互参照、の順で「行間」を埋める。</span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>相互参照（<span class="in">`@sec-`</span> <span class="in">`@fig-`</span> <span class="in">`@eq-`</span> <span class="in">`@tbl-`</span>）を**多めに**張ると、本全体が 1 枚の地図になる。</span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; テンプレの出発点: 数式・定理中心の章は</span></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; </span><span class="co">[</span><span class="ot">V-S-V レッスンテンプレート</span><span class="co">](../template-pages/theory.qmd)</span><span class="at">（V-S-V）、</span></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; PDF を訳しながら起こす章は</span></span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; </span><span class="co">[</span><span class="ot">PDF textbook テンプレート</span><span class="co">](../template-pages/textbook.qmd)</span><span class="at">（Phase 1/2）を</span></span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; </span><span class="in">`cp`</span><span class="at"> して書き始める。</span></span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a><span class="fu">## 2. 制作の工程（論文 → 教科書）</span></span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a><span class="fu">### Phase 0 — 準備（取り込み）</span></span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span><span class="in">`just extract-pdf &lt;pdf&gt; &lt;start&gt; &lt;end&gt;`</span> で画像化 + text/OCR/LaTeX 抽出。</span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**出力 PNG を 1 ページずつ Read で視認**（AGENTS.md の必須手順）。</span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>   text と LaTeX だけでは図表配置・式番号・OCR 誤読を必ず取りこぼす。</span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>図は高解像度でクロップして <span class="in">`quarto/assets/images/`</span> に置く（低解像度のまま貼らない）。</span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>   出典行に元 Fig 番号と CC ライセンスを記録しておく。</span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a><span class="fu">### Phase 1 — 構造を決めきる（章割り）</span></span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>**執筆前に、全章の構成を確定する。** ここを詰めきると各章は独立に書ける。</span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**論文の構造に沿って章立てする**（Abstract / Intro / Results / Discussion / Methods / 付録）。</span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a>  読者が原論文と往復できる。AI-Descartes 教科書の例:</span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a>  | 部 | 章 | 対応 |</span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a>  | --- | --- | --- |</span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a>  | 第 I 部 導入と全体像 | 00 全体像・01 Abstract・02 Introduction | 論文の入口 |</span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a>  | 第 II 部 枠組み | 03 問題設定・04 距離(ε/β)・05 統合・06 相互作用・07 検証 | Results |</span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a>  | 第 III 部 考察 | 08 Discussion | Discussion |</span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a>  | 第 IV 部 事例研究 | 09 Kepler・10 時間の遅れ・11 Langmuir・12 限界 | Methods |</span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>  | 第 V 部 付録 | 13 付録 | 難所の隔離先 |</span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**通し具体例を 1 つ選ぶ**（AI-Descartes では Kepler の第三法則）。抽象概念を導入するたびに、</span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a>  この例で必ず着地させる。全章で使い回す。</span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**難所は付録へ隔離する**。完全性・Gödel・重い証明など、本筋を止める話題は本編から追い出し、</span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>  付録に 1 節作って「深入りしたい人だけどうぞ」にする。本編の流れを守るのが最優先。</span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**伏線と回収を設計する**。序盤で投げた問い（例: 「当てはまるだけでは足りない」）を、</span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a>  事例章で回収する。教科書に物語の背骨が通る。</span>
+<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a><span class="fu">### Phase 2 — 章ごとに書く（V-S-V / Phase 1→2）</span></span>
+<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a>1 章 = 1 パーシャル（<span class="in">`_NN-title.qmd`</span>）。本テンプレの 2 つの流儀を使い分ける。</span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**忠実翻訳 → 解説拡充**（`textbook_template.qmd`）: まず定義・定理・式番号を**省略禁止**で</span>
+<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a>  忠実訳（Phase 1）、その上に直観・図解・行間補完を重ねる（Phase 2）。</span>
+<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**V-S-V**（<span class="in">`theory_template.qmd`</span>）: Visual（直観・図）→ Symbolic（数式）→ Verify（例・クイズ）の順。</span>
+<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a>  数式が主役の章向き。</span>
+<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; パーシャル統合: 章本文は </span><span class="in">`_NN-*.qmd`</span><span class="at"> に分割し、</span><span class="in">`{{&lt; include &gt;}}`</span><span class="at"> で本に統合する</span></span>
+<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; （single source of truth の運用は AGENTS.md を参照）。</span></span>
+<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a><span class="fu">### Phase 3 — 対話デモ（効く所だけ）</span></span>
+<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a>「スライダーを動かすと分かる」箇所だけを Quarto Live 化する（原則 6 のうち 5）。</span>
+<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a>**手順・落とし穴は [Quarto Live レシピ](quarto-live.qmd) と `AGENTS.md` に集約済み**なので必ず先に読む。要点だけ:</span>
+<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>追加パッケージは**親 qmd の YAML `pyodide.packages`** で宣言（セル内 <span class="in">`micropip.install`</span> は禁止）。</span>
+<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>日本語フォントは描画セル先頭で <span class="in">`pyfetch`</span>→<span class="in">`addfont`</span>（別セルにしない）。</span>
+<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`font.family` を日本語にすると mathtext の `$\sqrt{}$` が豆腐化する** → <span class="in">`mathtext.fontset="cm"`</span> を入れ、</span>
+<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a>  ラベルの <span class="in">`\sqrt{X}`</span> は <span class="in">`(X)^{1/2}`</span> に書き換える（Pyodide の matplotlib は根号中身を描けない）。</span>
+<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a><span class="fu">### Phase 4 — 検証と公開</span></span>
+<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`just check`</span> で品質確認、<span class="in">`just docs`</span>（<span class="in">`http://localhost:4312`</span>）でプレビュー。</span>
+<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**図・式・数値を原著と突き合わせる**（原則 6）。特に数値と式番号は 1 つずつ照合。</span>
+<span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>GitHub Pages へ公開（CI は <span class="in">`.github/workflows/publish.yml`</span>）。</span>
+<span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-165"><a href="#cb2-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-166"><a href="#cb2-166" aria-hidden="true" tabindex="-1"></a><span class="fu">## 3. 大事なこと（詳細な設計判断）</span></span>
+<span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-168"><a href="#cb2-168" aria-hidden="true" tabindex="-1"></a>工程には現れにくいが、質を分ける判断。</span>
+<span id="cb2-169"><a href="#cb2-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-170"><a href="#cb2-170" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**引用は最小・訳は主**。原文は疑ったとき用の錨として畳んでおき、読者が読むのは忠実訳。</span>
+<span id="cb2-171"><a href="#cb2-171" aria-hidden="true" tabindex="-1"></a>  「原文の壁」を作らない。</span>
+<span id="cb2-172"><a href="#cb2-172" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**忠実訳 ≠ 逐語訳**。数式・記号・固有名詞（<span class="in">`KeYmaera X`</span>, <span class="in">`BARON`</span>, <span class="in">`Kepler`</span> …）は原形、</span>
+<span id="cb2-173"><a href="#cb2-173" aria-hidden="true" tabindex="-1"></a>  散文は自然な日本語に。訳し崩さず、日本語として読めること。</span>
+<span id="cb2-174"><a href="#cb2-174" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**行間補完の作法**: (a) 論文が暗黙に使う定義を `{#def-}` で**明示化**する、</span>
+<span id="cb2-175"><a href="#cb2-175" aria-hidden="true" tabindex="-1"></a>  (b) 紛らわしい記号は**対応表**にする、(c) 数式の前に**直観 callout**、</span>
+<span id="cb2-176"><a href="#cb2-176" aria-hidden="true" tabindex="-1"></a>  (d) 「なぜ必要か」「どこで効くか」を**前後章の相互参照**で示す。</span>
+<span id="cb2-177"><a href="#cb2-177" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**通し例は徹底して使い回す**。新概念 → 必ず通し例で具体化 → 抽象へ戻す。</span>
+<span id="cb2-178"><a href="#cb2-178" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**誠実な限界を 1 章**置く。仮定・スケール限界・再現に要る商用ソルバ等を隠さない。</span>
+<span id="cb2-179"><a href="#cb2-179" aria-hidden="true" tabindex="-1"></a>  その後の発展（続く論文・系譜）を添えると「次に読む 1 本」に自然につながる。</span>
+<span id="cb2-180"><a href="#cb2-180" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**表は画像でなく実 Markdown 表**にして <span class="in">`#tbl-`</span> を付ける（画像は <span class="in">`#fig-`</span>）。検索・引用・改訂に効く。</span>
+<span id="cb2-181"><a href="#cb2-181" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**ライセンスを尊重**。CC BY 等なら出典明記で翻訳・図の再掲が可能。出典行を機械的に全図へ。</span>
+<span id="cb2-182"><a href="#cb2-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-183"><a href="#cb2-183" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-184"><a href="#cb2-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-185"><a href="#cb2-185" aria-hidden="true" tabindex="-1"></a><span class="fu">## 4. よくある落とし穴（実際に踏んだもの）</span></span>
+<span id="cb2-186"><a href="#cb2-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-187"><a href="#cb2-187" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 症状 <span class="pp">|</span> 原因 <span class="pp">|</span> 対処 <span class="pp">|</span></span>
+<span id="cb2-188"><a href="#cb2-188" aria-hidden="true" tabindex="-1"></a><span class="pp">| ---</span> <span class="pp">| ---</span> <span class="pp">| ---</span> <span class="pp">|</span></span>
+<span id="cb2-189"><a href="#cb2-189" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 対話章が何も描画しない <span class="pp">|</span> 親 qmd の YAML に <span class="in">`pyodide.packages`</span> 未宣言で import 失敗 <span class="pp">|</span> <span class="in">`pyodide.packages: [numpy, matplotlib, …]`</span> を親に宣言（<span class="co">[</span><span class="ot">Quarto Live レシピ</span><span class="co">](quarto-live.qmd)</span>） <span class="pp">|</span></span>
+<span id="cb2-190"><a href="#cb2-190" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 数式ラベルの根号が黒箱（豆腐） <span class="pp">|</span> 日本語 <span class="in">`font.family`</span> で mathtext が壊れる <span class="pp">|</span> <span class="in">`mathtext.fontset="cm"`</span> ＋ <span class="in">`\sqrt{X}`</span>→<span class="in">`(X)^{1/2}`</span> <span class="pp">|</span></span>
+<span id="cb2-191"><a href="#cb2-191" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 図がぼやける／文字が読めない <span class="pp">|</span> 低解像度のまま貼付 <span class="pp">|</span> pdftoppm / magick で高 dpi クロップ、PNG を Read で視認してから貼る <span class="pp">|</span></span>
+<span id="cb2-192"><a href="#cb2-192" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 式番号・図配置がズレる <span class="pp">|</span> text＋LaTeX だけで qmd 化した <span class="pp">|</span> <span class="in">`extract-pdf`</span> の PNG を 1 枚ずつ Read（AGENTS.md の必須レビュー） <span class="pp">|</span></span>
+<span id="cb2-193"><a href="#cb2-193" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 出典が抜ける <span class="pp">|</span> 図を貼る時に出典行を忘れる <span class="pp">|</span> 図キャプションのテンプレに <span class="in">`出典: …, CC BY 4.0 [@key]`</span> を最初から入れておく <span class="pp">|</span></span>
+<span id="cb2-194"><a href="#cb2-194" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 本編が難所で止まる <span class="pp">|</span> 完全性・重い証明を本文に置いた <span class="pp">|</span> 付録へ隔離し、本文からは 1 行＋<span class="in">`@sec-appendix`</span> 参照だけ <span class="pp">|</span></span>
+<span id="cb2-195"><a href="#cb2-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-196"><a href="#cb2-196" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-197"><a href="#cb2-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-198"><a href="#cb2-198" aria-hidden="true" tabindex="-1"></a><span class="fu">## 5. 章ごとの完成チェックリスト</span></span>
+<span id="cb2-199"><a href="#cb2-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-200"><a href="#cb2-200" aria-hidden="true" tabindex="-1"></a>各章を「完了」にする前に:</span>
+<span id="cb2-201"><a href="#cb2-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-202"><a href="#cb2-202" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> 核心の原文引用（1〜3 文）を <span class="in">`collapse="true"`</span> の callout に入れた</span>
+<span id="cb2-203"><a href="#cb2-203" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> 対応する忠実訳がある（記号・式・固有名詞は原形）</span>
+<span id="cb2-204"><a href="#cb2-204" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> 図に出典行（元 Fig 番号 + ライセンス + <span class="in">`[@key]`</span>）がある／高解像度である</span>
+<span id="cb2-205"><a href="#cb2-205" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> 論文が暗黙に使う定義を <span class="in">`{#def-}`</span> で明示した</span>
+<span id="cb2-206"><a href="#cb2-206" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> 紛らわしい記号を対応表にした</span>
+<span id="cb2-207"><a href="#cb2-207" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> 数式の前に直観 callout を置いた</span>
+<span id="cb2-208"><a href="#cb2-208" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> 通し具体例で 1 度は着地させた</span>
+<span id="cb2-209"><a href="#cb2-209" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> 前後章への相互参照（<span class="in">`@sec-`</span> <span class="in">`@fig-`</span> <span class="in">`@eq-`</span> <span class="in">`@tbl-`</span>）を張った</span>
+<span id="cb2-210"><a href="#cb2-210" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> 数値・式番号を原著と 1 つずつ照合した</span>
+<span id="cb2-211"><a href="#cb2-211" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> 難所は付録に逃がした（本文は要点＋参照のみ）</span>
+<span id="cb2-212"><a href="#cb2-212" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> <span class="in">`just check`</span> と <span class="in">`just docs`</span> を通した</span></code></pre></div><button title="コピー" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Your Name</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/yama662607/quarto-textbook-template/edit/main/quarto/reference/paper-deep-dive.qmd" class="toc-action"><i class="bi bi-github"></i>編集</a></li><li><a href="https://github.com/yama662607/quarto-textbook-template/issues/new" class="toc-action"><i class="bi empty"></i>問題を報告</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../index.html">
+<p>ホーム</p>
+</a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
