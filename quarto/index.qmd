@@ -1,55 +1,39 @@
 ---
-title: "Quarto Textbook Template"
-subtitle: "教科書・講義ノート・PDF 起こしを始めるためのスターター"
+title: "Your Textbook Title"
+subtitle: "講義ノート・演習・シミュレーションをまとめる教材ホーム"
 author: "Your Name"
 date: last-modified
 ---
 
-# Quarto Textbook Template
+このサイトは、講義ノート、演習、シミュレーション、補助資料をまとめた教材サイトです。読者が最初に見るページとして、このホームには本文・演習・動く確認への導線だけを置きます。
 
-このサイトは、Quarto Book で教材サイトを作るためのテンプレートです。まず統合サンプルで完成形を見て、必要な章テンプレートをコピーし、運用ワークフローに沿って編集します。
+## この教材で学ぶこと
 
-::: {.template-entry-grid}
+- 本文で概念と記法を確認する
+- トピックページで 1 つの問いを短く復習する
+- シミュレーションでパラメータを動かして挙動を見る
+- 演習ページで理解を確認する
+- 必要に応じて参考資料や原典精読ページへ戻る
 
-::: {.template-entry}
-## 統合サンプル
+## 読む順番
 
-このテンプレートで作れる教材の代表例です。Quarto Live、Plotly、シミュレーション、図表、定理、引用、callout などの動く例もここに集約しています。
+| 入口 | 読者に見せる内容 | ページ |
+| --- | --- | --- |
+| 本文の入口 | 教材本体、章立て、読む順番 | [教材本編サンプル](textbook/textbook.qmd) |
+| 主要トピック | 1 つの講義回、論文節、理論項目 | [トピック概要ページ](topics/topic-overview.qmd) |
+| 論文精読 | 原典、忠実訳、行間補完、章割り、検証手順 | [論文精読ページ](topics/paper-deep-dive-page.qmd) |
+| 動く確認 | Quarto Live / Plotly によるシミュレーション | [シミュレーションページ](simulations/simulation-page.qmd) |
+| 演習・課題 | 問題、ヒント、解答方針、確認コード | [演習ページ](exercises/exercise-page.qmd) |
+| 補助資料 | 記法、関連資料、よく使うリンク | [補助資料ページ](support/support-page.qmd) |
 
-[動く統合サンプルを見る](textbook/textbook.qmd){.template-entry-link}
+## 関連資料
 
-:::
+| 種類 | ページ |
+| --- | --- |
+| Quarto 機能の表示先 | [Quarto 機能対応表](reference/features.qmd) |
+| 論文を精読教科書にする方法 | [論文精読教科書のつくり方](reference/paper-deep-dive.qmd) |
+| ブラウザ内 Python の作法 | [Quarto Live レシピ](reference/quarto-live.qmd) |
 
-::: {.template-entry}
-## 章テンプレート
+## 制作者向け
 
-PDF 起こし、数学・物理、V-S-V レッスン、全機能盛り合わせなど、コピーして使う qmd スケルトンです。
-
-[テンプレートを選ぶ](template-catalog.qmd){.template-entry-link}
-
-:::
-
-::: {.template-entry}
-## 運用ワークフロー
-
-セットアップ、プレビュー、PDF 取り込み、検証、公開前チェックの流れを確認できます。
-
-[運用を確認する](workflow-guide.qmd){.template-entry-link}
-
-:::
-
-:::
-
-## 最初に試すコマンド
-
-```bash
-just setup     # 初回のみ
-just docs      # http://localhost:4312 でプレビュー
-just check     # 公開前の品質チェック
-```
-
-`quarto/_quarto.yml` の preview 設定は `host: 0.0.0.0` / `port: 4312` なので、同じ Wi-Fi 上の端末からも `http://<Mac の IP>:4312/` で確認できます。
-
-## 編集の基本
-
-本文は `quarto/textbook/textbook.qmd` を親にし、章や節の中身を `_*.qmd` partial に分けて <code>{{&lt; include &gt;}}</code> します。機能の書き方は [統合サンプル](textbook/textbook.qmd) の該当セクションから探し、コピー元は [章テンプレート](template-catalog.qmd) から選んでください。
+このテンプレートを使って教材を作る場合は、まず [制作者向けガイド](template-guide.qmd) を確認してください。テンプレート支援ページは本文作成中も残せるよう、sidebar の「制作者向け」にまとめています。

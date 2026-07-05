@@ -1,0 +1,55 @@
+---
+title: "補助資料ページ"
+subtitle: "記法・関連資料・よく使うリンクをまとめる例"
+---
+
+補助資料ページには、本文を読む人が繰り返し参照する情報をまとめます。本文の流れを止めたくない記法、関連資料、データ、FAQ、訂正履歴などをここに逃がすと、ホームから残しやすいページになります。
+
+## よく使う入口
+
+| 目的 | ページ |
+| --- | --- |
+| 教材全体を読む | [教材本編サンプル](../textbook/textbook.qmd) |
+| 1 つのトピックだけ確認する | [トピック概要ページ](../topics/topic-overview.qmd) |
+| パラメータを動かして確認する | [シミュレーションページ](../simulations/simulation-page.qmd) |
+| 理解を確認する | [演習ページ](../exercises/exercise-page.qmd) |
+| 論文精読の型を見る | [論文精読ページ](../topics/paper-deep-dive-page.qmd) |
+
+## 記法と前提
+
+| 記号 | 意味 | 参照先 |
+| --- | --- | --- |
+| $x(t)$ | 時刻 $t$ における状態量 | [教材本編サンプル](../textbook/textbook.qmd#sec-introduction) |
+| $A$ | 振幅またはスケール係数 | [シミュレーションページ](../simulations/simulation-page.qmd) |
+| $f$ | 周波数 | [演習ページ](../exercises/exercise-page.qmd) |
+
+## 関連資料
+
+| 種類 | 置き場所の例 |
+| --- | --- |
+| 原典 PDF | `quarto/assets/pdf/` |
+| 図版・スクリーンショット | `quarto/assets/images/` |
+| 公開用リファレンス | [Quarto 機能対応表](../reference/features.qmd) |
+| ブラウザ内 Python の作法 | [Quarto Live レシピ](../reference/quarto-live.qmd) |
+
+## よくある質問
+
+::: {.callout-note}
+## スマートフォンで見たい
+
+`just docs` または静的サーバーを `host: 0.0.0.0` で起動している場合、同じ Wi-Fi 上の端末から `http://<Mac の IP>:4312/` で確認できます。
+
+:::
+
+::: {.callout-tip}
+## 教材を作る側の情報を見たい
+
+テンプレートの使い方、qmd の追加手順、コピー元テンプレートは [制作者向けガイド](../template-guide.qmd) にまとめています。
+
+:::
+
+## 訂正・更新履歴
+
+| 日付 | 内容 |
+| --- | --- |
+| 2026-07-05 | 補助資料ページの型を追加 |

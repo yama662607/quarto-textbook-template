@@ -1,0 +1,43 @@
+---
+title: "Quarto 機能対応表"
+subtitle: "動くデモを見る場所とコピー元を整理する"
+---
+
+このページは、テンプレートに含まれる Quarto 機能を「ブラウザで見られる場所」と「コピー元のソース」に分けて整理します。公開サイトでは未レンダーの `_*.qmd` partial へ直接リンクせず、HTML 化されたページや section anchor へリンクします。
+
+## サイト内の入口
+
+| 入口 | 用途 |
+| :--- | :--- |
+| [教材本編サンプル](../textbook/textbook.qmd) | partial を統合した代表ページ。動く実例はここから探す |
+| [シミュレーションページ](../simulations/simulation-page.qmd) | 独立ページとして Quarto Live を置く最小例 |
+| [章テンプレート一覧](../template-catalog.qmd) | コピーして使う qmd スケルトンの一覧 |
+| [運用ワークフロー](../workflow-guide.qmd) | セットアップ、PDF 取り込み、検証、公開の流れ |
+
+## 機能別の表示先
+
+| 機能 | 表示できるページ | コピー元 |
+| :--- | :--- | :--- |
+| Quarto Live + matplotlib | [インタラクティブ・シミュレーション](../textbook/textbook.qmd#sec-interactive-demo) | `quarto/textbook/_03_interactive_demo.qmd` |
+| Plotly 静的図・アニメーション | [Plotly サンプル](../textbook/textbook.qmd#sec-plotly-demo) | `quarto/textbook/_04_plotly_demo.qmd` |
+| Mermaid / Graphviz / theorem | [図式・数式・定理環境](../textbook/textbook.qmd#sec-diagrams-and-math) | `quarto/textbook/_05_diagrams_and_math.qmd` |
+| tabset / layout / callout | [レイアウトと callout](../textbook/textbook.qmd#sec-layout-and-callouts) | `quarto/textbook/_06_layout_and_callouts.qmd` |
+| subfigure / table / lightbox | [図表と表現](../textbook/textbook.qmd#sec-figures-and-tables) | `quarto/textbook/_07_figures_and_tables.qmd` |
+| code annotation / 脚注 / 引用 | [テキスト表現と引用](../textbook/textbook.qmd#sec-text-and-citations) | `quarto/textbook/_08_text_and_citations.qmd` |
+| 複数シミュレーション教材 | [シミュレーション教材ショーケース](../textbook/textbook.qmd#sec-simulation-showcase) | `quarto/textbook/_09_simulation_showcase.qmd` |
+
+## コピー元テンプレート
+
+章を書き始めるための `quarto/templates/*.qmd` は [章テンプレート一覧](../template-catalog.qmd) に集約しています。このページでは、すでに教材本編サンプルで動いている Quarto 機能の表示先だけを扱います。
+
+## 関連リファレンス
+
+- [論文精読教科書のつくり方](paper-deep-dive.qmd)
+- [Quarto Live レシピ](quarto-live.qmd)
+- [Quarto 最新機能の採用メモ](quarto-modern.qmd)
+
+## 公開ページからリンクするとき
+
+1. `.md` や `_*.qmd` partial へ直接リンクしない。
+2. 読者に見せるページは `book.chapters` に入れ、HTML 化されたページへリンクする。
+3. コピー元ファイルはリンクではなくコード表記にする。

@@ -1,0 +1,82 @@
+---
+title: "制作者向けガイド"
+subtitle: "このテンプレートで教材ページを育てるための入口"
+---
+
+このページは、テンプレートを clone した直後に見る制作者向けの入口です。公開ホーム (`index.qmd`) は読者向けに残し、テンプレートの使い方、コピー元、運用手順はこのページからたどります。
+
+## 最初に確認するページ
+
+| 目的 | 開くページ | 役割 |
+| --- | --- | --- |
+| 本文の完成形を見る | [教材本編サンプル](textbook/textbook.qmd) | Quarto 機能、章構成、シミュレーションを統合した代表ページ |
+| 新しい章を書き始める | [章テンプレート一覧](template-catalog.qmd) | `quarto/templates/` のコピー元を目的別に選ぶ |
+| qmd 追加後の導線を決める | [導線サンプル](example-map.qmd) | ホーム、sidebar、section anchor の置き方を確認する |
+| 作業順序を確認する | [運用ワークフロー](workflow-guide.qmd) | setup、PDF 取り込み、編集、検証、公開の順番 |
+| 深い技術メモを見る | [Quarto 機能対応表](reference/features.qmd) | 表示できる HTML ページとコピー元 partial の対応を確認する |
+
+## どのファイルを作るか
+
+実教材のページは、目的別の場所に作ります。このテンプレートの初期サンプルも `topics/`、`simulations/`、`exercises/`、`support/` に置いてあるので、派生プロジェクトでは近いページをコピーして名前を変え、`book.chapters` とホームの導線を更新します。
+
+| 目的 | 作る場所 | 追加で更新する場所 |
+| --- | --- | --- |
+| 本文の章・節 | `quarto/textbook/_NN_topic.qmd` | `quarto/textbook/textbook.qmd` の include、必要ならホームの section link |
+| 独立トピック | `quarto/topics/topic.qmd` など | `book.chapters`、必要ならホームの「読む順番」 |
+| シミュレーション | `quarto/simulations/topic.qmd` など | `book.chapters`、本文や演習からのリンク |
+| 演習ページ | `quarto/exercises/topic.qmd` など | `book.chapters`、対応する本文からのリンク |
+| 補助資料 | `quarto/support/topic.qmd` など | `book.chapters`、ホームまたは navbar |
+| 公開リファレンス | `quarto/reference/topic.qmd` | `book.chapters` の参考資料、関連ページからのリンク |
+| 章テンプレート | `quarto/templates/foo_template.qmd` | `quarto/template-pages/foo.qmd`、`template-catalog.qmd`、`book.chapters` |
+
+単独ページはまず `book.chapters` に登録します。navbar やホームは追加導線です。navbar にだけ置くと、Book の前後ナビゲーションや sidebar 上の位置が不安定になります。
+
+## 作業開始時の判断
+
+エージェントは、ユーザーの依頼を受けたら先にこの表で置き場所を決めます。
+
+| 依頼 | 判断 | 触る主なファイル |
+| --- | --- | --- |
+| 「本文を追加して」 | 本文 partial を追加する | `_NN_topic.qmd`, `textbook.qmd` |
+| 「このページへ直接行けるようにして」 | 単独ページとして `book.chapters` に登録する | 追加 qmd, `_quarto.yml`, 必要なら `index.qmd` |
+| 「ホームに導線を出して」 | 読者が最初に読む主要ページだけ `index.qmd` の「読む順番」に入れる | `index.qmd` |
+| 「シミュレーションを追加して」 | 本文内で説明するなら partial、単独で使うなら `simulations/` | `_*.qmd` または `simulations/*.qmd`, `_quarto.yml` |
+| 「テンプレートを増やして」 | コピー元と閲覧ページを両方作る | `templates/`, `template-pages/`, `template-catalog.qmd`, `_quarto.yml` |
+| 「公開サイトで読める資料を追加して」 | `reference/` へ置く | `reference/*.qmd`, `_quarto.yml` |
+| 「エージェント向け規約を更新して」 | `docs/` または `AGENTS.md` を更新し、必要なら `reference/` に反映する | `docs/*.md`, `AGENTS.md`, `reference/*.qmd` |
+
+## 残すものと外すもの
+
+テンプレート支援ページは、本文作成中もコピー元として有用なので削除前提にしません。派生プロジェクトで公開するときは、不要な支援ページを削除するのではなく、まず公開ホームの主導線から外し、sidebar の「制作者向け」や private な運用メモへ下げます。
+
+| 種類 | 残し方 |
+| --- | --- |
+| `quarto/templates/*.qmd` | 章を書き始めるコピー元として残す |
+| `quarto/template-pages/*.qmd` | コピー元の閲覧ページとして残す |
+| `quarto/topics/`, `quarto/simulations/`, `quarto/exercises/`, `quarto/support/` | 最初は配置例として残し、教材が育ったら実ページ名へ置き換える |
+| `quarto/reference/*.qmd` | 公開サイト内で読める技術リファレンスとして残す |
+| `docs/*.md` | エージェント/開発者向け原本として残す。公開ページから直接リンクしない |
+
+## qmd を追加した後の最短チェック
+
+1. 単独ページなら YAML front matter を書く。本文 partial なら YAML front matter を書かない。
+2. 単独ページは `quarto/_quarto.yml` の `book.chapters` に追加する。
+3. 本文 partial は `quarto/textbook/textbook.qmd` に <code>{{&lt; include &gt;}}</code> を追加する。
+4. 読者が最初に見るべき主要ページだけ `quarto/index.qmd` の「読む順番」に追加する。
+5. ページ内の特定セクションへ飛ばす場合は、見出しに `{#sec-id}` を付ける。
+6. `just docs` でホーム、sidebar、ページ下部の前後ナビゲーションを確認する。
+7. `just check` を通す。
+
+## 最初に試すコマンド
+
+```bash
+just setup     # 初回のみ
+just docs      # http://localhost:4312 でプレビュー
+just check     # 公開前の品質チェック
+```
+
+`quarto/_quarto.yml` の preview 設定は `host: 0.0.0.0` / `port: 4312` なので、同じ Wi-Fi 上の端末からも `http://<Mac の IP>:4312/` で確認できます。
+
+## 正本の考え方
+
+公開サイトで読者や共同執筆者に見せる文書は `quarto/reference/*.qmd` に置きます。`docs/*.md` は GitHub 上の説明、エージェント向け原本、作業メモとして残します。両方に近い内容を置く場合は、先に `docs/*.md` を更新し、公開に必要な内容だけ `quarto/reference/*.qmd` へ反映します。

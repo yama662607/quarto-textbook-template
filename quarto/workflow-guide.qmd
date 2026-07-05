@@ -3,8 +3,6 @@ title: "運用ワークフロー"
 subtitle: "セットアップから公開前チェックまで"
 ---
 
-# 運用ワークフロー
-
 このテンプレートは、PDF・講義メモ・手書き資料から Quarto Book を作る作業を想定しています。小さく書いて、すぐ preview し、品質ゲートで確認します。
 
 ## セットアップ
@@ -34,8 +32,105 @@ just extract-pdf path/to/textbook.pdf 12 15
 - 章・節の中身は `quarto/textbook/_*.qmd`
 - partial には YAML front matter を書かない
 - <code>{{&lt; include _NN_topic.qmd &gt;}}</code> を 1 つずつ追加する
-- Quarto 機能の書き方は [統合サンプル](textbook/textbook.qmd) の該当セクションから探す
+- Quarto 機能の書き方は [教材本編サンプル](textbook/textbook.qmd) の該当セクションから探す
 - 書き始めは [章テンプレート一覧](template-catalog.qmd) から目的に近いものを選ぶ
+
+## qmd 追加後の導線整備 {#sec-routing-after-qmd}
+
+qmd を作っただけでは、読者はそのページにたどり着けません。単独ページを追加した場合は、まず `book.chapters` に登録します。ホームは主要ページだけに絞り、細かいページは sidebar、本文中リンク、補助資料ページからたどれるようにします。
+
+1. `quarto/_quarto.yml` の `book.chapters` に登録する
+2. 主要ページだけ `quarto/index.qmd` の「読む順番」表へ追加する
+3. 関連する本文・演習・補助資料から相互リンクを張る
+
+公開用の教材では、ショーケースやテンプレート支援ページを主導線に残しすぎず、本文・演習・シミュレーション・補助資料を先に並べます。
+
+### 単独ページを追加する場合
+
+講義回、シミュレーション、演習、サポートページのように 1 ページとして見せたい qmd は、`book.chapters` に追加します。
+
+```yaml
+book:
+  chapters:
+    - index.qmd
+    - part: "シミュレーション"
+      chapters:
+        - simulations/pendulum.qmd
+    - part: "演習問題"
+      chapters:
+        - exercises/polar_kinematics.qmd
+```
+
+そのうえで、ホームにも直接リンクします。
+
+```markdown
+| 項目 | ページ |
+| --- | --- |
+| 単振り子 | [シミュレーション](simulations/pendulum.qmd) |
+| 極座標運動 | [演習](exercises/polar_kinematics.qmd) |
+```
+
+### 本文 partial を追加する場合
+
+`quarto/textbook/_05_topic.qmd` のような partial は sidebar に直接並べず、親の `textbook/textbook.qmd` に include します。
+
+```markdown
+{{</* include _05_topic.qmd */>}}
+```
+
+ホームから特定の節に直接飛ばしたい場合は、partial 内の見出しに anchor を付けます。
+
+```markdown
+## 新しいトピック {#sec-new-topic}
+```
+
+ホームでは親ページと anchor を組み合わせてリンクします。
+
+```markdown
+[新しいトピック](textbook/textbook.qmd#sec-new-topic)
+```
+
+実際の配置例は [導線サンプル](example-map.qmd) を参照してください。
+
+## Markdown 文書を公開ページから見せる場合
+
+Quarto project は `.md` も入力として扱えますが、このテンプレートでは公開サイトの導線を安定させるため、読者に見せる文書は `quarto/` 配下の `.qmd` ページとして `book.chapters` に登録します。
+
+| やりたいこと | 推奨 |
+| --- | --- |
+| GitHub やエージェント向けの説明を置く | `docs/*.md` に置く。公開サイトからは直接リンクしない |
+| ブラウザで読ませるガイドを置く | `quarto/reference/topic.qmd` に変換し、`book.chapters` に追加する |
+| 本文中に短い共通部品を再利用する | `_*.qmd` partial にして `{{< include >}}` で読み込む |
+| コピー元ファイルを示す | リンクではなく `quarto/templates/foo.qmd` のようにコード表記にする |
+
+公開ページから `docs/foo.md` や `_NN_partial.qmd` へ直接リンクすると、静的配信では HTML 化されたページが存在せず、ブラウザで読めないか、ソースファイル表示になります。リンクしたい場合は、対応する qmd ページを作り、`[表示名](reference/foo.qmd)` のように qmd へリンクしてください。Quarto の render 後は `.html` へのリンクに変換されます。
+
+## 教材構成の選び方
+
+既定では `quarto/textbook/textbook.qmd` を本文の親にします。大きい教材に育った場合も、最初はこの形を保つと壊れにくいです。
+
+| 型 | 使い所 | 追加する導線 |
+| --- | --- | --- |
+| 単一 textbook 型 | 普通の講義ノート、短い教科書、機能例の集約 | `textbook/textbook.qmd` を本文入口にし、partial を include |
+| 本文 + 単独ページ型 | 本文とは別にシミュレーション、演習、サポートを見せたい | `book.chapters` に単独ページを追加し、主要ページだけホームの「読む順番」からリンク |
+| 複数原典ロードマップ型 | 複数の PDF、講義ノート、論文を並行して扱う | ホームに「原文 PDF / 解説 / 実装」表を置き、必要なら `textbook-*/textbook.qmd` を追加 |
+| 長編精読型 | 章ごとに独立したページとして読ませたい論文・本 | 部ごとの章一覧をホームに置き、各章 qmd を `book.chapters` に並べる。採用時は `AGENTS.md` の single source 方針も更新 |
+
+迷った場合は、まず「単一 textbook 型」で始めます。後から分割する方が、最初から複数系統を作るより破綻しにくいです。
+
+## 論文精読教材を作る場合
+
+研究論文 1 本を教科書化する場合は、公開サイト内の [論文精読教科書のつくり方](reference/paper-deep-dive.qmd) を先に読みます。Quarto の書き方ではなく、何をどう書くかの編集判断がまとまっています。
+
+| 工程 | やること |
+| --- | --- |
+| 原則を固定する | 忠実さ、行間補完、通し具体例、誠実な限界、意味のある対話、検証可能性を章ごとに確認する |
+| 章割りを決める | Abstract / Introduction / Results / Discussion / Methods / 付録に対応する部と章を先に決める |
+| 章の型を使う | 原文引用、忠実訳、詳細授業、記号表、定義、式、相互参照の順で書く |
+| 図表を検証する | 高解像度画像、出典、ライセンス、式番号、数値を原著と照合する |
+
+Quarto 上の最小例は [論文精読ページ](topics/paper-deep-dive-page.qmd) を参照してください。
+対話デモを入れる場合は、先に [Quarto Live レシピ](reference/quarto-live.qmd) の制約を確認してください。
 
 ## 検証
 

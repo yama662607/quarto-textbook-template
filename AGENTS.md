@@ -5,7 +5,9 @@
 
 ## Project overview
 
-Quarto Book ベースの教科書 / 講義ノートサイト。HTML を GitHub Pages、PDF をオプションで生成。本文は `quarto/textbook/textbook.qmd` を信頼できる唯一の情報源 (single source of truth) とし、章ごとのコンテンツは `_*.qmd` パーシャルに分割して `{{< include >}}` で統合する。
+Quarto Book ベースの教科書 / 講義ノートサイト。HTML を GitHub Pages、PDF をオプションで生成。本文は `quarto/textbook/textbook.qmd` を信頼できる唯一の情報源 (single source of truth) とし、章ごとのコンテンツは `_*.qmd` パーシャルに分割して `{{< include >}}` で統合する。`quarto/topics/`, `quarto/simulations/`, `quarto/exercises/`, `quarto/support/` は、本編を補う reader-facing な単独ページとして使う。
+
+`docs/*.md` はエージェント/開発者向け原本、`quarto/reference/*.qmd` は公開サイトで読めるリファレンス。公開ページから `docs/*.md` へ直接リンクせず、必要な内容は `quarto/reference/*.qmd` へ反映して `book.chapters` に登録する。
 
 ## Setup commands
 
@@ -72,13 +74,20 @@ uv run python tools/extract_pdf.py <pdf_path> --mode simple --start <s> --end <e
 
 Mermaid / Graphviz / theorem 環境 / tabset / lightbox / 引用 などの **Quarto 標準機能** を実際にどう書くかは、本にレンダされている partial 群を直接コピーするのが最速です。partial → 機能の対応表は [docs/features.md](docs/features.md) にあります。
 
-新しい章を起こすときは `quarto/templates/*_template.qmd` のうち目的に近いものをコピーして始めてください (これらは render 対象外の **出発点スケルトン**)。
+新しい章を起こすときは `quarto/templates/*_template.qmd` のうち目的に近いものをコピーして始めてください (これらは render 対象外の **出発点スケルトン**)。`quarto/textbook/_NN_topic.qmd` partial に貼る場合は、コピー元の YAML front matter (`---` で囲まれた先頭ブロック) を削除してください。
 
 ## Code style
 
 - **Quarto/qmd**:
   - 本文は `_*.qmd` (アンダースコア接頭辞 = レンダリング対象から除外) に分割し、`textbook.qmd` から `{{< include >}}`
   - パーシャルファイルに **YAML フロントマターを書かない** (親ファイルに集約)
+  - **qmd を追加したら導線も更新する**:
+    - 本文 partial (`quarto/textbook/_NN_topic.qmd`) は `quarto/textbook/textbook.qmd` に include し、ホームから飛ばしたい見出しに `{#sec-id}` を付ける
+    - 単独ページ (simulation / exercise / support など) は `quarto/_quarto.yml` の `book.chapters` に登録し、主要ページだけ `quarto/index.qmd` の「読む順番」表からリンクする
+    - 単独ページは `quarto/topics/`, `quarto/simulations/`, `quarto/exercises/`, `quarto/support/` など目的別ディレクトリへ作る
+    - 公開ページから `docs/*.md` や `_*.qmd` partial へ直接リンクしない。ブラウザで読ませる文書は `quarto/reference/*.qmd` などの単独 qmd に変換し、`book.chapters` に登録してからリンクする。コピー元ファイルはリンクではなくコード表記にする
+    - 派生プロジェクトの公開ホームでは、ショーケースやテンプレート支援ページよりも本文・演習・シミュレーションへの導線を先に置く
+  - **論文精読教材**を作る場合は、先に `docs/paper-deep-dive.md` を読み、原文引用・忠実訳・行間補完・通し具体例・限界章・検証チェックリストを章設計に反映する
   - `:::` (fenced div) の **閉じる前に空行必須** (`just fix` で自動修正可)
   - 数式: インライン `$...$`、ディスプレイ `$$...$$ {#eq-label}`、参照は `@eq-label`
   - 図表: Mermaid (`{mermaid}` ブロック)、PNG/JPG は `quarto/assets/images/`
@@ -108,7 +117,7 @@ just test        # pytest のみ
 
 - ❌ `pip install` を提案しない → `uv add <pkg>` または `uv sync --extra <name>` を使う
 - ❌ `_*.qmd` に YAML ヘッダーを追加しない
-- ❌ `quarto/textbook/chapter1.qmd` のような新規ルート qmd を作らない (パーシャルに分ける)
+- ❌ `quarto/textbook/chapter1.qmd` のような本文章ルート qmd を作らない。本文は `quarto/textbook/_*.qmd` partial に分け、`quarto/textbook/textbook.qmd` から include する。シミュレーション・演習・サポートのような独立ページは `quarto/_quarto.yml` の `book.chapters` に登録する場合のみ作成可
 - ❌ `:::` の閉じる前の空行を省略しない
 - ❌ Justfile に Unix 専用コマンド (`lsof`, `pkill`, `xargs`, `export PATH=`) を追加しない → 必ず `tools/*.py` 経由で cross-platform 化
 - ❌ `quarto/assets/raw/`, `quarto/assets/private/`, `research/inbox/*/` 配下のファイルを commit しない (gitignore 済)

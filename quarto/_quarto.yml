@@ -15,7 +15,7 @@ project:
     watch-inputs: true
 
 book:
-  title: "Quarto Textbook Template"
+  title: "Your Textbook Title"
   author: "Your Name"
   date: last-modified
 
@@ -23,6 +23,7 @@ book:
   # テンプレ利用時は自分のリポジトリ URL に書き換えてください。
   repo-url: https://github.com/yama662607/quarto-textbook-template
   repo-branch: main
+  repo-subdir: quarto
   repo-actions: [edit, issue]
 
   # PDF ダウンロードボタン (uv sync --extra notebook 等で計算ブロックを使う場合)
@@ -41,17 +42,38 @@ book:
   sidebar:
     style: "docked"
     collapse-level: 4
+  # 新規の単独 qmd はここに追加する。
+  # textbook/_*.qmd partial はここへ直接追加せず、textbook/textbook.qmd に include する。
+  # 読者向けページを上、テンプレート支援ページを最後の「制作者向け」にまとめる。
+  # 実ページは topics/ simulations/ exercises/ support/ など目的別ディレクトリへ作る。
   chapters:
     - index.qmd
-    - textbook/textbook.qmd
-    - part: "章テンプレート"
+    - part: "教材"
       chapters:
+        - textbook/textbook.qmd
+        - topics/topic-overview.qmd
+        - topics/paper-deep-dive-page.qmd
+    - part: "演習・シミュレーション・補助資料"
+      chapters:
+        - simulations/simulation-page.qmd
+        - exercises/exercise-page.qmd
+        - support/support-page.qmd
+    - part: "リファレンス"
+      chapters:
+        - reference/features.qmd
+        - reference/paper-deep-dive.qmd
+        - reference/quarto-live.qmd
+        - reference/quarto-modern.qmd
+    - part: "制作者向け"
+      chapters:
+        - template-guide.qmd
+        - workflow-guide.qmd
+        - example-map.qmd
         - template-catalog.qmd
         - template-pages/textbook.qmd
         - template-pages/math-focused.qmd
         - template-pages/theory.qmd
         - template-pages/quarto-features.qmd
-    - workflow-guide.qmd
   page-navigation: true
   page-footer:
     left: "© Your Name"

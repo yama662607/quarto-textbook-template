@@ -83,7 +83,7 @@ fig
 
 | 要素 | 役割 |
 | --- | --- |
-| `await micropip.install("plotly")` | Pyodide で plotly を動的取得 (Jupyter では try 節で skip) |
+| `textbook.qmd` の `pyodide.packages` | Plotly / nbformat / jsonschema をセル実行前に直列ロードする。`micropip.install(...)` をセル内で呼ばない |
 | `HTML(fig.to_html(include_plotlyjs="cdn"))` | Pyodide / Jupyter / VSCode のどこでも図を HTML として埋め込み (`fig.show()` は Pyodide で renderer 検出に失敗するため避ける) |
 | `animation_frame="frame"` | フレームごとの DataFrame 行を Plotly が拾って自動でスライダー UI を生成 |
 

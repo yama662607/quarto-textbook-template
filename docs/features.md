@@ -1,12 +1,12 @@
 # Quarto 機能 → live demo 対応表
 
-このテンプレに含まれる Quarto 機能を、どの partial で **動く例** として見られるかインデックス化したものです。「あの機能をどう書くんだっけ」と思ったら、統合サンプル内の該当セクションを見てコピーしてください。
+このテンプレに含まれる Quarto 機能を、どの partial で **動く例** として見られるかインデックス化したものです。「あの機能をどう書くんだっけ」と思ったら、教材本編サンプル内の該当セクションを見てコピーしてください。
 
 ## サイト内の入口
 
 | 入口 | 用途 |
 | :--- | :--- |
-| `quarto/textbook/textbook.qmd` | 既存 partial をまとめた統合サンプル。動く実例の唯一の代表ページ |
+| `quarto/textbook/textbook.qmd` | 既存 partial をまとめた教材本編サンプル。動く実例の唯一の代表ページ |
 | `quarto/template-catalog.qmd` | コピーして使う qmd スケルトンの一覧 |
 | `quarto/workflow-guide.qmd` | セットアップ、PDF 取り込み、検証、公開の流れ |
 
@@ -51,6 +51,7 @@
 
 ## 関連ドキュメント
 
+- [`docs/paper-deep-dive.md`](paper-deep-dive.md) — 論文を精読教科書に変える編集方法論（章の型・工程・大事なこと・チェックリスト）
 - [`docs/quarto-live.md`](quarto-live.md) — Pyodide (Quarto Live) 専門の動作レシピと既知 dead-end
 - [`docs/quarto-modern.md`](quarto-modern.md) — Quarto 1.9+ 新機能の採用判断
 - [`AGENTS.md`](../AGENTS.md) — AI agent 向けの規約 (qmd 編集の小刻みルール、ファイル分離、PDF 抽出ワークフロー)

@@ -3,8 +3,6 @@ title: "PDF textbook テンプレート"
 subtitle: "PDF を Phase 1 / Phase 2 で教材化する"
 ---
 
-# PDF textbook テンプレート
-
 PDF 教科書や論文を、原文対応を保ちながら Quarto の章へ起こすためのテンプレートです。
 このページは閲覧用です。実際に編集を始めるときは、下のコピー元ファイルを `quarto/textbook/_NN_topic.qmd` にコピーします。
 
