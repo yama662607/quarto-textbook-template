@@ -35,7 +35,7 @@ jobs:
         uses: astral-sh/setup-uv@v3
 
       - name: Install just
-        uses: extractions/setup-just@v2
+        uses: extractions/setup-just@v4
 
       - name: Set up Node
         uses: actions/setup-node@v4
